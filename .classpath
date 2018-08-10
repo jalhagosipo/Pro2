@@ -2,11 +2,8 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/bear9/eclipse-workspace/miniProject/mysql-connector-java-5.1.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/bit-user/Downloads/jfreechart-1.0.19/jfreechart-1.0.19/lib/jcommon-1.0.23.jar"/>
-	<classpathentry kind="lib" path="C:/Users/bit-user/Downloads/jfreechart-1.0.19/jfreechart-1.0.19/lib/jfreechart-1.0.19.jar"/>
-	<classpathentry kind="lib" path="C:/Users/bit-user/Desktop/java/jcommon-1.0.23.jar"/>
-	<classpathentry kind="lib" path="C:/Users/bit-user/Desktop/java/jfreechart-1.0.19.jar"/>
-	<classpathentry kind="lib" path="C:/Users/bit-user/Desktop/java/mysql-connector-java-5.1.6.jar"/>
+	<classpathentry kind="lib" path="mysql-connector-java-5.1.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bear9/Desktop/Desktop/jcommon-1.0.23.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bear9/Desktop/Desktop/jfreechart-1.0.19.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

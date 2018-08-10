@@ -1,5 +1,6 @@
 package views;
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -55,7 +56,7 @@ class seat{
 			pan_seat[i].setLayout(new BoxLayout(pan_seat[i],BoxLayout.Y_AXIS));
 			pan_seat[i].setBackground(Color.GRAY);
 			pan_seat[i].setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-			pan_seat[i].setBorder(new TitledBorder(new LineBorder(Color.white,4), i+" PC"));
+			pan_seat[i].setBorder(new TitledBorder(new LineBorder(Color.white,4), (i+1)+" PC"));
 			
 			lb_time[i]=new JLabel("남은시간: 00:00:00");
 			lb_time[i].setForeground(Color.white);
@@ -66,31 +67,7 @@ class seat{
 			pan_seat[i].add(lb_cur_time[i]);
 			pan_seat[i].add(lb_id[i]);
 			
-			pan_seat[i].addMouseListener(new MouseListener() {
-	            public void mouseClicked(MouseEvent e) {
-	                System.out.println(":MOUSE_CLICK_EVENT:");
-	            }
-
-				@Override
-				public void mousePressed(MouseEvent e) {
-					// TODO Auto-generated method stub
-				}
-
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					// TODO Auto-generated method stub
-				}
-
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					// TODO Auto-generated method stub
-				}
-
-				@Override
-				public void mouseExited(MouseEvent e) {
-					// TODO Auto-generated method stub
-				}
-	        });
+			pan_seat[i].addMouseListener((MouseListener) new Main_GUI_Event(i+1));
 			
 			pan_main_seat.add(pan_seat[i]);
 		}
