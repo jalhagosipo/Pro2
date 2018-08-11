@@ -6,10 +6,11 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -106,7 +107,10 @@ public class SalesManagerView extends JFrame {
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
-		JList list = new JList();
+		DefaultTableModel model = new DefaultTableModel();
+		JTable list = new JTable(model);
+		model.addColumn("DATE");//³¯Â¥
+		model.addColumn("SALES");//ÃÑ¸ÅÃâ
 		list.setBounds(12, 10, 462, 561);
 		panel_2.add(list);
 		
