@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/*
+ getSalesList() - 검색버튼을눌렀을때 from기간 부터 to기간 까지의 날짜와 매출액을 select로 추출. arraylist형태로 
+*/
 public class salesDAO {
 	
 	public ArrayList<salesDTO> getSalesList()
