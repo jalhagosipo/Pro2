@@ -5,15 +5,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Vector;
 
+/*
+ getSalesList() - 寃��깋踰꾪듉�쓣�닃���쓣�븣 from湲곌컙 遺��꽣 to湲곌컙 源뚯��쓽 �궇吏쒖� 留ㅼ텧�븸�쓣 select濡� 異붿텧. arraylist�삎�깭濡� 
+*/
 public class salesDAO {
 	
-	public ArrayList<salesDTO> getSalesList()
+	public Vector<salesDTO> getSalesList()
 	{
 		Connection conn = null;
 		PreparedStatement pstmt =  null;
 		ResultSet rs = null;
-		ArrayList<salesDTO> arr = new ArrayList<>();
+		Vector<salesDTO> arr = new Vector<>();
 		DBconn dbconn = new DBconn();
 		
 		try {
