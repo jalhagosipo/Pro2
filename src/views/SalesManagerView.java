@@ -28,11 +28,13 @@ import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.TextAnchor;
 
+import salesManager.salesListShow;
+
 public class SalesManagerView extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField textField_from;
+	private JTextField textField_to;
 
 	/**
 	 * Launch the application.
@@ -41,7 +43,6 @@ public class SalesManagerView extends JFrame {
 		
 		SalesManagerView frame = new SalesManagerView();
 		frame.setVisible(true);
-		
 	}
 
 	/**
@@ -61,24 +62,24 @@ public class SalesManagerView extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(45, 36, 150, 27);
-		panel.add(textField);
-		textField.setColumns(10);
+		textField_from = new JTextField();
+		textField_from.setBounds(45, 36, 150, 27);
+		panel.add(textField_from);
+		textField_from.setColumns(10);
 		
 		JLabel label = new JLabel("~");
 		label.setBounds(207, 45, 17, 15);
 		panel.add(label);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(228, 36, 150, 27);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		textField_to = new JTextField();
+		textField_to.setBounds(228, 36, 150, 27);
+		panel.add(textField_to);
+		textField_to.setColumns(10);
 		
 		JButton search_button = new JButton("\uAC80\uC0C9");//검색
 		search_button.setBounds(408, 28, 109, 43);
 		panel.add(search_button);
-		
+	
 		JButton week_sales_button = new JButton("\uC8FC\uAC04\uB9E4\uCD9C");//주간매출
 		week_sales_button.setBounds(636, 28, 109, 43);
 		panel.add(week_sales_button);
@@ -112,6 +113,9 @@ public class SalesManagerView extends JFrame {
 		ChartPanel chart = new ChartPanel(getChart());
 		chart.setBounds(500, 10, 672, 561);
 		panel_2.add(chart);
+		
+		search_button.addActionListener(new salesListShow(textField_from,textField_to,search_button,list));
+		
 	}
 	
 	public JFreeChart getChart() {
