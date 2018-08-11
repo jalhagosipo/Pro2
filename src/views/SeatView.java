@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -23,14 +24,9 @@ public class SeatView {
 	public static void main(String[] args) {
 				seat s=new seat();
 				s.init();
-		
-		
-		
-
 	}
 
 }
-
 
 class seat{
 	JFrame jf_main;// 메인프레임
@@ -75,10 +71,17 @@ class seat{
 		
 		JPanel pan_btn = new JPanel();
 		pan_btn.setLayout(new GridLayout(7, 1));
+		
+		//리스너클래스
+		Main_GUI_Event env = new  Main_GUI_Event();
+		
 		JButton btn1 =new JButton("매출현황");
+		btn1.addActionListener(env);
 		JButton btn2 =new JButton("재고관리");
+		btn2.addActionListener(env);
 		JButton btn3 =new JButton("충전");
 		JButton btn4 =new JButton("회원관리");
+		btn4.addActionListener(env);
 		
 		pan_btn.add(btn1);
 		pan_btn.add(new JLabel(""));

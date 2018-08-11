@@ -12,9 +12,11 @@ import javax.swing.JScrollPane;
 import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
 
-public class MemberMnagerTest {
+public class MemberMnagerTest extends JFrame{
 
-	private JFrame frame;
+	//¡÷ºÆ√≥∏Æ: 0811_¿±∞«»Ò_∏ﬁ¿Œ∫‰øÕ ø¨∞·
+//	private JFrame frame;
+	public JFrame frame;
 	private JTextField textField;
 	private JTable table;
 
@@ -22,29 +24,34 @@ public class MemberMnagerTest {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MemberMnagerTest window = new MemberMnagerTest();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		MemberMnagerTest mm= new MemberMnagerTest();
+		mm.frame.setVisible(true);
+		
+		//¡÷ºÆ√≥∏Æ: 0811_¿±∞«»Ò_∏ﬁ¿Œ∫‰øÕ ø¨∞·
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					MemberMnagerTest window = new MemberMnagerTest();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
 	}
 
 	/**
 	 * Create the application.
 	 */
-	public MemberMnagerTest() {
-		initialize();
-	}
+	//¡÷ºÆ√≥∏Æ: 0811_¿±∞«»Ò_∏ﬁ¿Œ∫‰øÕ ø¨∞·
+//	public MemberMnagerTest() {
+//		initialize();
+//	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	public MemberMnagerTest() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

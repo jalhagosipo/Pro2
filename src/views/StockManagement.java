@@ -48,26 +48,28 @@ public class StockManagement extends JFrame {
   */
 
  public static void main(String[] args) {
-
-  EventQueue.invokeLater(new Runnable() {
-
-   public void run() {
-///
-    try {
-
-     StockManagement frame = new StockManagement();
-
-     frame.setVisible(true);
-
-    } catch (Exception e) {
-
-     e.printStackTrace();
-
-    }
-
-   }
-
-  });
+	 StockManagement sm=new StockManagement();
+	 sm.setVisible(true);
+	 //주석처리: 0811_윤건희_메인뷰와 연결
+//  EventQueue.invokeLater(new Runnable() {
+//
+//   public void run() {
+/////
+//    try {
+//
+//     StockManagement frame = new StockManagement();
+//
+//     frame.setVisible(true);
+//
+//    } catch (Exception e) {
+//
+//     e.printStackTrace();
+//
+//    }
+//
+//   }
+//
+//  });
 
  }
 

@@ -17,7 +17,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class Main_GUI_Event extends JFrame implements MouseListener{
+public class Main_GUI_Event extends JFrame implements MouseListener, ActionListener{
 	private int i;
 	
 	private JPanel contentPane;
@@ -25,8 +25,17 @@ public class Main_GUI_Event extends JFrame implements MouseListener{
 	private JTextField tfkor;
 	private JTextField tfeng;
 	private JTextField tfmat;
+	
+	SalesManagerView smv= new SalesManagerView();
+	MemberMnagerTest mm= new MemberMnagerTest();
+	StockManagement sm = new StockManagement();
+	public Main_GUI_Event() {
+	}
+	public Main_GUI_Event(int i) {
+		this.i=i;
+	}
+	
 	public void View() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 250, 260);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -74,11 +83,6 @@ public class Main_GUI_Event extends JFrame implements MouseListener{
 		this.pack();
 		this.setVisible(true);
 	}
-	
-	
-	public Main_GUI_Event(int i) {
-		this.i=i;
-	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -108,6 +112,20 @@ public class Main_GUI_Event extends JFrame implements MouseListener{
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getActionCommand()=="매출현황") {
+			smv.setVisible(true);
+		}
+		if(e.getActionCommand()=="회원관리") {
+			mm.frame.setVisible(true);
+		}
+		if(e.getActionCommand()=="재고관리") {
+			sm.setVisible(true);
+		}
 		
 	}
 
