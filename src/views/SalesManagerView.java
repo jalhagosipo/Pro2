@@ -66,6 +66,7 @@ public class SalesManagerView extends JFrame {
 		
 		textField_from = new JTextField();
 		textField_from.setBounds(45, 36, 150, 27);
+		textField_from.setText("YYYY-MM-DD");
 		panel.add(textField_from);
 		textField_from.setColumns(10);
 		
@@ -74,6 +75,7 @@ public class SalesManagerView extends JFrame {
 		panel.add(label);
 		
 		textField_to = new JTextField();
+		textField_to.setText("YYYY-MM-DD");
 		textField_to.setBounds(228, 36, 150, 27);
 		panel.add(textField_to);
 		textField_to.setColumns(10);
@@ -119,7 +121,7 @@ public class SalesManagerView extends JFrame {
 		chart.setBounds(500, 10, 672, 561);
 		panel_2.add(chart);
 		
-		search_button.addActionListener(new salesListShow(textField_from,textField_to,search_button,list));
+		search_button.addActionListener(new salesListShow(textField_from,textField_to,list));
 		
 	}
 	
