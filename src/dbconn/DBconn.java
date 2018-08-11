@@ -7,14 +7,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/*
+	getConnection() - db연결
+	close() - db종료
+*/
+
 public class DBconn {
 	
 	public Connection getConnection()
 	{
 		String className="com.mysql.jdbc.Driver";
 		String url = "jdbc:mysql://my5509.gabiadb.com:3306/mydb";  
-		String user = "bit504";  		//mysql ���̵�
-		String password = "bitcamp504*";//��й�ȣ
+		String user = "bit504";  		//mysql ¾ÆÀÌµð
+		String password = "bitcamp504*";//ºñ¹Ð¹øÈ£
 		Connection conn = null;
 		
 		try {
