@@ -15,15 +15,14 @@ import dbconn.salesDTO;
 
 public class salesListShow implements ActionListener{
 
+	
 	private JTextField textField_from;
 	private JTextField textField_to;
-	private JButton search_button ;
 	private JTable list;
 	
-	public salesListShow(JTextField textField_from, JTextField textField_to,JButton search_button,JTable list) {
+	public salesListShow(JTextField textField_from, JTextField textField_to,JTable list) {
 		this.textField_from = textField_from;
 		this.textField_to = textField_to;
-		this.search_button=search_button;
 		this.list=list;
 	}
 
@@ -32,13 +31,11 @@ public class salesListShow implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
-		if(e.getSource() == search_button)
-		{
 			
 			salesDAO dao = new salesDAO();
 			DefaultTableModel tm = (DefaultTableModel) list.getModel();
 			tm.setNumRows(0);
-			Vector<salesDTO> lst = dao.getSalesList();
+			Vector<salesDTO> lst = dao.getSalesList(textField_from.getText(),textField_to.getText());
 			Iterator<salesDTO> it = lst.iterator();
 	        
 			while(it.hasNext())
@@ -46,7 +43,6 @@ public class salesListShow implements ActionListener{
 				salesDTO sd = it.next();
 				tm.addRow(new Object[]{sd.getToday_dates(),sd.getToday_sales()});
 			}
-		}
 	}
 
 	

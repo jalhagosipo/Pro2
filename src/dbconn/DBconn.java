@@ -8,8 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /*
-	getConnection() - dbì—°ê²°
-	close() - dbì¢…ë£Œ
+	getConnection() - db¿¬°á
+	close() - dbÁ¾·á
 */
 
 public class DBconn {
@@ -18,8 +18,8 @@ public class DBconn {
 	{
 		String className="com.mysql.jdbc.Driver";
 		String url = "jdbc:mysql://my5509.gabiadb.com:3306/mydb";  
-		String user = "bit504";  		//mysql Â¾Ã†Ã€ÃŒÂµÃ°
-		String password = "bitcamp504*";//ÂºÃ±Â¹ÃÂ¹Ã¸ÃˆÂ£
+		String user = "bit504";  		//mysql ¾ÆÀÌµğ
+		String password = "bitcamp504*";//ºñ¹Ğ¹øÈ£
 		Connection conn = null;
 		
 		try {
