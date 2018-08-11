@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -107,12 +108,12 @@ public class SalesManagerView extends JFrame {
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
-		DefaultTableModel model = new DefaultTableModel();
+		DefaultTableModel model = new DefaultTableModel(new Object[]{"DATE","SALES"},0);
+		
 		JTable list = new JTable(model);
-		model.addColumn("DATE");//³¯Â¥
-		model.addColumn("SALES");//ÃÑ¸ÅÃâ
-		list.setBounds(12, 10, 462, 561);
-		panel_2.add(list);
+		JScrollPane scrollpane = new JScrollPane(list);
+		scrollpane.setBounds(12, 10, 462, 561);
+		panel_2.add(scrollpane);
 		
 		ChartPanel chart = new ChartPanel(getChart());
 		chart.setBounds(500, 10, 672, 561);

@@ -2,13 +2,13 @@ package salesManager;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.TableModel;
+import javax.swing.table.DefaultTableModel;
 
 import dbconn.salesDAO;
 import dbconn.salesDTO;
@@ -34,17 +34,17 @@ public class salesListShow implements ActionListener{
 		
 		if(e.getSource() == search_button)
 		{
-			salesDAO dao = new salesDAO();
-			TableModel tm = list.getModel();
-			ArrayList<salesDTO> lst = dao.getSalesList();
-			Iterator<salesDTO> it = lst.iterator();
-			int cnt=1;
 			
+			salesDAO dao = new salesDAO();
+			DefaultTableModel tm = (DefaultTableModel) list.getModel();
+			tm.setNumRows(0);
+			Vector<salesDTO> lst = dao.getSalesList();
+			Iterator<salesDTO> it = lst.iterator();
+	        
 			while(it.hasNext())
 			{
 				salesDTO sd = it.next();
-//				tm.setValueAt(sd.getToday_dates(), cnt, 0);
-//				tm.setValueAt(sd.getToday_sales(), cnt++, 1);
+				tm.addRow(new Object[]{sd.getToday_dates(),sd.getToday_sales()});
 			}
 		}
 	}
