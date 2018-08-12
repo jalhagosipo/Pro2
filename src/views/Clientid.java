@@ -75,7 +75,7 @@ public class Clientid extends JFrame {
 		lblSpendtime.setFont(new Font("Gulim", Font.PLAIN, 27));
 		lblSpendtime.setBounds(40, 345, 121, 32);
 		contentPane.add(lblSpendtime);
-		// 라벨 : 회원 id, 회원 이름, 남은 시간, 사용 시간
+		// 라벨 : 회원 id, 회원 이름, 남은 시간, 사용 시간 
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Gulim", Font.PLAIN, 27));
