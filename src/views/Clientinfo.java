@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Clientid extends JFrame {
+public class Clientinfo extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -29,7 +29,7 @@ public class Clientid extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Clientid frame = new Clientid();
+					Clientinfo frame = new Clientinfo();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class Clientid extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Clientid() {
+	public Clientinfo() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500,800);
 		contentPane = new JPanel();
