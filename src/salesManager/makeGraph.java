@@ -3,6 +3,7 @@ package salesManager;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
@@ -22,27 +23,33 @@ import org.jfree.ui.TextAnchor;
 
 public class makeGraph {
 
-	public JFreeChart getChart() {
+	public JFreeChart getChart(/*int[] arr,String[] category*/) {
 		
 		// 데이터 생성
         DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();                // bar chart 1
-        DefaultCategoryDataset dataset12 = new DefaultCategoryDataset();         // bar chart 2
+//        DefaultCategoryDataset dataset12 = new DefaultCategoryDataset();         // bar chart 2 
         DefaultCategoryDataset dataset2 = new DefaultCategoryDataset();                // line chart 1
 
         // 데이터 입력 ( 값, 범례, 카테고리 )
-        // 그래프 1       
-        dataset1.addValue(1.0, "S1", "1월");
-        dataset1.addValue(4.0, "S1", "2월");
-        dataset1.addValue(3.0, "S1", "3월");
-        dataset1.addValue(5.0, "S1", "4월");
-        dataset1.addValue(5.0, "S1", "5월");
-        dataset1.addValue(7.0, "S1", "6월");
-        dataset1.addValue(7.0, "S1", "7월");
-        dataset1.addValue(8.0, "S1", "8월");
-        dataset1.addValue(2.0, "S1", "9월");
-        dataset1.addValue(5.1, "S1", "10월");
-        dataset1.addValue(2.3, "S1", "11월");
-        dataset1.addValue(3.2, "S1", "12월");
+        // 그래프 1
+//        for(int i=0;i<arr.length;i++)
+//        {
+//        	dataset1.addValue(arr[i], "snack",category[i]);
+//        }
+        
+        
+        dataset1.addValue(1.0, "snack", "1월");
+        dataset1.addValue(4.0, "snack", "2월");
+        dataset1.addValue(3.0, "snack", "3월");
+        dataset1.addValue(5.0, "snack", "4월");
+        dataset1.addValue(5.0, "snack", "5월");
+        dataset1.addValue(7.0, "snack", "6월");
+        dataset1.addValue(7.0, "snack", "7월");
+        dataset1.addValue(8.0, "snack", "8월");
+        dataset1.addValue(2.0, "snack", "9월");
+        dataset1.addValue(5.1, "snack", "10월");
+        dataset1.addValue(2.3, "snack", "11월");
+        dataset1.addValue(3.2, "snack", "12월");
 
 //        // 그래프 2       
 //        dataset12.addValue(0, "S2", "1월");
@@ -58,19 +65,27 @@ public class makeGraph {
 //        dataset12.addValue(0, "S2", "11월");
 //        dataset12.addValue(0, "S2", "12월");
 
+        
+        
+//        for(int i=0;i<arr.length;i++)
+//        {
+//        	dataset2.addValue(arr[i], "totalSales",category[i]);
+//        }
+        
+        
         // 그래프 3       
-        dataset2.addValue(9.0, "T1", "1월");
-        dataset2.addValue(7.0, "T1", "2월");
-        dataset2.addValue(2.0, "T1", "3월");
-        dataset2.addValue(6.0, "T1", "4월");
-        dataset2.addValue(6.0, "T1", "5월");
-        dataset2.addValue(9.0, "T1", "6월");
-        dataset2.addValue(5.0, "T1", "7월");
-        dataset2.addValue(4.0, "T1", "8월");
-        dataset2.addValue(8.0, "T1", "9월");
-        dataset2.addValue(8.0, "T1", "10월");
-        dataset2.addValue(8.0, "T1", "11월");
-        dataset2.addValue(8.0, "T1", "12월");
+        dataset2.addValue(9.0, "totalSales", "1월");
+        dataset2.addValue(7.0, "totalSales", "2월");
+        dataset2.addValue(2.0, "totalSales", "3월");
+        dataset2.addValue(6.0, "totalSales", "4월");
+        dataset2.addValue(6.0, "totalSales", "5월");
+        dataset2.addValue(9.0, "totalSales", "6월");
+        dataset2.addValue(5.0, "totalSales", "7월");
+        dataset2.addValue(4.0, "totalSales", "8월");
+        dataset2.addValue(8.0, "totalSales", "9월");
+        dataset2.addValue(8.0, "totalSales", "10월");
+        dataset2.addValue(8.0, "totalSales", "11월");
+        dataset2.addValue(8.0, "totalSales", "12월");
 
         // 렌더링 생성 및 세팅
         // 렌더링 생성
@@ -99,11 +114,11 @@ public class makeGraph {
         renderer.setSeriesPaint(0, new Color(112,173,232));//바색
 
         // 그래프 2       
-        renderer12.setSeriesPaint(0, new Color(232,168,255));
-        renderer12.setBaseItemLabelFont(f);
-        renderer12.setBasePositiveItemLabelPosition(p_center);
-        renderer12.setBaseItemLabelGenerator(generator);
-        renderer12.setBaseItemLabelsVisible(true);
+//        renderer12.setSeriesPaint(0, new Color(232,168,255));
+//        renderer12.setBaseItemLabelFont(f);
+//        renderer12.setBasePositiveItemLabelPosition(p_center);
+//        renderer12.setBaseItemLabelGenerator(generator);
+//        renderer12.setBaseItemLabelsVisible(true);
 
         // 그래프 3       
         renderer2.setBaseItemLabelGenerator(generator);
@@ -128,8 +143,8 @@ public class makeGraph {
         // plot 에 데이터 적재
         plot.setDataset(dataset1);
         plot.setRenderer(renderer);
-        plot.setDataset(1,dataset12);
-        plot.setRenderer(1,renderer12);
+//        plot.setDataset(1,dataset12);
+//        plot.setRenderer(1,renderer12);
         plot.setDataset(2, dataset2);
         plot.setRenderer(2, renderer2);
 

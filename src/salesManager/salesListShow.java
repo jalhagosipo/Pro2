@@ -35,7 +35,7 @@ public class salesListShow implements ActionListener{
 		salesDAO dao = new salesDAO();
 		DefaultTableModel tm = (DefaultTableModel) list.getModel();
 		tm.setNumRows(0);
-		Vector<salesDTO> lst = dao.getSalesList(textField_from.getText(),textField_to.getText());
+		Vector<salesDTO> lst = dao.getSalesList(textField_from.getText().trim(),textField_to.getText().trim());
 		Iterator<salesDTO> it = lst.iterator();
 
 		while(it.hasNext())

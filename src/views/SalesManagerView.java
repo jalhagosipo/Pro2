@@ -54,7 +54,7 @@ public class SalesManagerView extends JFrame {
 		
 		textField_from = new JTextField();
 		textField_from.setBounds(45, 36, 150, 27);
-		textField_from.setText("YYYY-MM-DD");
+		textField_from.setText("YY-MM-DD");
 		panel.add(textField_from);
 		textField_from.setColumns(10);
 		
@@ -63,7 +63,7 @@ public class SalesManagerView extends JFrame {
 		panel.add(label);
 		
 		textField_to = new JTextField();
-		textField_to.setText("YYYY-MM-DD");
+		textField_to.setText("YY-MM-DD");
 		textField_to.setBounds(228, 36, 150, 27);
 		panel.add(textField_to);
 		textField_to.setColumns(10);
@@ -106,13 +106,12 @@ public class SalesManagerView extends JFrame {
 		panel_2.add(scrollpane);
 		
 		makeGraph mg = new makeGraph();
-		ChartPanel chart = new ChartPanel(mg.getChart());
+		ChartPanel chart = new ChartPanel(mg.getChart(/*new int[] {0},new String[] {"0"}*/));
 		chart.setBounds(500, 10, 672, 561);
 		panel_2.add(chart);
-		chart.repaint();
 		
 		search_button.addActionListener(new salesListShow(textField_from,textField_to,list));
-		week_sales_button.addActionListener(new weekSalesGraph());
+		week_sales_button.addActionListener(new weekSalesGraph(chart));
 		month_sales_button.addActionListener(new monthSalesGraph());
 		year_sales_button.addActionListener(new yearSalesGraph());
 		
