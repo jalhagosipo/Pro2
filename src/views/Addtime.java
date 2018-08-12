@@ -70,7 +70,7 @@ public class Addtime extends JFrame {
 		textShowid.setBounds(155, 103, 170, 38);
 		contentPane.add(textShowid);
 		textShowid.setColumns(10);
-		// 출력 필드 : 회원 ID
+		// 출력 필드 : 회원 ID 
 		
 		JButton btnAddtime1 = new JButton("1 \uC2DC\uAC04");
 		btnAddtime1.setFont(new Font("Gulim", Font.PLAIN, 27));
