@@ -29,18 +29,18 @@ public class salesDAO {
 			sql.append(" select today_dates      ");
 			sql.append("        ,today_sales      ");
 			sql.append("    from mydb.pro2_salesStatus      ");
-			sql.append("    where today_dates >= ?      ");
-			sql.append("    and today_dates <= ?      ");
+//			sql.append("    where today_dates >= ?      ");
+//			sql.append("    and today_dates <= ?      ");
 
 
 			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setString(1, from);
-			pstmt.setString(2, to);
+//			pstmt.setString(1, from);
+//			pstmt.setString(2, to);
 			rs = pstmt.executeQuery();
 
 			while(rs.next())
 			{
-				salesDTO dto = new salesDTO();
+				salesDTO dto = new salesDTO(); 
 				dto.setToday_dates(rs.getString("today_dates"));
 				dto.setToday_sales(rs.getInt("today_sales"));
 				arr.add(dto);

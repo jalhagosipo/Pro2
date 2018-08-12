@@ -1,4 +1,7 @@
 package views;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -36,7 +39,7 @@ public class SalesManagerView extends JFrame {
 	 * Create the frame.
 	 */
 	public SalesManagerView() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1200, 800);
 		
 		contentPane = new JPanel();
@@ -106,11 +109,21 @@ public class SalesManagerView extends JFrame {
 		ChartPanel chart = new ChartPanel(mg.getChart());
 		chart.setBounds(500, 10, 672, 561);
 		panel_2.add(chart);
+		chart.repaint();
 		
 		search_button.addActionListener(new salesListShow(textField_from,textField_to,list));
 		week_sales_button.addActionListener(new weekSalesGraph());
 		month_sales_button.addActionListener(new monthSalesGraph());
 		year_sales_button.addActionListener(new yearSalesGraph());
+		
+		close_button.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				dispose();
+			}
+		});
 	}
 	
 }

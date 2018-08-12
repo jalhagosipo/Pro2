@@ -37,8 +37,11 @@ class seat{
 	JLabel[] lb_id; //현재 로그인한 아이디를 알려줄 라벨
 	
 	static final int MAX=20;
+	
 	public void init(){
 		jf_main=new JFrame("좌석테스트");
+		
+		
 		jf_main.setLayout(new BorderLayout(10,20));
 		pan_main_seat=new JPanel();
 		pan_main_seat.setLayout(new GridLayout(4, 5, 30, 50));
@@ -46,6 +49,7 @@ class seat{
 		lb_time=new JLabel[MAX];
 		lb_cur_time=new JLabel[MAX];
 		lb_id=new JLabel[MAX];
+		
 		for(int i=0;i<MAX;i++) {
 			//여러 컴포넌트를 묶어 좌석1칸씩 추가하기위한 패널.
 			pan_seat[i]=new JPanel();
@@ -67,6 +71,7 @@ class seat{
 			
 			pan_main_seat.add(pan_seat[i]);
 		}
+		
 		jf_main.add(pan_main_seat,BorderLayout.CENTER);//좌석패널 추가
 		
 		JPanel pan_btn = new JPanel();
