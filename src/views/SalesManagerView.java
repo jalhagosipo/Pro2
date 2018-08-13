@@ -1,6 +1,7 @@
 package views;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -106,7 +107,9 @@ public class SalesManagerView extends JFrame {
 		panel_2.add(scrollpane);
 		
 		makeGraph mg = new makeGraph();
-		ChartPanel chart = new ChartPanel(mg.getChart(/*new int[] {0},new String[] {"0"}*/));
+		Vector<Integer> a = new Vector<Integer>();
+		a.add(0);
+		ChartPanel chart = new ChartPanel(mg.getChart(a,new String[] {"0"}));
 		chart.setBounds(500, 10, 672, 561);
 		panel_2.add(chart);
 		

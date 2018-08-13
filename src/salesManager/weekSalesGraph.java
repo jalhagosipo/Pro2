@@ -2,6 +2,7 @@ package salesManager;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import org.jfree.chart.ChartPanel;
 
@@ -19,13 +20,13 @@ public class weekSalesGraph implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		String[] category= {"MON","TUE","WED","THU","FRI","SAT","SUN"};
+		String[] category= {"SUN","MON","TUE","WED","THU","FRI","SAT"};
 		
 		salesDAO dao = new salesDAO();
-		dao.getSalesGraph();
+		Vector<Integer> money = dao.getSalesGraph("week");
 		
 		makeGraph mg = new makeGraph();
-		chart = new ChartPanel(mg.getChart());
+		chart.setChart(mg.getChart(money,category));
 	}
 
 }

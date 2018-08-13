@@ -69,7 +69,7 @@ public class salesDAO {
 		return arr;
 	}
 	
-	public Vector<Integer> getSalesGraph()
+	public Vector<Integer> getSalesGraph(String date)
 	{
 		Connection conn = null;
 		PreparedStatement pstmt =  null;
@@ -83,8 +83,11 @@ public class salesDAO {
 
 			sql.append(" select today_sales      ");
 			sql.append("    from mydb.pro2_salesStatus      ");
-			sql.append("    where today_dates >= ?      ");
-			sql.append("    and today_dates <= ?      ");
+			if(date.trim().equals("week"))
+			{
+				sql.append("    WHERE YEARWEEK(today_dates) = YEARWEEK(CURRENT_DATE - INTERVAL 7 DAY);      ");
+			}
+
 			
 			pstmt = conn.prepareStatement(sql.toString());
 			
