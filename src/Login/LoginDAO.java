@@ -1,43 +1,39 @@
-package ClientInfo;
+package Login;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import ClientInfo.infoDTO;
 import dbconn.DBconn;
+public class LoginDAO {
+	String name;
 
-
-public class infoDAO {
-	
-	public infoDTO GetInfo(String cur_id) {
+	public String CheckMember(String id) {
 		Connection conn = null;
 		PreparedStatement pstmt =  null;
 		ResultSet rs = null;
 		DBconn dbconn = new DBconn();
-		infoDTO dto=new infoDTO();
 
 		try {
 			conn = dbconn.getConnection();
 			StringBuilder sql = new StringBuilder();
 
-			sql.append(" select member_name      ");
-			sql.append("        ,left_time      ");
+			sql.append(" select member_id      ");
 			sql.append("    from mydb.pro2_member      ");
 			sql.append("	where member_id= ?	");
 
 			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setString(1, cur_id);
-
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			while(rs.next())
 			{ 
-				dto.setName(rs.getString(1));
-				dto.setLeftTime(rs.getString(2));
+				name= rs.getString(1);
 			}
-		}catch(SQLException e) {
-			System.out.println(e.getMessage());
+		}catch(SQLException ex){
+			System.out.println(ex.getMessage());
 		}
-		return dto;
+		return name;
 	}
 }

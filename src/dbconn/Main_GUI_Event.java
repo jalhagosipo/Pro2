@@ -31,7 +31,7 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println((cur_num+1)+"번 PC 클릭함");
+		System.out.println(cur_num+"번 PC 클릭함");
 		infoDAO dao= new infoDAO();
 		infoDTO dto= new infoDTO();
 		dto = dao.GetInfo(cur_id_label.getText());
