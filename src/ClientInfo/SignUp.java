@@ -8,10 +8,11 @@ import dbconn.DBconn;
 
 public class SignUp{
 	
-	public SignUp() {
+	public boolean insertAccount(infoDTO dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		DBconn dbconn = new DBconn();
+		boolean ok = false;
 		
 		try {
 			conn = dbconn.getConnection();
@@ -31,8 +32,11 @@ public class SignUp{
 			pstmt.setString(4, "name");
 			
 			int result = pstmt.executeUpdate();
-			if(result==1)
+			if(result>1)
+			{
 				System.out.println("가입 성공");
+				ok=true;
+			}
 			else
 				System.out.println("가입 실패");
 			
@@ -40,7 +44,7 @@ public class SignUp{
 		}catch(SQLException e){
 			System.out.println(e);
 		}
-		
+		return ok;
 	}
-
+	
 }
