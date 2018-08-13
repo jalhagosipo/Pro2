@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import ClientInfo.info;
+
 public class Login extends JFrame{
 	JPanel pan_main;
 	public Login(){
@@ -37,9 +39,11 @@ public class Login extends JFrame{
 		pan_main.add(tf_pw);
 		tf_pw.setBounds(120, 100, 80, 20);
 		
-		JButton btn_signin =new JButton("로 그 인");
+		JButton btn_signin =new JButton("로그인");
 		JButton btn_signup =new JButton("회원가입");
-		btn_signin.setPreferredSize(new Dimension(100,25));
+//		btn_signin.addActionListener(new sign(cur_id, name, lefttime));;
+//		btn_signup;
+//		btn_signin.setPreferredSize(new Dimension(100,20));
 		pan_main.add(btn_signin);
 		btn_signin.setBounds(75, 150, 100, 20);
 		pan_main.add(btn_signup);
