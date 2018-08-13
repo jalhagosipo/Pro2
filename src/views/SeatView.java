@@ -1,9 +1,11 @@
 package views;
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -22,14 +24,9 @@ public class SeatView {
 	public static void main(String[] args) {
 				seat s=new seat();
 				s.init();
-		
-		
-		
-
 	}
 
 }
-
 
 class seat{
 	JFrame jf_main;// 메인프레임
@@ -40,8 +37,11 @@ class seat{
 	JLabel[] lb_id; //현재 로그인한 아이디를 알려줄 라벨
 	
 	static final int MAX=20;
+	
 	public void init(){
 		jf_main=new JFrame("좌석테스트");
+		
+		
 		jf_main.setLayout(new BorderLayout(10,20));
 		pan_main_seat=new JPanel();
 		pan_main_seat.setLayout(new GridLayout(4, 5, 30, 50));
@@ -49,13 +49,14 @@ class seat{
 		lb_time=new JLabel[MAX];
 		lb_cur_time=new JLabel[MAX];
 		lb_id=new JLabel[MAX];
+		
 		for(int i=0;i<MAX;i++) {
 			//여러 컴포넌트를 묶어 좌석1칸씩 추가하기위한 패널.
 			pan_seat[i]=new JPanel();
 			pan_seat[i].setLayout(new BoxLayout(pan_seat[i],BoxLayout.Y_AXIS));
 			pan_seat[i].setBackground(Color.GRAY);
 			pan_seat[i].setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-			pan_seat[i].setBorder(new TitledBorder(new LineBorder(Color.white,4), i+" PC"));
+			pan_seat[i].setBorder(new TitledBorder(new LineBorder(Color.white,4), (i+1)+" PC"));
 			
 			lb_time[i]=new JLabel("남은시간: 00:00:00");
 			lb_time[i].setForeground(Color.white);
@@ -66,42 +67,26 @@ class seat{
 			pan_seat[i].add(lb_cur_time[i]);
 			pan_seat[i].add(lb_id[i]);
 			
-			pan_seat[i].addMouseListener(new MouseListener() {
-	            public void mouseClicked(MouseEvent e) {
-	                System.out.println(":MOUSE_CLICK_EVENT:");
-	            }
-
-				@Override
-				public void mousePressed(MouseEvent e) {
-					// TODO Auto-generated method stub
-				}
-
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					// TODO Auto-generated method stub
-				}
-
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					// TODO Auto-generated method stub
-				}
-
-				@Override
-				public void mouseExited(MouseEvent e) {
-					// TODO Auto-generated method stub
-				}
-	        });
+			pan_seat[i].addMouseListener((MouseListener) new Main_GUI_Event(i+1));
 			
 			pan_main_seat.add(pan_seat[i]);
 		}
+		
 		jf_main.add(pan_main_seat,BorderLayout.CENTER);//좌석패널 추가
 		
 		JPanel pan_btn = new JPanel();
 		pan_btn.setLayout(new GridLayout(7, 1));
+		
+		//리스너클래스
+		Main_GUI_Event env = new  Main_GUI_Event();
+		
 		JButton btn1 =new JButton("매출현황");
+		btn1.addActionListener(env);
 		JButton btn2 =new JButton("재고관리");
+		btn2.addActionListener(env);
 		JButton btn3 =new JButton("충전");
 		JButton btn4 =new JButton("회원관리");
+		btn4.addActionListener(env);
 		
 		pan_btn.add(btn1);
 		pan_btn.add(new JLabel(""));
