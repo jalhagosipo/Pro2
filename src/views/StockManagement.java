@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
-package views;
 
->>>>>>> branch 'master' of https://github.com/carryyun/Pro2.git
+package views;
 
 
 
@@ -129,7 +126,7 @@ public class StockManagement extends JFrame {
 
   
 
-  JButton button_search = new JButton("寃��깋");
+  JButton button_search = new JButton("검색");
 
   button_search.setBounds(434, 9, 75, 29);
 
@@ -137,7 +134,7 @@ public class StockManagement extends JFrame {
 
   
 
-  JButton button_all = new JButton("�쟾泥� 議고쉶");
+  JButton button_all = new JButton("전체 조회");
 
   button_all.setBounds(566, 8, 181, 29);
 
@@ -155,7 +152,7 @@ public class StockManagement extends JFrame {
 
   
 
-  JButton button_add = new JButton("�긽�뭹 異붽�");
+  JButton button_add = new JButton("상품 추가");
 
   button_add.setBounds(28, 0, 117, 29);
 
@@ -163,7 +160,7 @@ public class StockManagement extends JFrame {
 
   
 
-  JButton button_del = new JButton("�긽�뭹 �궘�젣");
+  JButton button_del = new JButton("상품 삭제");
 
   button_del.setBounds(159, 0, 117, 29);
 
@@ -171,7 +168,7 @@ public class StockManagement extends JFrame {
 
   
 
-  JButton button_update = new JButton("�긽�뭹 �닔�젙");
+  JButton button_update = new JButton("상품 수정");
 
   button_update.setBounds(567, 0, 181, 29);
 
