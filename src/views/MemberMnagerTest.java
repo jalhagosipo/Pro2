@@ -17,7 +17,7 @@ public class MemberMnagerTest extends JFrame{
 	//¡÷ºÆ√≥∏Æ: 0811_¿±∞«»Ò_∏ﬁ¿Œ∫‰øÕ ø¨∞·
 //	private JFrame frame;
 	public JFrame frame;
-	private JTextField textField;
+	private JTextField textField_Search;
 	private JTable table;
 
 	/**
@@ -62,44 +62,44 @@ public class MemberMnagerTest extends JFrame{
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("\uD68C\uC6D0 ID");
-		lblNewLabel.setFont(new Font("±º∏≤", Font.PLAIN, 16));
-		lblNewLabel.setBounds(57, 49, 78, 22);
-		panel.add(lblNewLabel);
+		JLabel MemberID = new JLabel("\uD68C\uC6D0 ID");
+		MemberID.setFont(new Font("±º∏≤", Font.PLAIN, 16));
+		MemberID.setBounds(57, 49, 78, 22);
+		panel.add(MemberID);
 		
-		textField = new JTextField();
-		textField.setBounds(131, 46, 180, 29);
-		panel.add(textField);
-		textField.setColumns(10);
+		textField_Search = new JTextField();
+		textField_Search.setBounds(131, 46, 180, 29);
+		panel.add(textField_Search);
+		textField_Search.setColumns(10);
 		
-		JButton btnNewButton = new JButton("\uAC80\uC0C9");
-		btnNewButton.setBounds(353, 43, 109, 37);
-		panel.add(btnNewButton);
+		JButton btnSearch = new JButton("\uAC80\uC0C9");
+		btnSearch.setBounds(353, 43, 109, 37);
+		panel.add(btnSearch);
 		
-		JButton btnWjscprjator = new JButton("\uC804\uCCB4 \uAC80\uC0C9");
-		btnWjscprjator.setBounds(565, 29, 127, 64);
-		panel.add(btnWjscprjator);
+		JButton btnAllSearch = new JButton("\uC804\uCCB4 \uAC80\uC0C9");
+		btnAllSearch.setBounds(565, 29, 127, 64);
+		panel.add(btnAllSearch);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(12, 442, 760, 109);
 		frame.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
-		JButton btnNewButton_2 = new JButton("\uCD94\uAC00");
-		btnNewButton_2.setBounds(59, 21, 133, 60);
-		panel_2.add(btnNewButton_2);
+		JButton btnAdd = new JButton("\uCD94\uAC00");
+		btnAdd.setBounds(59, 21, 133, 60);
+		panel_2.add(btnAdd);
 		
-		JButton button = new JButton("\uC218\uC815");
-		button.setBounds(256, 21, 133, 60);
-		panel_2.add(button);
+		JButton buttonUdate = new JButton("\uC218\uC815");
+		buttonUdate.setBounds(256, 21, 133, 60);
+		panel_2.add(buttonUdate);
 		
-		JButton button_1 = new JButton("\uC0AD\uC81C");
-		button_1.setBounds(453, 21, 133, 60);
-		panel_2.add(button_1);
+		JButton buttonDelete = new JButton("\uC0AD\uC81C");
+		buttonDelete.setBounds(453, 21, 133, 60);
+		panel_2.add(buttonDelete);
 		
-		JButton button_2 = new JButton("\uB2EB\uAE30");
-		button_2.setBounds(637, 58, 111, 41);
-		panel_2.add(button_2);
+		JButton buttonExit = new JButton("\uB2EB\uAE30");
+		buttonExit.setBounds(637, 58, 111, 41);
+		panel_2.add(buttonExit);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 102, 760, 351);
