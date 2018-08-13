@@ -1,5 +1,3 @@
-package pcbang;
-
 
 
 
@@ -106,7 +104,7 @@ public class StockManagement extends JFrame {
 
   
 
-  JLabel label_product = new JLabel("\uC0C1\uD488\uBA85");
+  JLabel label_product = new JLabel("상품명");
 
   label_product.setBounds(27, 14, 41, 16);
 
@@ -221,7 +219,7 @@ public class StockManagement extends JFrame {
     {null, null, null, null},
    },
    new String[] {
-    "\uC0C1\uD488\uCF54\uB4DC", "\uC0C1\uD488\uBA85", "\uAC00\uACA9", "\uC7AC\uACE0"
+    "상품코드", "상품명", "가격", "재고"
    }
   ));
   scrollPane.setViewportView(table);
