@@ -40,7 +40,6 @@ public class SignUp{
 			else
 				System.out.println("���� ����");
 			
-			
 		}catch(SQLException e){
 			System.out.println(e);
 		}
