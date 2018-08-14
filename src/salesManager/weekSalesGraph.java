@@ -6,7 +6,7 @@ import java.util.Vector;
 
 import org.jfree.chart.ChartPanel;
 
-import dbconn.salesDAO;
+import DB.dao.salesDAO;
 
 public class weekSalesGraph implements ActionListener{
 

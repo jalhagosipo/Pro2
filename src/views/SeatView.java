@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import dbconn.Main_GUI_Event;
+import DB.Main_GUI_Event;
 
 public class SeatView extends JFrame{
 

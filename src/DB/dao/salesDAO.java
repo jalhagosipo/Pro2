@@ -1,14 +1,16 @@
-package dbconn;
+package DB.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Vector;
 
+import DB.DBconn;
+import DB.dto.salesDTO;
+
 /*
- getSalesList() - Îç∞Ïù¥ÌÑ∞ ÏùΩÏñ¥ÏÑú vectorÌòïÌÉúÎ°ú Î¶¨ÌÑ¥
+ getSalesList() - ?ç∞?ù¥?Ñ∞ ?ùΩ?ñ¥?Ñú vector?òï?ÉúÎ°? Î¶¨ÌÑ¥
  */
 public class salesDAO {
 
@@ -87,7 +89,14 @@ public class salesDAO {
 			{
 				sql.append("    WHERE YEARWEEK(today_dates) = YEARWEEK(CURRENT_DATE - INTERVAL 7 DAY);      ");
 			}
-
+			else if(date.trim().equals("year"))
+			{
+//				sql.append("    WHERE YEARWEEK(today_dates) = YEARWEEK(CURRENT_DATE - INTERVAL 7 DAY);      ");
+			}
+			else //month
+			{
+//				sql.append("    WHERE YEARWEEK(today_dates) = YEARWEEK(CURRENT_DATE - INTERVAL 7 DAY);      ");
+			}
 			
 			pstmt = conn.prepareStatement(sql.toString());
 			

@@ -115,8 +115,8 @@ public class SalesManagerView extends JFrame {
 		
 		search_button.addActionListener(new salesListShow(textField_from,textField_to,list));
 		week_sales_button.addActionListener(new weekSalesGraph(chart));
-		month_sales_button.addActionListener(new monthSalesGraph());
-		year_sales_button.addActionListener(new yearSalesGraph());
+		month_sales_button.addActionListener(new monthSalesGraph(chart));
+		year_sales_button.addActionListener(new yearSalesGraph(chart));
 		
 		close_button.addActionListener(new ActionListener() {
 			

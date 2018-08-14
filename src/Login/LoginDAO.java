@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import ClientInfo.infoDTO;
-import dbconn.DBconn;
+import DB.DBconn;
 public class LoginDAO {
 	String name;
 

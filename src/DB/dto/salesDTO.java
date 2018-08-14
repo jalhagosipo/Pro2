@@ -1,4 +1,4 @@
-package dbconn;
+package DB.dto;
 
 public class salesDTO {
 	

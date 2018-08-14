@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 
 import ClientInfo.infoDAO;
 import ClientInfo.infoDTO;
-import dbconn.DBconn;
+import DB.DBconn;
 import views.ClientInfo;
 import views.LoginView;
 import views.SeatView;

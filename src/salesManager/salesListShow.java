@@ -5,13 +5,12 @@ import java.awt.event.ActionListener;
 import java.util.Iterator;
 import java.util.Vector;
 
-import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import dbconn.salesDAO;
-import dbconn.salesDTO;
+import DB.dao.salesDAO;
+import DB.dto.salesDTO;
 
 public class salesListShow implements ActionListener{
 
