@@ -18,7 +18,6 @@ public class SignUp{
 		try {
 			conn = dbconn.getConnection();
 			StringBuilder sql = new StringBuilder();
-
 			sql.append(" insert into mydb.pro2_member ");
 			sql.append("           (member_id         ");
 			sql.append("          , member_pw         ");

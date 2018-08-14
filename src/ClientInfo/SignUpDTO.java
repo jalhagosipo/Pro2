@@ -29,7 +29,6 @@ public class SignUpDTO {
 	public void setPhno(String phno) {
 		this.phno = phno;
 	}
-	
 	public SignUpDTO(String name, String id, String pw, String phno) {
 		super();
 		this.name = name;
