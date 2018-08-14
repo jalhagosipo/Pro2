@@ -62,7 +62,7 @@ public class MemberMnagerTest extends JFrame{
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel MemberID = new JLabel("\uD68C\uC6D0 ID");
+		JLabel MemberID = new JLabel("\uD68C\uC6D0 ID");//라벨
 		MemberID.setFont(new Font("굴림", Font.PLAIN, 16));
 		MemberID.setBounds(57, 49, 78, 22);
 		panel.add(MemberID);
@@ -96,6 +96,7 @@ public class MemberMnagerTest extends JFrame{
 		JButton buttonDelete = new JButton("\uC0AD\uC81C"); //회원 삭제버튼
 		buttonDelete.setBounds(453, 21, 133, 60);
 		panel_2.add(buttonDelete);
+		
 		
 		JButton buttonExit = new JButton("\uB2EB\uAE30");//닫기버튼
 		buttonExit.setBounds(637, 58, 111, 41);
