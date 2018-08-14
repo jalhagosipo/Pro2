@@ -33,11 +33,11 @@ public class SignUp{
 			int result = pstmt.executeUpdate();
 			if(result>0)
 			{
-				System.out.println("ê°€ìž… ì„±ê³µ");
+				System.out.println("°¡ÀÔ ¼º°ø");
 				ok=true;
 			}
 			else
-				System.out.println("ê°€ìž… ì‹¤íŒ¨");
+				System.out.println("°¡ÀÔ ½ÇÆÐ");
 			
 		}catch(SQLException e){
 			System.out.println(e);

@@ -31,11 +31,11 @@ public class ProductIn{
 			int result = pstmt.executeUpdate();
 			if(result>0)
 			{
-				System.out.println("ìƒí’ˆ ì¶”ê°€ ì„±ê³µ");
+				System.out.println("»óÇ° Ãß°¡ ¿Ï·á");
 				ok=true;
 			}
 			else
-				System.out.println("ìƒí’ˆ ì¶”ê°€ ì‹¤íŒ¨");
+				System.out.println("»óÇ° Ãß°¡ ½ÇÆĞ");
 			
 		}catch(SQLException e){
 			System.out.println(e);
