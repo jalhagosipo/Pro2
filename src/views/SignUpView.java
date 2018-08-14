@@ -12,7 +12,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-public class Signup extends JFrame {
+public class SignUpView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField_repwd;
@@ -28,7 +28,7 @@ public class Signup extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Signup frame = new Signup();
+					SignUpView frame = new SignUpView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +40,7 @@ public class Signup extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Signup() {
+	public SignUpView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 500);
 		contentPane = new JPanel();
@@ -53,41 +53,41 @@ public class Signup extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel label_title = new JLabel("È¸¿ø°¡ÀÔ");
-		label_title.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		JLabel label_title = new JLabel("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+		label_title.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 20));
 		label_title.setBounds(145, 39, 80, 27);
 		panel.add(label_title);
 		
 		JLabel label_id = new JLabel("ID");
-		label_id.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		label_id.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 15));
 		label_id.setBounds(45, 150, 50, 15);
 		panel.add(label_id);
 		
-		JLabel label_pwd = new JLabel("ºñ¹Ð¹øÈ£");
-		label_pwd.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JLabel label_pwd = new JLabel("ï¿½ï¿½Ð¹ï¿½È£");
+		label_pwd.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 15));
 		label_pwd.setBounds(45, 200, 60, 15);
 		panel.add(label_pwd);
 		
-		JLabel label_repwd = new JLabel("ºñ¹Ð¹øÈ£ È®ÀÎ");
-		label_repwd.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JLabel label_repwd = new JLabel("ï¿½ï¿½Ð¹ï¿½È£ È®ï¿½ï¿½");
+		label_repwd.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 15));
 		label_repwd.setBounds(45, 250, 97, 15);
 		panel.add(label_repwd);
 		
-		JLabel label_name = new JLabel("ÀÌ¸§");
-		label_name.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JLabel label_name = new JLabel("ï¿½Ì¸ï¿½");
+		label_name.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 15));
 		label_name.setBounds(45, 100, 50, 15);
 		panel.add(label_name);
 		
-		JLabel label_phone = new JLabel("ÈÞ´ëÀüÈ­");
-		label_phone.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JLabel label_phone = new JLabel("ï¿½Þ´ï¿½ï¿½ï¿½È­");
+		label_phone.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 15));
 		label_phone.setBounds(45, 300, 60, 15);
 		panel.add(label_phone);
 		
-		JButton btn_signup = new JButton("°¡ÀÔ");
+		JButton btn_signup = new JButton("ï¿½ï¿½ï¿½ï¿½");
 		btn_signup.setBounds(69, 379, 97, 23);
 		panel.add(btn_signup);
 		
-		JButton btn_cancel = new JButton("Ãë¼Ò");
+		JButton btn_cancel = new JButton("ï¿½ï¿½ï¿½");
 		btn_cancel.setBounds(219, 379, 97, 23);
 		panel.add(btn_cancel);
 		
