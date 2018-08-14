@@ -103,14 +103,14 @@ public class SalesManagerView extends JFrame {
 		
 		JTable list = new JTable(model);
 		JScrollPane scrollpane = new JScrollPane(list);
-		scrollpane.setBounds(12, 10, 462, 561);
+		scrollpane.setBounds(52, 10, 302, 561);
 		panel_2.add(scrollpane);
 		
 		makeGraph mg = new makeGraph();
 		Vector<Integer> a = new Vector<Integer>();
 		a.add(0);
 		ChartPanel chart = new ChartPanel(mg.getChart(a,new String[] {"0"}));
-		chart.setBounds(500, 10, 672, 561);
+		chart.setBounds(400, 5, 782, 561);
 		panel_2.add(chart);
 		
 		search_button.addActionListener(new salesListShow(textField_from,textField_to,list));
