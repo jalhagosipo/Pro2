@@ -8,7 +8,7 @@ import DB.DBconn;
 
 public class SignUp{
 	
-	public boolean insertAccount(infoDTO dto) {
+	public boolean insertAccount(SignUpDTO dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		DBconn dbconn = new DBconn();
@@ -17,7 +17,6 @@ public class SignUp{
 		try {
 			conn = dbconn.getConnection();
 			StringBuilder sql = new StringBuilder();
-
 			sql.append(" insert into mydb.pro2_member ");
 			sql.append("           (member_id         ");
 			sql.append("          , member_pw         ");
@@ -26,20 +25,19 @@ public class SignUp{
 			sql.append("    values (?, ?, ?, ?);      ");
 			
 			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setString(1, "id");
-			pstmt.setString(2, "pw");
-			pstmt.setString(3, "phone_number");
-			pstmt.setString(4, "name");
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPw());
+			pstmt.setString(3, dto.getPhno());
+			pstmt.setString(4, dto.getName());
 			
 			int result = pstmt.executeUpdate();
-			if(result>1)
+			if(result>0)
 			{
-				System.out.println("°¡ÀÔ ¼º°ø");
+				System.out.println("ê°€ìž… ì„±ê³µ");
 				ok=true;
 			}
 			else
-				System.out.println("°¡ÀÔ ½ÇÆÐ");
-			
+				System.out.println("ê°€ìž… ì‹¤íŒ¨");
 			
 		}catch(SQLException e){
 			System.out.println(e);

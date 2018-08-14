@@ -18,7 +18,7 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 	private int cur_num;
 	private JLabel cur_id_label;
 	
-	//0814 cmd로 seatview 실행하려고 주석처리 밑에 액션리스너도 주석처리함
+	//0814 cmd로 seatview 실행하려고 주석처리 밑에 액션리스너도 주석처리
 //	SalesManagerView smv= new SalesManagerView();
 //	MemberMnagerTest mm= new MemberMnagerTest();
 //	StockManagement sm = new StockManagement();
