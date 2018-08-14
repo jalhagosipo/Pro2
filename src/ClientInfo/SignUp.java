@@ -8,11 +8,12 @@ import DB.DBconn;
 
 public class SignUp{
 	
-	public boolean insertAccount(infoDTO dto) {
+	public boolean insertAccount(SignUpDTO dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		DBconn dbconn = new DBconn();
 		boolean ok = false;
+		SignUpDTO su = new SignUpDTO();
 		
 		try {
 			conn = dbconn.getConnection();
@@ -26,19 +27,19 @@ public class SignUp{
 			sql.append("    values (?, ?, ?, ?);      ");
 			
 			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setString(1, "id");
-			pstmt.setString(2, "pw");
-			pstmt.setString(3, "phone_number");
-			pstmt.setString(4, "name");
+			pstmt.setString(1, su.getId());
+			pstmt.setString(2, su.getPw());
+			pstmt.setString(3, su.getPhno());
+			pstmt.setString(4, su.getName());
 			
 			int result = pstmt.executeUpdate();
 			if(result>1)
 			{
-				System.out.println("°¡ÀÔ ¼º°ø");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 				ok=true;
 			}
 			else
-				System.out.println("°¡ÀÔ ½ÇÆÐ");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			
 			
 		}catch(SQLException e){
