@@ -13,7 +13,6 @@ public class SignUp{
 		PreparedStatement pstmt = null;
 		DBconn dbconn = new DBconn();
 		boolean ok = false;
-		SignUpDTO su = new SignUpDTO();
 		
 		try {
 			conn = dbconn.getConnection();
@@ -26,19 +25,19 @@ public class SignUp{
 			sql.append("    values (?, ?, ?, ?);      ");
 			
 			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setString(1, su.getId());
-			pstmt.setString(2, su.getPw());
-			pstmt.setString(3, su.getPhno());
-			pstmt.setString(4, su.getName());
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPw());
+			pstmt.setString(3, dto.getPhno());
+			pstmt.setString(4, dto.getName());
 			
 			int result = pstmt.executeUpdate();
-			if(result>1)
+			if(result>0)
 			{
-				System.out.println("���� ����");
+				System.out.println("가입 성공");
 				ok=true;
 			}
 			else
-				System.out.println("���� ����");
+				System.out.println("가입 실패");
 			
 		}catch(SQLException e){
 			System.out.println(e);
