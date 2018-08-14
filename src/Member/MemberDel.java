@@ -25,7 +25,7 @@ public class MemberDel {
 			pstmt.setString(1, id);
 			
 			int result = pstmt.executeUpdate();
-			if(result>1)
+			if(result>0)
 			{
 				System.out.println("삭제 성공");
 				ok=true;
