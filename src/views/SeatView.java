@@ -5,6 +5,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -16,11 +21,29 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import DB.Main_GUI_Event;
+import server.SeatThread;
 
 public class SeatView extends JFrame{
 
 	public static void main(String[] args) {
 		SeatView sv = new SeatView();
+		
+		ServerSocket server=null;
+		ArrayList<PrintWriter> arr=null;
+		
+		try{
+			server=new ServerSocket(7777);
+			arr=new ArrayList<PrintWriter>();
+			while(true) {
+				System.out.println("접속대기중");
+				Socket socket=server.accept();  
+				SeatThread th=new SeatThread(socket,arr);
+				Thread job=new Thread(th);
+				job.start();
+			}
+		}catch(IOException e) {
+			System.out.println(e.getMessage());  
+		}
 	}
 	
 	public SeatView(){

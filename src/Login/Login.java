@@ -2,6 +2,11 @@ package Login;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +35,6 @@ public class Login implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		if(e.getActionCommand()=="로그인") {
 			LoginDAO dao=new LoginDAO();
 			String check;
@@ -40,16 +44,26 @@ public class Login implements ActionListener{
 				JOptionPane.showMessageDialog(null, "아이디 없음.");
 				id.setText("");
 			}else{
-//				System.out.println(id.getText() + " 로그인 완료.");
-				JOptionPane.showMessageDialog(null, id.getText() + " 로그인 완료.");
+				String getpw=dao.GetPw(check);
 				
-				ClientInfo ci= new ClientInfo(Integer.parseInt(num.getText())-1, id.getText());
-				infoDAO infodao= new infoDAO();
-				infoDTO dto= new infoDTO();
-				dto= infodao.GetInfo(id.getText());
-				ci.setTextField_1(dto.getName());
-				ci.setTextField_2(dto.getLeftTime());
-				view.dispose();
+				if(getpw.equals(pw.getText())) {
+					JOptionPane.showMessageDialog(null, id.getText() + " 로그인 완료.");
+					
+					ClientInfo ci= new ClientInfo(Integer.parseInt(num.getText())-1, id.getText());
+					infoDAO infodao= new infoDAO();
+					infoDTO dto= new infoDTO();
+					dto= infodao.GetInfo(id.getText());
+					ci.setTextField_1(dto.getName());
+					ci.setTextField_2(dto.getLeftTime());
+					view.dispose();
+					
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "비밀번호 틀림.");
+				}
+				
+				
+				
 			}
 
 		}

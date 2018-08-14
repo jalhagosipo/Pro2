@@ -93,7 +93,7 @@ public class MemberMnagerTest extends JFrame{
 		buttonUdate.setBounds(256, 21, 133, 60);
 		panel_2.add(buttonUdate);
 		
-		JButton buttonDelete = new JButton("\uC0AD\uC81C");
+		JButton buttonDelete = new JButton("\uC0AD\uC81C");//ªË¡¶
 		buttonDelete.setBounds(453, 21, 133, 60);
 		panel_2.add(buttonDelete);
 		
