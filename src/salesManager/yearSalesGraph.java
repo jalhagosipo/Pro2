@@ -31,7 +31,6 @@ ChartPanel chart;
 		
 		while(it.hasNext())
 			money.add(it.next().getToday_sales());
-			
 		
 		makeGraph mg = new makeGraph();
 		chart.setChart(mg.getChart(money,category));

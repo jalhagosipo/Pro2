@@ -21,7 +21,7 @@ public class salesListShow implements ActionListener{
 
 	public salesListShow(JTextField textField_from, JTextField textField_to,JTable list) {
 		this.textField_from = textField_from;
-		this.textField_to = textField_to;
+		this.textField_to = textField_to; 
 		this.list=list;
 	}
 

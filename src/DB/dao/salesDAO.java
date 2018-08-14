@@ -10,7 +10,7 @@ import DB.DBconn;
 import DB.dto.salesDTO;
 
 /*
- getSalesList() - ?°?´?„° ?½?–´?„œ vector?˜•?ƒœë¡? ë¦¬í„´
+ getSalesList() - ?ï¿½ì‘“?ï¿½ëµ ?è‹‘ï¿½ ?ï¿½ëµ­?å ‰ï¿½?è‹‘ï¿½ vector?ï¿½êµ¨?æºï¿½åš¥ï¿½? ï¿½ëµ³ï¿½ë—ªì‰˜
  */
 public class salesDAO {
 
@@ -31,9 +31,9 @@ public class salesDAO {
 			sql.append("    from mydb.pro2_salesStatus      ");
 			sql.append("    where today_dates >= ?      ");
 			sql.append("    and today_dates <= ?      ");
-			
+
 			pstmt = conn.prepareStatement(sql.toString());
-			
+
 			if(from.equals("") || from.equals("YY-MM-DD"))
 			{
 				pstmt.setString(1, "0");
@@ -42,7 +42,7 @@ public class salesDAO {
 			{
 				pstmt.setString(1, from);
 			}
-			
+
 			if(to.equals("YY-MM-DD")|| to.equals(""))
 			{
 				pstmt.setString(2, "curdate()");
@@ -51,7 +51,7 @@ public class salesDAO {
 			{
 				pstmt.setString(2, to);
 			}
-			
+
 			rs = pstmt.executeQuery();
 			while(rs.next())
 			{
@@ -70,7 +70,7 @@ public class salesDAO {
 
 		return arr;
 	}
-	
+
 	public Vector<salesDTO> getSalesGraph(String date)
 	{
 		Connection conn = null;
@@ -82,24 +82,30 @@ public class salesDAO {
 		try {
 			conn = dbconn.getConnection();
 			StringBuilder sql = new StringBuilder();
+			if(date.trim().equals("year"))
+			{
+				sql.append("    select DATE_FORMAT(today_dates,'%m') as \"today_dates\",sum(today_sales) as \"today_sales\"      ");
+				sql.append("    from mydb.pro2_salesStatus                                                                       ");
+				sql.append("    where DATE_FORMAT(today_dates,'%Y') = year(DATE_ADD(now(),INTERVAL -1 year))                     ");
+				sql.append("    group by DATE_FORMAT(today_dates,'%m')                                                           ");
+				 
+			}
+			else {
+				
+				sql.append(" select today_dates,today_sales      ");
+				sql.append("    from mydb.pro2_salesStatus      ");
+				if(date.trim().equals("week"))
+				{
+					sql.append("    WHERE YEARWEEK(today_dates) = YEARWEEK(CURRENT_DATE - INTERVAL 7 DAY)      ");
+				}
 
-			sql.append(" select today_dates,today_sales      ");
-			sql.append("    from mydb.pro2_salesStatus      ");
-			if(date.trim().equals("week"))
-			{
-				sql.append("    WHERE YEARWEEK(today_dates) = YEARWEEK(CURRENT_DATE - INTERVAL 7 DAY)      ");
+				else //month
+				{
+					sql.append("   where LAST_DAY(NOW() - interval 1 month)>= today_dates and LAST_DAY(NOW() - INTERVAL 2 MONTH) + INTERVAL 1 DAY<= today_dates      ");
+				}
 			}
-			else if(date.trim().equals("year"))
-			{
-//				sql.append("    WHERE YEARWEEK(today_dates) = YEARWEEK(CURRENT_DATE - INTERVAL 7 DAY);      ");
-			}
-			else //month
-			{
-				sql.append("   where LAST_DAY(NOW() - interval 1 month)>= today_dates and LAST_DAY(NOW() - INTERVAL 2 MONTH) + INTERVAL 1 DAY<= today_dates      ");
-			}
-			
 			pstmt = conn.prepareStatement(sql.toString());
-			
+
 			rs = pstmt.executeQuery();
 			while(rs.next())
 			{
@@ -118,5 +124,5 @@ public class salesDAO {
 
 		return arr;
 	}
-	
+
 }
