@@ -140,11 +140,10 @@ public class ClientInfo extends JFrame {
 			pw=new PrintWriter(socket.getOutputStream());
 			read= new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			
+			pw.println(i);
+			pw.flush();
 			pw.println(cur_id);
 			pw.flush();
-//			while(true) {
-//				
-//			}
 		}catch(IOException ex){
 			System.out.println(ex);
 		}finally {

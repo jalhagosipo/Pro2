@@ -24,42 +24,21 @@ import DB.Main_GUI_Event;
 import server.SeatThread;
 
 public class SeatView extends JFrame{
-
-	public static void main(String[] args) {
-		SeatView sv = new SeatView();
-		
-		ServerSocket server=null;
-		ArrayList<PrintWriter> arr=null;
-		
-		try{
-			server=new ServerSocket(7777);
-			arr=new ArrayList<PrintWriter>();
-			while(true) {
-				System.out.println("접속대기중");
-				Socket socket=server.accept();  
-				SeatThread th=new SeatThread(socket,arr);
-				Thread job=new Thread(th);
-				job.start();
-			}
-		}catch(IOException e) {
-			System.out.println(e.getMessage());  
-		}
-	}
+	JFrame jf_main;// 메인프레임
+	JPanel pan_main_seat; //전체 좌석 패널
+	JPanel[] pan_seat; //좌석1칸씩 묶어줄 패널
+	JPanel[] pan_left; //좌석1칸씩 묶어줄 패널
+	JPanel[] pan_right; //좌석1칸씩 묶어줄 패널
 	
+	JLabel[] lb_time; //남은시간을 알려줄 라벨
+	JLabel[] lb_cur_time; //사용시간을 알려줄 라벨
+	JLabel[] lb_id; //현재 로그인한 아이디를 알려줄 라벨
+	
+	JLabel[] lb_time_value; //남은시간을 알려줄 라벨
+	JLabel[] lb_cur_time_value; //사용시간을 알려줄 라벨
+	JLabel[] lb_id_value; //현재 로그인한 아이디를 알려줄 라벨
 	public SeatView(){
-		JFrame jf_main;// 메인프레임
-		JPanel pan_main_seat; //전체 좌석 패널
-		JPanel[] pan_seat; //좌석1칸씩 묶어줄 패널
-		JPanel[] pan_left; //좌석1칸씩 묶어줄 패널
-		JPanel[] pan_right; //좌석1칸씩 묶어줄 패널
 		
-		JLabel[] lb_time; //남은시간을 알려줄 라벨
-		JLabel[] lb_cur_time; //사용시간을 알려줄 라벨
-		JLabel[] lb_id; //현재 로그인한 아이디를 알려줄 라벨
-		
-		JLabel[] lb_time_value; //남은시간을 알려줄 라벨
-		JLabel[] lb_cur_time_value; //사용시간을 알려줄 라벨
-		JLabel[] lb_id_value; //현재 로그인한 아이디를 알려줄 라벨
 		
 		final int MAX=20;
 		
@@ -153,5 +132,41 @@ public class SeatView extends JFrame{
 			jf_main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			jf_main.setVisible(true);
 		}
+	public void SetStart(int num,String id) {
+		lb_time_value[num].setText("00:00:00");
+		lb_cur_time_value[num].setText("00:00:00");
+		
+		lb_id_value[num].setText(id);
+		pan_seat[num].setBackground(Color.green);
+	}
+	public void SetEnd(int num) {
+		lb_time_value[num].setText("00:00:00");
+		lb_cur_time_value[num].setText("00:00:00");
+		
+		lb_id_value[num].setText("로그아웃");
+		pan_seat[num].setBackground(Color.GRAY);
+		
+	}
+	
+	public static void main(String[] args) {
+		SeatView sv = new SeatView();
+		sv.setVisible(true);
+		ServerSocket server=null;
+		ArrayList<PrintWriter> arr=null;
+		
+		try{
+			server=new ServerSocket(7777);
+			arr=new ArrayList<PrintWriter>();
+			while(true) {
+				System.out.println("접속대기중");
+				Socket socket=server.accept();  
+				SeatThread th=new SeatThread(socket,arr,sv);
+				Thread job=new Thread(th);
+				job.start();
+			}
+		}catch(IOException e) {
+			System.out.println(e.getMessage());  
+		}
+	}
 }
 

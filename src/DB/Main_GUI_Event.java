@@ -18,9 +18,10 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 	private int cur_num;
 	private JLabel cur_id_label;
 	
-	SalesManagerView smv= new SalesManagerView();
-	MemberMnagerTest mm= new MemberMnagerTest();
-	StockManagement sm = new StockManagement();
+	//0814 cmd로 seatview 실행하려고 주석처리 밑에 액션리스너도 주석처리함
+//	SalesManagerView smv= new SalesManagerView();
+//	MemberMnagerTest mm= new MemberMnagerTest();
+//	StockManagement sm = new StockManagement();
 	public Main_GUI_Event() {
 	}
 	public Main_GUI_Event(int i, JLabel cur_id_label) {
@@ -71,13 +72,13 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getActionCommand()=="매출현황") {
-			smv.setVisible(true);
+//			smv.setVisible(true);
 		}
 		if(e.getActionCommand()=="회원관리") {
-			mm.frame.setVisible(true);
+//			mm.frame.setVisible(true);
 		}
 		if(e.getActionCommand()=="재고관리") {
-			sm.setVisible(true);
+//			sm.setVisible(true);
 		}
 		
 	}
