@@ -8,7 +8,7 @@ import DB.DBconn;
 
 public class MemberDel {
 	
-	public boolean deleteAccount(String id) {
+	public boolean deleteAccount(MemberDTO dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		DBconn dbconn = new DBconn();
@@ -22,7 +22,7 @@ public class MemberDel {
 			sql.append(" where member_id= ?           ");
 			
 			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setString(1, id);
+			pstmt.setString(1, "id");
 			
 			int result = pstmt.executeUpdate();
 			if(result>0)

@@ -9,7 +9,7 @@ import DB.DBconn;
 
 public class MemberUdate {
 	
-	public boolean updateAccount(infoDTO dto) {
+	public boolean updateAccount(MemberDTO dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		DBconn dbconn = new DBconn();
