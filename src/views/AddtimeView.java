@@ -1,27 +1,28 @@
 package views;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Addtime extends JFrame {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
-	private JPanel contentPane;
-	private JTextField textSearchid;
-	private JTextField textShowid;
+import Addtime.Cilentshow;
+
+public class AddtimeView extends JFrame {
+
+	public JPanel contentPane;
+	public JTextField textSearchid;
+	public JTextField textShowname;
+	
 
 	public void run() {
 		try {
-			Addtime frame = new Addtime();
+			AddtimeView frame = new AddtimeView();
 			frame.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -31,14 +32,14 @@ public class Addtime extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		Addtime at=new Addtime();
+		AddtimeView at=new AddtimeView();
 		at.run();
 	}
 
 	/**
 	 * Create the frame.
 	 */
-	public Addtime() {
+	public AddtimeView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500,800);
 		contentPane = new JPanel();
@@ -65,12 +66,12 @@ public class Addtime extends JFrame {
 		contentPane.add(btnSearch);
 		// 버튼 : 검색
 		
-		textShowid = new JTextField();
-		textShowid.setFont(new Font("Gulim", Font.PLAIN, 27));
-		textShowid.setBounds(155, 103, 170, 38);
-		contentPane.add(textShowid);
-		textShowid.setColumns(10);
-		// 출력 필드 : 회원 ID 
+		textShowname = new JTextField();
+		textShowname.setFont(new Font("Gulim", Font.PLAIN, 27));
+		textShowname.setBounds(155, 103, 170, 38);
+		contentPane.add(textShowname);
+		textShowname.setColumns(10);
+		// 출력 필드 : 회원 이름
 		
 		JButton btnAddtime1 = new JButton("1 \uC2DC\uAC04");
 		btnAddtime1.setFont(new Font("Gulim", Font.PLAIN, 27));
@@ -103,16 +104,27 @@ public class Addtime extends JFrame {
 		contentPane.add(btnAddtime6);
 		
 		JButton btnClose = new JButton("\uB2EB\uAE30");
-		btnClose.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-			}
-		});
 		btnClose.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnClose.setBounds(155, 611, 160, 40);
 		contentPane.add(btnClose);
 		// 버튼 : 1 2 3 5 10 24 시간 , 닫기
+		
+		
+		
+	
+		
+		
+		btnClose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+		
+		btnSearch.addActionListener(new Cilentshow(textSearchid,textShowname));
+		
+		
+		
+			
 		
 	}
 

@@ -67,16 +67,16 @@ public class MemberMnagerTest extends JFrame{
 		MemberID.setBounds(57, 49, 78, 22);
 		panel.add(MemberID);
 		
-		textField_Search = new JTextField();
+		textField_Search = new JTextField();//입력창
 		textField_Search.setBounds(131, 46, 180, 29);
 		panel.add(textField_Search);
 		textField_Search.setColumns(10);
 		
-		JButton btnSearch = new JButton("\uAC80\uC0C9");
+		JButton btnSearch = new JButton("\uAC80\uC0C9"); //검색버튼
 		btnSearch.setBounds(353, 43, 109, 37);
 		panel.add(btnSearch);
 		
-		JButton btnAllSearch = new JButton("\uC804\uCCB4 \uAC80\uC0C9");
+		JButton btnAllSearch = new JButton("\uC804\uCCB4 \uAC80\uC0C9"); //전체검색버튼
 		btnAllSearch.setBounds(565, 29, 127, 64);
 		panel.add(btnAllSearch);
 		
@@ -85,19 +85,19 @@ public class MemberMnagerTest extends JFrame{
 		frame.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
-		JButton btnAdd = new JButton("\uCD94\uAC00");
+		JButton btnAdd = new JButton("\uCD94\uAC00");//회원추가버튼
 		btnAdd.setBounds(59, 21, 133, 60);
 		panel_2.add(btnAdd);
 		
-		JButton buttonUdate = new JButton("\uC218\uC815");
+		JButton buttonUdate = new JButton("\uC218\uC815");//회원 수정버튼
 		buttonUdate.setBounds(256, 21, 133, 60);
 		panel_2.add(buttonUdate);
 		
-		JButton buttonDelete = new JButton("\uC0AD\uC81C");
+		JButton buttonDelete = new JButton("\uC0AD\uC81C"); //회원 삭제버튼
 		buttonDelete.setBounds(453, 21, 133, 60);
 		panel_2.add(buttonDelete);
 		
-		JButton buttonExit = new JButton("\uB2EB\uAE30");
+		JButton buttonExit = new JButton("\uB2EB\uAE30");//닫기버튼
 		buttonExit.setBounds(637, 58, 111, 41);
 		panel_2.add(buttonExit);
 		
