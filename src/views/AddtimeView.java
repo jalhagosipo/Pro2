@@ -128,11 +128,11 @@ public class AddtimeView extends JFrame {
 		
 		btnSearch.addActionListener(new Cilentshow(textSearchid,textShowname));
 		btnAddtime1.addActionListener(new Addtime(textSearchid,textShowaddtime));
-		
-		
-		
-		
-		
+		btnAddtime2.addActionListener(new Addtime(textSearchid,textShowaddtime));
+		btnAddtime3.addActionListener(new Addtime(textSearchid,textShowaddtime));
+		btnAddtime4.addActionListener(new Addtime(textSearchid,textShowaddtime));
+		btnAddtime5.addActionListener(new Addtime(textSearchid,textShowaddtime));
+		btnAddtime6.addActionListener(new Addtime(textSearchid,textShowaddtime));
 			
 		
 	}

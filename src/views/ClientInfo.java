@@ -1,15 +1,21 @@
 package views;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 import java.awt.Font;
-import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 public class ClientInfo extends JFrame {
 
@@ -93,13 +99,13 @@ public class ClientInfo extends JFrame {
 		// 출력 필드 : 회원 ID, 회원 이름, 남은 시간, 사용 시간
 		
 		JButton btnAddtime = new JButton("\uCDA9 \uC804");
-		btnAddtime.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				AddtimeView at_Clientid=new AddtimeView();
-				at_Clientid.run();
-			}
-		});
+//		btnAddtime.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mouseClicked(MouseEvent e) {
+//				Addtime at_Clientid=new Addtime();
+//				at_Clientid.run();
+//			}
+//		});
 		btnAddtime.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnAddtime.setBounds(155, 449, 175, 40);
 		contentPane.add(btnAddtime);
@@ -122,6 +128,30 @@ public class ClientInfo extends JFrame {
 		contentPane.add(btnclose);
 		// 버튼 : 충 전, 사용 종료 , 닫기'
 		this.setVisible(true);
+		
+		String host="192.168.0.84";
+		int port=7777;
+		Socket socket=null;
+		BufferedReader read=null;
+		PrintWriter pw=null;
+		
+		try {
+			socket=new Socket(host, port);
+			
+			pw=new PrintWriter(socket.getOutputStream());
+			read= new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			
+			pw.println(i);
+			pw.flush();
+			pw.println(cur_id);
+			pw.flush();
+		}catch(IOException ex){
+			System.out.println(ex);
+		}finally {
+//			if(pw!=null) try { pw.close();} catch(Exception ex) {}
+//			if(read!=null) try { read.close();} catch(IOException ex) {}
+//			if(socket!=null) try { socket.close();} catch(IOException ex) {}
+		}
 		
 	}
 }
@@ -147,7 +177,6 @@ public Clientinfo() {
 	lblClientid.setFont(new Font("Gulim", Font.PLAIN, 27));
 	lblClientid.setBounds(40, 155, 121, 32);
 	contentPane.add(lblClientid);
-
 	JLabel lblClientname = new JLabel("\uD68C\uC6D0 \uC774\uB984");
 	lblClientname.setFont(new Font("Gulim", Font.PLAIN, 27));
 	lblClientname.setBounds(40, 225, 121, 32);
