@@ -66,11 +66,7 @@ public class AddtimeView extends JFrame {
 		
 		JButton btnSearch = new JButton("\uAC80\uC0C9");
 		btnSearch.setFont(new Font("Gulim", Font.PLAIN, 27));
-<<<<<<< HEAD
 		btnSearch.setBounds(347, 41, 86, 40);
-=======
-		btnSearch.setBounds(342, 41, 90, 40);
->>>>>>> branch 'master' of https://github.com/carryyun/Pro2.git
 		contentPane.add(btnSearch);
 		// 버튼 : 검색
 		

@@ -97,7 +97,7 @@ public class SeatView extends JFrame{
 
 			pan_seat[i].add(pan_left[i]);
 			pan_seat[i].add(pan_right[i]);
-			pan_seat[i].addMouseListener((MouseListener) new Main_GUI_Event(i,lb_id_value[i]));
+			pan_seat[i].addMouseListener((MouseListener) new Main_GUI_Event(i,lb_id_value[i],lb_cur_time_value[i]));
 
 			pan_main_seat.add(pan_seat[i]);
 		}
@@ -130,12 +130,10 @@ public class SeatView extends JFrame{
 		jf_main.setSize(900, 800);
 		jf_main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf_main.setVisible(true);
-
-//		seat=new Seat(lb_time_value, lb_cur_time_value, lb_id_value, pan_seat);
 	}
 
-	public Seat GetCom() {
-		Seat s =new Seat(lb_time_value, lb_cur_time_value, lb_id_value, pan_seat);
+	public Seat GetCom(int i) {
+		Seat s =new Seat(lb_time_value[i], lb_cur_time_value[i], lb_id_value[i], pan_seat[i]);
 		return s;
 	}
 
@@ -144,7 +142,11 @@ public class SeatView extends JFrame{
 		SeatView sv = new SeatView();
 		ServerSocket server=null;
 		ArrayList<PrintWriter> arr=null;
-		Seat seat =sv.GetCom();
+		Seat[] seat=new Seat[20];
+		
+		for(int i=0; i<20;i++) {
+			seat[i] =sv.GetCom(i);
+		}
 		try{
 			server=new ServerSocket(7777);
 			arr=new ArrayList<PrintWriter>();
