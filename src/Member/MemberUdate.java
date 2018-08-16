@@ -20,20 +20,19 @@ public class MemberUdate {
 			StringBuilder sql = new StringBuilder();
 
 			sql.append(" update mydb.pro2_member           ");
-			sql.append("   set       (member_number=?      ");
-			sql.append("          , member_id=?            ");
-			sql.append("	      , member_pw=? 	        ");
-			sql.append("          , phone_number=?          ");
-			sql.append("          , member_name=? )         ");
-			sql.append("   where member_id=?               ");
+			sql.append("       set       member_id=?              ");
+			sql.append("	      , member_pw=? 	                ");
+			sql.append("          , phone_number=?             ");
+			sql.append("          , member_name=?              ");
+			sql.append("   where member_number=?               ");
 			
 			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setString(1, "number");
-			pstmt.setString(2, "id");
-			pstmt.setString(3, "pw");
-			pstmt.setString(4, "phone_number");
-			pstmt.setString(5, "name");
-			pstmt.setString(6, "old_id");
+			
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPw());
+			pstmt.setString(3, dto.getPhonenum());
+			pstmt.setString(4, dto.getName());
+			pstmt.setInt(5, dto.getNumber());
 
 			
 			int result = pstmt.executeUpdate();

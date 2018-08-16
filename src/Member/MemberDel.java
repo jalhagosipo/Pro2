@@ -22,7 +22,7 @@ public class MemberDel {
 			sql.append(" where member_id= ?           ");
 			
 			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setString(1, "id");
+			pstmt.setString(1, dto.getId());
 			
 			int result = pstmt.executeUpdate();
 			if(result>0)

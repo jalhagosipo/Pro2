@@ -22,7 +22,7 @@ public class SelectProduct {
 				conn = dbconn.getConnection();
 				StringBuilder sql = new StringBuilder();
 
-				sql.append("  select from mydb.pro2_snack ");
+				sql.append("  select * ");
 				sql.append("  from mydb.pro2_snack    ");
 				
 				pstmt = conn.prepareStatement(sql.toString());

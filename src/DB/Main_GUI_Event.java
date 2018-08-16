@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 
 import ClientInfo.infoDAO;
 import ClientInfo.infoDTO;
+import views.Client;
 import views.ClientInfo;
 import views.MemberMnagerTest;
 import views.SalesManagerView;
@@ -17,6 +18,7 @@ import views.StockManagementView;
 public class Main_GUI_Event extends JFrame implements MouseListener, ActionListener{
 	private int cur_num;
 	private JLabel cur_id_label;
+	private JLabel cur_time_label;
 	
 	//0814 cmd로 seatview 실행하려고 주석처리 밑에 액션리스너도 주석처리
 	SalesManagerView smv= new SalesManagerView();
@@ -24,9 +26,10 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 	StockManagementView sm = new StockManagementView();
 	public Main_GUI_Event() {
 	}
-	public Main_GUI_Event(int i, JLabel cur_id_label) {
+	public Main_GUI_Event(int i, JLabel cur_id_label, JLabel cur_time_label) {
 		this.cur_num=i;
 		this.cur_id_label=cur_id_label;
+		this.cur_time_label=cur_time_label;
 	}
 
 	@Override
@@ -37,7 +40,7 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 		infoDTO dto= new infoDTO();
 		dto = dao.GetInfo(cur_id_label.getText());
 		
-		ClientInfo ci= new ClientInfo(cur_num, cur_id_label.getText());
+		ClientInfo ci= new ClientInfo(cur_num, cur_id_label.getText(),cur_time_label);
 		ci.setTextField_1(dto.getName());
 		ci.setTextField_2(dto.getLeftTime());
 		ci.setVisible(true);

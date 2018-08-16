@@ -1,12 +1,37 @@
 package Member;
 
+import java.util.Date;
+
 public class MemberDTO {
 	private int number;
 	private String id;
 	private String pw;
-	private int phone_number;
+	private String phonenum;
 	private String name;
-	private String old_id;
+	private  Date left_time;
+	private int total_price;
+	public Date getLeft_time() {
+		return left_time;
+	}
+	public void setLeft_time(Date left_time) {
+		this.left_time = left_time;
+	}
+	public int getTotal_price() {
+		return total_price;
+	}
+	public MemberDTO(int number, String id, String pw, String phonenum, String name, Date left_time, int total_price) {
+		super();
+		this.number = number;
+		this.id = id;
+		this.pw = pw;
+		this.phonenum = phonenum;
+		this.name = name;
+		this.left_time = left_time;
+		this.total_price = total_price;
+	}
+	public void setTotal_price(int total_price) {
+		this.total_price = total_price;
+	}
 	public int getNumber() {
 		return number;
 	}
@@ -25,11 +50,11 @@ public class MemberDTO {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	public int getPhone_number() {
-		return phone_number;
+	public String getPhonenum() {
+		return phonenum;
 	}
-	public void setPhone_number(int phone_number) {
-		this.phone_number = phone_number;
+	public void setPhonenum(String phonenum) {
+		this.phonenum = phonenum;
 	}
 	public String getName() {
 		return name;
@@ -37,25 +62,8 @@ public class MemberDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getOld_id() {
-		return old_id;
-	}
-	public void setOld_id(String old_id) {
-		this.old_id = old_id;
-	}
-	
-	public MemberDTO(int number, String id, String pw, int phone_number, String name, String old_id) {
-		super();
-		this.number = number;
-		this.id = id;
-		this.pw = pw;
-		this.phone_number = phone_number;
-		this.name = name;
-		this.old_id = old_id;
-	}
 	
 }
-
 
 
 

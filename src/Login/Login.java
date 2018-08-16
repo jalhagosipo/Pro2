@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import ClientInfo.infoDAO;
 import ClientInfo.infoDTO;
 import DB.DBconn;
+import views.Client;
 import views.ClientInfo;
 import views.LoginView;
 import views.SeatView;
@@ -49,7 +50,7 @@ public class Login implements ActionListener{
 				if(getpw.equals(pw.getText())) {
 					JOptionPane.showMessageDialog(null, id.getText() + " 로그인 완료.");
 					
-					ClientInfo ci= new ClientInfo(Integer.parseInt(num.getText())-1, id.getText());
+					Client ci= new Client(Integer.parseInt(num.getText())-1, id.getText());
 					infoDAO infodao= new infoDAO();
 					infoDTO dto= new infoDTO();
 					dto= infodao.GetInfo(id.getText());

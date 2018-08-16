@@ -1,6 +1,8 @@
 package views;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
@@ -17,13 +19,20 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-public class ClientInfo extends JFrame {
+public class ClientInfo extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField textField;//id
 	private JTextField textField_1;//이름
 	private JTextField textField_2;//남은시간
 	private JTextField textField_3;//사용시간
+	
+	int hour = 0; 
+	int min = 0;
+	int sec = 0;
+	JLabel lb_cur_time;
+
+	javax.swing.Timer timer; 
 	
 	public void setTextField_1(String text) {
 		textField_1.setText(text);
@@ -32,13 +41,21 @@ public class ClientInfo extends JFrame {
 	public void setTextField_2(String text) {
 		textField_2.setText(text);;
 	}
+	
+	//소멸자 호출시 timer 종료.
+	@Override
+	protected void finalize() throws Throwable {
+		timer.stop();
+		super.finalize();
+	}
 
 	/**
 	 * Create the frame.
 	 */
 	////////////////////////////////////
-	public ClientInfo(int i, String cur_id) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public ClientInfo(int i, String cur_id, JLabel lb_cur_time) {
+		this.lb_cur_time=lb_cur_time;
+		
 		setBounds(100, 100, 500,800);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -128,30 +145,46 @@ public class ClientInfo extends JFrame {
 		contentPane.add(btnclose);
 		// 버튼 : 충 전, 사용 종료 , 닫기'
 		this.setVisible(true);
-		//192.168.0.84
-		String host="localhost";
-		int port=7777;
-		Socket socket=null;
-		BufferedReader read=null;
-		PrintWriter pw=null;
 		
-		try {
-			socket=new Socket(host, port);
-			
-			pw=new PrintWriter(socket.getOutputStream());
-			read= new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			
-			pw.println(i);
-			pw.flush();
-			pw.println(cur_id);
-			pw.flush();
-		}catch(IOException ex){
-			System.out.println(ex);
-		}finally {
-//			if(pw!=null) try { pw.close();} catch(Exception ex) {}
-//			if(read!=null) try { read.close();} catch(IOException ex) {}
-//			if(socket!=null) try { socket.close();} catch(IOException ex) {}
-		}
+		//타이머 시작.
+		//메인뷰의 사용시간을 1초마다 불러오는 방식. 관련소스는 actionPerformed메소드에 있음.
+		timer = new javax.swing.Timer(1000, this); 
+		timer.setInitialDelay(0); 
+		timer.start(); 
 		
+//		메인뷰에서 클릭시에는 로그인처리 하지 않도록 주석처리.(테스트용으로 남겨둠)
+//		String host="localhost";
+//		int port=7777;
+//		Socket socket=null;
+//		BufferedReader read=null;
+//		PrintWriter pw=null;
+//		
+//		try {
+//			socket=new Socket(host, port);
+//			
+//			pw=new PrintWriter(socket.getOutputStream());
+//			read= new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//			
+//			pw.println(i);
+//			pw.flush();
+//			pw.println(cur_id);
+//			pw.flush();
+//			
+//			timer = new javax.swing.Timer(1000, this); 
+//			timer.setInitialDelay(0); 
+//			timer.start(); 
+//		}catch(IOException ex){
+//			System.out.println(ex);
+//		}finally {
+////			if(pw!=null) try { pw.close();} catch(Exception ex) {}
+////			if(read!=null) try { read.close();} catch(IOException ex) {}
+////			if(socket!=null) try { socket.close();} catch(IOException ex) {}
+//		}
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {		
+		textField_3.setText(lb_cur_time.getText()); 
 	}
 }

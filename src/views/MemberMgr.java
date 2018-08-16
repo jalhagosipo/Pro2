@@ -1,26 +1,25 @@
 package views;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 public class MemberMgr extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTable table;
+	private JTextField textFieldsch;
+	private JTable memlist;
 
 	/**
 	 * Launch the application.
@@ -54,52 +53,48 @@ public class MemberMgr extends JFrame {
 		label.setBounds(54, 40, 78, 22);
 		contentPane.add(label);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(152, 38, 180, 29);
-		contentPane.add(textField);
+		textFieldsch = new JTextField();
+		textFieldsch.setColumns(10);
+		textFieldsch.setBounds(152, 38, 180, 29);
+		contentPane.add(textFieldsch);
 		
-		JButton button = new JButton("\uAC80\uC0C9");
-		button.setBounds(427, 34, 109, 37);
-		contentPane.add(button);
+		JButton btnsch = new JButton("\uAC80\uC0C9"); //검색버튼
+		btnsch.setBounds(427, 34, 109, 37);
+		contentPane.add(btnsch);
 		
-		JButton button_1 = new JButton("\uC804\uCCB4 \uAC80\uC0C9");
-		button_1.setBounds(602, 20, 127, 64);
-		contentPane.add(button_1);
+		JButton btnallsch = new JButton("\uC804\uCCB4 \uAC80\uC0C9"); //전체검색버튼
+		btnallsch.setBounds(602, 20, 127, 64);
+		contentPane.add(btnallsch);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		DefaultTableModel model = new DefaultTableModel(new Object[]{"회원ID","회원이름","사용시간","남은시간"},0);
+		
+		JTable memlist = new JTable(model);
+       JScrollPane scrollPane = new JScrollPane(memlist);
 		scrollPane.setBounds(12, 105, 760, 326);
 		contentPane.add(scrollPane);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"\uD68C\uC6D0ID", "\uD68C\uC6D0\uC774\uB984", "\uC0AC\uC6A9\uC2DC\uAC04", "\uB0A8\uC740\uC2DC\uAC04"
-			}
-		));
-		scrollPane.setViewportView(table);
 		
-		JButton button_2 = new JButton("\uCD94\uAC00");
-		button_2.setBounds(54, 472, 133, 60);
-		contentPane.add(button_2);
+		scrollPane.setViewportView(memlist);
 		
-		JButton button_3 = new JButton("\uC218\uC815");
-		button_3.setBounds(256, 472, 133, 60);
-		contentPane.add(button_3);
+		JButton btnadd = new JButton("\uCD94\uAC00");//추가버튼
+		btnadd.setBounds(54, 472, 133, 60);
+		contentPane.add(btnadd);
 		
-		JButton button_4 = new JButton("\uC0AD\uC81C");
-		button_4.setBounds(450, 472, 133, 60);
-		contentPane.add(button_4);
+		JButton btnudt = new JButton("\uC218\uC815");//수정버튼
+		btnudt.setBounds(256, 472, 133, 60);
+		contentPane.add(btnudt);
 		
-		JButton button_5 = new JButton("\uB2EB\uAE30");
-		button_5.addActionListener(new ActionListener() {
+		JButton btndel = new JButton("\uC0AD\uC81C");//삭제버튼
+		btndel.setBounds(450, 472, 133, 60);
+		contentPane.add(btndel);
+		
+		JButton btnclose = new JButton("\uB2EB\uAE30");//닫기버튼
+		btnclose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		button_5.setBounds(648, 482, 111, 41);
-		contentPane.add(button_5);
+		btnclose.setBounds(648, 482, 111, 41);
+		contentPane.add(btnclose);
 	}
 }
