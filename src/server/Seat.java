@@ -41,6 +41,7 @@ public class Seat implements ActionListener{
 		pan_seat.setBackground(Color.green);
 	}
 	public void SetEnd() {
+		timer.stop();
 		lb_time_value.setText("00:00:00");
 		lb_cur_time_value.setText("00:00:00");
 
@@ -48,7 +49,6 @@ public class Seat implements ActionListener{
 		pan_seat.setBackground(Color.GRAY);
 
 	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
