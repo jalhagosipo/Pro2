@@ -66,7 +66,7 @@ public class MemberMgr extends JFrame {
 		btnallsch.setBounds(602, 20, 127, 64);
 		contentPane.add(btnallsch);
 		
-		DefaultTableModel model = new DefaultTableModel(new Object[]{"DATE","SALES"},0);
+		DefaultTableModel model = new DefaultTableModel(new Object[]{"회원ID","회원이름","사용시간","남은시간"},0);
 		
 		JTable memlist = new JTable(model);
        JScrollPane scrollPane = new JScrollPane(memlist);
