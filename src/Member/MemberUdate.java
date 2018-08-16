@@ -28,11 +28,11 @@ public class MemberUdate {
 			
 			pstmt = conn.prepareStatement(sql.toString());
 			
-			pstmt.setString(1, "id");
-			pstmt.setString(2, "pw");
-			pstmt.setString(3, "phone_number");
-			pstmt.setString(4, "name");
-			pstmt.setString(5, "memnum");
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPw());
+			pstmt.setString(3, dto.getPhonenum());
+			pstmt.setString(4, dto.getName());
+			pstmt.setInt(5, dto.getNumber());
 
 			
 			int result = pstmt.executeUpdate();
