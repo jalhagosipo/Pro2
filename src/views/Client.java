@@ -1,6 +1,8 @@
 package views;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
@@ -17,13 +19,19 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-public class Client extends JFrame {
+public class Client extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField textField;//id
 	private JTextField textField_1;//이름
 	private JTextField textField_2;//남은시간
 	private JTextField textField_3;//사용시간
+	
+	int hour = 0; 
+	int min = 0;
+	int sec = 0;
+
+	javax.swing.Timer timer; 
 	
 	public void setTextField_1(String text) {
 		textField_1.setText(text);
@@ -145,6 +153,10 @@ public class Client extends JFrame {
 			pw.flush();
 			pw.println(cur_id);
 			pw.flush();
+			
+			timer = new javax.swing.Timer(1000, this); 
+			timer.setInitialDelay(0); 
+			timer.start(); 
 		}catch(IOException ex){
 			System.out.println(ex);
 		}finally {
@@ -153,5 +165,20 @@ public class Client extends JFrame {
 //			if(socket!=null) try { socket.close();} catch(IOException ex) {}
 		}
 		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		sec++; 		
+		if(sec>=60) {
+			min++;
+			sec=0;
+		}
+		if(min>=60) {
+			hour++;
+			min=0;
+		}
+		
+		textField_3.setText(hour + ":" + min + ": " + sec); 
 	}
 }
