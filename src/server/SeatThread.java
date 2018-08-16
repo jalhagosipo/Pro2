@@ -15,13 +15,13 @@ public class SeatThread implements Runnable{
 	private Socket socket;
 	private int num;
 	private String id;
-	private SeatView sv;
+	private Seat seat;
 	
 	private ArrayList<PrintWriter> arr=null;
 	
-	public  SeatThread(Socket socket,ArrayList<PrintWriter> arr, SeatView sv) {// String id, int num){
+	public  SeatThread(Socket socket,ArrayList<PrintWriter> arr, Seat seat) {// String id, int num){
 		this.socket=socket;
-		this.sv=sv;
+		this.seat=seat;
 		this.arr=arr;
 		PrintWriter pw=null;
 		try {
@@ -34,7 +34,7 @@ public class SeatThread implements Runnable{
 			id=in.readLine();
 			System.out.println(id + "사용자 로그인");
 			pw.flush();
-			sv.SetStart(num,id);
+			seat.SetStart(num,id);
 			System.out.println((num+1)+"번PC 사용자 "+ id);	
 		} catch(IOException e){
 			System.out.println(e);
@@ -59,7 +59,7 @@ public class SeatThread implements Runnable{
 			System.out.println(e);
 		}
 		finally{
-			sv.SetEnd(num);
+			seat.SetEnd(num);
 			System.out.println((num+1) + "PC 종료.");	
 			if(socket != null)
 				try{	socket.close(); } catch(IOException e){}

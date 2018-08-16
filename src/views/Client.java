@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-public class ClientInfo extends JFrame {
+public class Client extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;//id
@@ -37,7 +37,7 @@ public class ClientInfo extends JFrame {
 	 * Create the frame.
 	 */
 	////////////////////////////////////
-	public ClientInfo(int i, String cur_id) {
+	public Client(int i, String cur_id) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500,800);
 		contentPane = new JPanel();
@@ -98,7 +98,7 @@ public class ClientInfo extends JFrame {
 		textField_3.setColumns(10);
 		// 출력 필드 : 회원 ID, 회원 이름, 남은 시간, 사용 시간
 		
-		JButton btnAddtime = new JButton("\uCDA9 \uC804");
+		JButton btnFood = new JButton("먹거리선택");
 //		btnAddtime.addMouseListener(new MouseAdapter() {
 //			@Override
 //			public void mouseClicked(MouseEvent e) {
@@ -106,9 +106,9 @@ public class ClientInfo extends JFrame {
 //				at_Clientid.run();
 //			}
 //		});
-		btnAddtime.setFont(new Font("Gulim", Font.PLAIN, 27));
-		btnAddtime.setBounds(155, 449, 175, 40);
-		contentPane.add(btnAddtime);
+		btnFood.setFont(new Font("Gulim", Font.PLAIN, 27));
+		btnFood.setBounds(155, 449, 175, 40);
+		contentPane.add(btnFood);
 		
 		JButton btnLogout = new JButton("\uC0AC\uC6A9 \uC885\uB8CC");
 		btnLogout.setFont(new Font("Gulim", Font.PLAIN, 27));

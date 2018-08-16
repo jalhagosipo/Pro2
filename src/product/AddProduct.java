@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import DB.DBconn;
 
-public class ProductIn{
+public class AddProduct{
 	
 	public boolean insertProduct(ProductDTO dto) {
 		Connection conn = null;
@@ -31,11 +31,11 @@ public class ProductIn{
 			int result = pstmt.executeUpdate();
 			if(result>0)
 			{
-				System.out.println("상품 추가 완료");
+				System.out.println("추가 완료");
 				ok=true;
 			}
 			else
-				System.out.println("상품 추가 실패");
+				System.out.println("추가 실패");
 			
 		}catch(SQLException e){
 			System.out.println(e);
