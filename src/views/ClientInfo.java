@@ -96,7 +96,7 @@ public class ClientInfo extends JFrame {
 		btnAddtime.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Addtime at_Clientid=new Addtime();
+				AddtimeView at_Clientid=new AddtimeView();
 				at_Clientid.run();
 			}
 		});
