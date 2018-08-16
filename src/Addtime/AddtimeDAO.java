@@ -29,7 +29,7 @@ public void GetAddtime (String hours,String readid) {
 			sb.append("	update mydb.pro2_member									");
 			sb.append("	set left_time = addtime(								");
 			sb.append("								( select left_time from		");
-			sb.append("	( select left_time from mydb.pro2_member where member_number=2) bringup )	");
+			sb.append("	( select left_time from mydb.pro2_member where member_id=?) bringup )	");
 			sb.append("								 , ? )						");
 			sb.append("	where member_id=?										");
 		
@@ -37,21 +37,21 @@ public void GetAddtime (String hours,String readid) {
 
 			pstmt = conn.prepareStatement(sb.toString());
 			
+			pstmt.setString(1, readid);
+			pstmt.setString(2, hours);
 			
-			pstmt.setString(1, hours);
-			
-			pstmt.setString(2, readid);
+			pstmt.setString(3, readid);
 			
 			
 			
 			pstmt.executeUpdate();
 			
-		
-			
+//			pstmt.clearParameters();
 			
 		}catch(SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
+			if(pstmt!=null) try { pstmt.close();} catch(Exception e){}
 		
 		}
 		
