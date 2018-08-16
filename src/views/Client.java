@@ -128,8 +128,8 @@ public class Client extends JFrame {
 		contentPane.add(btnclose);
 		// 버튼 : 충 전, 사용 종료 , 닫기'
 		this.setVisible(true);
-		
-		String host="192.168.0.84";
+		//192.168.0.84
+		String host="localhost";
 		int port=7777;
 		Socket socket=null;
 		BufferedReader read=null;
