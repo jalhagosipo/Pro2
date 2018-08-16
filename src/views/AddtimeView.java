@@ -8,18 +8,20 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import Addtime.Cilentshow;
 import Addtime.Addtime;
+import Addtime.Cilentshow;
 
 public class AddtimeView extends JFrame {
 
 	public JPanel contentPane;
 	public JTextField textSearchid;
 	public JTextField textShowname;
-	private JTextField textShowaddtime;
+	private JTextArea textShowaddtime;
 	
 
 	public void run() {
@@ -64,7 +66,11 @@ public class AddtimeView extends JFrame {
 		
 		JButton btnSearch = new JButton("\uAC80\uC0C9");
 		btnSearch.setFont(new Font("Gulim", Font.PLAIN, 27));
+<<<<<<< HEAD
 		btnSearch.setBounds(347, 41, 86, 40);
+=======
+		btnSearch.setBounds(342, 41, 90, 40);
+>>>>>>> branch 'master' of https://github.com/carryyun/Pro2.git
 		contentPane.add(btnSearch);
 		// 버튼 : 검색
 		
@@ -113,8 +119,10 @@ public class AddtimeView extends JFrame {
 		// 버튼 : 1 2 3 5 10 24 시간 , 닫기
 		
 		
-		textShowaddtime = new JTextField();
-		textShowaddtime.setBounds(30, 466, 374, 123);
+		textShowaddtime = new JTextArea();
+		textShowaddtime.setLineWrap(true);
+		textShowaddtime.setFont(new Font("굴림", Font.PLAIN, 27));
+		textShowaddtime.setBounds(30, 444, 402, 122);
 		contentPane.add(textShowaddtime);
 		textShowaddtime.setColumns(10);
 	
