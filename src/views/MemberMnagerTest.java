@@ -11,6 +11,8 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MemberMnagerTest extends JFrame{
 
@@ -53,58 +55,12 @@ public class MemberMnagerTest extends JFrame{
 	 */
 	public MemberMnagerTest() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setBounds(100, 100, 801, 604);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(12, 0, 760, 98);
-		frame.getContentPane().add(panel);
-		panel.setLayout(null);
-		
-		JLabel MemberID = new JLabel("\uD68C\uC6D0 ID");//라벨
-		MemberID.setFont(new Font("굴림", Font.PLAIN, 16));
-		MemberID.setBounds(57, 49, 78, 22);
-		panel.add(MemberID);
-		
-		textField_Search = new JTextField();//입력창
-		textField_Search.setBounds(131, 46, 180, 29);
-		panel.add(textField_Search);
-		textField_Search.setColumns(10);
-		
-		JButton btnSearch = new JButton("\uAC80\uC0C9"); //검색버튼
-		btnSearch.setBounds(353, 43, 109, 37);
-		panel.add(btnSearch);
-		
-		JButton btnAllSearch = new JButton("\uC804\uCCB4 \uAC80\uC0C9"); //전체검색버튼
-		btnAllSearch.setBounds(565, 29, 127, 64);
-		panel.add(btnAllSearch);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(12, 442, 760, 109);
-		frame.getContentPane().add(panel_2);
-		panel_2.setLayout(null);
-		
-		JButton btnAdd = new JButton("\uCD94\uAC00");//회원추가버튼
-		btnAdd.setBounds(59, 21, 133, 60);
-		panel_2.add(btnAdd);
-		
-		JButton buttonUdate = new JButton("\uC218\uC815");//회원 수정버튼
-		buttonUdate.setBounds(256, 21, 133, 60);
-		panel_2.add(buttonUdate);
-		
-
-		JButton buttonDelete = new JButton("\uC0AD\uC81C"); //회원 삭제버튼
-		buttonDelete.setBounds(453, 21, 133, 60);
-		panel_2.add(buttonDelete);
-		
-		
-		JButton buttonExit = new JButton("\uB2EB\uAE30");//닫기버튼
-		buttonExit.setBounds(637, 58, 111, 41);
-		panel_2.add(buttonExit);
-		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 102, 760, 351);
+		scrollPane.setBounds(12, 96, 760, 326);
 		frame.getContentPane().add(scrollPane);
 		
 		table = new JTable();
@@ -146,5 +102,45 @@ public class MemberMnagerTest extends JFrame{
 			}
 		));
 		scrollPane.setViewportView(table);
+		
+		JButton buttonExit = new JButton("\uB2EB\uAE30");
+		buttonExit.setBounds(648, 484, 111, 41);
+		buttonExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+		frame.getContentPane().add(buttonExit);
+		
+		JLabel MemberID = new JLabel("\uD68C\uC6D0 ID");//라벨
+		MemberID.setBounds(54, 42, 78, 22);
+		frame.getContentPane().add(MemberID);
+		MemberID.setFont(new Font("굴림", Font.PLAIN, 16));
+		
+		textField_Search = new JTextField();
+		textField_Search.setBounds(152, 40, 180, 29);
+		frame.getContentPane().add(textField_Search);
+		textField_Search.setColumns(10);
+		
+		JButton btnSearch = new JButton("\uAC80\uC0C9");
+		btnSearch.setBounds(427, 36, 109, 37);
+		frame.getContentPane().add(btnSearch);
+		
+		JButton btnAllSearch = new JButton("\uC804\uCCB4 \uAC80\uC0C9");
+		btnAllSearch.setBounds(602, 22, 127, 64);
+		frame.getContentPane().add(btnAllSearch);
+		
+		JButton btnAdd = new JButton("\uCD94\uAC00");
+		btnAdd.setBounds(54, 474, 133, 60);
+		frame.getContentPane().add(btnAdd);
+		
+		JButton buttonUdate = new JButton("\uC218\uC815");
+		buttonUdate.setBounds(262, 474, 133, 60);
+		frame.getContentPane().add(buttonUdate);
+		
+
+		JButton buttonDelete = new JButton("\uC0AD\uC81C");
+		buttonDelete.setBounds(450, 474, 133, 60);
+		frame.getContentPane().add(buttonDelete);
 	}
 }

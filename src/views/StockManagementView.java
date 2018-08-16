@@ -92,6 +92,10 @@ public class StockManagementView extends JFrame {
 		botpan.add(button_delete);
 		
 		JButton button_close = new JButton("\uB2EB\uAE30");
+		button_close.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		button_close.setBounds(620, 0, 127, 38);
 		botpan.add(button_close);
 		
