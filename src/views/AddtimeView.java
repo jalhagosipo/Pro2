@@ -12,12 +12,14 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Addtime.Cilentshow;
+import Addtime.Addtime;
 
 public class AddtimeView extends JFrame {
 
 	public JPanel contentPane;
 	public JTextField textSearchid;
 	public JTextField textShowname;
+	private JTextField textShowaddtime;
 	
 
 	public void run() {
@@ -67,6 +69,7 @@ public class AddtimeView extends JFrame {
 		// 버튼 : 검색
 		
 		textShowname = new JTextField();
+		textShowname.setEditable(false);
 		textShowname.setFont(new Font("Gulim", Font.PLAIN, 27));
 		textShowname.setBounds(155, 103, 170, 38);
 		contentPane.add(textShowname);
@@ -110,7 +113,10 @@ public class AddtimeView extends JFrame {
 		// 버튼 : 1 2 3 5 10 24 시간 , 닫기
 		
 		
-		
+		textShowaddtime = new JTextField();
+		textShowaddtime.setBounds(30, 466, 374, 123);
+		contentPane.add(textShowaddtime);
+		textShowaddtime.setColumns(10);
 	
 		
 		
@@ -121,11 +127,13 @@ public class AddtimeView extends JFrame {
 		});
 		
 		btnSearch.addActionListener(new Cilentshow(textSearchid,textShowname));
-		
-		
-		
+		btnAddtime1.addActionListener(new Addtime(textSearchid,textShowaddtime));
+		btnAddtime2.addActionListener(new Addtime(textSearchid,textShowaddtime));
+		btnAddtime3.addActionListener(new Addtime(textSearchid,textShowaddtime));
+		btnAddtime4.addActionListener(new Addtime(textSearchid,textShowaddtime));
+		btnAddtime5.addActionListener(new Addtime(textSearchid,textShowaddtime));
+		btnAddtime6.addActionListener(new Addtime(textSearchid,textShowaddtime));
 			
 		
 	}
-
 }

@@ -1,19 +1,18 @@
 package views;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JScrollPane;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 public class StockManagementView extends JFrame {
 
@@ -66,7 +65,7 @@ public class StockManagementView extends JFrame {
 		button_search.setBounds(508, 9, 97, 23);
 		headpan.add(button_search);
 		
-		JButton button_read = new JButton("\uC0C1\uD488 \uC870\uD68C");
+		JButton button_read = new JButton("\uC804\uCCB4 \uC870\uD68C");
 		button_read.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -98,6 +97,11 @@ public class StockManagementView extends JFrame {
 		});
 		button_close.setBounds(620, 0, 127, 38);
 		botpan.add(button_close);
+		button_close.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		
 		JButton button_update = new JButton("\uC0C1\uD488 \uC218\uC815");
 		button_update.setBounds(449, 0, 127, 38);

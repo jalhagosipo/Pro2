@@ -177,7 +177,6 @@ public Clientinfo() {
 	lblClientid.setFont(new Font("Gulim", Font.PLAIN, 27));
 	lblClientid.setBounds(40, 155, 121, 32);
 	contentPane.add(lblClientid);
-
 	JLabel lblClientname = new JLabel("\uD68C\uC6D0 \uC774\uB984");
 	lblClientname.setFont(new Font("Gulim", Font.PLAIN, 27));
 	lblClientname.setBounds(40, 225, 121, 32);

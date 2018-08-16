@@ -30,7 +30,7 @@ public class Cilentshow implements ActionListener  {
 				
 				ClientshowDAO dao= new ClientshowDAO();
 				ClientshowDTO dto= new ClientshowDTO();
-				dto= dao.GetAdd(textSearchid.getText());
+				dto= dao.GetShow(textSearchid.getText());
 				
 				textShowname.setText(dto.getMember_name());
 				

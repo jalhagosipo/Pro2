@@ -12,7 +12,7 @@ public class ClientshowDAO extends AddtimeView{
 	
 	
 	
-	public ClientshowDTO GetAdd(String prttxt) {
+	public ClientshowDTO GetShow(String readtxt) {
 		
 		
 		Connection conn = null;
@@ -31,7 +31,7 @@ public class ClientshowDAO extends AddtimeView{
 
 			pstmt = conn.prepareStatement(sb.toString());
 			
-			pstmt.setString(1, prttxt);
+			pstmt.setString(1, readtxt);
 			
 			rs = pstmt.executeQuery();
 			while(rs.next())
