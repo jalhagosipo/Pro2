@@ -12,7 +12,6 @@ import ClientInfo.infoDTO;
 import views.ClientInfo;
 import views.MemberMnagerTest;
 import views.SalesManagerView;
-import views.StockManagement;
 
 public class Main_GUI_Event extends JFrame implements MouseListener, ActionListener{
 	private int cur_num;
