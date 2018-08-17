@@ -14,11 +14,14 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import product.DelProduct;
+import product.showschProduct;
+
 public class StockManagementView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTable table;
+	
 
 	/**
 	 * Launch the application.
@@ -53,25 +56,17 @@ public class StockManagementView extends JFrame {
 		headpan.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("\uC0C1\uD488\uBA85");
-		lblNewLabel.setBounds(32, 13, 36, 15);
+		lblNewLabel.setBounds(63, 13, 47, 15);
 		headpan.add(lblNewLabel);
 		
 		textField = new JTextField();
-		textField.setBounds(92, 10, 404, 21);
+		textField.setBounds(122, 10, 404, 21);
 		headpan.add(textField);
 		textField.setColumns(10);
 		
 		JButton button_search = new JButton("\uAC80\uC0C9");
-		button_search.setBounds(508, 9, 97, 23);
+		button_search.setBounds(612, 9, 97, 23);
 		headpan.add(button_search);
-		
-		JButton button_read = new JButton("\uC804\uCCB4 \uC870\uD68C");
-		button_read.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		button_read.setBounds(634, 9, 123, 23);
-		headpan.add(button_read);
 		
 		JPanel botpan = new JPanel();
 		botpan.setBounds(0, 500, 800, 48);
@@ -107,18 +102,25 @@ public class StockManagementView extends JFrame {
 		button_update.setBounds(449, 0, 127, 38);
 		botpan.add(button_update);
 		
+		
+		
+		JTable table = new JTable();
+		
+		
+		
+		
+		Object [] columns = {"상품번호","상품이름","상품가격","재고"};
+		DefaultTableModel model2 = new DefaultTableModel();
+		model2.setColumnIdentifiers(columns);
+		table.setModel(model2);
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(66, 49, 644, 434);
 		contentPane.add(scrollPane);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"\uC0C1\uD488\uBC88\uD638", "\uC0C1\uD488\uBA85", "\uAC00\uACA9", "\uC7AC\uACE0"
-			}
-		));
 		scrollPane.setViewportView(table);
+		
+		button_search.addActionListener(new showschProduct(textField, table));
+		button_delete.addActionListener(new DelProduct(table));
 	}
 }

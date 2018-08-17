@@ -1,10 +1,10 @@
 package product;
 
 public class ProductDTO {
-	String proName;
-	String proPrice;
-	int proStock;
-	int proNumber;
+	private String proName;
+	private String proPrice;
+	private int proStock;
+	private int proNumber;
 	
 	int amount;
 	
