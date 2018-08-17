@@ -55,7 +55,8 @@ public class Login implements ActionListener{
 					infoDTO dto= new infoDTO();
 					dto= infodao.GetInfo(id.getText());
 					ci.setTextField_1(dto.getName());
-					ci.setTextField_2(dto.getLeftTime());
+					ci.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
+					ci.setLefttime();
 					view.dispose();
 					
 					

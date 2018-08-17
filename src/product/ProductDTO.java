@@ -5,6 +5,9 @@ public class ProductDTO {
 	String proPrice;
 	int proStock;
 	int proNumber;
+	
+	int amount;
+	
 	public String getProName() {
 		return proName;
 	}
@@ -29,6 +32,12 @@ public class ProductDTO {
 	public void setProNumber(int proNumber) {
 		this.proNumber = proNumber;
 	}
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
 	public ProductDTO(String proName, String proPrice, int proStock, int proNumber) {
 		super();
 		this.proName = proName;
@@ -36,6 +45,14 @@ public class ProductDTO {
 		this.proStock = proStock;
 		this.proNumber = proNumber;
 	}
+	public ProductDTO(String proName, String proPrice, int amount) {
+		super();
+		this.proName = proName;
+		this.proPrice = proPrice;
+		this.amount = amount;
+	}
+	
+	
 	public ProductDTO() {
 		
 	}

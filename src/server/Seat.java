@@ -16,8 +16,8 @@ public class Seat implements ActionListener{
 	int num = 0;
 	
 	int hour = 0; 
-	int min = 0;
-	int sec = 0;
+	int minute = 0;
+	int second = 0;
 
 	javax.swing.Timer timer; 
 
@@ -32,6 +32,10 @@ public class Seat implements ActionListener{
 		lb_time_value.setText("00:00:00");
 		lb_cur_time_value.setText("00:00:00");
 		
+		SeatDAO dao= new SeatDAO();
+		int[] time=dao.GetTime(id);
+		
+		lb_time_value.setText(time[0]+ ":" + time[1] +":" + time[2]);
 		timer = new javax.swing.Timer(1000, this); 
 		timer.setInitialDelay(0); 
 		timer.start(); 
@@ -52,16 +56,16 @@ public class Seat implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		sec++; 		
-		if(sec>=60) {
-			min++;
-			sec=0;
+		second++; 		
+		if(second>=60) {
+			minute++;
+			second=0;
 		}
-		if(min>=60) {
+		if(minute>=60) {
 			hour++;
-			min=0;
+			minute=0;
 		}
 		
-		lb_cur_time_value.setText(hour + ":" + min + ": " + sec); 
+		lb_cur_time_value.setText(hour + ":" + minute + ": " + second); 
 	}
 }

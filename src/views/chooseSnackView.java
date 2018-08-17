@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
@@ -15,9 +16,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import product.ProductDTO;
 import product.SelectProduct;
+import snackChoose.buysnack;
+import snackChoose.cart;
 
 public class chooseSnackView extends JFrame {
 
@@ -56,14 +60,13 @@ public class chooseSnackView extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton buybtn = new JButton("\uAD6C\uB9E4");
-		buybtn.setBounds(464, 650, 129, 52);
+		buybtn.setBounds(462, 475, 107, 52);
 		contentPane.add(buybtn);
 		
 		JButton canclebtn = new JButton("\uCDE8\uC18C");
-		canclebtn.setBounds(621, 650, 129, 52);
+		canclebtn.setBounds(605, 475, 107, 52);
 		contentPane.add(canclebtn);
 		canclebtn.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -86,6 +89,32 @@ public class chooseSnackView extends JFrame {
 		JButton[] btn_tocart = new JButton[MAX];
 		JComboBox[] cb_amount = new JComboBox[MAX];/*panel처럼객체생성해서해줘야함*/
 		
+		
+		DefaultTableModel model = new DefaultTableModel(new Object[]{"productname","productprice","amount"},0);
+		table = new JTable(model);
+		JScrollPane sp_table = new JScrollPane(table);
+		sp_table.setBounds(48, 494, 389, 187);
+		contentPane.add(sp_table);
+		
+		JButton deleterow_btn = new JButton("\uC544\uC774\uD15C \uC0AD\uC81C");
+		deleterow_btn.setBounds(324, 691, 113, 30);
+		deleterow_btn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				model.removeRow(table.getSelectedRow());
+			}
+		});
+		contentPane.add(deleterow_btn);
+		
+		JLabel lblNewLabel = new JLabel("\uC7A5\uBC14\uAD6C\uB2C8");
+		lblNewLabel.setBounds(48, 475, 57, 15);
+		contentPane.add(lblNewLabel);
+		
+		JLabel label = new JLabel("\uBA54\uB274");
+		label.setBounds(12, 10, 35, 15);
+		contentPane.add(label);
+		
 		for(int i=0;i<MAX;i++) {
 			
 			pan_snack[i] =new JPanel();
@@ -100,6 +129,7 @@ public class chooseSnackView extends JFrame {
 			lb_pprice[i]=new JLabel(arr.get(i).getProPrice());//left
 			
 			btn_tocart[i] = new JButton("담기");
+			
 			cb_amount[i] = new JComboBox(new String[] {"1","2","3","4","5"});//right
 			
 			pan_left[i].add(lb_pname[i]);
@@ -111,11 +141,15 @@ public class chooseSnackView extends JFrame {
 			pan_snack[i].add(pan_left[i]);
 			pan_snack[i].add(pan_right[i]);
 			
+			btn_tocart[i].addActionListener(new cart(lb_pname[i].getText(),lb_pprice[i].getText(),cb_amount[i],table));
+			
 			panel.add(pan_snack[i]);
 		}
 		
-		table = new JTable();
-		table.setBounds(18, 568, 419, 136);
-		contentPane.add(table);
+		
+		
+		buybtn.addActionListener(new buysnack());
+		
+		
 	}
 }
