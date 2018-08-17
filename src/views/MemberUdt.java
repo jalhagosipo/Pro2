@@ -52,7 +52,7 @@ public class MemberUdt extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MemberUdt(String _id) {
+	public MemberUdt(String _id, String _name, String _phone) {
 		this.old_id=_id;
 		/*int row = memlist.getSelectedRow(); //행 선택
 		DefaultTableModel tm = (DefaultTableModel) memlist.getModel(); //테이블불러오기
@@ -111,6 +111,12 @@ public class MemberUdt extends JFrame {
 		textFieldname.setBounds(136, 167, 116, 21);
 		contentPane.add(textFieldname);
 		textFieldname.setColumns(10);
+		
+		
+		//textfield 값설정
+		textFieldid.setText(_id);
+		textFieldphone.setText(_phone);
+		textFieldname.setText(_name);
 		
 		JButton btnup = new JButton("\uC218\uC815");
 		btnup.setBounds(29, 286, 97, 23);

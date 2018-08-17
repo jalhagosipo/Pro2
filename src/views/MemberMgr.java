@@ -110,8 +110,7 @@ public class MemberMgr extends JFrame {
 		});
 		btnclose.setBounds(648, 482, 111, 41);
 		contentPane.add(btnclose);
-		Up um= new Up(memlist);
-		btnudt.addActionListener(um);
+		btnudt.addActionListener(new Up(memlist));
 		btnsch.addActionListener(new showschMember(textFieldsch,memlist));
 		btndel.addActionListener(new Delmem(memlist));
 		
