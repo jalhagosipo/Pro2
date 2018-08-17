@@ -17,7 +17,7 @@ public class MemberDAO {
 			DBconn dbconn = new DBconn();
 			ResultSet rs;
 			Vector<MemberDTO> arr = new Vector<>();
-			MemberDTO dto=new MemberDTO(0, null, null, null, null, null, 0);
+			MemberDTO dto=new MemberDTO();
 			
 			try {
 				conn = dbconn.getConnection();
