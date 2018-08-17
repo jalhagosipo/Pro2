@@ -2,6 +2,8 @@ package views;
 
 import java.awt.EventQueue;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
@@ -60,6 +62,14 @@ public class chooseSnackView extends JFrame {
 		JButton canclebtn = new JButton("\uCDE8\uC18C");
 		canclebtn.setBounds(621, 650, 129, 52);
 		contentPane.add(canclebtn);
+		canclebtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				dispose();
+			}
+		});
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(15, 14, 754, 534);
@@ -101,10 +111,6 @@ public class chooseSnackView extends JFrame {
 			
 			panel.add(pan_snack[i]);
 		}
-		
-		
-		JScrollPane scrollPane = new JScrollPane();
-		panel.add(scrollPane);
 		
 		table = new JTable();
 		table.setBounds(18, 568, 419, 136);
