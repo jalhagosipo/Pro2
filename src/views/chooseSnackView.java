@@ -72,10 +72,12 @@ public class chooseSnackView extends JFrame {
 		});
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(15, 14, 754, 534);
-		contentPane.add(panel);
-		panel.setLayout(new GridLayout(MAX, 2, 30, 40));
+		panel.setBounds(57, 14, 669, 534);
 		
+		panel.setLayout(new GridLayout((MAX%2==0)?MAX/2:MAX/2+1, 2, 150, 40));
+		JScrollPane scroll_pan = new JScrollPane(panel);
+		scroll_pan.setBounds(48, 10, 688, 445);
+		contentPane.add(scroll_pan);
 		JPanel[] pan_snack = new JPanel[MAX];
 		JPanel[] pan_left =new JPanel[MAX];
 		JPanel[] pan_right =new JPanel[MAX];
