@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import Member.Delmem;
 import Member.showschMember;
 
 public class MemberMgr extends JFrame {
@@ -95,6 +96,9 @@ public class MemberMgr extends JFrame {
 		btndel.setBounds(450, 472, 133, 60);
 		contentPane.add(btndel);
 		
+			
+			
+		
 		JButton btnclose = new JButton("\uB2EB\uAE30");//´Ý±â¹öÆ°
 		btnclose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -105,5 +109,6 @@ public class MemberMgr extends JFrame {
 		contentPane.add(btnclose);
 		
 		btnsch.addActionListener(new showschMember(textFieldsch,memlist));
+		btndel.addActionListener(new Delmem(memlist));
 	}
 }

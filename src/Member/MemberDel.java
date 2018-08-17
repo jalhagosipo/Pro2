@@ -8,11 +8,10 @@ import DB.DBconn;
 
 public class MemberDel {
 	
-	public boolean deleteAccount(MemberDTO dto) {
+	public void deleteAccount(String id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		DBconn dbconn = new DBconn();
-		boolean ok = false;
 		
 		try {
 			conn = dbconn.getConnection();
@@ -22,13 +21,12 @@ public class MemberDel {
 			sql.append(" where member_id= ?           ");
 			
 			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setString(1, dto.getId());
+			pstmt.setString(1, id);
 			
 			int result = pstmt.executeUpdate();
 			if(result>0)
 			{
 				System.out.println("삭제 성공");
-				ok=true;
 			}
 			else
 				System.out.println("삭제 실패");
@@ -37,6 +35,5 @@ public class MemberDel {
 		}catch(SQLException e){
 			System.out.println(e);
 		}
-		return ok;
 	}
 }
