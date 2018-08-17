@@ -10,6 +10,7 @@ public class MemberDTO {
 	private String name;
 	private  Date left_time;
 	private int total_price;
+	
 	public Date getLeft_time() {
 		return left_time;
 	}
@@ -29,6 +30,7 @@ public class MemberDTO {
 		this.left_time = left_time;
 		this.total_price = total_price;
 	}
+	public MemberDTO() {}
 	public void setTotal_price(int total_price) {
 		this.total_price = total_price;
 	}

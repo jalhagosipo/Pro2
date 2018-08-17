@@ -1,5 +1,6 @@
 package views;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+
+import Member.showschMember;
 
 public class MemberMgr extends JFrame {
 
@@ -59,20 +62,20 @@ public class MemberMgr extends JFrame {
 		contentPane.add(textFieldsch);
 		
 		JButton btnsch = new JButton("\uAC80\uC0C9"); //검색버튼
-		btnsch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		btnsch.setBounds(427, 34, 109, 37);
 		contentPane.add(btnsch);
 		
-		JButton btnallsch = new JButton("\uC804\uCCB4 \uAC80\uC0C9"); //전체검색버튼
-		btnallsch.setBounds(602, 20, 127, 64);
-		contentPane.add(btnallsch);
+		JTable memlist = new JTable();
 		
-		DefaultTableModel model = new DefaultTableModel(new Object[]{"회원ID","회원이름","총사용시간","남은시간","핸드폰"},0);
 		
-		JTable memlist = new JTable(model);
+		
+		Object [] columns = {"회원ID","회원이름","총사용시간","남은시간","핸드폰"};
+		DefaultTableModel model = new DefaultTableModel();
+		model.setColumnIdentifiers(columns);
+		memlist.setModel(model);
+		
+		
        JScrollPane scrollPane = new JScrollPane(memlist);
 		scrollPane.setBounds(12, 105, 760, 326);
 		contentPane.add(scrollPane);
@@ -100,5 +103,7 @@ public class MemberMgr extends JFrame {
 		});
 		btnclose.setBounds(648, 482, 111, 41);
 		contentPane.add(btnclose);
+		
+		btnsch.addActionListener(new showschMember(textFieldsch,memlist));
 	}
 }
