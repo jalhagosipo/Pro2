@@ -85,7 +85,7 @@ public class chooseSnackView extends JFrame {
 			pan_right[i].setLayout(new BoxLayout(pan_right[i],BoxLayout.X_AXIS));
 			
 			lb_pname[i]=new JLabel(arr.get(i).getProName());
-			lb_pprice[i]=new JLabel(Integer.toString(arr.get(i).getProPrice()));//left
+			lb_pprice[i]=new JLabel(arr.get(i).getProPrice());//left
 			
 			btn_tocart[i] = new JButton("´ã±â");
 			cb_amount[i] = new JComboBox(new String[] {"1","2","3","4","5"});//right

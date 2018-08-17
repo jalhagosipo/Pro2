@@ -2,7 +2,7 @@ package product;
 
 public class ProductDTO {
 	String proName;
-	int proPrice;
+	String proPrice;
 	int proStock;
 	int proNumber;
 	public String getProName() {
@@ -11,10 +11,10 @@ public class ProductDTO {
 	public void setProName(String proName) {
 		this.proName = proName;
 	}
-	public int getProPrice() {
+	public String getProPrice() {
 		return proPrice;
 	}
-	public void setProPrice(int proPrice) {
+	public void setProPrice(String proPrice) {
 		this.proPrice = proPrice;
 	}
 	public int getProStock() {
@@ -29,7 +29,7 @@ public class ProductDTO {
 	public void setProNumber(int proNumber) {
 		this.proNumber = proNumber;
 	}
-	public ProductDTO(String proName, int proPrice, int proStock, int proNumber) {
+	public ProductDTO(String proName, String proPrice, int proStock, int proNumber) {
 		super();
 		this.proName = proName;
 		this.proPrice = proPrice;

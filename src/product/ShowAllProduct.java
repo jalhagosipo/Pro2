@@ -13,7 +13,7 @@ import java.util.Vector;
 import DB.DBconn;
 
 public class ShowAllProduct {
-	public Vector<ProductDTO> getProductList(String pnum,String pname, int pprice, int pstock)
+	public Vector<ProductDTO> getProductList(String pnum,String pname, String pprice, int pstock)
 	{
 		Connection conn = null;
 		PreparedStatement pstmt = null;

@@ -34,7 +34,7 @@ public class SelectProduct {
 					ProductDTO dto = new ProductDTO(); 
 					dto.setProName(rs.getString("product_name"));
 					dto.setProNumber(rs.getInt("product_number"));
-					dto.setProPrice(rs.getInt("product_price"));
+					dto.setProPrice(rs.getString("product_price"));
 					dto.setProStock(rs.getInt("stock"));
 					arr.add(dto);
 				}

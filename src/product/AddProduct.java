@@ -25,7 +25,7 @@ public class AddProduct{
 			
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setString(1, dto.getProName());
-			pstmt.setInt(2, dto.getProPrice());
+			pstmt.setString(2, dto.getProPrice());
 			pstmt.setInt(3, dto.getProStock());
 			
 			int result = pstmt.executeUpdate();
