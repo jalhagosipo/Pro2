@@ -6,13 +6,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class Delmem implements ActionListener{
+import views.MemberUdt;
 
+public class Upmem implements ActionListener {
 	private JTable memlist;
-	public Delmem(JTable memlist) {
+	
+	public Upmem() {
 		super();
-		this.memlist = memlist;
+		
+		// TODO Auto-generated constructor stub
 	}
+
+
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -22,11 +28,8 @@ public class Delmem implements ActionListener{
 
 		String id =  (String)memlist.getValueAt(row,0 );
 		
-		tm.removeRow(row);
-		
-		MemberDel del = new MemberDel();
-		del.deleteAccount(id);
-		
+		MemberUdt udt  = new MemberUdt(id);
+		udt.setVisible(true);
 		
 	}
 

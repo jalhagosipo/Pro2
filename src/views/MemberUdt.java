@@ -1,46 +1,71 @@
 package views;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import Member.MemberUp;
+import views.MemberMgr;
 
 public class MemberUdt extends JFrame {
-
+	
 	private JPanel contentPane;
 	private JTextField textFieldid;
 	private JTextField textFieldpw;
 	private JTextField textFieldphone;
 	private JTextField textFieldname;
-
+	
+	private String old_id;
+	/*JTable memlist;
+	
+	public MemberUdt(JTable memlist) {
+		super();
+		this.memlist = memlist;
+	}
+*/
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MemberUdt frame = new MemberUdt();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					MemberUdt frame = new MemberUdt();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public MemberUdt() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public MemberUdt(String _id) {
+		this.old_id=_id;
+		/*int row = memlist.getSelectedRow(); //행 선택
+		DefaultTableModel tm = (DefaultTableModel) memlist.getModel(); //테이블불러오기
+	
+
+		String memid =  (String)memlist.getValueAt(row,0 );
+		String phone =  (String)memlist.getValueAt(row,4 );
+		String memname =  (String)memlist.getValueAt(row,1 );*/
+		
+		
+		
+		
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 300, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -64,21 +89,25 @@ public class MemberUdt extends JFrame {
 		contentPane.add(name);
 		
 		textFieldid = new JTextField();
+		//textFieldid.setText(memid);
 		textFieldid.setBounds(136, 38, 116, 21);
 		contentPane.add(textFieldid);
 		textFieldid.setColumns(10);
 		
 		textFieldpw = new JTextField();
+		
 		textFieldpw.setBounds(136, 84, 116, 21);
 		contentPane.add(textFieldpw);
 		textFieldpw.setColumns(10);
 		
 		textFieldphone = new JTextField();
+//		textFieldid.setText(phone);
 		textFieldphone.setBounds(136, 124, 116, 21);
 		contentPane.add(textFieldphone);
 		textFieldphone.setColumns(10);
 		
 		textFieldname = new JTextField();
+//		textFieldid.setText(memname);
 		textFieldname.setBounds(136, 167, 116, 21);
 		contentPane.add(textFieldname);
 		textFieldname.setColumns(10);
@@ -86,6 +115,19 @@ public class MemberUdt extends JFrame {
 		JButton btnup = new JButton("\uC218\uC815");
 		btnup.setBounds(29, 286, 97, 23);
 		contentPane.add(btnup);
+		btnup.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MemberUp mu= new MemberUp();
+				mu.updateAccount(textFieldid.getText()
+													,textFieldpw.getText()
+													,textFieldphone.getText()
+													,textFieldname.getText()
+													,old_id
+						);
+			}
+		});
 		
 		JButton btnexit = new JButton("\uB2EB\uAE30");
 		btnexit.addActionListener(new ActionListener() {

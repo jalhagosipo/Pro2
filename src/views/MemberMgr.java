@@ -17,6 +17,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import Member.Delmem;
+import Member.Up;
+import Member.Upmem;
 import Member.showschMember;
 
 public class MemberMgr extends JFrame {
@@ -92,6 +94,7 @@ public class MemberMgr extends JFrame {
 		btnudt.setBounds(256, 472, 133, 60);
 		contentPane.add(btnudt);
 		
+		
 		JButton btndel = new JButton("\uC0AD\uC81C");//삭제버튼
 		btndel.setBounds(450, 472, 133, 60);
 		contentPane.add(btndel);
@@ -107,8 +110,10 @@ public class MemberMgr extends JFrame {
 		});
 		btnclose.setBounds(648, 482, 111, 41);
 		contentPane.add(btnclose);
-		
+		Up um= new Up(memlist);
+		btnudt.addActionListener(um);
 		btnsch.addActionListener(new showschMember(textFieldsch,memlist));
 		btndel.addActionListener(new Delmem(memlist));
+		
 	}
 }

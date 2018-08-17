@@ -6,28 +6,29 @@ import java.awt.event.ActionListener;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class Delmem implements ActionListener{
+import views.MemberUdt;
 
-	private JTable memlist;
-	public Delmem(JTable memlist) {
+public class Up implements ActionListener{
+	JTable memlist;
+	
+	public Up(JTable memlist) {
 		super();
-		this.memlist = memlist;
+		this.memlist=memlist;
+		// TODO Auto-generated constructor stub
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
 		DefaultTableModel tm = (DefaultTableModel) memlist.getModel(); //테이블불러오기
 		int row = memlist.getSelectedRow(); //행 선택
 
 		String id =  (String)memlist.getValueAt(row,0 );
 		
-		tm.removeRow(row);
-		
-		MemberDel del = new MemberDel();
-		del.deleteAccount(id);
-		
-		
+		MemberUdt udt  = new MemberUdt(id);
+		udt.setVisible(true);
 	}
+	
+	
 
 }
