@@ -59,6 +59,10 @@ public class MemberMgr extends JFrame {
 		contentPane.add(textFieldsch);
 		
 		JButton btnsch = new JButton("\uAC80\uC0C9"); //검색버튼
+		btnsch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnsch.setBounds(427, 34, 109, 37);
 		contentPane.add(btnsch);
 		
@@ -66,7 +70,7 @@ public class MemberMgr extends JFrame {
 		btnallsch.setBounds(602, 20, 127, 64);
 		contentPane.add(btnallsch);
 		
-		DefaultTableModel model = new DefaultTableModel(new Object[]{"회원ID","회원이름","사용시간","남은시간"},0);
+		DefaultTableModel model = new DefaultTableModel(new Object[]{"회원ID","회원이름","총사용시간","남은시간","핸드폰"},0);
 		
 		JTable memlist = new JTable(model);
        JScrollPane scrollPane = new JScrollPane(memlist);
