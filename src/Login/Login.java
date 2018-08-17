@@ -54,18 +54,12 @@ public class Login implements ActionListener{
 					infoDAO infodao= new infoDAO();
 					infoDTO dto= new infoDTO();
 					dto= infodao.GetInfo(id.getText());
-					ci.setTextField_1(dto.getName());
+					ci.SetName(dto.getName());
 					ci.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
-					ci.setLefttime();
-					view.dispose();
-					
-					
+					view.dispose();	
 				}else {
 					JOptionPane.showMessageDialog(null, "비밀번호 틀림.");
 				}
-				
-				
-				
 			}
 
 		}

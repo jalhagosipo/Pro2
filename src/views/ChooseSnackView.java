@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,31 +24,21 @@ import product.SelectProduct;
 import snackChoose.buysnack;
 import snackChoose.cart;
 
-public class chooseSnackView extends JFrame {
-
+public class ChooseSnackView extends JFrame {
+	
 	private JPanel contentPane;
 	private JTable table;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					chooseSnackView frame = new chooseSnackView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	javax.swing.Timer timer; 
+	private Client ci;
+	private JTextField tf_lefttime;
 
 	/**
 	 * Create the frame.
 	 */
-	public chooseSnackView() {
+	public ChooseSnackView(Client c, JTextField lefttime) {
+		this.ci=c;
+		this.tf_lefttime=lefttime;
 		SelectProduct sp = new SelectProduct();
 		Vector<ProductDTO> arr = sp.SelectPro();
 		int MAX = arr.size();
@@ -145,11 +136,10 @@ public class chooseSnackView extends JFrame {
 			
 			panel.add(pan_snack[i]);
 		}
-		
-		
-		
-		buybtn.addActionListener(new buysnack());
-		
+		System.out.println("¿©±äµÊ1");
+		buysnack bs= new buysnack(ci,table,tf_lefttime);
+		System.out.println("¿©±äµÊ2");
+		buybtn.addActionListener(bs);
 		
 	}
 }

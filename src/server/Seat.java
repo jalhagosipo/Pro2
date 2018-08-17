@@ -13,7 +13,9 @@ public class Seat implements ActionListener{
 	JLabel lb_id_value;
 	JPanel pan_seat;
 	
-	int num = 0;
+	int lh=0;
+	int lm=0;
+	int ls=0;
 	
 	int hour = 0; 
 	int minute = 0;
@@ -34,12 +36,13 @@ public class Seat implements ActionListener{
 		
 		SeatDAO dao= new SeatDAO();
 		int[] time=dao.GetTime(id);
-		
-		lb_time_value.setText(time[0]+ ":" + time[1] +":" + time[2]);
+		lh=time[0];
+		lm=time[1];
+		ls=time[2];
+		lb_time_value.setText(lh + ":" + lm +":" + ls);
 		timer = new javax.swing.Timer(1000, this); 
 		timer.setInitialDelay(0); 
 		timer.start(); 
-		
 
 		lb_id_value.setText(id);
 		pan_seat.setBackground(Color.green);
@@ -65,7 +68,20 @@ public class Seat implements ActionListener{
 			hour++;
 			minute=0;
 		}
-		
 		lb_cur_time_value.setText(hour + ":" + minute + ": " + second); 
+		
+		if(ls<=0) {
+			ls=59;
+			lm--;
+			if(lm<=0) {
+				lm=59;
+				lh--;
+			}else {
+				lm--;
+			}
+		}else {
+			ls--;
+		}
+		lb_time_value.setText(lh+ ":" + lm + ":"+ ls);
 	}
 }

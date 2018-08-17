@@ -27,10 +27,14 @@ public class ClientInfo extends JFrame implements ActionListener {
 	private JTextField textField_2;//남은시간
 	private JTextField textField_3;//사용시간
 	
+	int lh=0;
+	int lm=0;
+	int ls=0;
+	
 	int hour = 0; 
 	int minute = 0;
 	int second = 0;
-	JLabel lb_cur_time;
+	private JLabel lb_cur_time;
 
 	javax.swing.Timer timer; 
 	
@@ -41,30 +45,48 @@ public class ClientInfo extends JFrame implements ActionListener {
 	}
 
 	public void setLefttime(String text) {
-//		textField_2.setText(hour + ":" + minute + ":" + second);;
-		textField_2.setText(text);
+		String[] str=text.split(":");
+		lh=Integer.parseInt(str[0].trim());
+		lm=Integer.parseInt(str[1].trim());
+		ls=Integer.parseInt(str[2].trim());
+		textField_2.setText(lh+ ":" + lm + ":"+ ls);
 	}
 	public void SetTime(int hour, int minute, int second) {
 		this.hour=hour;
 		this.minute=minute;
 		this.second=second;
 	}
-	
-	//소멸자 호출시 timer 종료.
-	@Override
-	protected void finalize() throws Throwable {
-		timer.stop();
-		System.out.println("타이머 종료");
-		super.finalize();
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	////////////////////////////////////
+	@Override
+	public void actionPerformed(ActionEvent e) {		
+		textField_3.setText(lb_cur_time.getText());
+		//Test용 
+		Test=textField_3.getText();
+		String[] str=Test.split(":");
+		this.hour=Integer.parseInt(str[0].trim());
+		this.minute=Integer.parseInt(str[1].trim());
+		this.second=Integer.parseInt(str[2].trim());
+		textField_3.setText(hour +"시" + minute + "분" + (second+1) + "초");
+		
+		if(ls<=0) {
+			ls=59;
+			lm--;
+			if(lm<=0) {
+				lm=59;
+				lh--;
+			}else {
+				lm--;
+			}
+		}else {
+			ls--;
+		}
+		textField_2.setText(lh+ ":" + lm + ":"+ ls);
+	}
+	
 	public ClientInfo(int i, String cur_id, JLabel lb_cur_time) {
 		this.lb_cur_time=lb_cur_time;
 		
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 500,800);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -190,17 +212,5 @@ public class ClientInfo extends JFrame implements ActionListener {
 //			if(socket!=null) try { socket.close();} catch(IOException ex) {}
 		}
 		
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {		
-		textField_3.setText(lb_cur_time.getText()); 
-		//Test용 
-		Test=textField_3.getText();
-		String[] str=Test.split(":");
-		this.hour=Integer.parseInt(str[0].trim());
-		this.minute=Integer.parseInt(str[1].trim());
-		this.second=Integer.parseInt(str[2].trim());
-		System.out.println(hour +"시" + minute + "분" + second + "초");
 	}
 }

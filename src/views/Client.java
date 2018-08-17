@@ -26,24 +26,40 @@ public class Client extends JFrame implements ActionListener {
 	private JTextField textField_1;//이름
 	private JTextField textField_2;//남은시간
 	private JTextField textField_3;//사용시간
-	
+	javax.swing.Timer timer; 
+	int lh=0;
+	int lm=0;
+	int ls=0;
 	int hour = 0; 
 	int minute = 0;
 	int second = 0;
-
-	javax.swing.Timer timer; 
+	public int getLh() {
+		return lh;
+	}
+	public void setLh(int lh) {
+		this.lh = lh;
+	}
+	public int getLm() {
+		return lm;
+	}
+	public void setLm(int lm) {
+		this.lm = lm;
+	}
+	public int getLs() {
+		return ls;
+	}
+	public void setLs(int ls) {
+		this.ls = ls;
+	}
 	
-	public void setTextField_1(String text) {
+	public void SetName(String text) {
 		textField_1.setText(text);
 	}
-
-	public void setLefttime() {
-		textField_2.setText(hour + ":" + minute + ":" + second);;
-	}
 	public void SetTime(int hour, int minute, int second) {
-		this.hour=hour;
-		this.minute=minute;
-		this.second=second;
+		lh=hour;
+		lm=minute;
+		ls=second;
+		textField_2.setText(lh+ ":" + lm + ":"+ ls);
 	}
 
 	//소멸자 호출시 timer 종료.
@@ -99,38 +115,35 @@ public class Client extends JFrame implements ActionListener {
 		textField.setBounds(200, 150, 236, 38);
 		contentPane.add(textField);
 		textField.setColumns(10);
+		textField.setEnabled(false);
 		
 		textField_1 = new JTextField();
 		textField_1.setFont(new Font("Gulim", Font.PLAIN, 27));
 		textField_1.setBounds(200, 220, 236, 38);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
+		textField_1.setEnabled(false);
 		
 		textField_2 = new JTextField();
 		textField_2.setFont(new Font("Gulim", Font.PLAIN, 27));
 		textField_2.setBounds(200, 280, 236, 38);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
+		textField_2.setEnabled(false);
 		
 		textField_3 = new JTextField();
 		textField_3.setFont(new Font("Gulim", Font.PLAIN, 27));
 		textField_3.setBounds(200, 340, 236, 38);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
+		textField_3.setEnabled(false);
 		// 출력 필드 : 회원 ID, 회원 이름, 남은 시간, 사용 시간
 		
 		JButton btnFood = new JButton("먹거리선택");
-//		btnAddtime.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				Addtime at_Clientid=new Addtime();
-//				at_Clientid.run();
-//			}
-//		});
 		btnFood.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnFood.setBounds(155, 449, 175, 40);
 		contentPane.add(btnFood);
-		
+
 		JButton btnLogout = new JButton("\uC0AC\uC6A9 \uC885\uB8CC");
 		btnLogout.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnLogout.setBounds(40, 616, 175, 40);
@@ -147,20 +160,26 @@ public class Client extends JFrame implements ActionListener {
 		btnclose.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnclose.setBounds(250, 616, 175, 40);
 		contentPane.add(btnclose);
+		
+		ChooseSnackView csv= new ChooseSnackView(this,textField_2);
+		btnFood.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				csv.setVisible(true);
+			}
+		});
+		
 		// 버튼 : 충 전, 사용 종료 , 닫기'
 		this.setVisible(true);
-		//192.168.0.84
-		String host="192.168.0.84";
+//		192.168.0.84
+		String host="localhost";
 		int port=7777;
 		Socket socket=null;
-//		BufferedReader read=null;
 		PrintWriter pw=null;
 		
 		try {
 			socket=new Socket(host, port);
-			
 			pw=new PrintWriter(socket.getOutputStream());
-//			read= new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			
 			pw.println(i);
 			pw.flush();
@@ -174,7 +193,6 @@ public class Client extends JFrame implements ActionListener {
 			System.out.println(ex);
 		}finally {
 //			if(pw!=null) try { pw.close();} catch(Exception ex) {}
-//			if(read!=null) try { read.close();} catch(IOException ex) {}
 //			if(socket!=null) try { socket.close();} catch(IOException ex) {}
 		}
 		
@@ -191,7 +209,20 @@ public class Client extends JFrame implements ActionListener {
 			hour++;
 			minute=0;
 		}
-		
 		textField_3.setText(hour + ":" + minute + ": " + second); 
+		
+		if(ls<=0) {
+			ls=59;
+			lm--;
+			if(lm<=0) {
+				lm=59;
+				lh--;
+			}else {
+				lm--;
+			}
+		}else {
+			ls--;
+		}
+		textField_2.setText(lh+ ":" + lm + ":"+ ls);
 	}
 }
