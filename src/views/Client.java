@@ -28,8 +28,8 @@ public class Client extends JFrame implements ActionListener {
 	private JTextField textField_3;//사용시간
 	
 	int hour = 0; 
-	int min = 0;
-	int sec = 0;
+	int minute = 0;
+	int second = 0;
 
 	javax.swing.Timer timer; 
 	
@@ -37,10 +37,23 @@ public class Client extends JFrame implements ActionListener {
 		textField_1.setText(text);
 	}
 
-	public void setTextField_2(String text) {
-		textField_2.setText(text);;
+	public void setLefttime() {
+		textField_2.setText(hour + ":" + minute + ":" + second);;
+	}
+	public void SetTime(int hour, int minute, int second) {
+		this.hour=hour;
+		this.minute=minute;
+		this.second=second;
 	}
 
+	//소멸자 호출시 timer 종료.
+		@Override
+		protected void finalize() throws Throwable {
+			timer.stop();
+			System.out.println("타이머 종료");
+			super.finalize();
+		}
+	
 	/**
 	 * Create the frame.
 	 */
@@ -140,14 +153,14 @@ public class Client extends JFrame implements ActionListener {
 		String host="192.168.0.84";
 		int port=7777;
 		Socket socket=null;
-		BufferedReader read=null;
+//		BufferedReader read=null;
 		PrintWriter pw=null;
 		
 		try {
 			socket=new Socket(host, port);
 			
 			pw=new PrintWriter(socket.getOutputStream());
-			read= new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//			read= new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			
 			pw.println(i);
 			pw.flush();
@@ -169,16 +182,16 @@ public class Client extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		sec++; 		
-		if(sec>=60) {
-			min++;
-			sec=0;
+		second++; 		
+		if(second>=60) {
+			minute++;
+			second=0;
 		}
-		if(min>=60) {
+		if(minute>=60) {
 			hour++;
-			min=0;
+			minute=0;
 		}
 		
-		textField_3.setText(hour + ":" + min + ": " + sec); 
+		textField_3.setText(hour + ":" + minute + ": " + second); 
 	}
 }

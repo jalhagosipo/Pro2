@@ -28,24 +28,33 @@ public class ClientInfo extends JFrame implements ActionListener {
 	private JTextField textField_3;//사용시간
 	
 	int hour = 0; 
-	int min = 0;
-	int sec = 0;
+	int minute = 0;
+	int second = 0;
 	JLabel lb_cur_time;
 
 	javax.swing.Timer timer; 
+	
+	String Test="";
 	
 	public void setTextField_1(String text) {
 		textField_1.setText(text);
 	}
 
-	public void setTextField_2(String text) {
-		textField_2.setText(text);;
+	public void setLefttime(String text) {
+//		textField_2.setText(hour + ":" + minute + ":" + second);;
+		textField_2.setText(text);
+	}
+	public void SetTime(int hour, int minute, int second) {
+		this.hour=hour;
+		this.minute=minute;
+		this.second=second;
 	}
 	
 	//소멸자 호출시 timer 종료.
 	@Override
 	protected void finalize() throws Throwable {
 		timer.stop();
+		System.out.println("타이머 종료");
 		super.finalize();
 	}
 
@@ -148,43 +157,50 @@ public class ClientInfo extends JFrame implements ActionListener {
 		
 		//타이머 시작.
 		//메인뷰의 사용시간을 1초마다 불러오는 방식. 관련소스는 actionPerformed메소드에 있음.
-		timer = new javax.swing.Timer(1000, this); 
-		timer.setInitialDelay(0); 
-		timer.start(); 
+//		timer = new javax.swing.Timer(1000, this); 
+//		timer.setInitialDelay(0); 
+//		timer.start(); 
 		
 //		메인뷰에서 클릭시에는 로그인처리 하지 않도록 주석처리.(테스트용으로 남겨둠)
-//		String host="localhost";
-//		int port=7777;
-//		Socket socket=null;
-//		BufferedReader read=null;
-//		PrintWriter pw=null;
-//		
-//		try {
-//			socket=new Socket(host, port);
-//			
-//			pw=new PrintWriter(socket.getOutputStream());
-//			read= new BufferedReader(new InputStreamReader(socket.getInputStream()));
-//			
-//			pw.println(i);
-//			pw.flush();
-//			pw.println(cur_id);
-//			pw.flush();
-//			
-//			timer = new javax.swing.Timer(1000, this); 
-//			timer.setInitialDelay(0); 
-//			timer.start(); 
-//		}catch(IOException ex){
-//			System.out.println(ex);
-//		}finally {
-////			if(pw!=null) try { pw.close();} catch(Exception ex) {}
-////			if(read!=null) try { read.close();} catch(IOException ex) {}
-////			if(socket!=null) try { socket.close();} catch(IOException ex) {}
-//		}
+		String host="localhost";
+		int port=7777;
+		Socket socket=null;
+		BufferedReader read=null;
+		PrintWriter pw=null;
+		
+		try {
+			socket=new Socket(host, port);
+			
+			pw=new PrintWriter(socket.getOutputStream());
+			read= new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			
+			pw.println(i);
+			pw.flush();
+			pw.println(cur_id);
+			pw.flush();
+			
+			timer = new javax.swing.Timer(1000, this); 
+			timer.setInitialDelay(0); 
+			timer.start(); 
+		}catch(IOException ex){
+			System.out.println(ex);
+		}finally {
+//			if(pw!=null) try { pw.close();} catch(Exception ex) {}
+//			if(read!=null) try { read.close();} catch(IOException ex) {}
+//			if(socket!=null) try { socket.close();} catch(IOException ex) {}
+		}
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {		
 		textField_3.setText(lb_cur_time.getText()); 
+		//Test용 
+		Test=textField_3.getText();
+		String[] str=Test.split(":");
+		this.hour=Integer.parseInt(str[0].trim());
+		this.minute=Integer.parseInt(str[1].trim());
+		this.second=Integer.parseInt(str[2].trim());
+		System.out.println(hour +"시" + minute + "분" + second + "초");
 	}
 }

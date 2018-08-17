@@ -34,7 +34,6 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
 		System.out.println(cur_num+"번 PC 클릭함");
 		infoDAO dao= new infoDAO();
 		infoDTO dto= new infoDTO();
@@ -42,10 +41,9 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 		
 		ClientInfo ci= new ClientInfo(cur_num, cur_id_label.getText(),cur_time_label);
 		ci.setTextField_1(dto.getName());
-		ci.setTextField_2(dto.getLeftTime());
+		ci.setLefttime(dto.getLeftTime());
 		ci.setVisible(true);
 		
-//		System.out.println(cur_id_label.toString());
 	}
 
 	@Override
