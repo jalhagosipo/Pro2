@@ -60,11 +60,11 @@ public class chooseSnackView extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton buybtn = new JButton("\uAD6C\uB9E4");
-		buybtn.setBounds(464, 650, 107, 52);
+		buybtn.setBounds(462, 475, 107, 52);
 		contentPane.add(buybtn);
 		
 		JButton canclebtn = new JButton("\uCDE8\uC18C");
-		canclebtn.setBounds(621, 650, 107, 52);
+		canclebtn.setBounds(605, 475, 107, 52);
 		contentPane.add(canclebtn);
 		canclebtn.addActionListener(new ActionListener() {
 			@Override
@@ -90,12 +90,30 @@ public class chooseSnackView extends JFrame {
 		JComboBox[] cb_amount = new JComboBox[MAX];/*panel처럼객체생성해서해줘야함*/
 		
 		
-		
 		DefaultTableModel model = new DefaultTableModel(new Object[]{"productname","productprice","amount"},0);
 		table = new JTable(model);
 		JScrollPane sp_table = new JScrollPane(table);
-		sp_table.setBounds(48, 490, 389, 214);
+		sp_table.setBounds(48, 494, 389, 187);
 		contentPane.add(sp_table);
+		
+		JButton deleterow_btn = new JButton("\uC544\uC774\uD15C \uC0AD\uC81C");
+		deleterow_btn.setBounds(324, 691, 113, 30);
+		deleterow_btn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				model.removeRow(table.getSelectedRow());
+			}
+		});
+		contentPane.add(deleterow_btn);
+		
+		JLabel lblNewLabel = new JLabel("\uC7A5\uBC14\uAD6C\uB2C8");
+		lblNewLabel.setBounds(48, 475, 57, 15);
+		contentPane.add(lblNewLabel);
+		
+		JLabel label = new JLabel("\uBA54\uB274");
+		label.setBounds(12, 10, 35, 15);
+		contentPane.add(label);
 		
 		for(int i=0;i<MAX;i++) {
 			
@@ -128,6 +146,10 @@ public class chooseSnackView extends JFrame {
 			panel.add(pan_snack[i]);
 		}
 		
+		
+		
 		buybtn.addActionListener(new buysnack());
+		
+		
 	}
 }
