@@ -20,7 +20,14 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 public class Client extends JFrame implements ActionListener {
-
+	
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub
+		
+		super.dispose();
+	}
+	
 	private JPanel contentPane;
 	private JTextField textField;//id
 	private JTextField textField_1;//¿Ã∏ß
@@ -161,10 +168,11 @@ public class Client extends JFrame implements ActionListener {
 		btnclose.setBounds(250, 616, 175, 40);
 		contentPane.add(btnclose);
 		
-		ChooseSnackView csv= new ChooseSnackView(this,textField_2);
+		ChooseSnackView csv= new ChooseSnackView(this,textField,textField_2);
 		btnFood.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				csv.setVisible(true);
 			}
 		});

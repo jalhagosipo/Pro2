@@ -146,14 +146,17 @@ public class ClientInfo extends JFrame implements ActionListener {
 		textField_3.setColumns(10);
 		// 출력 필드 : 회원 ID, 회원 이름, 남은 시간, 사용 시간
 		
+		//충전버튼
+		AddtimeView atv=new AddtimeView(cur_id);
 		JButton btnAddtime = new JButton("\uCDA9 \uC804");
-//		btnAddtime.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				Addtime at_Clientid=new Addtime();
-//				at_Clientid.run();
-//			}
-//		});
+		btnAddtime.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				atv.setVisible(true);
+			}
+		});
+		
 		btnAddtime.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnAddtime.setBounds(155, 449, 175, 40);
 		contentPane.add(btnAddtime);

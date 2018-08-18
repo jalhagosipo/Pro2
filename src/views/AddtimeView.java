@@ -24,26 +24,26 @@ public class AddtimeView extends JFrame {
 	private JTextArea textShowaddtime;
 	
 
-	public void run() {
-		try {
-			AddtimeView frame = new AddtimeView();
-			frame.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	public void run() {
+//		try {
+//			AddtimeView frame = new AddtimeView();
+//			frame.setVisible(true);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		AddtimeView at=new AddtimeView();
-		at.run();
-	}
+//	public static void main(String[] args) {
+//		AddtimeView at=new AddtimeView();
+//		at.run();
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public AddtimeView() {
+	public AddtimeView(String id) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500,800);
 		contentPane = new JPanel();
@@ -62,6 +62,7 @@ public class AddtimeView extends JFrame {
 		textSearchid.setBounds(155, 42, 170, 38);
 		contentPane.add(textSearchid);
 		textSearchid.setColumns(10);
+		textSearchid.setText(id);
 		// 검색 필드 : 회원 ID
 		
 		JButton btnSearch = new JButton("\uAC80\uC0C9");

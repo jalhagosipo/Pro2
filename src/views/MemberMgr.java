@@ -113,6 +113,13 @@ public class MemberMgr extends JFrame {
 		btnudt.addActionListener(new Up(memlist));
 		btnsch.addActionListener(new showschMember(textFieldsch,memlist));
 		btndel.addActionListener(new Delmem(memlist));
+		btnadd.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		
 	}
 }

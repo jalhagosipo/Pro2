@@ -28,16 +28,14 @@ public class ChooseSnackView extends JFrame {
 	
 	private JPanel contentPane;
 	private JTable table;
-
 	javax.swing.Timer timer; 
 	private Client ci;
+	private JTextField tf_id;
 	private JTextField tf_lefttime;
 
-	/**
-	 * Create the frame.
-	 */
-	public ChooseSnackView(Client c, JTextField lefttime) {
+	public ChooseSnackView(Client c, JTextField id, JTextField lefttime) {
 		this.ci=c;
+		this.tf_id=id;
 		this.tf_lefttime=lefttime;
 		SelectProduct sp = new SelectProduct();
 		Vector<ProductDTO> arr = sp.SelectPro();
@@ -95,7 +93,7 @@ public class ChooseSnackView extends JFrame {
 				// TODO Auto-generated method stub
 				model.removeRow(table.getSelectedRow());
 			}
-		});
+		});//end addActionListener
 		contentPane.add(deleterow_btn);
 		
 		JLabel lblNewLabel = new JLabel("\uC7A5\uBC14\uAD6C\uB2C8");
@@ -107,7 +105,6 @@ public class ChooseSnackView extends JFrame {
 		contentPane.add(label);
 		
 		for(int i=0;i<MAX;i++) {
-			
 			pan_snack[i] =new JPanel();
 			pan_snack[i].setLayout(new GridLayout(1, 2));
 			
@@ -135,11 +132,7 @@ public class ChooseSnackView extends JFrame {
 			btn_tocart[i].addActionListener(new cart(lb_pname[i].getText(),lb_pprice[i].getText(),cb_amount[i],table));
 			
 			panel.add(pan_snack[i]);
-		}
-		System.out.println("¿©±äµÊ1");
-		buysnack bs= new buysnack(ci,table,tf_lefttime);
-		System.out.println("¿©±äµÊ2");
-		buybtn.addActionListener(bs);
-		
-	}
-}
+		}//end for
+		buybtn.addActionListener(new buysnack(ci,this,table,tf_id,tf_lefttime));
+	}//end constructors
+}//end class

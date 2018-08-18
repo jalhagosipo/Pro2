@@ -34,9 +34,9 @@ public class cart implements ActionListener{
 		// TODO Auto-generated method stub
 
 		DefaultTableModel tm = (DefaultTableModel) table.getModel();
-		
 		ProductDTO pd = new ProductDTO(name,price,amount.getSelectedIndex()+1);
 		tm.addRow(new Object[]{pd.getProName(),pd.getProPrice(),pd.getAmount()});
+		amount.setSelectedIndex(0);
 	}
 
 }
