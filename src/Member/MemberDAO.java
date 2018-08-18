@@ -28,7 +28,7 @@ public class MemberDAO {
 				
 				if(textFieldsch.trim().equals(""))
 				{
-					sql.append("  select * ");
+					sql.append("  select member_id, member_name,total_price,CONCAT(hour(left_time),':',minute(left_time),':',second(left_time)) as 'left_time',phone_number");
 					sql.append("  from mydb.pro2_member    ");
 					pstmt = conn.prepareStatement(sql.toString());
 				}
@@ -61,7 +61,7 @@ public class MemberDAO {
 					dto.setId(rs.getString("member_id"));
 					dto.setName(rs.getString("member_name"));
 					dto.setTotal_price(rs.getInt("total_price"));
-					dto.setLeft_time(rs.getDate("left_time"));
+					dto.setLeft_time(rs.getString("left_time"));
 					dto.setPhonenum(rs.getString("phone_number"));
 					arr.add(dto);
 				}
