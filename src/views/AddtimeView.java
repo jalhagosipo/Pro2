@@ -66,7 +66,7 @@ public class AddtimeView extends JFrame {
 		
 		JButton btnSearch = new JButton("\uAC80\uC0C9");
 		btnSearch.setFont(new Font("Gulim", Font.PLAIN, 27));
-		btnSearch.setBounds(347, 41, 86, 40);
+		btnSearch.setBounds(338, 41, 95, 40);
 		contentPane.add(btnSearch);
 		// 버튼 : 검색
 		
