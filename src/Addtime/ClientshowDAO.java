@@ -8,10 +8,7 @@ import java.sql.SQLException;
 import DB.DBconn;
 import views.AddtimeView;
 
-public class ClientshowDAO extends AddtimeView{
-	
-	
-	
+public class ClientshowDAO{	
 	public ClientshowDTO GetShow(String readtxt) {
 		
 		

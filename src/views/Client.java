@@ -21,11 +21,11 @@ import javax.swing.border.EmptyBorder;
 
 public class Client extends JFrame implements ActionListener {
 	
-	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
+	public void closeview() {
 		
-		super.dispose();
+		// TODO Auto-generated method stub
+//		dispose();
+		System.exit(0);
 	}
 	
 	private JPanel contentPane;
@@ -76,7 +76,6 @@ public class Client extends JFrame implements ActionListener {
 			System.out.println("타이머 종료");
 			super.finalize();
 		}
-	
 	/**
 	 * Create the frame.
 	 */
@@ -160,8 +159,8 @@ public class Client extends JFrame implements ActionListener {
 		btnclose.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
-				dispose();
+				//DB에 저장후 dipose하는 클래스메소드
+				closeview();
 			}
 		});
 		btnclose.setFont(new Font("Gulim", Font.PLAIN, 27));

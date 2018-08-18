@@ -147,12 +147,12 @@ public class ClientInfo extends JFrame implements ActionListener {
 		// 출력 필드 : 회원 ID, 회원 이름, 남은 시간, 사용 시간
 		
 		//충전버튼
-		AddtimeView atv=new AddtimeView(cur_id);
+		//Jlabel형식으로 받는생성자라 그냥 새로만들어서 넘겨줌
 		JButton btnAddtime = new JButton("\uCDA9 \uC804");
 		btnAddtime.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				AddtimeView atv=new AddtimeView(new JLabel(textField.getText()));
 				atv.setVisible(true);
 			}
 		});
@@ -170,7 +170,6 @@ public class ClientInfo extends JFrame implements ActionListener {
 		btnclose.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
 				dispose();
 			}
 		});

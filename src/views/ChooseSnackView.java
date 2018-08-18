@@ -41,7 +41,7 @@ public class ChooseSnackView extends JFrame {
 		Vector<ProductDTO> arr = sp.SelectPro();
 		int MAX = arr.size();
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 800, 770);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
