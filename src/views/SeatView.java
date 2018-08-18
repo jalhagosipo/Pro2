@@ -115,6 +115,7 @@ public class SeatView extends JFrame{
 		JButton btn2 =new JButton("犁绊包府");
 		btn2.addActionListener(env);
 		JButton btn3 =new JButton("面傈");
+		btn3.addActionListener(env);
 		JButton btn4 =new JButton("雀盔包府");
 		btn4.addActionListener(env);
 

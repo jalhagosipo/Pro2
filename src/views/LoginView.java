@@ -51,7 +51,7 @@ public class LoginView extends JFrame{
 		btn_signup.setBounds(75, 180, 100, 20);
 		
 		setBounds(100, 100, 260, 300);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 	}
 	

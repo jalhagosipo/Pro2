@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 
 import ClientInfo.infoDAO;
 import ClientInfo.infoDTO;
+import views.AddtimeView;
 import views.Client;
 import views.MemberMgr;
 import views.SalesManagerView;
@@ -23,6 +24,7 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 	//0814 cmd로 seatview 실행하려고 주석처리 밑에 액션리스너도 주석처리
 	SalesManagerView smv= new SalesManagerView();
 	MemberMgr mm= new MemberMgr();
+	AddtimeView atv = new AddtimeView();
 	StockManagementView sm = new StockManagementView();
 	public Main_GUI_Event() {
 	}
@@ -82,6 +84,9 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 		}
 		if(e.getActionCommand()=="재고관리") {
 			sm.setVisible(true);
+		}
+		if(e.getActionCommand()=="충전") {
+			atv.setVisible(true);
 		}
 		
 	}
