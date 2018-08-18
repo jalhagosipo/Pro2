@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Member.Delmem;
 import Member.Up;
-import Member.Upmem;
+
 import Member.showschMember;
 
 public class MemberMgr extends JFrame {
