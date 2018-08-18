@@ -8,19 +8,19 @@ public class MemberDTO {
 	private String pw;
 	private String phonenum;
 	private String name;
-	private  Date left_time;
+	private  String left_time;
 	private int total_price;
 	
-	public Date getLeft_time() {
+	public String getLeft_time() {
 		return left_time;
 	}
-	public void setLeft_time(Date left_time) {
+	public void setLeft_time(String left_time) {
 		this.left_time = left_time;
 	}
 	public int getTotal_price() {
 		return total_price;
 	}
-	public MemberDTO(int number, String id, String pw, String phonenum, String name, Date left_time, int total_price) {
+	public MemberDTO(int number, String id, String pw, String phonenum, String name, String left_time, int total_price) {
 		super();
 		this.number = number;
 		this.id = id;

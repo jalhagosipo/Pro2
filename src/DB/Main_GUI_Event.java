@@ -4,14 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import ClientInfo.infoDAO;
 import ClientInfo.infoDTO;
 import views.Client;
-import views.ClientInfo;
-import views.MemberMnagerTest;
+import views.MemberMgr;
 import views.SalesManagerView;
 import views.StockManagementView;
 
@@ -22,7 +22,7 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 	
 	//0814 cmd로 seatview 실행하려고 주석처리 밑에 액션리스너도 주석처리
 	SalesManagerView smv= new SalesManagerView();
-	MemberMnagerTest mm= new MemberMnagerTest();
+	MemberMgr mm= new MemberMgr();
 	StockManagementView sm = new StockManagementView();
 	public Main_GUI_Event() {
 	}
@@ -78,7 +78,7 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 			smv.setVisible(true);
 		}
 		if(e.getActionCommand()=="회원관리") {
-			mm.frame.setVisible(true);
+			mm.setVisible(true);
 		}
 		if(e.getActionCommand()=="재고관리") {
 			sm.setVisible(true);
