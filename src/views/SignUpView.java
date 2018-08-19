@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import ClientInfo.ForSignup;
+
 public class SignUpView extends JFrame {
 
 	private JPanel contentPane;
@@ -85,6 +87,7 @@ public class SignUpView extends JFrame {
 		
 		JButton btn_signup = new JButton("회원가입");
 		btn_signup.setBounds(69, 379, 97, 23);
+		btn_signup.addActionListener(new ForSignup(this,textField_name,textField_id,textField_pwd,textField_phone));
 		panel.add(btn_signup);
 		
 		JButton btn_cancel = new JButton("취소");

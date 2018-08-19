@@ -2,6 +2,9 @@ package views;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -9,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import ClientInfo.ForSignup;
 import Login.Login;
 
 public class LoginView extends JFrame{
@@ -50,6 +54,15 @@ public class LoginView extends JFrame{
 		pan_main.add(btn_signin);
 		btn_signin.setBounds(75, 150, 100, 20);
 		pan_main.add(btn_signup);
+		btn_signup.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				SignUpView suv = new SignUpView();
+				suv.setVisible(true);
+			}
+		});
 		btn_signup.setBounds(75, 180, 100, 20);
 		
 		setBounds(100, 100, 260, 300);

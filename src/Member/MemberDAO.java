@@ -22,10 +22,7 @@ public class MemberDAO {
 			try {
 				conn = dbconn.getConnection();
 				StringBuilder sql = new StringBuilder();
-
-				
-				
-				
+			
 				if(textFieldsch.trim().equals(""))
 				{
 					sql.append("  select member_id, member_name,total_price,CONCAT(hour(left_time),':',minute(left_time),':',second(left_time)) as 'left_time',phone_number");
