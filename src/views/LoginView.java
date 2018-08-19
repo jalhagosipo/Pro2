@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import Login.Login;
@@ -32,7 +33,7 @@ public class LoginView extends JFrame{
 		tf_id.setFont(new Font("",1, 15));
 		JLabel lb_pw= new JLabel("PW");
 		lb_pw.setFont(new Font("",1, 15));
-		JTextField tf_pw = new JTextField();
+		JPasswordField tf_pw = new JPasswordField();
 		tf_pw.setFont(new Font("",1, 15));
 		pan_main.add(lb_id);
 		lb_id.setBounds(50, 50, 100, 20);
