@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import product.DelProduct;
+import product.ProductUpdate;
 import product.showschProduct;
 
 public class StockManagementView extends JFrame {
@@ -122,5 +123,6 @@ public class StockManagementView extends JFrame {
 		
 		button_search.addActionListener(new showschProduct(textField, table));
 		button_delete.addActionListener(new DelProduct(table));
+		button_update.addActionListener(new ProductUpdate(table));
 	}
 }
