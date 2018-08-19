@@ -1,6 +1,5 @@
 package views;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import product.AddProduct;
 
 public class AddProductView extends JFrame {
 
@@ -21,7 +22,7 @@ public class AddProductView extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -32,12 +33,13 @@ public class AddProductView extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public AddProductView() {
+	public AddProductView(String _name, String _price, int _stock) {
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 200, 300);
 		contentPane = new JPanel();
@@ -72,9 +74,25 @@ public class AddProductView extends JFrame {
 		contentPane.add(tf_stock);
 		tf_stock.setColumns(10);
 		
-		JButton button_add = new JButton("\uCD94\uAC00");
+		tf_proName.setText(_name);
+		tf_price.setText(_price);
+		tf_stock.setText(""+_stock);
+		
+		JButton button_add = new JButton("∞°¿‘");
 		button_add.setBounds(12, 217, 71, 23);
 		contentPane.add(button_add);
+		button_add.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				AddProduct ap = new AddProduct();
+				ap.insertProduct(tf_proName.getText()
+						,tf_price.getText()
+						,Integer.parseInt(tf_stock.getText()));
+				
+			}
+		});
 		
 		JButton button_close = new JButton("\uB2EB\uAE30");
 		button_close.addActionListener(new ActionListener() {
