@@ -62,27 +62,6 @@ public class ClientInfo extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {	
 		textField_3.setText(lb_cur_time.getText());
 		textField_2.setText(lb_time.getText());
-		//Test용 
-//		Test=textField_3.getText();
-//		String[] str=Test.split(":");
-//		this.hour=Integer.parseInt(str[0].trim());
-//		this.minute=Integer.parseInt(str[1].trim());
-//		this.second=Integer.parseInt(str[2].trim());
-//		textField_3.setText(hour +"시" + minute + "분" + (second+1) + "초");
-		
-//		if(ls<=0) {
-//			ls=59;
-//			lm--;
-//			if(lm<=0) {
-//				lm=59;
-//				lh--;
-//			}else {
-//				lm--;
-//			}
-//		}else {
-//			ls--;
-//		}
-//		textField_2.setText(lh+ ":" + lm + ":"+ ls);
 	}
 	
 	public ClientInfo(int i, String cur_id, JLabel lb_cur_time, JLabel lb_time) {
