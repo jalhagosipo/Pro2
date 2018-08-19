@@ -158,6 +158,6 @@ public class ChooseSnackView extends JFrame {
 			}
 		});//end addActionListener
 		
-		buybtn.addActionListener(new buysnack(ci,this,table,tf_id,tf_lefttime,textShowPrice));
+		buybtn.addActionListener(new buysnack(buy_arr,ci,this,table,tf_id,tf_lefttime,textShowPrice));
 	}//end constructors
 }//end class

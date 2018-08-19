@@ -3,6 +3,7 @@ package snackChoose;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -10,6 +11,8 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import ClientInfo.UpdateTimeDAO;
+import product.ProductDTO;
+import product.UpdateProduct;
 import views.ChooseSnackView;
 import views.Client;
 
@@ -21,12 +24,13 @@ public class buysnack implements ActionListener{
 	JTextField tf_id;
 	DefaultTableModel tm;
 	JTextField textShowPrice;
-
+	Vector<ProductDTO> buy_arr;
+	
 	int lh=0;
 	int lm=0;
 	int ls=0;
 	int have_m=0;
-	public buysnack(Client c, ChooseSnackView csv, JTable table,JTextField tf_id,JTextField tf_lefttime,JTextField textShowPrice){
+	public buysnack(Vector<ProductDTO> buy_arr,Client c, ChooseSnackView csv, JTable table,JTextField tf_id,JTextField tf_lefttime,JTextField textShowPrice){
 		this.ci=c;
 		this.csv=csv;
 		this.table=table;
@@ -57,7 +61,7 @@ public class buysnack implements ActionListener{
 			String time= ci.getLh()+ ":" + ci.getLm() + ":" + ci.getLs();
 			UpdateTimeDAO dao=new UpdateTimeDAO();
 			dao.UpdateTime(tf_id.getText(), time);
-
+			
 			int row = tm.getRowCount();
 
 			for(int i=0;i<row;i++)
