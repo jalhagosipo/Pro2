@@ -43,6 +43,9 @@ public class Client extends JFrame implements ActionListener {
 	int hour = 0; 
 	int minute = 0;
 	int second = 0;
+	
+	ChooseSnackView csv;
+	
 	public int getLh() {
 		return lh;
 	}
@@ -170,6 +173,7 @@ public class Client extends JFrame implements ActionListener {
 		btnclose.setBounds(250, 616, 175, 40);
 		contentPane.add(btnclose);
 		
+		//ChooseSnackView를 여기서 선언하면 먹거리선택할때 로그아웃됨 이유모르겠음
 		ChooseSnackView csv= new ChooseSnackView(this,textField,textField_2);
 		btnFood.addActionListener(new ActionListener() {
 			@Override

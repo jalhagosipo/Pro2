@@ -42,8 +42,6 @@ public class ClientInfo extends JFrame implements ActionListener {
 	
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub\
-		System.out.println("닫힘");
 		timer.stop();
 		super.dispose();
 	}
@@ -120,7 +118,6 @@ public class ClientInfo extends JFrame implements ActionListener {
 		textField_2.setBounds(200, 280, 236, 38);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
-		
 		textField_3 = new JTextField();
 		textField_3.setFont(new Font("Gulim", Font.PLAIN, 27));
 		textField_3.setBounds(200, 340, 236, 38);
@@ -166,35 +163,5 @@ public class ClientInfo extends JFrame implements ActionListener {
 		timer = new javax.swing.Timer(1000, this); 
 		timer.setInitialDelay(0); 
 		timer.start(); 
-		
-//		메인뷰에서 클릭시에는 로그인처리 하지 않도록 주석처리.(테스트용으로 남겨둠)
-//		String host="localhost";
-//		int port=7777;
-//		Socket socket=null;
-//		BufferedReader read=null;
-//		PrintWriter pw=null;
-//		
-//		try {
-//			socket=new Socket(host, port);
-//			
-//			pw=new PrintWriter(socket.getOutputStream());
-//			read= new BufferedReader(new InputStreamReader(socket.getInputStream()));
-//			
-//			pw.println(i);
-//			pw.flush();
-//			pw.println(cur_id);
-//			pw.flush();
-//			
-//			timer = new javax.swing.Timer(1000, this); 
-//			timer.setInitialDelay(0); 
-//			timer.start(); 
-//		}catch(IOException ex){
-//			System.out.println(ex);
-//		}finally {
-////			if(pw!=null) try { pw.close();} catch(Exception ex) {}
-////			if(read!=null) try { read.close();} catch(IOException ex) {}
-////			if(socket!=null) try { socket.close();} catch(IOException ex) {}
-//		}
-		
 	}
 }
