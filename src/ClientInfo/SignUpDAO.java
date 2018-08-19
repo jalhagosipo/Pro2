@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import DB.DBconn;
 
-public class SignUp{
+public class SignUpDAO{
 	
 	public boolean insertAccount(SignUpDTO dto) {
 		Connection conn = null;
