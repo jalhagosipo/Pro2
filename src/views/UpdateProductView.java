@@ -1,6 +1,5 @@
 package views;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import product.UpdateProduct;
+
 public class UpdateProductView extends JFrame {
 
 	private JPanel contentPane;
@@ -18,10 +19,11 @@ public class UpdateProductView extends JFrame {
 	private JTextField tf_price;
 	private JTextField tf_stock;
 
+	private String oldName;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -32,12 +34,14 @@ public class UpdateProductView extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public UpdateProductView() {
+	public UpdateProductView(String _name, String _price, int _stock) {
+		this.oldName=_name;
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 200, 300);
 		contentPane = new JPanel();
@@ -72,9 +76,26 @@ public class UpdateProductView extends JFrame {
 		contentPane.add(tf_stock);
 		tf_stock.setColumns(10);
 		
+		tf_proName.setText(_name);
+		tf_price.setText(_price);
+		tf_stock.setText(""+_stock);
+		
 		JButton button_update = new JButton("\uC218\uC815");
 		button_update.setBounds(12, 217, 71, 23);
 		contentPane.add(button_update);
+		button_update.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				UpdateProduct up = new UpdateProduct();
+				up.updateProduct(tf_proName.getText()
+						,tf_price.getText()
+						,Integer.parseInt(tf_stock.getText())
+						,oldName);
+				
+			}
+		});
 		
 		JButton button_close = new JButton("\uB2EB\uAE30");
 		button_close.addActionListener(new ActionListener() {
@@ -86,3 +107,4 @@ public class UpdateProductView extends JFrame {
 		contentPane.add(button_close);
 	}
 }
+
