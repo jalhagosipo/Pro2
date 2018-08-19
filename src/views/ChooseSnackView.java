@@ -154,7 +154,6 @@ public class ChooseSnackView extends JFrame {
 				textShowPrice.setText(result+" Ка");
 				buy_arr.remove(table.getSelectedRow());
 				model.removeRow(table.getSelectedRow());
-//				textShowPrice.setText();
 			}
 		});//end addActionListener
 		

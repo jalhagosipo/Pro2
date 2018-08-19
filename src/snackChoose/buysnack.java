@@ -3,6 +3,7 @@ package snackChoose;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
@@ -12,7 +13,6 @@ import javax.swing.table.DefaultTableModel;
 
 import ClientInfo.UpdateTimeDAO;
 import product.ProductDTO;
-import product.UpdateProduct;
 import views.ChooseSnackView;
 import views.Client;
 
@@ -35,6 +35,7 @@ public class buysnack implements ActionListener{
 		this.csv=csv;
 		this.table=table;
 		this.tf_id = tf_id;
+		this.buy_arr=buy_arr;
 		this.tf_lefttime = tf_lefttime;
 		this.textShowPrice = textShowPrice;
 		tm = (DefaultTableModel) table.getModel();
@@ -62,8 +63,18 @@ public class buysnack implements ActionListener{
 			UpdateTimeDAO dao=new UpdateTimeDAO();
 			dao.UpdateTime(tf_id.getText(), time);
 			
+			
+			Iterator<ProductDTO> it = buy_arr.iterator();
+			while(it.hasNext())
+			{
+				ProductDTO pd = it.next();
+				snackChooseUpdateService sus = new snackChooseUpdateService(pd.getProName(), pd.getProPrice(), pd.getAmount());
+				sus.stockchange();
+			}
+			
+			
+			
 			int row = tm.getRowCount();
-
 			for(int i=0;i<row;i++)
 				tm.removeRow(0);
 			JOptionPane.showMessageDialog(null, total+"분 "+" 구매 완료");
