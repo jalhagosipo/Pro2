@@ -17,33 +17,23 @@ import Addtime.Addtime;
 import Addtime.Cilentshow;
 
 public class AddtimeView extends JFrame {
-
+	
 	public JPanel contentPane;
 	public JTextField textSearchid;
 	public JTextField textShowname;
 	private JTextArea textShowaddtime;
 	private JLabel getid;
+	
+	private Client client;
 
-//	public void run() {
-//		try {
-//			AddtimeView frame = new AddtimeView();
-//			frame.setVisible(true);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		AddtimeView at=new AddtimeView();
-//		at.run();
-//	}
 	@Override
 	public void setVisible(boolean b) {
 		// TODO Auto-generated method stub
 		textSearchid.setText(getid.getText());
 		super.setVisible(b);
+	}
+	public void setClient(Client client) {
+		this.client=client;
 	}
 	
 	public AddtimeView(JLabel getid) {

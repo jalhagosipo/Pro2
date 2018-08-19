@@ -57,7 +57,8 @@ public class ClientInfo extends JFrame implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {	
+	public void actionPerformed(ActionEvent e) {
+		//SeatView에서 해당좌석의 시간을 불러온다.
 		textField_3.setText(lb_cur_time.getText());
 		textField_2.setText(lb_time.getText());
 	}

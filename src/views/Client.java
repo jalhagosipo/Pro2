@@ -24,6 +24,10 @@ import ClientInfo.UpdateTimeDAO;
 
 public class Client extends JFrame implements ActionListener {
 	
+	public static void main(String[] args) {
+		Client c= new Client(0,"a");
+	}
+	
 	public void closeview() {
 		// TODO Auto-generated method stub
 		UpdateTimeDAO dao= new UpdateTimeDAO();
@@ -75,16 +79,6 @@ public class Client extends JFrame implements ActionListener {
 		textField_2.setText(lh+ ":" + lm + ":"+ ls);
 	}
 
-	//소멸자 호출시 timer 종료.
-		@Override
-		protected void finalize() throws Throwable {
-			timer.stop();
-			System.out.println("타이머 종료");
-			super.finalize();
-		}
-	/**
-	 * Create the frame.
-	 */
 	////////////////////////////////////
 	public Client(int i, String cur_id) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
