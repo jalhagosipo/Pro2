@@ -1,10 +1,10 @@
+
+
 package views;
 
-import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
@@ -32,13 +32,16 @@ public class ChooseSnackView extends JFrame {
 	private Client ci;
 	private JTextField tf_id;
 	private JTextField tf_lefttime;
-
+	private JTextField textShowPrice;
+	
+	
 	public ChooseSnackView(Client c, JTextField id, JTextField lefttime) {
 		this.ci=c;
 		this.tf_id=id;
 		this.tf_lefttime=lefttime;
 		SelectProduct sp = new SelectProduct();
 		Vector<ProductDTO> arr = sp.SelectPro();
+		Vector<ProductDTO> buy_arr = new Vector<>();
 		int MAX = arr.size();
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -49,11 +52,11 @@ public class ChooseSnackView extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton buybtn = new JButton("\uAD6C\uB9E4");
-		buybtn.setBounds(462, 475, 107, 52);
+		buybtn.setBounds(462, 494, 107, 52);
 		contentPane.add(buybtn);
 		
 		JButton canclebtn = new JButton("\uCDE8\uC18C");
-		canclebtn.setBounds(605, 475, 107, 52);
+		canclebtn.setBounds(605, 494, 107, 52);
 		contentPane.add(canclebtn);
 		canclebtn.addActionListener(new ActionListener() {
 			@Override
@@ -87,13 +90,7 @@ public class ChooseSnackView extends JFrame {
 		
 		JButton deleterow_btn = new JButton("\uC544\uC774\uD15C \uC0AD\uC81C");
 		deleterow_btn.setBounds(324, 691, 113, 30);
-		deleterow_btn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				model.removeRow(table.getSelectedRow());
-			}
-		});//end addActionListener
+		
 		contentPane.add(deleterow_btn);
 		
 		JLabel lblNewLabel = new JLabel("\uC7A5\uBC14\uAD6C\uB2C8");
@@ -103,6 +100,17 @@ public class ChooseSnackView extends JFrame {
 		JLabel label = new JLabel("\uBA54\uB274");
 		label.setBounds(12, 10, 35, 15);
 		contentPane.add(label);
+		
+
+		textShowPrice = new JTextField();
+		textShowPrice.setBounds(462, 612, 250, 42);
+		textShowPrice.setEditable(false);
+		contentPane.add(textShowPrice);
+		textShowPrice.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("\uAE08\uC561");
+		lblNewLabel_1.setBounds(462, 574, 43, 28);
+		contentPane.add(lblNewLabel_1);
 		
 		for(int i=0;i<MAX;i++) {
 			pan_snack[i] =new JPanel();
@@ -129,10 +137,27 @@ public class ChooseSnackView extends JFrame {
 			pan_snack[i].add(pan_left[i]);
 			pan_snack[i].add(pan_right[i]);
 			
-			btn_tocart[i].addActionListener(new cart(lb_pname[i].getText(),lb_pprice[i].getText(),cb_amount[i],table));
+			btn_tocart[i].addActionListener(new cart(buy_arr,lb_pname[i].getText(),lb_pprice[i].getText(),cb_amount[i],table,textShowPrice));
 			
 			panel.add(pan_snack[i]);
 		}//end for
-		buybtn.addActionListener(new buysnack(ci,this,table,tf_id,tf_lefttime));
+		
+		deleterow_btn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				
+				int m= Integer.parseInt(model.getValueAt(table.getSelectedRow(), 1).toString().substring(3, 5));
+				int cnt= Integer.parseInt(model.getValueAt(table.getSelectedRow(), 2).toString());
+				int result = Integer.parseInt(textShowPrice.getText().substring(0, textShowPrice.getText().length()-1).trim()) - (m*cnt);
+				textShowPrice.setText(result+" Ка");
+				buy_arr.remove(table.getSelectedRow());
+				model.removeRow(table.getSelectedRow());
+//				textShowPrice.setText();
+			}
+		});//end addActionListener
+		
+		buybtn.addActionListener(new buysnack(ci,this,table,tf_id,tf_lefttime,textShowPrice));
 	}//end constructors
 }//end class

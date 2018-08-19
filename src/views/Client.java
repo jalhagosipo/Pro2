@@ -182,7 +182,7 @@ public class Client extends JFrame implements ActionListener {
 		// 버튼 : 충 전, 사용 종료 , 닫기'
 		this.setVisible(true);
 //		192.168.0.84
-		String host="192.168.29.187";
+		String host="localhost";
 		int port=7777;
 		Socket socket=null;
 		PrintWriter pw=null;
