@@ -52,10 +52,12 @@ public class Seat implements ActionListener{
 		pan_seat.setBackground(Color.green);
 	}
 	public void SetEnd() {
-//		timer.stop();
+		timer.stop();
 		lb_time_value.setText("00:00:00");
 		lb_cur_time_value.setText("00:00:00");
-
+		hour = 0; 
+		minute = 0;
+		second = 0;
 		lb_id_value.setText("·Î±×¾Æ¿ô");
 		pan_seat.setBackground(Color.GRAY);
 

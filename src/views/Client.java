@@ -14,6 +14,7 @@ import java.net.Socket;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -185,19 +186,30 @@ public class Client extends JFrame implements ActionListener {
 		int port=7777;
 		Socket socket=null;
 		PrintWriter pw=null;
+		BufferedReader in=null;
 		
 		try {
 			socket=new Socket(host, port);
 			pw=new PrintWriter(socket.getOutputStream());
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			
 			pw.println(i);
 			pw.flush();
 			pw.println(cur_id);
 			pw.flush();
 			
-			timer = new javax.swing.Timer(1000, this); 
-			timer.setInitialDelay(0); 
-			timer.start(); 
+			String result;
+			result=in.readLine();
+			if(result.equals("1")) {
+				timer = new javax.swing.Timer(1000, this); 
+				timer.setInitialDelay(0); 
+				timer.start();
+			}else {
+				JOptionPane.showMessageDialog(null, "이미 접속중인 아이디입니다.");
+				LoginView lv = new LoginView();
+				lv.setVisible(true);
+				dispose();
+			}
 		}catch(IOException ex){
 			System.out.println(ex);
 		}finally {

@@ -97,7 +97,7 @@ public class SeatView extends JFrame{
 
 			pan_seat[i].add(pan_left[i]);
 			pan_seat[i].add(pan_right[i]);
-			pan_seat[i].addMouseListener((MouseListener) new Main_GUI_Event(i,lb_id_value[i],lb_cur_time_value[i]));
+			pan_seat[i].addMouseListener((MouseListener) new Main_GUI_Event(i,lb_id_value[i],lb_cur_time_value[i],lb_time_value[i]));
 
 			pan_main_seat.add(pan_seat[i]);
 		}
@@ -132,8 +132,7 @@ public class SeatView extends JFrame{
 		jf_main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf_main.setVisible(true);
 		
-		lb_id_value[1].setText("a");
-		lb_id_value[2].setText("a");
+//		lb_id_value[1].setText("a");
 	}
 
 	public Seat GetCom(int i) {
