@@ -17,14 +17,19 @@ import Addtime.Addtime;
 import Addtime.Cilentshow;
 
 public class AddtimeView extends JFrame {
-	
-	public JPanel contentPane;
-	public JTextField textSearchid;
-	public JTextField textShowname;
+	private JPanel contentPane;
+	private JTextField textSearchid;
+	private JTextField textShowname;
 	private JTextArea textShowaddtime;
 	private JLabel getid;
+	private JButton btnAddtime1;
+	private JButton btnAddtime2;
+	private JButton btnAddtime3;
+	private JButton btnAddtime4;
+	private JButton btnAddtime5;
+	private JButton btnAddtime6;
 	
-	private Client client;
+	private ClientInfo clientinfo;
 
 	@Override
 	public void setVisible(boolean b) {
@@ -32,9 +37,18 @@ public class AddtimeView extends JFrame {
 		textSearchid.setText(getid.getText());
 		super.setVisible(b);
 	}
-	public void setClient(Client client) {
-		this.client=client;
+	public void setClientInfo(ClientInfo clientinfo) {
+		this.clientinfo=clientinfo;
 	}
+	public void SetBtn() {
+		btnAddtime1.addActionListener(new Addtime(clientinfo, textSearchid,textShowaddtime));
+		btnAddtime2.addActionListener(new Addtime(clientinfo, textSearchid,textShowaddtime));
+		btnAddtime3.addActionListener(new Addtime(clientinfo, textSearchid,textShowaddtime));
+		btnAddtime4.addActionListener(new Addtime(clientinfo, textSearchid,textShowaddtime));
+		btnAddtime5.addActionListener(new Addtime(clientinfo, textSearchid,textShowaddtime));
+		btnAddtime6.addActionListener(new Addtime(clientinfo, textSearchid,textShowaddtime));
+	}
+	
 	
 	public AddtimeView(JLabel getid) {
 		this.getid=getid;
@@ -73,32 +87,32 @@ public class AddtimeView extends JFrame {
 		textShowname.setColumns(10);
 		// 출력 필드 : 회원 이름
 		
-		JButton btnAddtime1 = new JButton("1 \uC2DC\uAC04");
+		btnAddtime1 = new JButton("1 \uC2DC\uAC04");
 		btnAddtime1.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnAddtime1.setBounds(30, 200, 175, 40);
 		contentPane.add(btnAddtime1);
 		
-		JButton btnAddtime2 = new JButton("2 \uC2DC\uAC04");
+		btnAddtime2 = new JButton("2 \uC2DC\uAC04");
 		btnAddtime2.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnAddtime2.setBounds(257, 200, 175, 40);
 		contentPane.add(btnAddtime2);
 		
-		JButton btnAddtime3 = new JButton("3 \uC2DC\uAC04");
+		btnAddtime3 = new JButton("3 \uC2DC\uAC04");
 		btnAddtime3.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnAddtime3.setBounds(30, 280, 175, 40);
 		contentPane.add(btnAddtime3);
 		
-		JButton btnAddtime4 = new JButton("5 \uC2DC\uAC04");
+		btnAddtime4 = new JButton("5 \uC2DC\uAC04");
 		btnAddtime4.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnAddtime4.setBounds(257, 280, 175, 40);
 		contentPane.add(btnAddtime4);
 		
-		JButton btnAddtime5 = new JButton("10 \uC2DC\uAC04");
+		btnAddtime5 = new JButton("10 \uC2DC\uAC04");
 		btnAddtime5.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnAddtime5.setBounds(30, 360, 175, 40);
 		contentPane.add(btnAddtime5);
 		
-		JButton btnAddtime6 = new JButton("24 \uC2DC\uAC04");
+		btnAddtime6 = new JButton("24 \uC2DC\uAC04");
 		btnAddtime6.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnAddtime6.setBounds(257, 360, 175, 40);
 		contentPane.add(btnAddtime6);
@@ -118,7 +132,6 @@ public class AddtimeView extends JFrame {
 		textShowaddtime.setColumns(10);
 	
 		
-		
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -126,13 +139,5 @@ public class AddtimeView extends JFrame {
 		});
 		
 		btnSearch.addActionListener(new Cilentshow(textSearchid,textShowname));
-		btnAddtime1.addActionListener(new Addtime(textSearchid,textShowaddtime));
-		btnAddtime2.addActionListener(new Addtime(textSearchid,textShowaddtime));
-		btnAddtime3.addActionListener(new Addtime(textSearchid,textShowaddtime));
-		btnAddtime4.addActionListener(new Addtime(textSearchid,textShowaddtime));
-		btnAddtime5.addActionListener(new Addtime(textSearchid,textShowaddtime));
-		btnAddtime6.addActionListener(new Addtime(textSearchid,textShowaddtime));
-			
-		
 	}
 }

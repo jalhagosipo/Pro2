@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 
 import ClientInfo.infoDAO;
 import ClientInfo.infoDTO;
+import server.Seat;
 import views.AddtimeView;
 import views.Client;
 import views.ClientInfo;
@@ -22,6 +23,7 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 	private JLabel cur_id_label;
 	private JLabel cur_time_label;
 	private JLabel time_label;
+	private Seat s;
 	
 	//0814 cmd로 seatview 실행하려고 주석처리 밑에 액션리스너도 주석처리
 	SalesManagerView smv= new SalesManagerView();
@@ -30,11 +32,12 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 	StockManagementView sm = new StockManagementView();
 	public Main_GUI_Event() {
 	}
-	public Main_GUI_Event(int i, JLabel cur_id_label, JLabel cur_time_label, JLabel time_label) {
+	public Main_GUI_Event(int i, Seat s,JLabel cur_id_label, JLabel cur_time_label, JLabel time_label) {
 		this.cur_num=i;
 		this.cur_id_label=cur_id_label;
 		this.cur_time_label=cur_time_label;
 		this.time_label=time_label;
+		this.s=s;
 	}
 
 	@Override
@@ -45,35 +48,20 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 		dto = dao.GetInfo(cur_id_label.getText());
 		
 //		Client ci= new Client(cur_num, cur_id_label.getText());
-		ClientInfo ci= new ClientInfo(cur_num, cur_id_label.getText(),cur_time_label,time_label);
+		ClientInfo ci= new ClientInfo(cur_num, s, cur_id_label.getText(),cur_time_label,time_label);
 		ci.SetName(dto.getName());
 		ci.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
 		ci.setVisible(true);
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public void mousePressed(MouseEvent e) {}
 	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public void mouseReleased(MouseEvent e) {}
 	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public void mouseEntered(MouseEvent e) {}
 	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseExited(MouseEvent e) {}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
