@@ -186,7 +186,7 @@ public class ClientInfo extends JFrame implements ActionListener {
 //		timer.start(); 
 		
 //		메인뷰에서 클릭시에는 로그인처리 하지 않도록 주석처리.(테스트용으로 남겨둠)
-		String host="localhost";
+		String host="61.98.148.230";
 		int port=7777;
 		Socket socket=null;
 		BufferedReader read=null;

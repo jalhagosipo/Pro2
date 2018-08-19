@@ -14,6 +14,7 @@ import java.net.Socket;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -83,7 +84,7 @@ public class Client extends JFrame implements ActionListener {
 	 */
 	////////////////////////////////////
 	public Client(int i, String cur_id) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 500,800);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -181,23 +182,41 @@ public class Client extends JFrame implements ActionListener {
 		// 버튼 : 충 전, 사용 종료 , 닫기'
 		this.setVisible(true);
 //		192.168.0.84
-		String host="localhost";
+		String host="192.168.29.187";
 		int port=7777;
 		Socket socket=null;
 		PrintWriter pw=null;
-		
+		BufferedReader in =null;
 		try {
 			socket=new Socket(host, port);
 			pw=new PrintWriter(socket.getOutputStream());
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			
 			pw.println(i);
 			pw.flush();
-			pw.println(cur_id);
-			pw.flush();
 			
-			timer = new javax.swing.Timer(1000, this); 
-			timer.setInitialDelay(0); 
-			timer.start(); 
+			String rs1=null;
+			String rs2=null;
+			rs1=in.readLine();
+			if(rs1.equals("1")) {
+				pw.println(cur_id);
+				pw.flush();
+				rs2=in.readLine();
+				if(rs2.equals("1")) {
+					timer = new javax.swing.Timer(1000, this); 
+					timer.setInitialDelay(0); 
+					timer.start();
+				}else {
+					JOptionPane.showMessageDialog(null, "이미 접속중인 아이디입니다.");
+				}
+			}else {
+				JOptionPane.showMessageDialog(null, "사용중인 PC입니다.");	
+			}
+			if(!rs1.equals("1") || !rs2.equals("1")) {
+				LoginView lv= new LoginView();
+				lv.setVisible(true);
+				dispose();
+			}
 		}catch(IOException ex){
 			System.out.println(ex);
 		}finally {
