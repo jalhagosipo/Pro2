@@ -25,6 +25,7 @@ public class buysnack implements ActionListener{
 	DefaultTableModel tm;
 	JTextField textShowPrice;
 	Vector<ProductDTO> buy_arr;
+	boolean possible=false;
 	
 	int lh=0;
 	int lm=0;
@@ -67,18 +68,24 @@ public class buysnack implements ActionListener{
 			Iterator<ProductDTO> it = buy_arr.iterator();
 			while(it.hasNext())
 			{
+				possible=false;
 				ProductDTO pd = it.next();
 				snackChooseUpdateService sus = new snackChooseUpdateService(pd.getProName(), pd.getProPrice(), pd.getAmount());
-				sus.stockchange();
+				possible = sus.stockchange();
 			}
 			
 			
-			
-			int row = tm.getRowCount();
-			for(int i=0;i<row;i++)
-				tm.removeRow(0);
-			JOptionPane.showMessageDialog(null, total+"분 "+" 구매 완료");
-			csv.dispose();
+			if(possible)
+			{
+				int row = tm.getRowCount();
+				for(int i=0;i<row;i++)
+					tm.removeRow(0);
+				JOptionPane.showMessageDialog(null, total+"분 "+" 구매 완료");
+				csv.dispose();
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "죄송합니다ㅠㅠ 재고가부족합니다.");
+			}
 		}
 		else {
 			JOptionPane.showMessageDialog(null, "보유하신 시간이 부족합니다.");
