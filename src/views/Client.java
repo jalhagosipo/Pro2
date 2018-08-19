@@ -19,12 +19,14 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import ClientInfo.UpdateTimeDAO;
+
 public class Client extends JFrame implements ActionListener {
 	
 	public void closeview() {
-		
 		// TODO Auto-generated method stub
-//		dispose();
+		UpdateTimeDAO dao= new UpdateTimeDAO();
+		dao.UpdateTime(textField.getText(), textField_2.getText());
 		System.exit(0);
 	}
 	

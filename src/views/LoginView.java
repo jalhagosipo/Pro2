@@ -1,5 +1,6 @@
 package views;
 
+import java.awt.EventQueue;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -57,9 +58,21 @@ public class LoginView extends JFrame{
 	
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		LoginView login = new LoginView();
 		login.setVisible(true);
+		
+		
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					LoginView frame = new LoginView();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+		
 	}
 
 }

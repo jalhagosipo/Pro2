@@ -16,6 +16,7 @@ public class SeatThread implements Runnable{
 	private int num;
 	private String id;
 	private Seat[] seat;
+	private int check=0;
 	
 	private ArrayList<PrintWriter> arr=null;
 	
@@ -32,10 +33,18 @@ public class SeatThread implements Runnable{
 			System.out.println((num+1) + "번PC 접속.");
 			pw.flush();
 			id=in.readLine();
-			System.out.println(id + "사용자 로그인");
-			pw.flush();
-			seat[num].SetStart(id);
-			System.out.println((num+1)+"번PC 사용자 "+ id);	
+			for(int i=0; i<20; i++) {
+				if(seat[i].GetId().equals(id)&& num!=i)
+					check=1;
+			}
+			if(check==0) {
+				System.out.println(id + "사용자 로그인");
+				pw.flush();
+				seat[num].SetStart(id);
+				System.out.println((num+1)+"번PC 사용자 "+ id);	
+			}else {
+				System.out.println("이미 로그인한 아이디입니다.");
+			}
 		} catch(IOException e){
 			System.out.println(e);
 		}

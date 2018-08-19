@@ -37,24 +37,24 @@ public class ClientInfo extends JFrame implements ActionListener {
 	private JLabel lb_cur_time;
 
 	javax.swing.Timer timer; 
-	
 	String Test="";
 	
-	public void setTextField_1(String text) {
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub\
+		System.out.println("´ÝÈû");
+		timer.stop();
+		super.dispose();
+	}
+	
+	public void SetName(String text) {
 		textField_1.setText(text);
 	}
-
-	public void setLefttime(String text) {
-		String[] str=text.split(":");
-		lh=Integer.parseInt(str[0].trim());
-		lm=Integer.parseInt(str[1].trim());
-		ls=Integer.parseInt(str[2].trim());
-		textField_2.setText(lh+ ":" + lm + ":"+ ls);
-	}
 	public void SetTime(int hour, int minute, int second) {
-		this.hour=hour;
-		this.minute=minute;
-		this.second=second;
+		lh=hour;
+		lm=minute;
+		ls=second;
+		textField_2.setText(lh+ ":" + lm + ":"+ ls);
 	}
 
 	@Override
@@ -62,11 +62,11 @@ public class ClientInfo extends JFrame implements ActionListener {
 		textField_3.setText(lb_cur_time.getText());
 		//Test¿ë 
 		Test=textField_3.getText();
-		String[] str=Test.split(":");
-		this.hour=Integer.parseInt(str[0].trim());
-		this.minute=Integer.parseInt(str[1].trim());
-		this.second=Integer.parseInt(str[2].trim());
-		textField_3.setText(hour +"½Ã" + minute + "ºÐ" + (second+1) + "ÃÊ");
+//		String[] str=Test.split(":");
+//		this.hour=Integer.parseInt(str[0].trim());
+//		this.minute=Integer.parseInt(str[1].trim());
+//		this.second=Integer.parseInt(str[2].trim());
+//		textField_3.setText(hour +"½Ã" + minute + "ºÐ" + (second+1) + "ÃÊ");
 		
 		if(ls<=0) {
 			ls=59;

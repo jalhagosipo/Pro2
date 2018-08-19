@@ -12,6 +12,7 @@ import ClientInfo.infoDAO;
 import ClientInfo.infoDTO;
 import views.AddtimeView;
 import views.Client;
+import views.ClientInfo;
 import views.MemberMgr;
 import views.SalesManagerView;
 import views.StockManagementView;
@@ -41,13 +42,11 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 		infoDTO dto= new infoDTO();
 		dto = dao.GetInfo(cur_id_label.getText());
 		
-		Client ci= new Client(cur_num, cur_id_label.getText());//,cur_time_label);
+//		Client ci= new Client(cur_num, cur_id_label.getText());
+		ClientInfo ci= new ClientInfo(cur_num, cur_id_label.getText(),cur_time_label);
 		ci.SetName(dto.getName());
 		ci.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
-//		ci.setLefttime(dto.getLeftTime());
 		ci.setVisible(true);
-		
-		
 	}
 
 	@Override

@@ -22,6 +22,10 @@ public class Seat implements ActionListener{
 	int second = 0;
 
 	javax.swing.Timer timer; 
+	
+	public String GetId() {
+		return lb_id_value.getText().trim();
+	}
 
 	public Seat(JLabel lb_time_value,	JLabel lb_cur_time_value,	JLabel lb_id_value, JPanel pan_seat) {
 		this.lb_time_value=lb_time_value;
@@ -48,7 +52,7 @@ public class Seat implements ActionListener{
 		pan_seat.setBackground(Color.green);
 	}
 	public void SetEnd() {
-		timer.stop();
+//		timer.stop();
 		lb_time_value.setText("00:00:00");
 		lb_cur_time_value.setText("00:00:00");
 

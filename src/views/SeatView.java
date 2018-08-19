@@ -82,7 +82,7 @@ public class SeatView extends JFrame{
 
 			lb_time_value[i]=new JLabel("00:00:00");
 			lb_cur_time_value[i]=new JLabel("00:01:01");
-			lb_id_value[i] = new JLabel("a");
+			lb_id_value[i] = new JLabel("¥Î±‚¡ﬂ");
 			lb_time_value[i].setForeground(Color.white);
 			lb_cur_time_value[i].setForeground(Color.white);
 			lb_id_value[i].setForeground(Color.white);
@@ -131,6 +131,9 @@ public class SeatView extends JFrame{
 		jf_main.setSize(900, 800);
 		jf_main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf_main.setVisible(true);
+		
+		lb_id_value[1].setText("a");
+		lb_id_value[2].setText("a");
 	}
 
 	public Seat GetCom(int i) {
