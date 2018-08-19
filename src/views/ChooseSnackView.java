@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -33,7 +34,6 @@ public class ChooseSnackView extends JFrame {
 	private JTextField tf_id;
 	private JTextField tf_lefttime;
 	private JTextField textShowPrice;
-	
 	
 	public ChooseSnackView(Client c, JTextField id, JTextField lefttime) {
 		this.ci=c;

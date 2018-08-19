@@ -4,6 +4,7 @@ package snackChoose;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -43,14 +44,6 @@ public class buysnack implements ActionListener{
 		have_m=(lh*60)+lm;
 
 
-		/*int row = tm.getRowCount();
-		int total=0;
-		for(int i = 0; i < row; i++) {
-			int m= Integer.parseInt(tm.getValueAt(i, 1).toString().substring(3, 5));
-			int cnt= Integer.parseInt(tm.getValueAt(i, 2).toString());
-			total+=m*cnt;
-		}
-		 */
 		int total = Integer.parseInt(textShowPrice.getText().substring(0, textShowPrice.getText().length()-1).trim());
 		//연결된 클라이언트의 시간을 분으로 환산한것과 선택한 항목의 총액을 비교해서 클라이언트의 시간이 많을때 실행.
 		if(have_m>total) {
@@ -60,16 +53,22 @@ public class buysnack implements ActionListener{
 
 			ci.setLh(h);
 			ci.setLm(m);
+			
+			String time= ci.getLh()+ ":" + ci.getLm() + ":" + ci.getLs();
+			UpdateTimeDAO dao=new UpdateTimeDAO();
+			dao.UpdateTime(tf_id.getText(), time);
+
+			int row = tm.getRowCount();
+
+			for(int i=0;i<row;i++)
+				tm.removeRow(0);
+			JOptionPane.showMessageDialog(null, total+"분 "+" 구매 완료");
+			csv.dispose();
 		}
-		String time= ci.getLh()+ ":" + ci.getLm() + ":" + ci.getLs();
-		UpdateTimeDAO dao=new UpdateTimeDAO();
-		dao.UpdateTime(tf_id.getText(), time);
-
-		int row = tm.getRowCount();
-
-		for(int i=0;i<row;i++)
-			tm.removeRow(0);
-		csv.dispose();
+		else {
+			JOptionPane.showMessageDialog(null, "보유하신 시간이 부족합니다.");
+		}
+		
 	}
 
 }
