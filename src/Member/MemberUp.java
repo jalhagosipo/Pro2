@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import DB.DBconn;
 
 public class MemberUp {
@@ -34,10 +36,13 @@ public class MemberUp {
 			if(result>0)
 			{
 				System.out.println("수정 성공");
+				JOptionPane.showMessageDialog(null, "성공.");
+
+				
 			}
 			else
 				System.out.println("수정 실패");
-			
+			JOptionPane.showMessageDialog(null, "실패.");
 			
 		}catch(SQLException e){
 			System.out.println(e);
