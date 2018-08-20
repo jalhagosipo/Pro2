@@ -93,32 +93,32 @@ public class ClientInfo extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		//PC 번호 출력 라벨
+		//PC번호라벨
 		JLabel lblPcnumber = new JLabel((i+1) + " \uBC88 PC");
 		lblPcnumber.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPcnumber.setFont(new Font("Gulim", Font.PLAIN, 27));
 		lblPcnumber.setBounds(145, 39, 200, 32);
 		contentPane.add(lblPcnumber);
 
-		//로그인된 아이디 출력 라벨
+		//아이디라벨
 		JLabel lblClientid = new JLabel("\uD68C\uC6D0 I.D.");
 		lblClientid.setFont(new Font("Gulim", Font.PLAIN, 27));
 		lblClientid.setBounds(40, 155, 121, 32);
 		contentPane.add(lblClientid);
 	
-		//로그인된 아이디의 이름 출력 라벨
+		//이름라벨
 		JLabel lblClientname = new JLabel("\uD68C\uC6D0 \uC774\uB984");
 		lblClientname.setFont(new Font("Gulim", Font.PLAIN, 27));
 		lblClientname.setBounds(40, 225, 121, 32);
 		contentPane.add(lblClientname);
 		
-		//로그인된 아이디의 남은시간 출력 라벨
+		//남은시간라벨
 		JLabel lblResttime = new JLabel("\uB0A8\uC740 \uC2DC\uAC04");
 		lblResttime.setFont(new Font("Gulim", Font.PLAIN, 27));
 		lblResttime.setBounds(40, 285, 121, 32);
 		contentPane.add(lblResttime);
 		
-		//로그인된 아이디의 사용시간 출력 라벨
+		//사용시간라벨
 		JLabel lblSpendtime = new JLabel("\uC0AC\uC6A9 \uC2DC\uAC04");
 		lblSpendtime.setFont(new Font("Gulim", Font.PLAIN, 27));
 		lblSpendtime.setBounds(40, 345, 121, 32);
