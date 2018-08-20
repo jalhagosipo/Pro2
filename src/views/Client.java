@@ -24,6 +24,10 @@ import ClientInfo.UpdateTimeDAO;
 
 public class Client extends JFrame implements ActionListener {
 	
+	public static void main(String[] args) {
+		Client c= new Client(0,"a");
+	}
+	
 	public void closeview() {
 		// TODO Auto-generated method stub
 		UpdateTimeDAO dao= new UpdateTimeDAO();
@@ -43,6 +47,9 @@ public class Client extends JFrame implements ActionListener {
 	int hour = 0; 
 	int minute = 0;
 	int second = 0;
+	
+	ChooseSnackView csv;
+	
 	public int getLh() {
 		return lh;
 	}
@@ -72,16 +79,6 @@ public class Client extends JFrame implements ActionListener {
 		textField_2.setText(lh+ ":" + lm + ":"+ ls);
 	}
 
-	//소멸자 호출시 timer 종료.
-		@Override
-		protected void finalize() throws Throwable {
-			timer.stop();
-			System.out.println("타이머 종료");
-			super.finalize();
-		}
-	/**
-	 * Create the frame.
-	 */
 	////////////////////////////////////
 	public Client(int i, String cur_id) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -170,6 +167,7 @@ public class Client extends JFrame implements ActionListener {
 		btnclose.setBounds(250, 616, 175, 40);
 		contentPane.add(btnclose);
 		
+		//ChooseSnackView를 여기서 선언하면 먹거리선택할때 로그아웃됨 이유모르겠음
 		ChooseSnackView csv= new ChooseSnackView(this,textField,textField_2);
 		btnFood.addActionListener(new ActionListener() {
 			@Override

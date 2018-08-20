@@ -20,12 +20,12 @@ public class DelProduct implements ActionListener{
 		DefaultTableModel tm = (DefaultTableModel) table.getModel(); //테이블불러오기
 		int row = table.getSelectedRow(); //행 선택
 
-		String pronum =  (String)table.getValueAt(row,0 );
+		String proName =  (String)table.getValueAt(row, 1);
 		
 		tm.removeRow(row);
 		
 		ProductDel del = new ProductDel();
-		del.deleteProduct(pronum);
+		del.deleteProduct(proName);
 		
 		
 	}

@@ -19,6 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import server.Seat;
+
 public class ClientInfo extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
@@ -31,19 +33,18 @@ public class ClientInfo extends JFrame implements ActionListener {
 	int lm=0;
 	int ls=0;
 	
-	int hour = 0; 
-	int minute = 0;
-	int second = 0;
 	private JLabel lb_cur_time;
 	private JLabel lb_time;
-
+	private Seat seat;
+	
+	public void AddT(int h) {
+		seat.Setlh(seat.Getlh()+h);
+	}
 	javax.swing.Timer timer; 
 	String Test="";
 	
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub\
-		System.out.println("닫힘");
 		timer.stop();
 		super.dispose();
 	}
@@ -51,6 +52,7 @@ public class ClientInfo extends JFrame implements ActionListener {
 	public void SetName(String text) {
 		textField_1.setText(text);
 	}
+	//초기값 띄워주기위해.
 	public void SetTime(int hour, int minute, int second) {
 		lh=hour;
 		lm=minute;
@@ -59,14 +61,16 @@ public class ClientInfo extends JFrame implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {	
-		textField_3.setText(lb_cur_time.getText());
+	public void actionPerformed(ActionEvent e) {
+		//SeatView에서 해당좌석의 시간을 불러온다.
 		textField_2.setText(lb_time.getText());
+		textField_3.setText(lb_cur_time.getText());	
 	}
 	
-	public ClientInfo(int i, String cur_id, JLabel lb_cur_time, JLabel lb_time) {
+	public ClientInfo(int i,Seat seat, String cur_id, JLabel lb_cur_time, JLabel lb_time) {
 		this.lb_cur_time=lb_cur_time;
 		this.lb_time=lb_time;
+		this.seat=seat;
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 500,800);
@@ -120,7 +124,6 @@ public class ClientInfo extends JFrame implements ActionListener {
 		textField_2.setBounds(200, 280, 236, 38);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
-		
 		textField_3 = new JTextField();
 		textField_3.setFont(new Font("Gulim", Font.PLAIN, 27));
 		textField_3.setBounds(200, 340, 236, 38);
@@ -129,15 +132,7 @@ public class ClientInfo extends JFrame implements ActionListener {
 		// 출력 필드 : 회원 ID, 회원 이름, 남은 시간, 사용 시간
 		
 		//충전버튼
-		//Jlabel형식으로 받는생성자라 그냥 새로만들어서 넘겨줌
 		JButton btnAddtime = new JButton("\uCDA9 \uC804");
-		btnAddtime.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				AddtimeView atv=new AddtimeView(new JLabel(textField.getText()));
-				atv.setVisible(true);
-			}
-		});
 		
 		btnAddtime.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnAddtime.setBounds(155, 449, 175, 40);
@@ -161,40 +156,22 @@ public class ClientInfo extends JFrame implements ActionListener {
 		// 버튼 : 충 전, 사용 종료 , 닫기'
 		this.setVisible(true);
 		
+		//Jlabel형식으로 받는생성자라 그냥 새로만들어서 넘겨줌
+		AddtimeView atv=new AddtimeView(new JLabel(textField.getText()));
+		
+		atv.setClientInfo(this);
+		atv.SetBtn();
+		btnAddtime.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				atv.setVisible(true);
+			}
+		});
+		
 		//타이머 시작.
 		//메인뷰의 사용시간을 1초마다 불러오는 방식. 관련소스는 actionPerformed메소드에 있음.
 		timer = new javax.swing.Timer(1000, this); 
 		timer.setInitialDelay(0); 
 		timer.start(); 
-		
-//		메인뷰에서 클릭시에는 로그인처리 하지 않도록 주석처리.(테스트용으로 남겨둠)
-//		String host="localhost";
-//		int port=7777;
-//		Socket socket=null;
-//		BufferedReader read=null;
-//		PrintWriter pw=null;
-//		
-//		try {
-//			socket=new Socket(host, port);
-//			
-//			pw=new PrintWriter(socket.getOutputStream());
-//			read= new BufferedReader(new InputStreamReader(socket.getInputStream()));
-//			
-//			pw.println(i);
-//			pw.flush();
-//			pw.println(cur_id);
-//			pw.flush();
-//			
-//			timer = new javax.swing.Timer(1000, this); 
-//			timer.setInitialDelay(0); 
-//			timer.start(); 
-//		}catch(IOException ex){
-//			System.out.println(ex);
-//		}finally {
-////			if(pw!=null) try { pw.close();} catch(Exception ex) {}
-////			if(read!=null) try { read.close();} catch(IOException ex) {}
-////			if(socket!=null) try { socket.close();} catch(IOException ex) {}
-//		}
-		
 	}
 }
