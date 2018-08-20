@@ -22,7 +22,6 @@ import Member.MemberDTO;
 public class SignUpView extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField_repwd;
 	private JTextField textField_phone;
 	private JTextField textField_pwd;
 	private JTextField textField_id;
@@ -82,8 +81,9 @@ public class SignUpView extends JFrame {
 		panel.add(label_phone);
 
 		JButton btn_signup = new JButton("회원가입");
+	
 		btn_signup.setBounds(69, 379, 97, 23);
-		//		btn_signup.addActionListener(new ForSignup(this,textField_name,textField_id,textField_pwd,textField_phone));
+		
 		panel.add(btn_signup);
 
 		JButton btn_cancel = new JButton("닫기");
@@ -130,6 +130,8 @@ public class SignUpView extends JFrame {
 					Vector<MemberDTO>  arr = dao.Member(textField_id.getText().trim());
 					if(arr.size()==0) {
 						JOptionPane.showMessageDialog(null, "가입 가능한 아이디입니다.");
+						textField_id.setEditable(false);
+						btn_chkid.setEnabled(false);
 						textField_pwd.setEditable(true);
 						textField_phone.setEditable(true);
 						textField_name.setEditable(true);
@@ -143,7 +145,7 @@ public class SignUpView extends JFrame {
 			}
 		});
 		panel.add(btn_chkid);
-
+		btn_signup.addActionListener(new ForSignup(this,textField_name,textField_id,textField_pwd,textField_phone));
 		textField_pwd.setEditable(false);
 		textField_phone.setEditable(false);
 		textField_name.setEditable(false);
