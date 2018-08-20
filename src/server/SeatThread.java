@@ -36,7 +36,6 @@ public class SeatThread implements Runnable{
 			}else {
 				check_num=1;
 			}
-			
 			if(check_num==0) {
 				System.out.println((num+1) + "번PC 접속.");
 			
@@ -64,7 +63,7 @@ public class SeatThread implements Runnable{
 				pw.flush();
 			}//end check_num
 		} catch(IOException e){
-			System.out.println(e);
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -78,18 +77,16 @@ public class SeatThread implements Runnable{
 				if(str.equals("/quit")){
 					break;
 				}else{
-//					broadcast(str);
 				}
 			}//while
-		}catch(IOException e)
-		{
+		}catch(IOException e){
 			System.out.println(e);
 		}
 		finally{
 			seat[num].SetEnd();
 			System.out.println((num+1) + "PC 종료.");	
 			if(socket != null)
-				try{	socket.close(); } catch(IOException e){}
+				try{ socket.close(); } catch(IOException e){}
 		}		
 	}
 }

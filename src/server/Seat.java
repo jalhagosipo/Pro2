@@ -22,12 +22,9 @@ public class Seat implements ActionListener{
 	public void Setlh(int lh) {
 		this.lh=lh;
 	}
-
-	
 	int hour = 0; 
 	int minute = 0;
 	int second = 0;
-
 	javax.swing.Timer timer; 
 	
 	public String GetId() {

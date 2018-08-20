@@ -20,6 +20,11 @@ public  class Addtime implements ActionListener  {
 		this.textSearchid=textSearchid;
 		this.textShowaddtime=textShowaddtime;
 	}
+	public Addtime(JTextField textSearchid,JTextArea textShowaddtime) {
+		this.clientinfo=null;
+		this.textSearchid=textSearchid;
+		this.textShowaddtime=textShowaddtime;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -27,7 +32,8 @@ public  class Addtime implements ActionListener  {
 
 		AddtimeDAO dao= new AddtimeDAO();
 		if(e.getActionCommand()=="1 \uC2DC\uAC04") {
-			clientinfo.AddT(1);
+			if(clientinfo!=null)
+				clientinfo.AddT(1);
 			
 			hours="01:00:00";
 			
@@ -37,7 +43,8 @@ public  class Addtime implements ActionListener  {
 			dao.GetChargetime(hours, textSearchid.getText());
 		}
 		else if(e.getActionCommand()=="2 \uC2DC\uAC04") {
-			clientinfo.AddT(2);
+			if(clientinfo!=null)
+				clientinfo.AddT(2);
 			hours="02:00:00";
 
 			dao.GetAddtime(hours,textSearchid.getText());
@@ -47,7 +54,8 @@ public  class Addtime implements ActionListener  {
 
 		}
 		else if(e.getActionCommand()=="3 \uC2DC\uAC04") {
-			clientinfo.AddT(3);
+			if(clientinfo!=null)
+				clientinfo.AddT(3);
 			hours="03:00:00";
 
 			dao.GetAddtime(hours, textSearchid.getText());
@@ -56,7 +64,8 @@ public  class Addtime implements ActionListener  {
 			dao.GetChargetime(hours, textSearchid.getText());
 		}
 		else if(e.getActionCommand()=="5 \uC2DC\uAC04") {
-			clientinfo.AddT(5);
+			if(clientinfo!=null)	
+				clientinfo.AddT(5);
 			hours="05:00:00";
 
 			dao.GetAddtime(hours,textSearchid.getText());
@@ -65,7 +74,8 @@ public  class Addtime implements ActionListener  {
 			dao.GetChargetime(hours, textSearchid.getText());
 		}
 		else if(e.getActionCommand()=="10 \uC2DC\uAC04") {
-			clientinfo.AddT(10);
+			if(clientinfo!=null)
+				clientinfo.AddT(10);
 			hours="10:00:00";
 
 			dao.GetAddtime(hours,textSearchid.getText());
@@ -74,7 +84,8 @@ public  class Addtime implements ActionListener  {
 			dao.GetChargetime(hours, textSearchid.getText());
 		}
 		else if(e.getActionCommand()=="24 \uC2DC\uAC04") {
-			clientinfo.AddT(24);
+			if(clientinfo!=null)
+				clientinfo.AddT(24);
 			hours="24:00:00";
 
 			dao.GetAddtime(hours,textSearchid.getText());

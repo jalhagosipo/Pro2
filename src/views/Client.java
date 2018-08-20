@@ -21,11 +21,20 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import ClientInfo.UpdateTimeDAO;
+import ClientInfo.infoDAO;
+import ClientInfo.infoDTO;
 
 public class Client extends JFrame implements ActionListener {
 	
 	public static void main(String[] args) {
+		infoDAO dao= new infoDAO();
+		infoDTO dto= new infoDTO();
+		dto = dao.GetInfo("a");
+		
 		Client c= new Client(0,"a");
+		c.SetName(dto.getName());
+		c.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
+//		c.setVisible(true);
 	}
 	
 	public void closeview() {
@@ -180,7 +189,7 @@ public class Client extends JFrame implements ActionListener {
 		// 버튼 : 충 전, 사용 종료 , 닫기'
 		this.setVisible(true);
 //		192.168.0.84
-		String host="192.168.29.187";
+		String host="localhost";
 		int port=7777;
 		Socket socket=null;
 		PrintWriter pw=null;

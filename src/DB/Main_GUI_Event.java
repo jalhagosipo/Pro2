@@ -47,7 +47,6 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 		infoDTO dto= new infoDTO();
 		dto = dao.GetInfo(cur_id_label.getText());
 		
-//		Client ci= new Client(cur_num, cur_id_label.getText());
 		ClientInfo ci= new ClientInfo(cur_num, s, cur_id_label.getText(),cur_time_label,time_label);
 		ci.SetName(dto.getName());
 		ci.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
@@ -76,6 +75,7 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 		}
 		if(e.getActionCommand()=="ÃæÀü") {
 			atv.setVisible(true);
+			atv.SetBtn_main();
 		}
 		
 	}
