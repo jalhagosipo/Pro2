@@ -17,8 +17,10 @@ public class ForSignup implements ActionListener {
 	private JTextField textField_name;
 	private SignUpView suv ;
 	
-	public ForSignup(SignUpView suv , JTextField textField_phone, JTextField textField_pwd, JTextField textField_id,
-			JTextField textField_name) {
+	
+	
+	public ForSignup(SignUpView suv , JTextField textField_name,JTextField textField_id, JTextField textField_pwd, JTextField textField_phone
+			) {
 	
 		this.suv=suv;
 		this.textField_phone = textField_phone;
@@ -31,16 +33,14 @@ public class ForSignup implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		SignUpView suv = new SignUpView();
-		suv.setVisible(true);
-		
-		SignUpDTO dto = new SignUpDTO(textField_name.getText(), textField_id.getText(), textField_pwd.getText(), textField_phone.getText());
+		SignUpDTO dto = new SignUpDTO(textField_name.getText().trim(), textField_id.getText().trim(), textField_pwd.getText().trim(), textField_phone.getText().trim());
 		SignUpDAO dao = new SignUpDAO();
+		
 		boolean result = dao.insertAccount(dto);
 		if(result)
 		{
 			JOptionPane.showMessageDialog(null, "회원가입이완료되었습니다.");
-			
+			suv.dispose();
 		}
 		
 	}

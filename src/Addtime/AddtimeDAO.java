@@ -1,16 +1,20 @@
 package Addtime;
 
-import java.io.Closeable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 import DB.DBconn;
-import views.AddtimeView;
 
-public class AddtimeDAO{
+public class AddtimeDAO extends Addtime{
 
+	public AddtimeDAO(JTextField textSearchid, JTextArea textShowaddtime) {
+		super(textSearchid, textShowaddtime);
+		// TODO Auto-generated constructor stub
+	}
 	Connection conn = null;
 	PreparedStatement pstmt =  null;
 	DBconn dbconn = new DBconn();
@@ -67,6 +71,8 @@ public class AddtimeDAO{
 			pstmt.executeUpdate();
 
 		}catch(SQLException e) {
+			
+			textShowaddtime.setText("ID 를 확인해주세요\n["+ textSearchid.getText()+ "] 는 등록되지 않은 ID 입니다");
 			System.out.println(e.getMessage());
 		} finally {
 			if(pstmt!=null) try { pstmt.close();} catch(Exception e){}

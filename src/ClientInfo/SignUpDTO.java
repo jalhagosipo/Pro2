@@ -5,6 +5,7 @@ public class SignUpDTO {
 	String id;
 	String pw;
 	String phno;
+	
 	public String getName() {
 		return name;
 	}
@@ -37,6 +38,5 @@ public class SignUpDTO {
 		this.pw = pw;
 		this.phno = phno;
 	}
-	public SignUpDTO() {
-	}
+	
 }

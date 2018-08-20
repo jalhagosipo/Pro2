@@ -24,9 +24,9 @@ public class ProductUpdate implements ActionListener{
 		DefaultTableModel tm = (DefaultTableModel) table.getModel(); //테이블불러오기
 		int row = table.getSelectedRow(); //행 선택
 
-		String proName = (String)table.getValueAt(row, 1);
-		String proPrice = (String)table.getValueAt(row, 2);
-		int proStock = (int)table.getValueAt(row, 3);
+		String proName = (String)table.getValueAt(row, 0);
+		String proPrice = (String)table.getValueAt(row, 1);
+		int proStock = (int)table.getValueAt(row, 2);
 		
 		UpdateProductView upv = new UpdateProductView(proName, proPrice, proStock);
 		upv.setVisible(true);
