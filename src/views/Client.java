@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import ClientInfo.ClientThread;
 import ClientInfo.UpdateTimeDAO;
 import ClientInfo.infoDAO;
 import ClientInfo.infoDTO;
@@ -213,6 +214,9 @@ public class Client extends JFrame implements ActionListener {
 		Socket socket=null;
 		PrintWriter pw=null;
 		BufferedReader in=null;
+		
+		ClientThread ct=null;
+		Thread job=null;
 		try {
 			socket=new Socket(host, port);
 			pw=new PrintWriter(socket.getOutputStream());
@@ -249,6 +253,9 @@ public class Client extends JFrame implements ActionListener {
 				lv.setVisible(true);
 				dispose();
 			}
+			ct=new ClientThread(socket,textField_2,textField_3);
+			job=new Thread(ct);
+			job.start();
 		}catch(IOException ex){
 			System.out.println(ex);
 		}finally {
@@ -261,6 +268,8 @@ public class Client extends JFrame implements ActionListener {
 	//timer의 소스 남은시간과 사용시간을 계산하고 출력해준다.
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		
 		second++; 		
 		if(second>=60) {
 			minute++;
@@ -272,13 +281,13 @@ public class Client extends JFrame implements ActionListener {
 		}
 		textField_3.setText(hour + ":" + minute + ": " + second); 
 		
-		if(ls<=0) {
+		if(ls<=0){
 			ls=59;
 			lm--;
 			if(lm<=0) {
 				lm=59;
 				lh--;
-			}else {
+			}else{
 				lm--;
 			}
 		}else {

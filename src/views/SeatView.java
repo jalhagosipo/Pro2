@@ -38,6 +38,8 @@ public class SeatView extends JFrame{
 	JLabel[] lb_time_value;		//남은시간을 알려줄 라벨
 	JLabel[] lb_cur_time_value;	//사용시간을 알려줄 라벨
 	JLabel[] lb_id_value;		//현재 로그인한 아이디를 알려줄 라벨
+	
+	private Socket socket;
 
 	public SeatView(){
 		//전체 좌석수를 한번에 조절하기 위한 MAX상수
@@ -134,8 +136,15 @@ public class SeatView extends JFrame{
 	//Seat				:좌석을 눌렀을때 ClientInfo를 띄워줄 리스너(오른쪽버튼들의 리스너와 같지만 생성자가 다르다)
 	private Seat GetCom(int i) {
 		Seat seat =new Seat(lb_time_value[i], lb_cur_time_value[i], lb_id_value[i], pan_seat[i]);
-		pan_seat[i].addMouseListener((MouseListener) new Main_GUI_Event(i, seat, lb_id_value[i], lb_cur_time_value[i], lb_time_value[i]));
+		pan_seat[i].addMouseListener((MouseListener) new Main_GUI_Event(i, seat, lb_id_value[i], lb_cur_time_value[i], lb_time_value[i],this));
 		return seat;
+	}
+	//클라이언트인포로 소켓을 보내주고 서버에서 충전할때 클라이어언트로 메시지를 보내는데 사용하기위해
+	private void SetSocket(Socket socket) {
+		this.socket=socket;
+	}
+	public Socket GetSocket() {
+		return socket;
 	}
 
 	public static void main(String[] args) {
@@ -154,8 +163,9 @@ public class SeatView extends JFrame{
 			arr=new ArrayList<PrintWriter>();
 			while(true) {
 				System.out.println("접속대기중");
-				Socket socket=server.accept(); 
-				SeatThread th=new SeatThread(socket,arr,seat);
+				Socket soc=server.accept(); 
+				SeatThread th=new SeatThread(soc,seat,sv.lb_time_value,sv.lb_cur_time_value);
+				sv.SetSocket(soc);
 				Thread job=new Thread(th);
 				job.start();
 			}

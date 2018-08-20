@@ -55,42 +55,42 @@ public class SignUpView extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel label_title = new JLabel("회원가입");
-//		label_title.setFont(new Font("占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻�뜝占�", Font.BOLD, 20));
+		JLabel label_title = new JLabel("�쉶�썝媛��엯");
+//		label_title.setFont(new Font("�뜝�럥�맶�뜝�럥吏쀥뜝�럩援꿨뜝�럥�맶�뜝�럥吏쀥뜝�럩援� �뜝�럥�맶�뜝�럥吏쀥뜝�럩援꿨뜝�럥�맶占쎈쐻�뜝占�", Font.BOLD, 20));
 		label_title.setBounds(145, 39, 80, 27);
 		panel.add(label_title);
 		
 		JLabel label_id = new JLabel("ID");
-//		label_id.setFont(new Font("占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻�뜝占�", Font.PLAIN, 15));
+//		label_id.setFont(new Font("�뜝�럥�맶�뜝�럥吏쀥뜝�럩援꿨뜝�럥�맶�뜝�럥吏쀥뜝�럩援� �뜝�럥�맶�뜝�럥吏쀥뜝�럩援꿨뜝�럥�맶占쎈쐻�뜝占�", Font.PLAIN, 15));
 		label_id.setBounds(45, 150, 50, 15);
 		panel.add(label_id);
 		
-		JLabel label_pwd = new JLabel("비밀번호");
-//		label_pwd.setFont(new Font("占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻�뜝占�", Font.PLAIN, 15));
+		JLabel label_pwd = new JLabel("鍮꾨�踰덊샇");
+//		label_pwd.setFont(new Font("�뜝�럥�맶�뜝�럥吏쀥뜝�럩援꿨뜝�럥�맶�뜝�럥吏쀥뜝�럩援� �뜝�럥�맶�뜝�럥吏쀥뜝�럩援꿨뜝�럥�맶占쎈쐻�뜝占�", Font.PLAIN, 15));
 		label_pwd.setBounds(45, 200, 60, 15);
 		panel.add(label_pwd);
 		
-		JLabel label_repwd = new JLabel("비밀번호확인");
-//		label_repwd.setFont(new Font("占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻�뜝占�", Font.PLAIN, 15));
+		JLabel label_repwd = new JLabel("鍮꾨�踰덊샇�솗�씤");
+//		label_repwd.setFont(new Font("�뜝�럥�맶�뜝�럥吏쀥뜝�럩援꿨뜝�럥�맶�뜝�럥吏쀥뜝�럩援� �뜝�럥�맶�뜝�럥吏쀥뜝�럩援꿨뜝�럥�맶占쎈쐻�뜝占�", Font.PLAIN, 15));
 		label_repwd.setBounds(45, 250, 97, 15);
 		panel.add(label_repwd);
 		
-		JLabel label_name = new JLabel("이름");
-		label_name.setFont(new Font("占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻�뜝占�", Font.PLAIN, 15));
+		JLabel label_name = new JLabel("�씠由�");
+		label_name.setFont(new Font("�뜝�럥�맶�뜝�럥吏쀥뜝�럩援꿨뜝�럥�맶�뜝�럥吏쀥뜝�럩援� �뜝�럥�맶�뜝�럥吏쀥뜝�럩援꿨뜝�럥�맶占쎈쐻�뜝占�", Font.PLAIN, 15));
 		label_name.setBounds(45, 100, 50, 15);
 		panel.add(label_name);
 		
-		JLabel label_phone = new JLabel("전화번호");
-		label_phone.setFont(new Font("占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻�뜝占�", Font.PLAIN, 15));
+		JLabel label_phone = new JLabel("�쟾�솕踰덊샇");
+		label_phone.setFont(new Font("�뜝�럥�맶�뜝�럥吏쀥뜝�럩援꿨뜝�럥�맶�뜝�럥吏쀥뜝�럩援� �뜝�럥�맶�뜝�럥吏쀥뜝�럩援꿨뜝�럥�맶占쎈쐻�뜝占�", Font.PLAIN, 15));
 		label_phone.setBounds(45, 300, 60, 15);
 		panel.add(label_phone);
 		
-		JButton btn_signup = new JButton("회원가입");
+		JButton btn_signup = new JButton("�쉶�썝媛��엯");
 		btn_signup.setBounds(69, 379, 97, 23);
 		btn_signup.addActionListener(new ForSignup(this,textField_name,textField_id,textField_pwd,textField_phone));
 		panel.add(btn_signup);
 		
-		JButton btn_cancel = new JButton("취소");
+		JButton btn_cancel = new JButton("痍⑥냼");
 		btn_cancel.setBounds(219, 379, 97, 23);
 		panel.add(btn_cancel);
 		btn_cancel.addActionListener(new ActionListener() {

@@ -3,6 +3,7 @@ package views;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.Socket;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,7 +31,7 @@ public class AddtimeView extends JFrame {
 	private JButton btnAddtime6;
 	
 	private ClientInfo clientinfo;
-
+	
 	@Override
 	public void setVisible(boolean b) {
 		// TODO Auto-generated method stub

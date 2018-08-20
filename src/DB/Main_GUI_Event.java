@@ -16,6 +16,7 @@ import views.Client;
 import views.ClientInfo;
 import views.MemberMgr;
 import views.SalesManagerView;
+import views.SeatView;
 import views.StockManagementView;
 
 public class Main_GUI_Event extends JFrame implements MouseListener, ActionListener{
@@ -24,6 +25,7 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 	private JLabel cur_time_label;
 	private JLabel time_label;
 	private Seat s;
+	private SeatView sv;
 	
 	//0814 cmd로 seatview 실행하려고 주석처리 밑에 액션리스너도 주석처리
 	SalesManagerView smv= new SalesManagerView();
@@ -32,12 +34,13 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 	StockManagementView sm = new StockManagementView();
 	public Main_GUI_Event() {
 	}
-	public Main_GUI_Event(int i, Seat s,JLabel cur_id_label, JLabel cur_time_label, JLabel time_label) {
+	public Main_GUI_Event(int i, Seat s,JLabel cur_id_label, JLabel cur_time_label, JLabel time_label, SeatView sv) {
 		this.cur_num=i;
 		this.cur_id_label=cur_id_label;
 		this.cur_time_label=cur_time_label;
 		this.time_label=time_label;
 		this.s=s;
+		this.sv=sv;
 	}
 
 	@Override
@@ -47,7 +50,7 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 		infoDTO dto= new infoDTO();
 		dto = dao.GetInfo(cur_id_label.getText());
 		
-		ClientInfo ci= new ClientInfo(cur_num, s, cur_id_label.getText(),cur_time_label,time_label);
+		ClientInfo ci= new ClientInfo(cur_num, s, cur_id_label.getText(),cur_time_label,time_label, sv);
 		ci.SetName(dto.getName());
 		ci.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
 		ci.setVisible(true);

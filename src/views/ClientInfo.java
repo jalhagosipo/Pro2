@@ -43,10 +43,27 @@ public class ClientInfo extends JFrame implements ActionListener {
 	private JLabel lb_cur_time;
 	private JLabel lb_time;
 	private javax.swing.Timer timer;
+	private SeatView sv;
+	private Socket socket;
 	
 	//Addtime에서 충전한 시간을 메인뷰의 좌석에도 적용시키기위한 메서드.
 	public void AddT(int h) {
 		seat.Setlh(seat.Getlh()+h);
+		
+		PrintWriter pw=null;
+		try {
+			System.out.println("여기서끊어짐1");
+			socket=sv.GetSocket();
+			System.out.println("여기서끊어짐2");
+			pw=new PrintWriter(socket.getOutputStream());
+			System.out.println("여기서끊어짐3");
+			pw.println("충전");
+			pw.flush();
+		}catch (Exception e) {
+			
+		}finally {
+//			if(pw!=null)try {pw.close();}catch (Exception e) {}
+		}
 	}
 	
 	//창이 닫힐때 timer종료.
@@ -81,10 +98,11 @@ public class ClientInfo extends JFrame implements ActionListener {
 	//cur_id	 : 				/ cur_id: 메인뷰에서 로그인된 PC의 ID값
 	//lb_cur_time:메인뷰에서 로그인된 PC의 남은시간 JLabel
 	//lb_time	 :메인뷰에서 로그인된 PC의 사용시간 JLabel
-	public ClientInfo(int i,Seat seat, String cur_id, JLabel lb_cur_time, JLabel lb_time) {
+	public ClientInfo(int i,Seat seat, String cur_id, JLabel lb_cur_time, JLabel lb_time, SeatView sv) {
 		this.lb_cur_time=lb_cur_time;
 		this.lb_time=lb_time;
 		this.seat=seat;
+		this.sv=sv;
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 500,800);

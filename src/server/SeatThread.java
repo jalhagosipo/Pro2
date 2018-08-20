@@ -16,20 +16,23 @@ public class SeatThread implements Runnable{
 	private int num;
 	private String id;
 	private Seat[] seat;
+	private JLabel[] lb_time;
+	private JLabel[] lb_cur_time;
 	private int check_num=0;
 	private int check_id=0;
 	
-	private ArrayList<PrintWriter> arr=null;
-	
-	public  SeatThread(Socket socket,ArrayList<PrintWriter> arr, Seat[] seat) {// String id, int num){
+	public  SeatThread(Socket socket, Seat[] seat, JLabel[] lb_time, JLabel[] lb_cur_time) {// String id, int num){
 		this.socket=socket;
 		this.seat=seat;
-		this.arr=arr;//채팅없으면 삭제해도됨
+		this.lb_time=lb_time;
+		this.lb_cur_time=lb_cur_time;
+		
+		BufferedReader in=null;
 		PrintWriter pw=null;
 		try {
 			pw=new PrintWriter(socket.getOutputStream());   
 			System.out.println("PC 연결 대기중...");
-			BufferedReader in=new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			in=new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			num=Integer.parseInt(in.readLine());
 			if(seat[num].GetId().equals("대기중") || seat[num].GetId().equals("로그아웃")) {
 				check_num=0;
@@ -69,15 +72,14 @@ public class SeatThread implements Runnable{
 
 	@Override
 	public void run() {
+		PrintWriter pw=null;
 		BufferedReader in=null;
 		try {
+			pw= new PrintWriter(socket.getOutputStream());
 			in=new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			String str=null;
 			while((str=in.readLine())!=null){
-				if(str.equals("/quit")){
-					break;
-				}else{
-				}
+				
 			}//while
 		}catch(IOException e){
 			System.out.println(e);
