@@ -36,7 +36,7 @@ public class showschProduct implements ActionListener{
 			while(it2.hasNext())
 			{
 				ProductDTO pd = it2.next();
-				tm2.addRow(new Object[]{pd.getProNumber(),pd.getProName(),pd.getProPrice(),pd.getProStock()});
+				tm2.addRow(new Object[]{pd.getProName(),pd.getProPrice(),pd.getProStock()});
 			}
 			
 			

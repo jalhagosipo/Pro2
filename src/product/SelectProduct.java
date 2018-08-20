@@ -22,7 +22,7 @@ public class SelectProduct {
 				conn = dbconn.getConnection();
 				StringBuilder sql = new StringBuilder();
 
-				sql.append("  select * ");
+				sql.append("  select product_name, product_price, stock ");
 				sql.append("  from mydb.pro2_snack    ");
 				
 				pstmt = conn.prepareStatement(sql.toString());
@@ -33,7 +33,6 @@ public class SelectProduct {
 				{
 					ProductDTO dto = new ProductDTO(); 
 					dto.setProName(rs.getString("product_name"));
-					dto.setProNumber(rs.getInt("product_number"));
 					dto.setProPrice(rs.getString("product_price"));
 					dto.setProStock(rs.getInt("stock"));
 					arr.add(dto);

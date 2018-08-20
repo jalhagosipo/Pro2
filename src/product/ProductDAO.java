@@ -27,7 +27,7 @@ public class ProductDAO {
 				
 				if(textField.trim().equals(""))
 				{
-					sql.append("  select * ");
+					sql.append("  select product_name, product_price, stock ");
 					sql.append("  from mydb.pro2_snack    ");
 					pstmt = conn.prepareStatement(sql.toString());
 				}
@@ -57,7 +57,6 @@ public class ProductDAO {
 				while(rs2.next())
 				{
 					ProductDTO dto=new ProductDTO(); 
-					dto.setProNumber(rs2.getInt("product_number"));
 					dto.setProName(rs2.getString("product_name"));
 					dto.setProPrice(rs2.getString("product_price"));
 					dto.setProStock(rs2.getInt("stock"));

@@ -111,7 +111,7 @@ public class StockManagementView extends JFrame {
 		
 		
 		
-		Object [] columns = {"상품번호","상품이름","상품가격","재고"};
+		Object [] columns = {"상품이름","상품가격","재고"};
 		DefaultTableModel model2 = new DefaultTableModel();
 		model2.setColumnIdentifiers(columns);
 		table.setModel(model2);
