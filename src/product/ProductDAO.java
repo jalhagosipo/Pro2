@@ -35,9 +35,9 @@ public class ProductDAO {
 				{
 					sql.append("  select * ");
 				  sql.append("  from mydb.pro2_snack    ");
-				   sql.append("  where product_name=?   ");
+				   sql.append("  where product_name like ?   ");
 				   pstmt = conn.prepareStatement(sql.toString());
-					pstmt.setString(1, textField);
+					pstmt.setString(1, "%"+textField+"%");
 				}
 				
 				/*sql.append("  select * ");

@@ -78,7 +78,7 @@ public class AddProductView extends JFrame {
 		tf_price.setText(_price);
 		tf_stock.setText(""+_stock);
 		
-		JButton button_add = new JButton("가입");
+		JButton button_add = new JButton("추가");
 		button_add.setBounds(12, 217, 71, 23);
 		contentPane.add(button_add);
 		button_add.addActionListener(new ActionListener() {
