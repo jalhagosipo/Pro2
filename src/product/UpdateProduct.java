@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import DB.DBconn;
 
 public class UpdateProduct {
@@ -35,11 +37,13 @@ public class UpdateProduct {
 			if(result>0)
 			{
 				System.out.println("수정 완료");
+				JOptionPane.showMessageDialog(null, "수정 완료");
 			}
 			else
+			{
 				System.out.println("수정 실패");
-			
-			
+				JOptionPane.showMessageDialog(null, "수정 완료");
+			}
 		}catch(SQLException e){
 			System.out.println(e);
 		}
