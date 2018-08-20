@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import DB.DBconn;
 
 public class AddProduct{
@@ -31,10 +33,14 @@ public class AddProduct{
 			if(result>0)
 			{
 				System.out.println("추가 완료");
+				JOptionPane.showMessageDialog(null, "추가 완료");
+
 			}
 			else
+			{
 				System.out.println("추가 실패");
-			
+				JOptionPane.showMessageDialog(null, "추가 실패");
+			}
 		}catch(SQLException e){
 			System.out.println(e);
 		}

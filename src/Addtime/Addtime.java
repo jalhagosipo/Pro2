@@ -30,7 +30,8 @@ public  class Addtime implements ActionListener  {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 
-		AddtimeDAO dao= new AddtimeDAO();
+		AddtimeDAO dao= new AddtimeDAO(textSearchid, textShowaddtime);
+		
 		if(e.getActionCommand()=="1 \uC2DC\uAC04") {
 			if(clientinfo!=null)
 				clientinfo.AddT(1);
@@ -93,6 +94,15 @@ public  class Addtime implements ActionListener  {
 
 			dao.GetChargetime(hours, textSearchid.getText());
 		}
+
+		/*else if(e.getActionCommand()=="24 \uC2DC\uAC04") {
+			if(clientinfo==null)
+				clientinfo.AddT(24);
+			
+			textShowaddtime.setText("ID를 확인해주세요\n["+ textSearchid.getText()+ "] 는 등록되지 않은 ID 입니다"); 
+
+			
+		}*/
 
 	}
 
