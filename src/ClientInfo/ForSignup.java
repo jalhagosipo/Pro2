@@ -17,6 +17,8 @@ public class ForSignup implements ActionListener {
 	private JTextField textField_name;
 	private SignUpView suv ;
 	
+	
+	
 	public ForSignup(SignUpView suv , JTextField textField_phone, JTextField textField_pwd, JTextField textField_id,
 			JTextField textField_name) {
 	
