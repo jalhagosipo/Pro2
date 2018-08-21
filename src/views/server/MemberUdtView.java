@@ -14,10 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import member.MemberDAO;
-import member.MemberDTO;
-import member.MemberUp;
-import product.ProductDTO;
+import DB.dao.MemberDAO;
+import DB.dto.MemberDTO;
 
 public class MemberUdtView extends JFrame {
 	
@@ -131,18 +129,17 @@ public class MemberUdtView extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MemberUp mu= new MemberUp();
-				mu.updateAccount(textFieldid.getText()
-													,textFieldpw.getText()
-													,textFieldphone.getText()
-													,textFieldname.getText()
-													,old_id
-						);
-				//JOptionPane.showMessageDialog(null, "수정 성공");
+				
 				DefaultTableModel tm = (DefaultTableModel) memlist.getModel();
 				tm.setNumRows(0);
 				MemberDAO dao=new MemberDAO();
-				Vector<MemberDTO> dto= dao.Member("");
+				dao.updateAccount(textFieldid.getText()
+						,textFieldpw.getText()
+						,textFieldphone.getText()
+						,textFieldname.getText()
+						,old_id
+						);
+				Vector<MemberDTO> dto= dao.selectAccount("");
 				Iterator<MemberDTO> it = dto.iterator();
 				
 				while(it.hasNext())

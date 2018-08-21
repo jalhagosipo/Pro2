@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import clientInfo.ForSignup;
-import login.Login;
+import client.clientInfo.ForSignup;
+import client.login.Login;
 
 public class LoginView extends JFrame{
 	JPanel pan_main;

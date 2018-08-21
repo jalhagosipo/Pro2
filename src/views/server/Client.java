@@ -20,10 +20,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import clientInfo.ClientThread;
-import clientInfo.UpdateTimeDAO;
-import clientInfo.infoDAO;
-import clientInfo.infoDTO;
+import client.clientInfo.ClientThread;
+import client.clientInfo.UpdateTimeDAO;
+import client.clientInfo.infoDAO;
+import client.clientInfo.infoDTO;
 import views.client.ChooseSnackView;
 import views.client.LoginView;
 

@@ -14,10 +14,10 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import product.DelProduct;
-import product.ProductAdd;
-import product.ProductUpdate;
-import product.showschProduct;
+import server.product.DelProduct;
+import server.product.ProductAdd;
+import server.product.ProductUpdate;
+import server.product.showschProduct;
 
 public class StockManagementView extends JFrame {
 

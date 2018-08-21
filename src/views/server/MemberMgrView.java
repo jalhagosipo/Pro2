@@ -1,6 +1,5 @@
 package views.server;
 
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -16,10 +15,10 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import member.Addmem;
-import member.Delmem;
-import member.Up;
-import member.showschMember;
+import server.member.DelMember;
+import server.member.UdtMember;
+import server.member.ShowSchMember;
+import views.client.SignUpView;
 
 public class MemberMgrView extends JFrame {
 
@@ -99,8 +98,6 @@ public class MemberMgrView extends JFrame {
 		btndel.setBounds(450, 472, 133, 60);
 		contentPane.add(btndel);
 		
-			
-			
 		
 		JButton btnclose = new JButton("\uB2EB\uAE30");//´Ý±â¹öÆ°
 		btnclose.addActionListener(new ActionListener() {
@@ -110,10 +107,19 @@ public class MemberMgrView extends JFrame {
 		});
 		btnclose.setBounds(648, 482, 111, 41);
 		contentPane.add(btnclose);
-		btnudt.addActionListener(new Up(memlist));
-		btnsch.addActionListener(new showschMember(textFieldsch,memlist));
-		btndel.addActionListener(new Delmem(memlist));
-		btnadd.addActionListener(new Addmem());
+		
+		btnudt.addActionListener(new UdtMember(memlist));
+		btnsch.addActionListener(new ShowSchMember(textFieldsch,memlist));
+		btndel.addActionListener(new DelMember(memlist));
+		btnadd.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				SignUpView suv=new SignUpView();
+				suv.setVisible(true);
+			}
+		});
 		
 	}
 }

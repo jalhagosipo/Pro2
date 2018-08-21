@@ -15,9 +15,9 @@
  import javax.swing.JTextField;
  import javax.swing.border.EmptyBorder;
 
-import clientInfo.ForSignup;
-import member.MemberDAO;
-import member.MemberDTO;
+import DB.dao.MemberDAO;
+import DB.dto.MemberDTO;
+import client.clientInfo.ForSignup;
  
 public class SignUpView extends JFrame {
  	private JPanel contentPane;
@@ -123,7 +123,7 @@ public class SignUpView extends JFrame {
  				MemberDAO dao = new MemberDAO();
  				if(!textField_id.getText().trim().equals(""))
  				{
-					Vector<MemberDTO>  arr = dao.Member(textField_id.getText().trim());
+					Vector<MemberDTO>  arr = dao.selectAccount(textField_id.getText().trim());
 					if(arr.size()==0) {
 						JOptionPane.showMessageDialog(null, "가입 가능한 아이디입니다.");
 						textField_id.setEditable(false);

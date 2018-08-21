@@ -8,8 +8,8 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import clientInfo.infoDAO;
-import clientInfo.infoDTO;
+import client.clientInfo.infoDAO;
+import client.clientInfo.infoDTO;
 import server.Seat;
 import views.AddtimeView;
 import views.client.ClientInfoView;

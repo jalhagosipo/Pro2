@@ -20,10 +20,10 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import product.ProductDTO;
-import product.SelectProduct;
-import snackChoose.buysnack;
-import snackChoose.cart;
+import client.snackChoose.buysnack;
+import client.snackChoose.cart;
+import server.product.ProductDTO;
+import server.product.SelectProduct;
 import views.server.Client;
 
 public class ChooseSnackView extends JFrame {

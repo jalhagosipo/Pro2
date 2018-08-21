@@ -14,9 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import product.AddProduct;
-import product.ProductDAO;
-import product.ProductDTO;
+import server.product.AddProduct;
+import server.product.ProductDAO;
+import server.product.ProductDTO;
 
 public class AddProductView extends JFrame {
 

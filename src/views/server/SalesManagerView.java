@@ -15,11 +15,11 @@ import javax.swing.table.DefaultTableModel;
 
 import org.jfree.chart.ChartPanel;
 
-import salesManager.makeGraph;
-import salesManager.monthSalesGraph;
-import salesManager.salesListShow;
-import salesManager.weekSalesGraph;
-import salesManager.yearSalesGraph;
+import server.salesManager.makeGraph;
+import server.salesManager.monthSalesGraph;
+import server.salesManager.salesListShow;
+import server.salesManager.weekSalesGraph;
+import server.salesManager.yearSalesGraph;
 
 public class SalesManagerView extends JFrame {
 
