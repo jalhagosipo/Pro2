@@ -31,10 +31,10 @@ public class MemberDel {
 				System.out.println("삭제 성공");
 				JOptionPane.showMessageDialog(null, "삭제 성공.");
 			}
-			else
+			else {
 				System.out.println("삭제 실패");
 			JOptionPane.showMessageDialog(null, "삭제 실패.");
-			
+			}
 			
 		}catch(SQLException e){
 			System.out.println(e);
