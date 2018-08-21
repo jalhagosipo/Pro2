@@ -44,8 +44,8 @@ public class Seat implements ActionListener{
 	//SeatThread에서 클라이언트가 연결될 때 호출할 메서드
 	//timer를 멈추고 좌석의 사용시간, 남은시간, ID를 / 클래스내에서 남은시간에 사용할 변수의 값을 불러와 설정한다.
 	public void SetStart(String id) {
-		lb_time_value.setText("00:00:00");
-		lb_cur_time_value.setText("00:00:00");
+		lb_time_value.setText("");
+		lb_cur_time_value.setText("");
 		
 		SeatDAO dao= new SeatDAO();
 		//시, 분, 초 로 나눈다. 
@@ -67,8 +67,8 @@ public class Seat implements ActionListener{
 	//timer를 멈추고 좌석의 사용시간, 남은시간, ID를 / 클래스내에서 사용시간에 사용할 변수를 초기화한다.
 	public void SetEnd() {
 		timer.stop();
-		lb_time_value.setText("00:00:00");
-		lb_cur_time_value.setText("00:00:00");
+		lb_time_value.setText("");
+		lb_cur_time_value.setText("");
 		hour = 0; 
 		minute = 0;
 		second = 0;

@@ -25,21 +25,40 @@ public class ClientThread implements Runnable{
 		try {
 			in=new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			String str=null;
+			String[] text=null;
+			String[] text2=null;
 			while((str=in.readLine())!=null){
-				if(str.equals("충전"))
-					System.out.println("충전이셈");
-				String[] text = str.split("@");
-				if(text[0].equals("left"))
+				text = str.split("@");
+//				switch(text[0]) {
+//				case "left":lb_time.setText(text[1]);
+//							System.out.println("남은시간:"+text[1]);
+//							break;
+//				case "cur":lb_cur_time.setText(text[1]);
+//							System.out.println("사용시간:"+text[1]);
+//							break;
+//				}
+				
+				
+				//switch랑 if 중 선택
+				if(text[0].equals("left")) {
+//					if(text[1]!=null)
 					lb_time.setText(text[1]);
-				if(text[0].equals("cur"))
-					lb_cur_time.setText(text[1]);
-					
+					System.out.println("남은시간:"+text[1]);
+				}
+				text2 = str.split("@");
+				if(text2[0].equals("cur")) {
+//					if(text[1]!=null)
+					lb_cur_time.setText(text2[1]);
+					System.out.println("사용시간:"+text2[1]);
+				}
 			}//while
-		}catch(IOException e){
-			System.out.println(e);
+		}catch(Exception e){
+			System.out.println(e.getMessage());
 		}
 		finally{
 //			System.out.println((num+1) + "PC 종료.");	
+			if(in != null)
+				try{ in.close(); } catch(IOException e){}
 			if(socket != null)
 				try{ socket.close(); } catch(IOException e){}
 		}		

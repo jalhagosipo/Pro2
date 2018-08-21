@@ -78,8 +78,8 @@ public class SeatView extends JFrame{
 			lb_time[i]=new JLabel("남은시간:");
 			lb_cur_time[i]=new JLabel("사용시간:");
 			lb_id[i] = new JLabel("아이디:");
-			lb_time_value[i]=new JLabel("00:00:00");
-			lb_cur_time_value[i]=new JLabel("00:00:00");
+			lb_time_value[i]=new JLabel(" ");
+			lb_cur_time_value[i]=new JLabel(" ");
 			lb_id_value[i] = new JLabel("대기중");
 			lb_time_value[i].setForeground(Color.white);
 			lb_cur_time_value[i].setForeground(Color.white);
@@ -150,7 +150,7 @@ public class SeatView extends JFrame{
 	public static void main(String[] args) {
 		SeatView sv = new SeatView();
 		ServerSocket server=null;
-		ArrayList<PrintWriter> arr=null;
+		PrintWriter[] arr=null;
 		Seat[] seat=new Seat[20];
 		
 		//각 좌석에 리스너를 추가해주기 위함
@@ -160,11 +160,11 @@ public class SeatView extends JFrame{
 		try{
 			server=new ServerSocket(7777);
 			//배열을 채팅기능이 없는한 삭제해도 문제없음 ====================================================================================
-			arr=new ArrayList<PrintWriter>();
+			arr=new PrintWriter[20];
 			while(true) {
 				System.out.println("접속대기중");
 				Socket soc=server.accept(); 
-				SeatThread th=new SeatThread(soc,seat,sv.lb_time_value,sv.lb_cur_time_value);
+				SeatThread th=new SeatThread(soc,arr,seat,sv.lb_time_value,sv.lb_cur_time_value);
 				sv.SetSocket(soc);
 				Thread job=new Thread(th);
 				job.start();

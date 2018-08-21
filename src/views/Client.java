@@ -37,12 +37,16 @@ public class Client extends JFrame implements ActionListener {
 		c.SetName(dto.getName());
 		c.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
 	}
-	
+	int swit=0;
 	private JPanel contentPane;
 	private JTextField textField;//id
 	private JTextField textField_1;//이름
 	private JTextField textField_2;//남은시간
 	private JTextField textField_3;//사용시간
+	
+	private PrintWriter pw=null;
+	private BufferedReader in=null;
+	private int num=0;
 	
 	//메인뷰에서 좌석칸을 누를때 실행된다. Main_GUI_Event에서 생성자를 호출해 만들어지고 값을 설정한다.
 	//lh	:남은시간 중 시	/ hour	:사용시간 중 시
@@ -98,12 +102,14 @@ public class Client extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		UpdateTimeDAO dao= new UpdateTimeDAO();
 		dao.UpdateTime(textField.getText(), textField_2.getText());
+		timer.stop();
 		System.exit(0);
 	}
 
 	////////////////////////////////////
 	//i		:로그인된 PC번호		/ cur_id	: Login에서 로그인된 ID
 	public Client(int i, String cur_id) {
+		this.num=i;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 500,800);
 		contentPane = new JPanel();
@@ -212,9 +218,6 @@ public class Client extends JFrame implements ActionListener {
 		String host="localhost";
 		int port=7777;
 		Socket socket=null;
-		PrintWriter pw=null;
-		BufferedReader in=null;
-		
 		ClientThread ct=null;
 		Thread job=null;
 		try {
@@ -238,7 +241,7 @@ public class Client extends JFrame implements ActionListener {
 				//SeatThread로부터 사용중인 아이디인지 체크하는 반환값을 받을때까지 대기한다.
 				rs2=in.readLine();
 				if(rs2.equals("1")) {
-					timer = new javax.swing.Timer(1000, this); 
+					timer = new javax.swing.Timer(500, this); 
 					timer.setInitialDelay(0); 
 					timer.start();
 				}else {
@@ -268,31 +271,39 @@ public class Client extends JFrame implements ActionListener {
 	//timer의 소스 남은시간과 사용시간을 계산하고 출력해준다.
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		
-		second++; 		
-		if(second>=60) {
-			minute++;
-			second=0;
-		}
-		if(minute>=60) {
-			hour++;
-			minute=0;
-		}
-		textField_3.setText(hour + ":" + minute + ": " + second); 
-		
-		if(ls<=0){
-			ls=59;
-			lm--;
-			if(lm<=0) {
-				lm=59;
-				lh--;
-			}else{
-				lm--;
-			}
+		if(swit==0) {
+		pw.println("left@"+num);
+		pw.flush();
+		swit=1;
 		}else {
-			ls--;
+		pw.println("cur@"+num);
+		pw.flush();
+		swit=0;
 		}
-		textField_2.setText(lh+ ":" + lm + ":"+ ls);
+		
+//		second++; 		
+//		if(second>=60) {
+//			minute++;
+//			second=0;
+//		}
+//		if(minute>=60) {
+//			hour++;
+//			minute=0;
+//		}
+//		textField_3.setText(hour + ":" + minute + ": " + second); 
+//		
+//		if(ls<=0){
+//			ls=59;
+//			lm--;
+//			if(lm<=0) {
+//				lm=59;
+//				lh--;
+//			}else{
+//				lm--;
+//			}
+//		}else {
+//			ls--;
+//		}
+//		textField_2.setText(lh+ ":" + lm + ":"+ ls);
 	}
 }

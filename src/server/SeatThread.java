@@ -13,6 +13,7 @@ import views.SeatView;
 
 public class SeatThread implements Runnable{
 	private Socket socket;
+	private PrintWriter[] arr=null;
 	private int num;
 	private String id;
 	private Seat[] seat;
@@ -21,8 +22,9 @@ public class SeatThread implements Runnable{
 	private int check_num=0;
 	private int check_id=0;
 	
-	public  SeatThread(Socket socket, Seat[] seat, JLabel[] lb_time, JLabel[] lb_cur_time) {// String id, int num){
+	public  SeatThread(Socket socket, PrintWriter[] arr, Seat[] seat, JLabel[] lb_time, JLabel[] lb_cur_time) {
 		this.socket=socket;
+		this.arr=arr;
 		this.seat=seat;
 		this.lb_time=lb_time;
 		this.lb_cur_time=lb_cur_time;
@@ -30,7 +32,7 @@ public class SeatThread implements Runnable{
 		BufferedReader in=null;
 		PrintWriter pw=null;
 		try {
-			pw=new PrintWriter(socket.getOutputStream());   
+			pw=new PrintWriter(socket.getOutputStream());
 			System.out.println("PC 연결 대기중...");
 			in=new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			num=Integer.parseInt(in.readLine());
@@ -55,6 +57,7 @@ public class SeatThread implements Runnable{
 					pw.flush();
 					seat[num].SetStart(id);
 					System.out.println((num+1)+"번PC 사용자 "+ id);	
+					arr[num]=pw;
 				}else {
 					System.out.println("이미 로그인한 아이디입니다.");
 					pw.println("0");
@@ -78,13 +81,23 @@ public class SeatThread implements Runnable{
 			pw= new PrintWriter(socket.getOutputStream());
 			in=new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			String str=null;
-			while((str=in.readLine())!=null){
-				
-			}//while
+			while((str=in.readLine())!=null) {
+				String[] text=str.split("@");
+				if(text[0].equals("left")) {
+					int n=Integer.parseInt(text[1]);
+					arr[n].println("left@"+lb_time[n].getText().trim());
+					arr[n].flush();
+				}else if(text[0].equals("cur")) {
+					int n=Integer.parseInt(text[1]);
+					arr[n].println("cur@"+lb_cur_time[n].getText().trim());
+					arr[n].flush(); //fluch를쓰니까 에러생김. 배열에서 n의 범위가 문제인것같음
+				}
+			}
 		}catch(IOException e){
 			System.out.println(e);
 		}
 		finally{
+			arr[num]=null;
 			seat[num].SetEnd();
 			System.out.println((num+1) + "PC 종료.");	
 			if(socket != null)
