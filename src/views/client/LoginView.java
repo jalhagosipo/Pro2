@@ -13,7 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import client.clientInfo.ForSignup;
-import client.login.Login;
+import client.clientInfo.Login;
 
 public class LoginView extends JFrame{
 	JPanel pan_main;

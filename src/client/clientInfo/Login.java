@@ -1,4 +1,4 @@
-package client.login;
+package client.clientInfo;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,8 +19,6 @@ import javax.swing.JTextField;
 import DB.DBconn;
 import DB.DAO.MemberDAO;
 import DB.DTO.MemberDTO;
-import client.clientInfo.infoDAO;
-import client.clientInfo.infoDTO;
 import views.client.ClientInfoView;
 import views.client.LoginView;
 import views.server.Client;
