@@ -11,10 +11,10 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import ClientInfo.UpdateTimeDAO;
+import clientInfo.UpdateTimeDAO;
 import product.ProductDTO;
-import views.ChooseSnackView;
-import views.Client;
+import views.client.ChooseSnackView;
+import views.server.Client;
 
 public class buysnack implements ActionListener{
 	Client ci;

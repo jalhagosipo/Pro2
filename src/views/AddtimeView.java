@@ -14,8 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import Addtime.Addtime;
-import Addtime.Cilentshow;
+import addTime.Addtime;
+import addTime.Cilentshow;
+import views.client.ClientInfoView;
 
 public class AddtimeView extends JFrame {
 	private JPanel contentPane;
@@ -30,7 +31,7 @@ public class AddtimeView extends JFrame {
 	private JButton btnAddtime5;
 	private JButton btnAddtime6;
 	
-	private ClientInfo clientinfo;
+	private ClientInfoView clientinfo;
 	
 	@Override
 	public void setVisible(boolean b) {
@@ -38,7 +39,7 @@ public class AddtimeView extends JFrame {
 		textSearchid.setText(getid.getText());
 		super.setVisible(b);
 	}
-	public void setClientInfo(ClientInfo clientinfo) {
+	public void setClientInfo(ClientInfoView clientinfo) {
 		this.clientinfo=clientinfo;
 	}
 	public void SetBtn() {

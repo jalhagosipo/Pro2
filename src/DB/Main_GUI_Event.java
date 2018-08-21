@@ -8,16 +8,16 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import ClientInfo.infoDAO;
-import ClientInfo.infoDTO;
+import clientInfo.infoDAO;
+import clientInfo.infoDTO;
 import server.Seat;
 import views.AddtimeView;
-import views.Client;
-import views.ClientInfo;
-import views.MemberMgr;
-import views.SalesManagerView;
-import views.SeatView;
-import views.StockManagementView;
+import views.client.ClientInfoView;
+import views.server.Client;
+import views.server.MemberMgrView;
+import views.server.SalesManagerView;
+import views.server.SeatView;
+import views.server.StockManagementView;
 
 public class Main_GUI_Event extends JFrame implements MouseListener, ActionListener{
 	private int cur_num;
@@ -29,7 +29,7 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 	
 	//0814 cmd로 seatview 실행하려고 주석처리 밑에 액션리스너도 주석처리
 	SalesManagerView smv= new SalesManagerView();
-	MemberMgr mm= new MemberMgr();
+	MemberMgrView mm= new MemberMgrView();
 	AddtimeView atv = new AddtimeView(new JLabel(""));
 	StockManagementView sm = new StockManagementView();
 	public Main_GUI_Event() {
@@ -50,7 +50,7 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 		infoDTO dto= new infoDTO();
 		dto = dao.GetInfo(cur_id_label.getText());
 		
-		ClientInfo ci= new ClientInfo(cur_num, s, cur_id_label.getText(),cur_time_label,time_label, sv);
+		ClientInfoView ci= new ClientInfoView(cur_num, s, cur_id_label.getText(),cur_time_label,time_label, sv);
 		ci.SetName(dto.getName());
 		ci.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
 		ci.setVisible(true);

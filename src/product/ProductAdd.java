@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import views.AddProductView;
+import views.server.AddProductView;
 
 public class ProductAdd implements ActionListener{
 	JTable table;

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 
-import views.SeatView;
+import views.server.SeatView;
 
 public class SeatThread implements Runnable{
 	private Socket socket;

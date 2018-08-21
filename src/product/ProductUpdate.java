@@ -7,7 +7,7 @@ import java.util.Vector;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import views.UpdateProductView;
+import views.server.UpdateProductView;
 
 public class ProductUpdate implements ActionListener{
 	JTable table;
