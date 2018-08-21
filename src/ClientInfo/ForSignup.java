@@ -33,8 +33,10 @@ public class ForSignup implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+
 		if(textField_name.getText().trim().equals("") || textField_name.getText().trim()==null) {JOptionPane.showMessageDialog(null, "정확한 이름을 입력해주세요.");}
 		else if(textField_pwd.getText().trim().equals("") || textField_pwd.getText().trim()==null) {JOptionPane.showMessageDialog(null, "한글자이상입력해주세요.");}
+		else if(!textField_phone.getText().trim().matches("(01[0179])-(\\d{4})-(\\d{4})")) {JOptionPane.showMessageDialog(null, "010-1234-1234형식으로 입력해주세요.");}
 		else {
 			SignUpDTO dto = new SignUpDTO(textField_name.getText().trim(), textField_id.getText().trim(), textField_pwd.getText().trim(), textField_phone.getText().trim());
 			SignUpDAO dao = new SignUpDAO();
