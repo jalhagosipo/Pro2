@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import DB.DBconn;
 
 public class ProductDel {
@@ -27,10 +29,13 @@ public class ProductDel {
 			if(result>0)
 			{
 				System.out.println("삭제 완료");
+				JOptionPane.showMessageDialog(null, "삭제 완료");
 			}
 			else
+			{
 				System.out.println("삭제 실패");
-			
+				JOptionPane.showMessageDialog(null, "삭제 실패");
+			}
 			
 		}catch(SQLException e){
 			System.out.println(e);

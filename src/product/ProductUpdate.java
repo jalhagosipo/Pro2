@@ -2,11 +2,11 @@ package product;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import views.MemberUdt;
 import views.UpdateProductView;
 
 public class ProductUpdate implements ActionListener{
@@ -28,8 +28,9 @@ public class ProductUpdate implements ActionListener{
 		String proPrice = (String)table.getValueAt(row, 1);
 		int proStock = (int)table.getValueAt(row, 2);
 		
-		UpdateProductView upv = new UpdateProductView(proName, proPrice, proStock);
+		UpdateProductView upv = new UpdateProductView(table, proName, proPrice, proStock);
 		upv.setVisible(true);
+		
 	}
 	
 	
