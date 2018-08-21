@@ -57,17 +57,17 @@ public class MemberMgr extends JFrame {
 		
 		JLabel label = new JLabel("\uD68C\uC6D0 ID");
 		label.setFont(new Font("굴림", Font.PLAIN, 16));
-		label.setBounds(54, 40, 78, 22);
+		label.setBounds(164, 40, 78, 22);
 		contentPane.add(label);
 		
 		textFieldsch = new JTextField();
 		textFieldsch.setColumns(10);
-		textFieldsch.setBounds(152, 38, 180, 29);
+		textFieldsch.setBounds(290, 38, 180, 29);
 		contentPane.add(textFieldsch);
 		
 		JButton btnsch = new JButton("\uAC80\uC0C9"); //검색버튼
 		
-		btnsch.setBounds(427, 34, 109, 37);
+		btnsch.setBounds(572, 34, 109, 37);
 		contentPane.add(btnsch);
 		
 		JTable memlist = new JTable();
