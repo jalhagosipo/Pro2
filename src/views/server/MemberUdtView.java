@@ -14,8 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import DB.dao.MemberDAO;
-import DB.dto.MemberDTO;
+import DB.DAO.MemberDAO;
+import DB.DTO.MemberDTO;
 
 public class MemberUdtView extends JFrame {
 	

@@ -1,4 +1,4 @@
-package addTime;
+package server.addTime;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import DB.DBconn;
-import views.AddtimeView;
+import views.server.AddtimeView;
 
 public class ClientshowDAO{	
 	public ClientshowDTO GetShow(String readtxt) {

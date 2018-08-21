@@ -2,17 +2,17 @@ package client.snackChoose;
 
 import java.util.Vector;
 
-import DB.dao.ProductDAO;
-import DB.dto.ProductDTO;
+import DB.DAO.ProductDAO;
+import DB.DTO.ProductDTO;
 
-public class snackChooseUpdateService {
+public class SnackChooseUpdateService {
 
 	
 	String name;
 	int minusAmount;
 	String price;
 	
-	public snackChooseUpdateService(String name,String price,int minusAmount) {
+	public SnackChooseUpdateService(String name,String price,int minusAmount) {
 		this.name=name;
 		this.minusAmount= minusAmount;
 		this.price=price;

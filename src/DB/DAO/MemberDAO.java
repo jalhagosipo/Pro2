@@ -1,4 +1,4 @@
-package DB.dao;
+package DB.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,8 +9,7 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 
 import DB.DBconn;
-import DB.dto.MemberDTO;
-import DB.dto.salesDTO;
+import DB.DTO.MemberDTO;
 
 public class MemberDAO {
 	
@@ -126,6 +125,76 @@ public class MemberDAO {
 					System.out.println("수정 실패");
 				JOptionPane.showMessageDialog(null, "수정 실패.");
 				}
+			}catch(SQLException e){
+				System.out.println(e);
+			}
+		}
+		
+		public boolean insertAccount(MemberDTO dto) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			DBconn dbconn = new DBconn();
+			boolean ok = false;
+			
+			try {
+				conn = dbconn.getConnection();
+				StringBuilder sql = new StringBuilder();
+				sql.append(" insert into mydb.pro2_member ");
+				sql.append("           (member_id         ");
+				sql.append("          , member_pw         ");
+				sql.append("	      , phone_number	  ");
+				sql.append("          , member_name)      ");
+				sql.append("    values (?, ?, ?, ?);      ");
+				
+				pstmt = conn.prepareStatement(sql.toString());
+				pstmt.setString(1, dto.getId());
+				pstmt.setString(2, dto.getPw());
+				pstmt.setString(3, dto.getPhonenum());
+				pstmt.setString(4, dto.getName());
+				
+				int result = pstmt.executeUpdate();
+				if(result>0)
+				{
+					System.out.println("가입 성공");
+					ok=true;
+				}
+				else
+					System.out.println("가입 실패");
+				
+			}catch(SQLException e){
+				System.out.println(e);
+			}
+			return ok;
+		}
+		
+		public void UpdateTime(String id, String time) {
+			Connection conn = null;
+			PreparedStatement pstmt =  null;
+			ResultSet rs = null;
+			DBconn dbconn = new DBconn();
+
+			try {
+				conn = dbconn.getConnection();
+				StringBuilder sql = new StringBuilder();
+
+				sql.append(" update mydb.pro2_member  ");
+				sql.append("   set                    ");
+				sql.append("       left_time=?        ");
+				sql.append("   where member_id=?      ");
+				
+				pstmt = conn.prepareStatement(sql.toString());
+				pstmt.setString(1, time);
+				pstmt.setString(2, id);
+				
+				int result = pstmt.executeUpdate();
+				if(result>0)
+				{
+					System.out.println("업데이트 성공");
+				}
+				else
+					System.out.println("업데이트 실패");
+				
+				
 			}catch(SQLException e){
 				System.out.println(e);
 			}

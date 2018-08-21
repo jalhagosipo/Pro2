@@ -1,4 +1,4 @@
-package addTime;
+package server.addTime;
 
 public class AddtimeDTO {
 	

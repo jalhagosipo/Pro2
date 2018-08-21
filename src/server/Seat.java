@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import DB.DAO.SeatDAO;
+
 public class Seat implements ActionListener{
 	
 	JLabel lb_time_value;

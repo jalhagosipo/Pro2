@@ -11,12 +11,12 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import DB.dto.ProductDTO;
-import client.clientInfo.UpdateTimeDAO;
+import DB.DAO.MemberDAO;
+import DB.DTO.ProductDTO;
 import views.client.ChooseSnackView;
 import views.server.Client;
 
-public class buysnack implements ActionListener{
+public class BuySnack implements ActionListener{
 	Client ci;
 	ChooseSnackView csv;
 	JTable table;
@@ -31,7 +31,7 @@ public class buysnack implements ActionListener{
 	int lm=0;
 	int ls=0;
 	int have_m=0;
-	public buysnack(Vector<ProductDTO> buy_arr,Client c, ChooseSnackView csv, JTable table,JTextField tf_id,JTextField tf_lefttime,JTextField textShowPrice){
+	public BuySnack(Vector<ProductDTO> buy_arr,Client c, ChooseSnackView csv, JTable table,JTextField tf_id,JTextField tf_lefttime,JTextField textShowPrice){
 		this.ci=c;
 		this.csv=csv;
 		this.table=table;
@@ -61,7 +61,7 @@ public class buysnack implements ActionListener{
 			ci.setLm(m);
 			
 			String time= ci.getLh()+ ":" + ci.getLm() + ":" + ci.getLs();
-			UpdateTimeDAO dao=new UpdateTimeDAO();
+			MemberDAO dao=new MemberDAO();
 			dao.UpdateTime(tf_id.getText(), time);
 			
 			
@@ -70,7 +70,7 @@ public class buysnack implements ActionListener{
 			{
 				possible=false;
 				ProductDTO pd = it.next();
-				snackChooseUpdateService sus = new snackChooseUpdateService(pd.getProName(), pd.getProPrice(), pd.getAmount());
+				SnackChooseUpdateService sus = new SnackChooseUpdateService(pd.getProName(), pd.getProPrice(), pd.getAmount());
 				possible = sus.stockchange();
 			}
 			

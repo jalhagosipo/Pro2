@@ -9,9 +9,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import DB.dao.MemberDAO;
-import DB.dto.MemberDTO;
-import DB.dto.salesDTO;
+import DB.DAO.MemberDAO;
+import DB.DTO.MemberDTO;
+import DB.DTO.SalesDTO;
 
 public class ShowSchMember implements ActionListener{
 

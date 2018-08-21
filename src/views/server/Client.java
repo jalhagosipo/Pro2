@@ -20,8 +20,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import DB.DAO.MemberDAO;
 import client.clientInfo.ClientThread;
-import client.clientInfo.UpdateTimeDAO;
 import client.clientInfo.infoDAO;
 import client.clientInfo.infoDTO;
 import views.client.ChooseSnackView;
@@ -102,7 +102,7 @@ public class Client extends JFrame implements ActionListener {
 	//DAO를 통해 현재 남은 시간을 DB에 저장시키고 시스템을 종료시킨다.
 	public void closeview() {
 		// TODO Auto-generated method stub
-		UpdateTimeDAO dao= new UpdateTimeDAO();
+		MemberDAO dao= new MemberDAO();
 		dao.UpdateTime(textField.getText(), textField_2.getText());
 		timer.stop();
 		System.exit(0);

@@ -14,8 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import DB.dao.ProductDAO;
-import DB.dto.ProductDTO;
+import DB.DAO.ProductDAO;
+import DB.DTO.ProductDTO;
 
 public class UpdateProductView extends JFrame {
 

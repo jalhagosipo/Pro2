@@ -19,10 +19,10 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import DB.dao.ProductDAO;
-import DB.dto.ProductDTO;
-import client.snackChoose.buysnack;
-import client.snackChoose.cart;
+import DB.DAO.ProductDAO;
+import DB.DTO.ProductDTO;
+import client.snackChoose.BuySnack;
+import client.snackChoose.Cart;
 import views.server.Client;
 
 public class ChooseSnackView extends JFrame {
@@ -137,7 +137,7 @@ public class ChooseSnackView extends JFrame {
 			pan_snack[i].add(pan_left[i]);
 			pan_snack[i].add(pan_right[i]);
 			
-			btn_tocart[i].addActionListener(new cart(buy_arr,lb_pname[i].getText(),lb_pprice[i].getText(),cb_amount[i],table,textShowPrice));
+			btn_tocart[i].addActionListener(new Cart(buy_arr,lb_pname[i].getText(),lb_pprice[i].getText(),cb_amount[i],table,textShowPrice));
 			
 			panel.add(pan_snack[i]);
 		}//end for
@@ -157,6 +157,6 @@ public class ChooseSnackView extends JFrame {
 			}
 		});//end addActionListener
 		
-		buybtn.addActionListener(new buysnack(buy_arr,ci,this,table,tf_id,tf_lefttime,textShowPrice));
+		buybtn.addActionListener(new BuySnack(buy_arr,ci,this,table,tf_id,tf_lefttime,textShowPrice));
 	}//end constructors
 }//end class

@@ -9,8 +9,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import DB.dao.salesDAO;
-import DB.dto.salesDTO;
+import DB.DAO.SalesDAO;
+import DB.DTO.SalesDTO;
 
 public class salesListShow implements ActionListener{
 
@@ -31,15 +31,15 @@ public class salesListShow implements ActionListener{
 		// TODO Auto-generated method stub
 
 
-		salesDAO dao = new salesDAO();
+		SalesDAO dao = new SalesDAO();
 		DefaultTableModel tm = (DefaultTableModel) list.getModel();
 		tm.setNumRows(0);
-		Vector<salesDTO> lst = dao.getSalesList(textField_from.getText().trim(),textField_to.getText().trim());
-		Iterator<salesDTO> it = lst.iterator();
+		Vector<SalesDTO> lst = dao.getSalesList(textField_from.getText().trim(),textField_to.getText().trim());
+		Iterator<SalesDTO> it = lst.iterator();
 
 		while(it.hasNext())
 		{
-			salesDTO sd = it.next();
+			SalesDTO sd = it.next();
 			tm.addRow(new Object[]{sd.getToday_dates(),sd.getToday_sales()});
 		}
 

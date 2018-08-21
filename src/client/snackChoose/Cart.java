@@ -11,9 +11,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import DB.dto.ProductDTO;
+import DB.DTO.ProductDTO;
 
-public class cart implements ActionListener{
+public class Cart implements ActionListener{
 
 	
 	String name;
@@ -24,7 +24,7 @@ public class cart implements ActionListener{
 	Vector<ProductDTO> buy_arr;
 	JTextField textShowPrice;
 	
-	public cart(Vector<ProductDTO> buy_arr,String name, String price, JComboBox amount,JTable table,JTextField textShowPrice) {
+	public Cart(Vector<ProductDTO> buy_arr,String name, String price, JComboBox amount,JTable table,JTextField textShowPrice) {
 		this.buy_arr=buy_arr;
 		this.name = name;
 		this.price = price;

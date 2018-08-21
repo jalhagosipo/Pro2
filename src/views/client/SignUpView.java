@@ -15,8 +15,8 @@
  import javax.swing.JTextField;
  import javax.swing.border.EmptyBorder;
 
-import DB.dao.MemberDAO;
-import DB.dto.MemberDTO;
+import DB.DAO.MemberDAO;
+import DB.DTO.MemberDTO;
 import client.clientInfo.ForSignup;
  
 public class SignUpView extends JFrame {

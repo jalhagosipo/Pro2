@@ -1,4 +1,4 @@
-package addTime;
+package server.addTime;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

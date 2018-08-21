@@ -1,4 +1,4 @@
-package DB.dto;
+package DB.DTO;
 
 import java.util.Date;
 
@@ -19,6 +19,13 @@ public class MemberDTO {
 	}
 	public int getTotal_price() {
 		return total_price;
+	}
+	public MemberDTO(String name, String id, String pw, String phonenum) {
+		super();
+		this.name = name;
+		this.id = id;
+		this.pw = pw;
+		this.phonenum = phonenum;
 	}
 	public MemberDTO(int number, String id, String pw, String phonenum, String name, String left_time, int total_price) {
 		super();

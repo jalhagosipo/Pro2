@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import DB.dao.ProductDAO;
+import DB.DAO.ProductDAO;
 
 public class DelProduct implements ActionListener{
 

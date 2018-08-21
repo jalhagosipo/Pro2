@@ -1,4 +1,4 @@
-package DB.dao;
+package DB.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,7 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 
 import DB.DBconn;
-import DB.dto.ProductDTO;
+import DB.DTO.ProductDTO;
 
 public class ProductDAO {
 	

@@ -1,4 +1,4 @@
-package views;
+package views.server;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -14,8 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import addTime.Addtime;
-import addTime.Cilentshow;
+import server.addTime.Addtime;
+import server.addTime.Cilentshow;
 import views.client.ClientInfoView;
 
 public class AddtimeView extends JFrame {

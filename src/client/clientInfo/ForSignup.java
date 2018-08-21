@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import DB.DAO.MemberDAO;
+import DB.DTO.MemberDTO;
 import views.client.SignUpView;
 
 
@@ -38,9 +40,8 @@ public class ForSignup implements ActionListener {
 		else if(textField_pwd.getText().trim().equals("") || textField_pwd.getText().trim()==null) {JOptionPane.showMessageDialog(null, "한글자이상입력해주세요.");}
 		else if(!textField_phone.getText().trim().matches("(01[0179])-(\\d{4})-(\\d{4})")) {JOptionPane.showMessageDialog(null, "010-1234-1234형식으로 입력해주세요.");}
 		else {
-			SignUpDTO dto = new SignUpDTO(textField_name.getText().trim(), textField_id.getText().trim(), textField_pwd.getText().trim(), textField_phone.getText().trim());
-			SignUpDAO dao = new SignUpDAO();
-
+			MemberDTO dto = new MemberDTO(textField_name.getText().trim(), textField_id.getText().trim(), textField_pwd.getText().trim(), textField_phone.getText().trim());
+			MemberDAO dao = new MemberDAO();
 			boolean result = dao.insertAccount(dto);
 			if(result)
 			{

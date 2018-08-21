@@ -8,8 +8,8 @@ import java.util.Vector;
 
 import org.jfree.chart.ChartPanel;
 
-import DB.dao.salesDAO;
-import DB.dto.salesDTO;
+import DB.DAO.SalesDAO;
+import DB.DTO.SalesDTO;
 
 public class monthSalesGraph  implements ActionListener{
 
@@ -26,14 +26,14 @@ public class monthSalesGraph  implements ActionListener{
 		// TODO Auto-generated method stub
 		ArrayList<String> str = new ArrayList<>();
 		
-		salesDAO dao = new salesDAO();
-		Vector<salesDTO> arr = dao.getSalesGraph("month");
-		Iterator<salesDTO> it = arr.iterator();
+		SalesDAO dao = new SalesDAO();
+		Vector<SalesDTO> arr = dao.getSalesGraph("month");
+		Iterator<SalesDTO> it = arr.iterator();
 		Vector<Integer> money= new Vector<>();
 		
 		while(it.hasNext())
 			{
-				salesDTO dto = it.next();
+				SalesDTO dto = it.next();
 				money.add(dto.getToday_sales());
 				str.add(dto.getToday_dates().substring(8, 10));
 			}

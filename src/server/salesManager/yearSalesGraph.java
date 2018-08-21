@@ -7,8 +7,8 @@ import java.util.Vector;
 
 import org.jfree.chart.ChartPanel;
 
-import DB.dao.salesDAO;
-import DB.dto.salesDTO;
+import DB.DAO.SalesDAO;
+import DB.DTO.SalesDTO;
 
 public class yearSalesGraph  implements ActionListener{
 	
@@ -24,9 +24,9 @@ ChartPanel chart;
 		// TODO Auto-generated method stub
 		String[] category= {"JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"};
 		
-		salesDAO dao = new salesDAO();
-		Vector<salesDTO> arr = dao.getSalesGraph("year");
-		Iterator<salesDTO> it = arr.iterator();
+		SalesDAO dao = new SalesDAO();
+		Vector<SalesDTO> arr = dao.getSalesGraph("year");
+		Iterator<SalesDTO> it = arr.iterator();
 		Vector<Integer> money= new Vector<>();
 		
 		while(it.hasNext())

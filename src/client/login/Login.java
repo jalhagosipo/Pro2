@@ -11,11 +11,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import DB.DBconn;
+import DB.DAO.MemberDAO;
+import DB.DTO.MemberDTO;
 import client.clientInfo.infoDAO;
 import client.clientInfo.infoDTO;
 import views.client.ClientInfoView;
@@ -38,15 +41,16 @@ public class Login implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getActionCommand()=="로그인") {
-			LoginDAO dao=new LoginDAO();
+			MemberDAO dao=new MemberDAO();
 			String check;
 			
-			check= dao.CheckMember(id.getText());
-			if(check==null) {
+			
+			if(dao.selectAccount(id.getText()).size()<1) {
 				JOptionPane.showMessageDialog(null, "아이디 없음.");
 				id.setText("");
 			}else{
-				String getpw=dao.GetPw(check);
+				check= dao.selectAccount(id.getText()).get(0).getId();
+				String getpw=dao.selectAccount(check).get(0).getPw();
 				
 				if(getpw.equals(pw.getText())) {
 					

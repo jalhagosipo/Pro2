@@ -1,4 +1,4 @@
-package DB.dao;
+package DB.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,19 +7,19 @@ import java.sql.SQLException;
 import java.util.Vector;
 
 import DB.DBconn;
-import DB.dto.salesDTO;
+import DB.DTO.SalesDTO;
 
 /*
- getSalesList() - ?ï¿½ì‘“?ï¿½ëµ ?è‹‘ï¿½ ?ï¿½ëµ­?å ‰ï¿½?è‹‘ï¿½ vector?ï¿½êµ¨?æºï¿½åš¥ï¿½? ï¿½ëµ³ï¿½ë—ªì‰˜
+ getSalesList() - ?ï¿½ì‘“?ï¿½ëµ ??‹‘ï¿? ?ï¿½ëµ­?? ‰ï¿???‹‘ï¿? vector?ï¿½êµ¨?æºï¿½?š¥ï¿?? ï¿½ëµ³ï¿½ë—ª?‰˜
  */
-public class salesDAO {
+public class SalesDAO {
 
-	public Vector<salesDTO> getSalesList(String from,String to)
+	public Vector<SalesDTO> getSalesList(String from,String to)
 	{
 		Connection conn = null;
 		PreparedStatement pstmt =  null;
 		ResultSet rs = null;
-		Vector<salesDTO> arr = new Vector<>();
+		Vector<SalesDTO> arr = new Vector<>();
 		DBconn dbconn = new DBconn();
 
 		try {
@@ -55,7 +55,7 @@ public class salesDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next())
 			{
-				salesDTO dto = new salesDTO(); 
+				SalesDTO dto = new SalesDTO(); 
 				dto.setToday_dates(rs.getString("today_dates"));
 				dto.setToday_sales(rs.getInt("today_sales"));
 				arr.add(dto);
@@ -71,12 +71,12 @@ public class salesDAO {
 		return arr;
 	}
 
-	public Vector<salesDTO> getSalesGraph(String date)
+	public Vector<SalesDTO> getSalesGraph(String date)
 	{
 		Connection conn = null;
 		PreparedStatement pstmt =  null;
 		ResultSet rs = null;
-		Vector<salesDTO> arr = new Vector<>();
+		Vector<SalesDTO> arr = new Vector<>();
 		DBconn dbconn = new DBconn();
 
 		try {
@@ -109,7 +109,7 @@ public class salesDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next())
 			{
-				salesDTO dto = new salesDTO(); 
+				SalesDTO dto = new SalesDTO(); 
 				dto.setToday_dates(rs.getString("today_dates"));
 				dto.setToday_sales(rs.getInt("today_sales"));
 				arr.add(dto);

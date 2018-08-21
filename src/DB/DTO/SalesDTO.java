@@ -1,6 +1,6 @@
-package DB.dto;
+package DB.DTO;
 
-public class salesDTO {
+public class SalesDTO {
 	
 	private String today_dates;
 	private int today_sales;

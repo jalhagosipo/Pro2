@@ -20,7 +20,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import server.Seat;
-import views.AddtimeView;
+import views.server.AddtimeView;
 import views.server.SeatView;
 
 

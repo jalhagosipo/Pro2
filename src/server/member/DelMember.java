@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import DB.dao.MemberDAO;
+import DB.DAO.MemberDAO;
 
 public class DelMember implements ActionListener{
 

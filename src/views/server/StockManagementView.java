@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import server.product.DelProduct;
 import server.product.AddProduct;
 import server.product.UdtProduct;
-import server.product.showSchProduct;
+import server.product.ShowSchProduct;
 
 public class StockManagementView extends JFrame {
 
@@ -123,7 +123,7 @@ public class StockManagementView extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		button_add.addActionListener(new AddProduct(table));
-		button_search.addActionListener(new showSchProduct(textField, table));
+		button_search.addActionListener(new ShowSchProduct(textField, table));
 		button_delete.addActionListener(new DelProduct(table));
 		button_update.addActionListener(new UdtProduct(table));
 	}
