@@ -2,14 +2,20 @@ package views;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
+import product.ProductDAO;
+import product.ProductDTO;
 import product.UpdateProduct;
 
 public class UpdateProductView extends JFrame {
@@ -20,28 +26,11 @@ public class UpdateProductView extends JFrame {
 	private JTextField tf_stock;
 
 	private String oldName;
-	/**
-	 * Launch the application.
-	 */
-/*	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AddProductView frame = new AddProductView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
+	private JTable table;
 
-	/**
-	 * Create the frame.
-	 */
-	public UpdateProductView(String _name, String _price, int _stock) {
+	public UpdateProductView(JTable table, String _name, String _price, int _stock) {
 		this.oldName=_name;
-		
+		this.table = table;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 200, 300);
 		contentPane = new JPanel();
@@ -94,6 +83,19 @@ public class UpdateProductView extends JFrame {
 						,Integer.parseInt(tf_stock.getText())
 						,oldName);
 				
+				//
+				DefaultTableModel tm2 = (DefaultTableModel) table.getModel();
+				tm2.setNumRows(0);
+				ProductDAO dao2=new ProductDAO();
+				Vector<ProductDTO> dto2= dao2.Product("");
+				Iterator<ProductDTO> it2 = dto2.iterator();
+				
+				while(it2.hasNext())
+				{
+					ProductDTO pd = it2.next();
+					tm2.addRow(new Object[]{pd.getProName(),pd.getProPrice(),pd.getProStock()});
+				}
+				dispose();
 			}
 		});
 		

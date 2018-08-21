@@ -25,8 +25,9 @@ public class ProductAdd implements ActionListener{
 		String proPrice = null;
 		int proStock = 0;
 		
-		AddProductView apv = new AddProductView(proName, proPrice, proStock);
+		AddProductView apv = new AddProductView(table, proName, proPrice, proStock);
 		apv.setVisible(true);
+		
 		
 	}
 }

@@ -2,15 +2,21 @@ package views;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import product.AddProduct;
+import product.ProductDAO;
+import product.ProductDTO;
 
 public class AddProductView extends JFrame {
 
@@ -18,27 +24,9 @@ public class AddProductView extends JFrame {
 	private JTextField tf_proName;
 	private JTextField tf_price;
 	private JTextField tf_stock;
+	private JTable table;
 
-	/**
-	 * Launch the application.
-	 */
-/*	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AddProductView frame = new AddProductView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-	/**
-	 * Create the frame.
-	 */
-	public AddProductView(String _name, String _price, int _stock) {
+	public AddProductView(JTable table, String _name, String _price, int _stock) {
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 200, 300);
@@ -91,6 +79,18 @@ public class AddProductView extends JFrame {
 						,tf_price.getText()
 						,Integer.parseInt(tf_stock.getText()));
 				
+				DefaultTableModel tm2 = (DefaultTableModel) table.getModel();
+				tm2.setNumRows(0);
+				ProductDAO dao2=new ProductDAO();
+				Vector<ProductDTO> dto2= dao2.Product("");
+				Iterator<ProductDTO> it2 = dto2.iterator();
+				
+				while(it2.hasNext())
+				{
+					ProductDTO pd = it2.next();
+					tm2.addRow(new Object[]{pd.getProName(),pd.getProPrice(),pd.getProStock()});
+				}
+				dispose();
 			}
 		});
 		

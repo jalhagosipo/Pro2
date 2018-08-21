@@ -40,12 +40,6 @@ public class showschProduct implements ActionListener{
 			}
 			
 			
-				
-				
-				
-			
-			
-			
 		}
 	}
 
