@@ -9,10 +9,10 @@ import javax.swing.table.DefaultTableModel;
 
 import views.server.UpdateProductView;
 
-public class ProductUpdate implements ActionListener{
+public class UdtProduct implements ActionListener{
 	JTable table;
 	
-	public ProductUpdate(JTable table) {
+	public UdtProduct(JTable table) {
 		super();
 		this.table=table;
 		// TODO Auto-generated constructor stub

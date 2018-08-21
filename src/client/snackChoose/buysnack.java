@@ -11,8 +11,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import DB.dto.ProductDTO;
 import client.clientInfo.UpdateTimeDAO;
-import server.product.ProductDTO;
 import views.client.ChooseSnackView;
 import views.server.Client;
 

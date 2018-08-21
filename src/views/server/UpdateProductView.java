@@ -14,9 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import server.product.ProductDAO;
-import server.product.ProductDTO;
-import server.product.UpdateProduct;
+import DB.dao.ProductDAO;
+import DB.dto.ProductDTO;
 
 public class UpdateProductView extends JFrame {
 
@@ -77,16 +76,14 @@ public class UpdateProductView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				UpdateProduct up = new UpdateProduct();
-				up.updateProduct(tf_proName.getText()
-						,tf_price.getText()
-						,Integer.parseInt(tf_stock.getText())
-						,oldName);
 				
-				//
 				DefaultTableModel tm2 = (DefaultTableModel) table.getModel();
 				tm2.setNumRows(0);
 				ProductDAO dao2=new ProductDAO();
+				dao2.updateProduct(tf_proName.getText()
+						,tf_price.getText()
+						,Integer.parseInt(tf_stock.getText())
+						,oldName);
 				Vector<ProductDTO> dto2= dao2.Product("");
 				Iterator<ProductDTO> it2 = dto2.iterator();
 				

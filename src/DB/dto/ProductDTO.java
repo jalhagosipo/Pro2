@@ -1,4 +1,4 @@
-package server.product;
+package DB.dto;
 
 public class ProductDTO {
 	private String proName;

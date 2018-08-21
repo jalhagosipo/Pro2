@@ -9,14 +9,17 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class showschProduct implements ActionListener{
+import DB.dao.ProductDAO;
+import DB.dto.ProductDTO;
+
+public class showSchProduct implements ActionListener{
 
 	private JTextField textField;
 	private JTable table;
 	
 	
 	
-	public showschProduct(JTextField textField, JTable table) {
+	public showSchProduct(JTextField textField, JTable table) {
 		this.textField = textField;
 		this.table = table;
 	}

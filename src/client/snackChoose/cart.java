@@ -11,7 +11,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import server.product.ProductDTO;
+import DB.dto.ProductDTO;
 
 public class cart implements ActionListener{
 

@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import DB.dao.ProductDAO;
+
 public class DelProduct implements ActionListener{
 
 	private JTable table;
@@ -24,7 +26,7 @@ public class DelProduct implements ActionListener{
 		
 		tm.removeRow(row);
 		
-		ProductDel del = new ProductDel();
+		ProductDAO del = new ProductDAO();
 		del.deleteProduct(proName);
 		
 		

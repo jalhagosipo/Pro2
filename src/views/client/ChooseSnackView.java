@@ -12,7 +12,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -20,10 +19,10 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import DB.dao.ProductDAO;
+import DB.dto.ProductDTO;
 import client.snackChoose.buysnack;
 import client.snackChoose.cart;
-import server.product.ProductDTO;
-import server.product.SelectProduct;
 import views.server.Client;
 
 public class ChooseSnackView extends JFrame {
@@ -40,8 +39,8 @@ public class ChooseSnackView extends JFrame {
 		this.ci=c;
 		this.tf_id=id;
 		this.tf_lefttime=lefttime;
-		SelectProduct sp = new SelectProduct();
-		Vector<ProductDTO> arr = sp.SelectPro();
+		ProductDAO sp = new ProductDAO();
+		Vector<ProductDTO> arr = sp.Product("");
 		Vector<ProductDTO> buy_arr = new Vector<>();
 		int MAX = arr.size();
 		

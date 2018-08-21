@@ -2,12 +2,8 @@ package client.snackChoose;
 
 import java.util.Vector;
 
-import javax.swing.JOptionPane;
-
-import server.product.ProductDAO;
-import server.product.ProductDTO;
-import server.product.SelectProduct;
-import server.product.UpdateProduct;
+import DB.dao.ProductDAO;
+import DB.dto.ProductDTO;
 
 public class snackChooseUpdateService {
 
@@ -23,7 +19,6 @@ public class snackChooseUpdateService {
 	}
 	
 	public boolean stockchange() {
-		UpdateProduct up = new UpdateProduct();
 		ProductDAO sp = new ProductDAO();
 		Vector<ProductDTO> vc = sp.Product(name);
 		int total = vc.get(0).getProStock();
@@ -34,7 +29,7 @@ public class snackChooseUpdateService {
 			return false;
 		}
 		else {
-		up.updateProduct(name, price, newStock, name);
+		sp.updateProduct(name, price, newStock, name);
 		//chargein테이블에도삽입해야함.
 			return true;
 		}

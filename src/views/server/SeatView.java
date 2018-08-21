@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import DB.Main_GUI_Event;
+import server.Main_GUI_Event;
 import server.Seat;
 import server.SeatThread;
 

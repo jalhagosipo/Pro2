@@ -1,4 +1,4 @@
-package DB;
+package server;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 
 import client.clientInfo.infoDAO;
 import client.clientInfo.infoDTO;
-import server.Seat;
 import views.AddtimeView;
 import views.client.ClientInfoView;
 import views.server.Client;
