@@ -37,19 +37,18 @@ public class ClientThread implements Runnable{
 //							System.out.println("사용시간:"+text[1]);
 //							break;
 //				}
-				
-				
+
 				//switch랑 if 중 선택
 				if(text[0].equals("left")) {
 //					if(text[1]!=null)
 					lb_time.setText(text[1]);
-					System.out.println("남은시간:"+text[1]);
+//					System.out.println("남은시간:"+text[1]);
 				}
 				text2 = str.split("@");
 				if(text2[0].equals("cur")) {
 //					if(text[1]!=null)
 					lb_cur_time.setText(text2[1]);
-					System.out.println("사용시간:"+text2[1]);
+//					System.out.println("사용시간:"+text2[1]);
 				}
 			}//while
 		}catch(Exception e){

@@ -31,9 +31,9 @@ public class Client extends JFrame implements ActionListener {
 	public static void main(String[] args) {
 		infoDAO dao= new infoDAO();
 		infoDTO dto= new infoDTO();
-		dto = dao.GetInfo("a");
+		dto = dao.GetInfo("test");
 		
-		Client c= new Client(0,"a");
+		Client c= new Client(3,"test");
 		c.SetName(dto.getName());
 		c.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
 	}
@@ -280,30 +280,5 @@ public class Client extends JFrame implements ActionListener {
 		pw.flush();
 		swit=0;
 		}
-		
-//		second++; 		
-//		if(second>=60) {
-//			minute++;
-//			second=0;
-//		}
-//		if(minute>=60) {
-//			hour++;
-//			minute=0;
-//		}
-//		textField_3.setText(hour + ":" + minute + ": " + second); 
-//		
-//		if(ls<=0){
-//			ls=59;
-//			lm--;
-//			if(lm<=0) {
-//				lm=59;
-//				lh--;
-//			}else{
-//				lm--;
-//			}
-//		}else {
-//			ls--;
-//		}
-//		textField_2.setText(lh+ ":" + lm + ":"+ ls);
 	}
 }
