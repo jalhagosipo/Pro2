@@ -36,25 +36,25 @@ public class Login implements ActionListener{
 		this.id=id;
 		this.pw=pw;
 		this.num=num;
+		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getActionCommand()=="로그인") {
 			MemberDAO dao=new MemberDAO();
-			String check;
 			
-			
-			if(dao.selectAccount(id.getText()).size()<1) {
+			Vector<MemberDTO> memdto = dao.selectAccount(id.getText());
+		
+			if(memdto.size()<1) {
 				JOptionPane.showMessageDialog(null, "아이디 없음.");
 				id.setText("");
+				pw.setText("");
 			}else{
-				check= dao.selectAccount(id.getText()).get(0).getId();
-				String getpw=dao.selectAccount(check).get(0).getPw();
+				
+				String getpw=memdto.get(0).getPw();
 				
 				if(getpw.equals(pw.getText())) {
-					
-					
 					
 					Client ci= new Client(Integer.parseInt(num.getText())-1, id.getText());
 					infoDAO infodao= new infoDAO();
@@ -65,6 +65,8 @@ public class Login implements ActionListener{
 					view.dispose();	
 				}else {
 					JOptionPane.showMessageDialog(null, "비밀번호 틀림.");
+					id.setText("");
+					pw.setText("");
 				}
 			}
 

@@ -50,7 +50,7 @@ public class LoginView extends JFrame{
 		
 		JButton btn_signin =new JButton("로그인");
 		JButton btn_signup =new JButton("회원가입");
-		btn_signin.addActionListener(new Login(this,tf_id, tf_pw,tf_pcnum));
+		
 		pan_main.add(btn_signin);
 		btn_signin.setBounds(75, 150, 100, 20);
 		pan_main.add(btn_signup);
@@ -64,7 +64,7 @@ public class LoginView extends JFrame{
 			}
 		});
 		btn_signup.setBounds(75, 180, 100, 20);
-		
+		btn_signin.addActionListener(new Login(this,tf_id, tf_pw,tf_pcnum));
 		setBounds(100, 100, 260, 300);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		

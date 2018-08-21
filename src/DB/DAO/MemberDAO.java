@@ -46,6 +46,7 @@ public class MemberDAO {
 				{
 					MemberDTO dto=new MemberDTO(); 
 					dto.setId(rs.getString("member_id"));
+					dto.setPw(rs.getString("member_pw"));
 					dto.setName(rs.getString("member_name"));
 					dto.setTotal_price(rs.getInt("total_price"));
 					dto.setLeft_time(rs.getString("left_time"));
