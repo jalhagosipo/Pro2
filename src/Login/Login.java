@@ -50,7 +50,7 @@ public class Login implements ActionListener{
 				
 				if(getpw.equals(pw.getText())) {
 					
-					JOptionPane.showMessageDialog(null, id.getText() + " 로그인 완료.");
+					
 					
 					Client ci= new Client(Integer.parseInt(num.getText())-1, id.getText());
 					infoDAO infodao= new infoDAO();

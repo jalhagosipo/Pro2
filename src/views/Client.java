@@ -241,6 +241,7 @@ public class Client extends JFrame implements ActionListener {
 				//SeatThread로부터 사용중인 아이디인지 체크하는 반환값을 받을때까지 대기한다.
 				rs2=in.readLine();
 				if(rs2.equals("1")) {
+					JOptionPane.showMessageDialog(null, cur_id + " 로그인 완료.");
 					timer = new javax.swing.Timer(500, this); 
 					timer.setInitialDelay(0); 
 					timer.start();
