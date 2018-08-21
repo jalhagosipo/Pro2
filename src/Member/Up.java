@@ -27,7 +27,7 @@ public class Up implements ActionListener{
 		String name=  (String)memlist.getValueAt(row,1);
 		String phone=  (String)memlist.getValueAt(row,4 );
 		
-		MemberUdt udt  = new MemberUdt(id, name, phone);
+		MemberUdt udt  = new MemberUdt(memlist,id, name, phone);
 		udt.setVisible(true);
 	}
 	

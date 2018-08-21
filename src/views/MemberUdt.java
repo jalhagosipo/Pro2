@@ -2,16 +2,22 @@ package views;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
+import Member.MemberDAO;
+import Member.MemberDTO;
 import Member.MemberUp;
+import product.ProductDTO;
 
 public class MemberUdt extends JFrame {
 	
@@ -20,6 +26,8 @@ public class MemberUdt extends JFrame {
 	private JTextField textFieldpw;
 	private JTextField textFieldphone;
 	private JTextField textFieldname;
+	private JTextField textFieldsch;
+	private JTable memlist;
 	
 	private String old_id;
 	/*JTable memlist;
@@ -48,7 +56,7 @@ public class MemberUdt extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MemberUdt(String _id, String _name, String _phone) {
+	public MemberUdt(JTable memlist,String _id, String _name, String _phone) {
 		this.old_id=_id;
 		/*int row = memlist.getSelectedRow(); //행 선택
 		DefaultTableModel tm = (DefaultTableModel) memlist.getModel(); //테이블불러오기
@@ -117,7 +125,9 @@ public class MemberUdt extends JFrame {
 		JButton btnup = new JButton("\uC218\uC815");
 		btnup.setBounds(29, 286, 97, 23);
 		contentPane.add(btnup);
+		
 		btnup.addActionListener(new ActionListener() {
+			
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -129,7 +139,20 @@ public class MemberUdt extends JFrame {
 													,old_id
 						);
 				//JOptionPane.showMessageDialog(null, "수정 성공");
-
+				DefaultTableModel tm = (DefaultTableModel) memlist.getModel();
+				tm.setNumRows(0);
+				MemberDAO dao=new MemberDAO();
+				Vector<MemberDTO> dto= dao.Member("");
+				Iterator<MemberDTO> it = dto.iterator();
+				
+				while(it.hasNext())
+				{
+					MemberDTO sd = it.next();
+					tm.addRow(new Object[]{sd.getId(),sd.getName(),sd.getTotal_price(),sd.getLeft_time(),sd.getPhonenum()});
+				}
+				
+				dispose();
+				
 				
 			}
 		});
