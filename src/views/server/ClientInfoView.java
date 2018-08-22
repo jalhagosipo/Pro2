@@ -1,4 +1,4 @@
-package views.client;
+package views.server;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -20,8 +20,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import server.Seat;
-import views.server.AddtimeView;
-import views.server.SeatView;
 
 
 //¡÷ºÆ : ¿±∞«»Ò

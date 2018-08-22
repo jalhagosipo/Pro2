@@ -23,7 +23,6 @@ import DB.DAO.ProductDAO;
 import DB.DTO.ProductDTO;
 import client.snackChoose.BuySnack;
 import client.snackChoose.Cart;
-import views.server.Client;
 
 public class ChooseSnackView extends JFrame {
 	

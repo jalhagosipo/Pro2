@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import views.client.ClientInfoView;
+import views.server.ClientInfoView;
 
 public  class Addtime implements ActionListener  {
 	ClientInfoView clientinfo;

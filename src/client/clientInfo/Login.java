@@ -19,9 +19,9 @@ import javax.swing.JTextField;
 import DB.DBconn;
 import DB.DAO.MemberDAO;
 import DB.DTO.MemberDTO;
-import views.client.ClientInfoView;
+import views.client.Client;
 import views.client.LoginView;
-import views.server.Client;
+import views.server.ClientInfoView;
 import views.server.SeatView;
 
 public class Login implements ActionListener{

@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import DB.DAO.MemberDAO;
 import DB.DTO.ProductDTO;
 import views.client.ChooseSnackView;
-import views.server.Client;
+import views.client.Client;
 
 public class BuySnack implements ActionListener{
 	Client ci;

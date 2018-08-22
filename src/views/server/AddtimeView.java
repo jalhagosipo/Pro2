@@ -16,7 +16,6 @@ import javax.swing.border.EmptyBorder;
 
 import server.addTime.Addtime;
 import server.addTime.Cilentshow;
-import views.client.ClientInfoView;
 
 public class AddtimeView extends JFrame {
 	private JPanel contentPane;

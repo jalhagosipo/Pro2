@@ -1,4 +1,4 @@
-package views.server;
+package views.client;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -24,8 +24,6 @@ import DB.DAO.MemberDAO;
 import client.clientInfo.ClientThread;
 import client.clientInfo.infoDAO;
 import client.clientInfo.infoDTO;
-import views.client.ChooseSnackView;
-import views.client.LoginView;
 
 //¡÷ºÆ: ¿±∞«»Ò
 public class Client extends JFrame implements ActionListener {

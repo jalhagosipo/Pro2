@@ -10,9 +10,9 @@ import javax.swing.JLabel;
 
 import client.clientInfo.infoDAO;
 import client.clientInfo.infoDTO;
-import views.client.ClientInfoView;
+import views.client.Client;
 import views.server.AddtimeView;
-import views.server.Client;
+import views.server.ClientInfoView;
 import views.server.MemberMgrView;
 import views.server.SalesManagerView;
 import views.server.SeatView;
