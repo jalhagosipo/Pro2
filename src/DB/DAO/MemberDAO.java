@@ -33,7 +33,7 @@ public class MemberDAO {
 				}
 				else
 				{
-					sql.append("  select * ");
+					sql.append("  select member_id, member_name,total_price,CONCAT(hour(left_time),':',minute(left_time),':',second(left_time)) as 'left_time',phone_number");
 				  sql.append("  from mydb.pro2_member    ");
 				   sql.append("  where member_id=?   ");
 				   pstmt = conn.prepareStatement(sql.toString());
