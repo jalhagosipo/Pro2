@@ -57,6 +57,7 @@ public class buysnack implements ActionListener{
 			int h=have_m/60;
 			int m=have_m%60;
 
+			//여기를 통신으로 해결해야함 ============================================================================
 			ci.setLh(h);
 			ci.setLm(m);
 			
