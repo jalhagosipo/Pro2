@@ -25,8 +25,14 @@ public class Seat implements ActionListener{
 	public int Getlh() {
 		return lh;
 	}
+	public int Getlm() {
+		return lm;
+	}
 	public void Setlh(int lh) {
 		this.lh=lh;
+	}
+	public void Setlm(int lm) {
+		this.lm=lm;
 	}
 	int hour = 0; 
 	int minute = 0;

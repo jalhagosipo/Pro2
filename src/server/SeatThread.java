@@ -92,6 +92,21 @@ public class SeatThread implements Runnable{
 					arr[n].println("cur@"+lb_cur_time[n].getText().trim());
 					arr[n].flush(); //fluch를쓰니까 에러생김. 배열에서 n의 범위가 문제인것같음
 				}
+				
+				if(text[0].equals("snack")) {
+					System.out.println("먹을거산다");
+					int n=Integer.parseInt(text[1]);
+					int price = Integer.parseInt(text[2]);
+					int lh=seat[n].Getlh();
+					int lm=seat[n].Getlm();
+					lm=lm+(lh*60);
+					lm-=price;
+					lh=lm/60;
+					lm=lm%60;
+					seat[n].Setlh(lh);
+					seat[n].Setlm(lm);
+					
+				}
 			}
 		}catch(IOException e){
 			System.out.println(e);

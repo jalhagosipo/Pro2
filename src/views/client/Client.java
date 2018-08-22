@@ -31,13 +31,20 @@ public class Client extends JFrame implements ActionListener {
 	public static void main(String[] args) {
 		infoDAO dao= new infoDAO();
 		infoDTO dto= new infoDTO();
-		dto = dao.GetInfo("test");
-		
-		Client c= new Client(3,"test");
+		dto = dao.GetInfo("a");
+		Client c= new Client(0,"a");
 		c.SetName(dto.getName());
-		c.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
+//		c.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
+		
+//		infoDAO dao= new infoDAO();
+//		infoDTO dto= new infoDTO();
+//		dto = dao.GetInfo("test");
+//		Client c= new Client(1,"test");
+//		c.SetName(dto.getName());
+//		c.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
+
 	}
-	int swit=0;
+	
 	private JPanel contentPane;
 	private JTextField textField;//id
 	private JTextField textField_1;//이름
@@ -54,47 +61,35 @@ public class Client extends JFrame implements ActionListener {
 	//ls	:남은시간 중 초	/ second:사용시간 중 초
 	//timer	:남은시간과 사용시간 설정을위한 타이머
 	//csv	:먹거리 선택 View
-	int lh=0;
-	int lm=0;
-	int ls=0;
-	int hour = 0; 
-	int minute = 0;
-	int second = 0;
+//	int lh=0;
+//	int lm=0;
+//	int ls=0;
+//	int hour = 0; 
+//	int minute = 0;
+//	int second = 0;
 	javax.swing.Timer timer; 
 	ChooseSnackView csv;
 	
-	//getter와 setter
-	public int getLh() {
-		return lh;
-	}
-	public void setLh(int lh) {
-		this.lh = lh;
-	}
-	public int getLm() {
-		return lm;
-	}
-	public void setLm(int lm) {
-		this.lm = lm;
-	}
-	public int getLs() {
-		return ls;
-	}
-	public void setLs(int ls) {
-		this.ls = ls;
-	}
+	int swit=0;
 	
+	//getter와 setter
+	public PrintWriter getPw() {
+		return pw;
+	}
+	public int getNum() {
+		return num;
+	}
 	//Login에서 이름을 설정하기 위한 메서드.
 	public void SetName(String text) {
 		textField_1.setText(text);
 	}
-	
 	//Login에서 남은시간을 설정하기 위한 메서드.
-	public void SetTime(int hour, int minute, int second) {
-		lh=hour;
-		lm=minute;
-		ls=second;
-		textField_2.setText(lh+ ":" + lm + ":"+ ls);
-	}
+//	public void SetTime(int hour, int minute, int second) {
+//		lh=hour;
+//		lm=minute;
+//		ls=second;
+//		textField_2.setText(lh+ ":" + lm + ":"+ ls);
+//	}
 	
 	//dipose가 호출될 때 호출될 메서드.
 	//DAO를 통해 현재 남은 시간을 DB에 저장시키고 시스템을 종료시킨다.
@@ -273,13 +268,13 @@ public class Client extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(swit==0) {
-		pw.println("left@"+num);
-		pw.flush();
-		swit=1;
+			pw.println("left@"+num);
+			pw.flush();
+			swit=1;
 		}else {
-		pw.println("cur@"+num);
-		pw.flush();
-		swit=0;
+			pw.println("cur@"+num);
+			pw.flush();
+			swit=0;
 		}
 	}
 }

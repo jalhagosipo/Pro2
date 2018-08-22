@@ -66,27 +66,12 @@ public class LoginView extends JFrame{
 		btn_signup.setBounds(75, 180, 100, 20);
 		btn_signin.addActionListener(new Login(this,tf_id, tf_pw,tf_pcnum));
 		setBounds(100, 100, 260, 300);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
 	}
 	
 	
 	public static void main(String[] args) {
 		LoginView login = new LoginView();
 		login.setVisible(true);
-		
-		
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					LoginView frame = new LoginView();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-		
 	}
-
 }
