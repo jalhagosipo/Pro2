@@ -6,8 +6,6 @@ import DB.DAO.ProductDAO;
 import DB.DTO.ProductDTO;
 
 public class SnackChooseUpdateService {
-
-	
 	String name;
 	int minusAmount;
 	String price;

@@ -14,8 +14,6 @@ import javax.swing.table.DefaultTableModel;
 import DB.DTO.ProductDTO;
 
 public class Cart implements ActionListener{
-
-	
 	String name;
 	String price;
 	JComboBox amount;

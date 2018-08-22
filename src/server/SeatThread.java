@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class SeatThread implements Runnable{
 	private Socket socket;
@@ -86,7 +87,7 @@ public class SeatThread implements Runnable{
 				}else if(text[0].equals("cur")) {
 					int n=Integer.parseInt(text[1]);
 					arr[n].println("cur@"+lb_cur_time[n].getText().trim());
-					arr[n].flush(); //fluch를쓰니까 에러생김. 배열에서 n의 범위가 문제인것같음
+					arr[n].flush();
 				}
 				
 				if(text[0].equals("snack")) {
@@ -100,7 +101,7 @@ public class SeatThread implements Runnable{
 					lm=lm%60;
 					seat[n].Setlh(lh);
 					seat[n].Setlm(lm);
-					
+					JOptionPane.showMessageDialog(null,"주문내용: " + text[3]);
 				}
 			}
 		}catch(IOException e){

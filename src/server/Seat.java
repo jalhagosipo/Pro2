@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import DB.DAO.MemberDAO;
 import DB.DAO.SeatDAO;
 
 public class Seat implements ActionListener{
@@ -72,6 +74,9 @@ public class Seat implements ActionListener{
 	//SeatThread에서 클라이언트의 연결이 종료될 때 호출할 메서드
 	//timer를 멈추고 좌석의 사용시간, 남은시간, ID를 / 클래스내에서 사용시간에 사용할 변수를 초기화한다.
 	public void SetEnd() {
+		MemberDAO dao= new MemberDAO();
+		dao.UpdateTime(lb_id_value.getText(), lb_time_value.getText());
+		
 		timer.stop();
 		lb_time_value.setText("");
 		lb_cur_time_value.setText("");

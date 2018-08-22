@@ -55,25 +55,25 @@ public class BuySnack implements ActionListener{
 		//연결된 클라이언트의 시간을 분으로 환산한것과 선택한 항목의 총액을 비교해서 클라이언트의 시간이 많을때 실행.
 		if(have_m>total) {
 			//여기에서 서버로 보내야함.
-			pw=ci.getPw();
-			pw.println("snack@"+ci.getNum()+"@"+total);
-			pw.flush();
-
-//			String time= ci.getLh()+ ":" + ci.getLm() + ":" + ci.getLs();
-//			MemberDAO dao=new MemberDAO();
-//			dao.UpdateTime(tf_id.getText(), time);
 			
+			
+			String product="";
 			Iterator<ProductDTO> it = buy_arr.iterator();
 			while(it.hasNext())
 			{
 				possible=false;
 				ProductDTO pd = it.next();
 				SnackChooseUpdateService sus = new SnackChooseUpdateService(pd.getProName(), pd.getProPrice(), pd.getAmount());
+				product +=pd.getProName() + " " + pd.getAmount() + "개, " ;
 				possible = sus.stockchange();
 			}
 			
 			if(possible)
 			{
+				pw=ci.getPw();
+				pw.println("snack@"+ci.getNum()+"@"+total+"@[" + tf_id.getText() + " 사용자 ]" + product);
+				pw.flush();
+				
 				int row = tm.getRowCount();
 				for(int i=0;i<row;i++)
 					tm.removeRow(0);

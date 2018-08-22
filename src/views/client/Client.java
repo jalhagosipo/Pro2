@@ -79,8 +79,10 @@ public class Client extends JFrame implements ActionListener {
 	//DAO를 통해 현재 남은 시간을 DB에 저장시키고 시스템을 종료시킨다.
 	public void closeview() {
 		// TODO Auto-generated method stub
-		MemberDAO dao= new MemberDAO();
-		dao.UpdateTime(textField.getText(), textField_2.getText());
+		dispose();
+	}
+	@Override
+	public void dispose() {
 		timer.stop();
 		System.exit(0);
 	}
