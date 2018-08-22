@@ -43,7 +43,7 @@ public class Login implements ActionListener{
 			MemberDAO dao=new MemberDAO();
 			
 			Vector<MemberDTO> memdto = dao.selectAccount(id.getText());
-		
+			System.out.println(memdto.size());
 			if(memdto.size()<1) {
 				JOptionPane.showMessageDialog(null, "아이디 없음.");
 				id.setText("");

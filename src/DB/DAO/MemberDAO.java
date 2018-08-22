@@ -27,13 +27,13 @@ public class MemberDAO {
 			
 				if(id.trim().equals(""))
 				{
-					sql.append("  select member_id, member_name,total_price,CONCAT(hour(left_time),':',minute(left_time),':',second(left_time)) as 'left_time',phone_number");
+					sql.append("  select member_id, member_pw,member_name,total_price,CONCAT(hour(left_time),':',minute(left_time),':',second(left_time)) as 'left_time',phone_number");
 					sql.append("  from mydb.pro2_member    ");
 					pstmt = conn.prepareStatement(sql.toString());
 				}
 				else
 				{
-					sql.append("  select member_id, member_name,total_price,CONCAT(hour(left_time),':',minute(left_time),':',second(left_time)) as 'left_time',phone_number");
+					sql.append("  select member_id,member_pw, member_name,total_price,CONCAT(hour(left_time),':',minute(left_time),':',second(left_time)) as 'left_time',phone_number");
 				  sql.append("  from mydb.pro2_member    ");
 				   sql.append("  where member_id=?   ");
 				   pstmt = conn.prepareStatement(sql.toString());
@@ -46,7 +46,7 @@ public class MemberDAO {
 				{
 					MemberDTO dto=new MemberDTO(); 
 					dto.setId(rs.getString("member_id"));
-					//dto.setPw(rs.getString("member_pw"));
+					dto.setPw(rs.getString("member_pw"));
 					dto.setName(rs.getString("member_name"));
 					dto.setTotal_price(rs.getInt("total_price"));
 					dto.setLeft_time(rs.getString("left_time"));
