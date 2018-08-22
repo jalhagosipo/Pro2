@@ -2,10 +2,10 @@
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import server.Seat;
 import views.server.ClientInfoView;
 
 public  class Addtime implements ActionListener  {
@@ -13,6 +13,7 @@ public  class Addtime implements ActionListener  {
 	JTextField textSearchid;
 	JTextArea textShowaddtime;
 	String hours;
+	Seat[] seat;
 
 
 	public Addtime(ClientInfoView clientinfo, JTextField textSearchid,JTextArea textShowaddtime) {
@@ -20,8 +21,9 @@ public  class Addtime implements ActionListener  {
 		this.textSearchid=textSearchid;
 		this.textShowaddtime=textShowaddtime;
 	}
-	public Addtime(JTextField textSearchid,JTextArea textShowaddtime) {
+	public Addtime(Seat[] seat, JTextField textSearchid,JTextArea textShowaddtime) {
 		this.clientinfo=null;
+		this.seat=seat;
 		this.textSearchid=textSearchid;
 		this.textShowaddtime=textShowaddtime;
 	}
@@ -29,12 +31,19 @@ public  class Addtime implements ActionListener  {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-
 		AddtimeDAO dao= new AddtimeDAO(textSearchid, textShowaddtime);
 		
 		if(e.getActionCommand()=="1 \uC2DC\uAC04") {
 			if(clientinfo!=null)
 				clientinfo.AddT(1);
+			else {
+				for(int i=0;i<20;i++) {
+					String id=seat[i].GetId().trim();
+					if(textSearchid.getText().trim().equals(id))
+						seat[i].Setlh(seat[i].Getlh()+1);
+				}
+			}
+				
 			
 			hours="01:00:00";
 			
@@ -46,6 +55,13 @@ public  class Addtime implements ActionListener  {
 		else if(e.getActionCommand()=="2 \uC2DC\uAC04") {
 			if(clientinfo!=null)
 				clientinfo.AddT(2);
+			else {
+				for(int i=0;i<20;i++) {
+					String id=seat[i].GetId().trim();
+					if(textSearchid.getText().trim().equals(id))
+						seat[i].Setlh(seat[i].Getlh()+2);
+				}
+			}
 			hours="02:00:00";
 
 			dao.GetAddtime(hours,textSearchid.getText());
@@ -57,6 +73,13 @@ public  class Addtime implements ActionListener  {
 		else if(e.getActionCommand()=="3 \uC2DC\uAC04") {
 			if(clientinfo!=null)
 				clientinfo.AddT(3);
+			else {
+				for(int i=0;i<20;i++) {
+					String id=seat[i].GetId().trim();
+					if(textSearchid.getText().trim().equals(id))
+						seat[i].Setlh(seat[i].Getlh()+3);
+				}
+			}
 			hours="03:00:00";
 
 			dao.GetAddtime(hours, textSearchid.getText());
@@ -67,6 +90,13 @@ public  class Addtime implements ActionListener  {
 		else if(e.getActionCommand()=="5 \uC2DC\uAC04") {
 			if(clientinfo!=null)	
 				clientinfo.AddT(5);
+			else {
+				for(int i=0;i<20;i++) {
+					String id=seat[i].GetId().trim();
+					if(textSearchid.getText().trim().equals(id))
+						seat[i].Setlh(seat[i].Getlh()+5);
+				}
+			}
 			hours="05:00:00";
 
 			dao.GetAddtime(hours,textSearchid.getText());
@@ -77,6 +107,13 @@ public  class Addtime implements ActionListener  {
 		else if(e.getActionCommand()=="10 \uC2DC\uAC04") {
 			if(clientinfo!=null)
 				clientinfo.AddT(10);
+			else {
+				for(int i=0;i<20;i++) {
+					String id=seat[i].GetId().trim();
+					if(textSearchid.getText().trim().equals(id))
+						seat[i].Setlh(seat[i].Getlh()+10);
+				}
+			}
 			hours="10:00:00";
 
 			dao.GetAddtime(hours,textSearchid.getText());
@@ -87,6 +124,13 @@ public  class Addtime implements ActionListener  {
 		else if(e.getActionCommand()=="24 \uC2DC\uAC04") {
 			if(clientinfo!=null)
 				clientinfo.AddT(24);
+			else {
+				for(int i=0;i<20;i++) {
+					String id=seat[i].GetId().trim();
+					if(textSearchid.getText().trim().equals(id))
+						seat[i].Setlh(seat[i].Getlh()+24);
+				}
+			}
 			hours="24:00:00";
 
 			dao.GetAddtime(hours,textSearchid.getText());
@@ -94,17 +138,7 @@ public  class Addtime implements ActionListener  {
 
 			dao.GetChargetime(hours, textSearchid.getText());
 		}
-
-		/*else if(e.getActionCommand()=="24 \uC2DC\uAC04") {
-			if(clientinfo==null)
-				clientinfo.AddT(24);
-			
-			textShowaddtime.setText("ID를 확인해주세요\n["+ textSearchid.getText()+ "] 는 등록되지 않은 ID 입니다"); 
-
-			
-		}*/
-
+		
 	}
-
 }
 

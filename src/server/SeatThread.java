@@ -5,11 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
-
 import javax.swing.JLabel;
-
-import views.server.SeatView;
 
 public class SeatThread implements Runnable{
 	private Socket socket;
@@ -94,7 +90,6 @@ public class SeatThread implements Runnable{
 				}
 				
 				if(text[0].equals("snack")) {
-					System.out.println("∏‘¿ª∞≈ªÍ¥Ÿ");
 					int n=Integer.parseInt(text[1]);
 					int price = Integer.parseInt(text[2]);
 					int lh=seat[n].Getlh();

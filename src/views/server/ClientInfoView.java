@@ -5,12 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-
 import server.Seat;
 
 
@@ -52,15 +47,12 @@ public class ClientInfoView extends JFrame implements ActionListener {
 		
 		PrintWriter pw=null;
 		try {
-			System.out.println("여기서끊어짐1");
 			socket=sv.GetSocket();
-			System.out.println("여기서끊어짐2");
 			pw=new PrintWriter(socket.getOutputStream());
-			System.out.println("여기서끊어짐3");
-			pw.println("충전");
+			pw.println("add@"+h+"시간 충전되었습니다.");
 			pw.flush();
 		}catch (Exception e) {
-			
+			System.out.println(e.getMessage());
 		}finally {
 //			if(pw!=null)try {pw.close();}catch (Exception e) {}
 		}

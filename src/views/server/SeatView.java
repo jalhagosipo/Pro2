@@ -40,6 +40,7 @@ public class SeatView extends JFrame{
 	JLabel[] lb_id_value;		//현재 로그인한 아이디를 알려줄 라벨
 	
 	private Socket socket;
+	private Seat[] SaveSeat;
 
 	public SeatView(){
 		//전체 좌석수를 한번에 조절하기 위한 MAX상수
@@ -103,7 +104,7 @@ public class SeatView extends JFrame{
 		pan_btn.setLayout(new GridLayout(7, 1));
 
 		//각 버튼에 사용될 리스너 생성
-		Main_GUI_Event env = new  Main_GUI_Event();
+		Main_GUI_Event env = new  Main_GUI_Event(this);
 
 		JButton btn1 =new JButton("매출현황");
 		btn1.addActionListener(env);
@@ -146,6 +147,12 @@ public class SeatView extends JFrame{
 	public Socket GetSocket() {
 		return socket;
 	}
+	private void SetSeat(Seat[] seat) {
+		this.SaveSeat=seat;
+	}
+	public Seat[] GetSeat() {
+		return this.SaveSeat;
+	}
 
 	public static void main(String[] args) {
 		SeatView sv = new SeatView();
@@ -157,6 +164,7 @@ public class SeatView extends JFrame{
 		for(int i=0; i<20;i++) {
 			seat[i] =sv.GetCom(i);
 		}
+		sv.SetSeat(seat);
 		try{
 			server=new ServerSocket(7777);
 			//배열을 채팅기능이 없는한 삭제해도 문제없음 ====================================================================================

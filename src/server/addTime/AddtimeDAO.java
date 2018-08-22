@@ -9,10 +9,13 @@ import javax.swing.JTextField;
 
 import DB.DBconn;
 
-public class AddtimeDAO extends Addtime{
-
+public class AddtimeDAO{
+	private JTextField textSearchid;
+	private JTextArea textShowaddtime;
 	public AddtimeDAO(JTextField textSearchid, JTextArea textShowaddtime) {
-		super(textSearchid, textShowaddtime);
+		this.textSearchid=textSearchid;
+		this.textShowaddtime=textShowaddtime;
+//		super(textSearchid, textShowaddtime);
 		// TODO Auto-generated constructor stub
 	}
 	Connection conn = null;

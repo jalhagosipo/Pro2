@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class ClientThread implements Runnable{
@@ -41,15 +42,12 @@ public class ClientThread implements Runnable{
 					lb_cur_time.setText(text2[1]);
 					//사용시간 설정
 				}
+				if(text[0].equals("add")) {
+					if(text[1]!=null)
+						JOptionPane.showMessageDialog(null, text[1]);
+					//남은시간 설정
+				}
 				
-//				switch(text[0]) {
-//				case "left":lb_time.setText(text[1]);
-//							System.out.println("남은시간:"+text[1]);
-//							break;
-//				case "cur":lb_cur_time.setText(text[1]);
-//							System.out.println("사용시간:"+text[1]);
-//							break;
-//				}
 			}//while
 		}catch(Exception e){
 			System.out.println(e.getMessage());

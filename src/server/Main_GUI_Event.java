@@ -31,7 +31,8 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 	MemberMgrView mm= new MemberMgrView();
 	AddtimeView atv = new AddtimeView(new JLabel(""));
 	StockManagementView sm = new StockManagementView();
-	public Main_GUI_Event() {
+	public Main_GUI_Event(SeatView sv) {
+		this.sv=sv;
 	}
 	public Main_GUI_Event(int i, Seat s,JLabel cur_id_label, JLabel cur_time_label, JLabel time_label, SeatView sv) {
 		this.cur_num=i;
@@ -77,7 +78,9 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 		}
 		if(e.getActionCommand()=="ÃæÀü") {
 			atv.setVisible(true);
+			atv.SetSeat(sv.GetSeat());
 			atv.SetBtn_main();
+			
 		}
 		
 	}

@@ -3,17 +3,15 @@ package views.server;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.Socket;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import server.Seat;
 import server.addTime.Addtime;
 import server.addTime.Cilentshow;
 
@@ -31,6 +29,7 @@ public class AddtimeView extends JFrame {
 	private JButton btnAddtime6;
 	
 	private ClientInfoView clientinfo;
+	private Seat[] seat;
 	
 	@Override
 	public void setVisible(boolean b) {
@@ -49,15 +48,17 @@ public class AddtimeView extends JFrame {
 		btnAddtime5.addActionListener(new Addtime(clientinfo, textSearchid,textShowaddtime));
 		btnAddtime6.addActionListener(new Addtime(clientinfo, textSearchid,textShowaddtime));
 	}
-	public void SetBtn_main() {
-		btnAddtime1.addActionListener(new Addtime(textSearchid,textShowaddtime));
-		btnAddtime2.addActionListener(new Addtime(textSearchid,textShowaddtime));
-		btnAddtime3.addActionListener(new Addtime(textSearchid,textShowaddtime));
-		btnAddtime4.addActionListener(new Addtime(textSearchid,textShowaddtime));
-		btnAddtime5.addActionListener(new Addtime(textSearchid,textShowaddtime));
-		btnAddtime6.addActionListener(new Addtime(textSearchid,textShowaddtime));
+	public void SetSeat(Seat[] seat) {
+		this.seat=seat;
 	}
-	
+	public void SetBtn_main() {
+		btnAddtime1.addActionListener(new Addtime(seat,textSearchid,textShowaddtime));
+		btnAddtime2.addActionListener(new Addtime(seat,textSearchid,textShowaddtime));
+		btnAddtime3.addActionListener(new Addtime(seat,textSearchid,textShowaddtime));
+		btnAddtime4.addActionListener(new Addtime(seat,textSearchid,textShowaddtime));
+		btnAddtime5.addActionListener(new Addtime(seat,textSearchid,textShowaddtime));
+		btnAddtime6.addActionListener(new Addtime(seat,textSearchid,textShowaddtime));
+	}
 	
 	public AddtimeView(JLabel getid) {
 		this.getid=getid;

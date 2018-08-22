@@ -51,11 +51,9 @@ public class BuySnack implements ActionListener{
 		lm=Integer.parseInt(str[1].trim());
 		have_m=(lh*60)+lm;
 
-
 		int total = Integer.parseInt(textShowPrice.getText().substring(0, textShowPrice.getText().length()-1).trim());
 		//연결된 클라이언트의 시간을 분으로 환산한것과 선택한 항목의 총액을 비교해서 클라이언트의 시간이 많을때 실행.
 		if(have_m>total) {
-			System.out.println(total);
 			//여기에서 서버로 보내야함.
 			pw=ci.getPw();
 			pw.println("snack@"+ci.getNum()+"@"+total);
@@ -64,27 +62,27 @@ public class BuySnack implements ActionListener{
 //			String time= ci.getLh()+ ":" + ci.getLm() + ":" + ci.getLs();
 //			MemberDAO dao=new MemberDAO();
 //			dao.UpdateTime(tf_id.getText(), time);
-//			
-//			Iterator<ProductDTO> it = buy_arr.iterator();
-//			while(it.hasNext())
-//			{
-//				possible=false;
-//				ProductDTO pd = it.next();
-//				SnackChooseUpdateService sus = new SnackChooseUpdateService(pd.getProName(), pd.getProPrice(), pd.getAmount());
-//				possible = sus.stockchange();
-//			}
-//			
-//			if(possible)
-//			{
-//				int row = tm.getRowCount();
-//				for(int i=0;i<row;i++)
-//					tm.removeRow(0);
-//				JOptionPane.showMessageDialog(null, total+"분 "+" 구매 완료");
-//				csv.dispose();
-//			}
-//			else {
-//				JOptionPane.showMessageDialog(null, "죄송합니다ㅠㅠ 재고가부족합니다.");
-//			}
+			
+			Iterator<ProductDTO> it = buy_arr.iterator();
+			while(it.hasNext())
+			{
+				possible=false;
+				ProductDTO pd = it.next();
+				SnackChooseUpdateService sus = new SnackChooseUpdateService(pd.getProName(), pd.getProPrice(), pd.getAmount());
+				possible = sus.stockchange();
+			}
+			
+			if(possible)
+			{
+				int row = tm.getRowCount();
+				for(int i=0;i<row;i++)
+					tm.removeRow(0);
+				JOptionPane.showMessageDialog(null, total+"분 "+" 구매 완료");
+				csv.dispose();
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "죄송합니다ㅠㅠ 재고가부족합니다.");
+			}
 		}
 		else {
 			JOptionPane.showMessageDialog(null, "보유하신 시간이 부족합니다.");
