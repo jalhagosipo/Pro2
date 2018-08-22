@@ -179,6 +179,22 @@ public class ClientInfoView extends JFrame implements ActionListener {
 		JButton btnLogout = new JButton("\uC0AC\uC6A9 \uC885\uB8CC");
 		btnLogout.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnLogout.setBounds(40, 616, 175, 40);
+		btnLogout.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PrintWriter pw=null;
+				try {
+					socket=sv.GetSocket();
+					pw=new PrintWriter(socket.getOutputStream());
+					pw.println("end@");
+					pw.flush();
+				}catch (Exception e2) {
+					System.out.println(e2.getMessage());
+				}finally {
+				}
+				dispose();
+			}
+		});
 		contentPane.add(btnLogout);
 		
 		JButton btnclose = new JButton("\uB2EB\uAE30");

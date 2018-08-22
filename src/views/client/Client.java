@@ -56,17 +56,8 @@ public class Client extends JFrame implements ActionListener {
 	private int num=0;
 	
 	//메인뷰에서 좌석칸을 누를때 실행된다. Main_GUI_Event에서 생성자를 호출해 만들어지고 값을 설정한다.
-	//lh	:남은시간 중 시	/ hour	:사용시간 중 시
-	//lm	:남은시간 중 분	/ minute:사용시간 중 분
-	//ls	:남은시간 중 초	/ second:사용시간 중 초
 	//timer	:남은시간과 사용시간 설정을위한 타이머
 	//csv	:먹거리 선택 View
-//	int lh=0;
-//	int lm=0;
-//	int ls=0;
-//	int hour = 0; 
-//	int minute = 0;
-//	int second = 0;
 	javax.swing.Timer timer; 
 	ChooseSnackView csv;
 	
@@ -83,13 +74,6 @@ public class Client extends JFrame implements ActionListener {
 	public void SetName(String text) {
 		textField_1.setText(text);
 	}
-	//Login에서 남은시간을 설정하기 위한 메서드.
-//	public void SetTime(int hour, int minute, int second) {
-//		lh=hour;
-//		lm=minute;
-//		ls=second;
-//		textField_2.setText(lh+ ":" + lm + ":"+ ls);
-//	}
 	
 	//dipose가 호출될 때 호출될 메서드.
 	//DAO를 통해 현재 남은 시간을 DB에 저장시키고 시스템을 종료시킨다.
@@ -252,7 +236,7 @@ public class Client extends JFrame implements ActionListener {
 				lv.setVisible(true);
 				dispose();
 			}
-			ct=new ClientThread(socket,textField_2,textField_3);
+			ct=new ClientThread(this,socket,textField_2,textField_3);
 			job=new Thread(ct);
 			job.start();
 		}catch(IOException ex){

@@ -9,12 +9,16 @@ import java.net.Socket;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import views.client.Client;
+
 public class ClientThread implements Runnable{
+	private Client client;
 	private Socket socket;
 	private JTextField lb_time;
 	private JTextField lb_cur_time;
 
-	public  ClientThread(Socket socket,JTextField textField_2, JTextField textField_3) {
+	public  ClientThread(Client client, Socket socket,JTextField textField_2, JTextField textField_3) {
+		this.client=client;
 		this.socket=socket;
 		this.lb_time=textField_2;
 		this.lb_cur_time=textField_3;
@@ -46,6 +50,10 @@ public class ClientThread implements Runnable{
 					if(text[1]!=null)
 						JOptionPane.showMessageDialog(null, text[1]);
 					//남은시간 설정
+				}
+				if(text[0].equals("end")) {
+					client.closeview();
+					//서버에서 종료
 				}
 				
 			}//while
