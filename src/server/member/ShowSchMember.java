@@ -37,7 +37,7 @@ public class ShowSchMember implements ActionListener{
 			while(it.hasNext())
 			{
 				MemberDTO sd = it.next();
-				tm.addRow(new Object[]{sd.getId(),sd.getName(),sd.getTotal_price(),sd.getLeft_time(),sd.getPhonenum()});
+				tm.addRow(new Object[]{sd.getId(),sd.getName(),sd.getLeft_time(),sd.getPhonenum()});
 			}
 		}
 	}

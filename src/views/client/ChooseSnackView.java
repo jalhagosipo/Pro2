@@ -35,6 +35,13 @@ public class ChooseSnackView extends JFrame {
 	private JTextField tf_lefttime;
 	private JTextField textShowPrice;
 
+	@Override
+	public void dispose() {
+		DefaultTableModel tm=(DefaultTableModel) table.getModel();
+		tm.setNumRows(0);
+		super.dispose();
+	}
+	
 	public ChooseSnackView(Client c, JTextField id, JTextField lefttime) {
 		this.ci=c;
 		this.tf_id=id;
@@ -65,7 +72,7 @@ public class ChooseSnackView extends JFrame {
 				dispose();
 			}
 		});
-
+		
 		JPanel panel = new JPanel();
 		panel.setBounds(57, 14, 669, 534);
 

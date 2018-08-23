@@ -29,7 +29,7 @@ public class UdtMember implements ActionListener{
 		}else {
 			String id =  (String)memlist.getValueAt(row,0 );
 			String name=  (String)memlist.getValueAt(row,1);
-			String phone=  (String)memlist.getValueAt(row,4 );
+			String phone=  (String)memlist.getValueAt(row,3 );
 
 			MemberUdtView udt  = new MemberUdtView(memlist,id, name, phone);
 			udt.setVisible(true);

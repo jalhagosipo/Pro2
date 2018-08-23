@@ -70,7 +70,7 @@ public class MemberMgrView extends JFrame {
 		
 		
 		
-		Object [] columns = {"회원ID","회원이름","총사용시간","남은시간","핸드폰"};
+		Object [] columns = {"회원ID","회원이름","남은시간","핸드폰"};
 		DefaultTableModel model = new DefaultTableModel();
 		model.setColumnIdentifiers(columns);
 		memlist.setModel(model);
