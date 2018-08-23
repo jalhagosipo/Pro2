@@ -28,7 +28,7 @@ public class BuySnack implements ActionListener{
 	Vector<ProductDTO> buy_arr;
 	boolean possible=false;
 	PrintWriter pw=null;
-	
+
 	int lh=0;
 	int lm=0;
 	int ls=0;
@@ -51,41 +51,45 @@ public class BuySnack implements ActionListener{
 		lm=Integer.parseInt(str[1].trim());
 		have_m=(lh*60)+lm;
 
-		int total = Integer.parseInt(textShowPrice.getText().substring(0, textShowPrice.getText().length()-1).trim());
-		//연결된 클라이언트의 시간을 분으로 환산한것과 선택한 항목의 총액을 비교해서 클라이언트의 시간이 많을때 실행.
-		if(have_m>total) {
-			//여기에서 서버로 보내야함.
-			
-			
-			String product="";
-			Iterator<ProductDTO> it = buy_arr.iterator();
-			while(it.hasNext())
-			{
-				possible=false;
-				ProductDTO pd = it.next();
-				SnackChooseUpdateService sus = new SnackChooseUpdateService(pd.getProName(), pd.getProPrice(), pd.getAmount());
-				product +=pd.getProName() + " " + pd.getAmount() + "개, " ;
-				possible = sus.stockchange();
-			}
-			
-			if(possible)
-			{
-				pw=ci.getPw();
-				pw.println("snack@"+ci.getNum()+"@"+total+"@[" + tf_id.getText() + " 사용자 ]" + product);
-				pw.flush();
-				
-				int row = tm.getRowCount();
-				for(int i=0;i<row;i++)
-					tm.removeRow(0);
-				JOptionPane.showMessageDialog(null, total+"분 "+" 구매 완료");
-				csv.dispose();
+		if(textShowPrice.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "선택된 상품이 없습니다.");
+		}else {
+			int total = Integer.parseInt(textShowPrice.getText().substring(0, textShowPrice.getText().length()-1).trim());
+			//연결된 클라이언트의 시간을 분으로 환산한것과 선택한 항목의 총액을 비교해서 클라이언트의 시간이 많을때 실행.
+			if(have_m>total) {
+				//여기에서 서버로 보내야함.
+
+
+				String product="";
+				Iterator<ProductDTO> it = buy_arr.iterator();
+				while(it.hasNext())
+				{
+					possible=false;
+					ProductDTO pd = it.next();
+					SnackChooseUpdateService sus = new SnackChooseUpdateService(pd.getProName(), pd.getProPrice(), pd.getAmount());
+					product +=pd.getProName() + " " + pd.getAmount() + "개, " ;
+					possible = sus.stockchange();
+				}
+
+				if(possible)
+				{
+					pw=ci.getPw();
+					pw.println("snack@"+ci.getNum()+"@"+total+"@[" + tf_id.getText() + " 사용자 ]" + product);
+					pw.flush();
+
+					int row = tm.getRowCount();
+					for(int i=0;i<row;i++)
+						tm.removeRow(0);
+					JOptionPane.showMessageDialog(null, total+"분 "+" 구매 완료");
+					csv.dispose();
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "죄송합니다ㅠㅠ 재고가부족합니다.");
+				}
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "죄송합니다ㅠㅠ 재고가부족합니다.");
+				JOptionPane.showMessageDialog(null, "보유하신 시간이 부족합니다.");
 			}
-		}
-		else {
-			JOptionPane.showMessageDialog(null, "보유하신 시간이 부족합니다.");
 		}
 	}
 }

@@ -41,6 +41,8 @@ public class infoDAO {
 			}
 		}catch(SQLException e) {
 			System.out.println(e.getMessage());
+		}finally {
+			dbconn.close(conn,pstmt);
 		}
 		return dto;
 	}

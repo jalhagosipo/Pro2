@@ -32,6 +32,13 @@ public class AddtimeView extends JFrame {
 	private Seat[] seat;
 	
 	@Override
+	public void dispose() {
+		textSearchid.setText("");
+		textShowname.setText("");
+		textShowaddtime.setText("");
+		super.dispose();
+	}
+	@Override
 	public void setVisible(boolean b) {
 		// TODO Auto-generated method stub
 		textSearchid.setText(getid.getText());
@@ -62,7 +69,7 @@ public class AddtimeView extends JFrame {
 	
 	public AddtimeView(JLabel getid) {
 		this.getid=getid;
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		setBounds(100, 100, 500,800);
 		contentPane = new JPanel();

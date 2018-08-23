@@ -33,7 +33,7 @@ public class SeatThread implements Runnable{
 			System.out.println("PC 연결 대기중...");
 			in=new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			num=Integer.parseInt(in.readLine());
-			if(seat[num].GetId().equals("대기중") || seat[num].GetId().equals("로그아웃")) {
+			if(seat[num].GetId().equals("")) {
 				check_num=0;
 			}else {
 				check_num=1;

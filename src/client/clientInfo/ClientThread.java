@@ -46,12 +46,12 @@ public class ClientThread implements Runnable{
 					lb_cur_time.setText(text2[1]);
 					//사용시간 설정
 				}
-				if(text[0].equals("add")) {
-					if(text[1]!=null)
-						JOptionPane.showMessageDialog(null, text[1]);
-					//남은시간 설정
-				}
 				if(text[0].equals("end")) {
+					client.closeview();
+					//서버에서 종료
+				}
+				if(text[0].equals("timeend")) {
+					JOptionPane.showMessageDialog(null, "시간을 모두 사용하였습니다.");
 					client.closeview();
 					//서버에서 종료
 				}

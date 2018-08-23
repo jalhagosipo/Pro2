@@ -81,7 +81,7 @@ public class SeatView extends JFrame{
 			lb_id[i] = new JLabel("아이디:");
 			lb_time_value[i]=new JLabel(" ");
 			lb_cur_time_value[i]=new JLabel(" ");
-			lb_id_value[i] = new JLabel("대기중");
+			lb_id_value[i] = new JLabel("");
 			lb_time_value[i].setForeground(Color.white);
 			lb_cur_time_value[i].setForeground(Color.white);
 			lb_id_value[i].setForeground(Color.white);
@@ -135,8 +135,8 @@ public class SeatView extends JFrame{
 	//lb_cur_time_value	:사용시간 출력 라벨
 	//lb_time_value		:남은시간 출력 라벨
 	//Seat				:좌석을 눌렀을때 ClientInfo를 띄워줄 리스너(오른쪽버튼들의 리스너와 같지만 생성자가 다르다)
-	private Seat GetCom(int i) {
-		Seat seat =new Seat(lb_time_value[i], lb_cur_time_value[i], lb_id_value[i], pan_seat[i]);
+	private Seat GetCom(SeatView sv ,int i) {
+		Seat seat =new Seat(sv, lb_time_value[i], lb_cur_time_value[i], lb_id_value[i], pan_seat[i]);
 		pan_seat[i].addMouseListener((MouseListener) new Main_GUI_Event(i, seat, lb_id_value[i], lb_cur_time_value[i], lb_time_value[i],this));
 		return seat;
 	}
@@ -162,12 +162,11 @@ public class SeatView extends JFrame{
 		
 		//각 좌석에 리스너를 추가해주기 위함
 		for(int i=0; i<20;i++) {
-			seat[i] =sv.GetCom(i);
+			seat[i] =sv.GetCom(sv, i);
 		}
 		sv.SetSeat(seat);
 		try{
 			server=new ServerSocket(7777);
-			//배열을 채팅기능이 없는한 삭제해도 문제없음 ====================================================================================
 			arr=new PrintWriter[20];
 			while(true) {
 				System.out.println("접속대기중");

@@ -196,7 +196,7 @@ public class Client extends JFrame implements ActionListener {
 		this.setVisible(true);
 		
 //		192.168.0.84
-		String host="localhost";
+		String host="192.168.0.5";
 		int port=7777;
 		Socket socket=null;
 		ClientThread ct=null;

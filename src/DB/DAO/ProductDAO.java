@@ -14,19 +14,14 @@ import DB.DTO.ProductDTO;
 public class ProductDAO {
 	
 		public Vector<ProductDTO>  Product(String textField) {
-			
 			Connection conn=null;
 			PreparedStatement pstmt = null;
 			DBconn dbconn = new DBconn();
-			ResultSet rs2;
+			ResultSet rs2=null;
 			Vector<ProductDTO> arr2 = new Vector<>();
 			try {
 				conn = dbconn.getConnection();
 				StringBuilder sql = new StringBuilder();
-
-				
-				
-				
 				if(textField.trim().equals(""))
 				{
 					sql.append("  select product_name, product_price, stock ");
@@ -55,6 +50,9 @@ public class ProductDAO {
 				
 			}catch(SQLException e){
 				System.out.println(e);
+			}finally {
+				if(rs2!=null)try {rs2.close();}catch(Exception e) {}
+				dbconn.close(conn,pstmt);
 			}
 			return arr2;
 		}
@@ -92,6 +90,8 @@ public class ProductDAO {
 				}
 			}catch(SQLException e){
 				System.out.println(e);
+			}finally {
+				dbconn.close(conn,pstmt);
 			}
 		}
 		
@@ -124,14 +124,16 @@ public class ProductDAO {
 				
 			}catch(SQLException e){
 				System.out.println(e);
+			}finally {
+				dbconn.close(conn,pstmt);
 			}
 		}
 		
-		public void updateProduct(String newName, String newPrice, int newStock, String oldName) {
+		public int updateProduct(String newName, String newPrice, int newStock, String oldName) {
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			DBconn dbconn = new DBconn();
-			
+			int result=0;
 			
 			try {
 				conn = dbconn.getConnection();
@@ -150,19 +152,13 @@ public class ProductDAO {
 				pstmt.setString(4, oldName);
 
 				
-				int result = pstmt.executeUpdate();
-				if(result>0)
-				{
-					System.out.println("수정 완료");
-					JOptionPane.showMessageDialog(null, "수정 완료");
-				}
-				else
-				{
-					System.out.println("수정 실패");
-					JOptionPane.showMessageDialog(null, "수정 실패");
-				}
+				result = pstmt.executeUpdate();
+				
 			}catch(SQLException e){
 				System.out.println(e);
+			}finally {
+				dbconn.close(conn,pstmt);
 			}
+			return result;
 		}
 }

@@ -9,9 +9,8 @@ import DB.DBconn;
 import views.server.AddtimeView;
 
 public class ClientshowDAO{	
+	
 	public ClientshowDTO GetShow(String readtxt) {
-		
-		
 		Connection conn = null;
 		PreparedStatement pstmt =  null;
 		ResultSet rs = null;
@@ -27,7 +26,6 @@ public class ClientshowDAO{
 			sb.append("	where member_id= ?			");
 
 			pstmt = conn.prepareStatement(sb.toString());
-			
 			pstmt.setString(1, readtxt);
 			
 			rs = pstmt.executeQuery();
@@ -35,15 +33,11 @@ public class ClientshowDAO{
 			{ 
 				dto.setMember_name(rs.getString(1));
 			}
-			
-			
-		
-			
-						
-			
-			
 		}catch(SQLException e) {
 			System.out.println(e.getMessage());
+		}finally {
+			if(rs!=null)try {rs.close();}catch(Exception e) {}
+			dbconn.close(conn,pstmt);
 		}
 		return dto;
 	}

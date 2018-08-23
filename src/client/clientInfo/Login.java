@@ -53,13 +53,11 @@ public class Login implements ActionListener{
 				String getpw=memdto.get(0).getPw();
 				
 				if(getpw.equals(pw.getText())) {
-					
-					Client ci= new Client(Integer.parseInt(num.getText())-1, id.getText());
 					infoDAO infodao= new infoDAO();
 					infoDTO dto= new infoDTO();
 					dto= infodao.GetInfo(id.getText());
+					Client ci= new Client(Integer.parseInt(num.getText())-1, id.getText());
 					ci.SetName(dto.getName());
-//					ci.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
 					view.dispose();	
 				}else {
 					JOptionPane.showMessageDialog(null, "비밀번호 틀림.");

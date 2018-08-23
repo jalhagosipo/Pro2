@@ -3,24 +3,26 @@ package server;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.PrintWriter;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import DB.DAO.MemberDAO;
 import DB.DAO.SeatDAO;
+import views.server.SeatView;
 
 public class Seat implements ActionListener{
 	
-	JLabel lb_time_value;
-	JLabel lb_cur_time_value;
-	JLabel lb_id_value;
-	JPanel pan_seat;
-	//lh	:남은시간 중 시
-	//lm	:남은시간 중 분
-	//ls	:남은시간 중 초
-	int lh=0;
-	int lm=0;
-	int ls=0;
+	private JLabel lb_time_value;
+	private JLabel lb_cur_time_value;
+	private JLabel lb_id_value;
+	private JPanel pan_seat;
+	private SeatView sv;
+	private int lh=0;	//lh	:남은시간 중 시
+	private int lm=0;	//lm	:남은시간 중 분
+	private int ls=0;	//ls	:남은시간 중 초
+
 	
 	public int Getlh() {
 		return lh;
@@ -43,7 +45,8 @@ public class Seat implements ActionListener{
 		return lb_id_value.getText().trim();
 	}
 
-	public Seat(JLabel lb_time_value,	JLabel lb_cur_time_value,	JLabel lb_id_value, JPanel pan_seat) {
+	public Seat(SeatView sv, JLabel lb_time_value,	JLabel lb_cur_time_value,	JLabel lb_id_value, JPanel pan_seat) {
+		this.sv=sv;
 		this.lb_time_value=lb_time_value;
 		this.lb_cur_time_value=lb_cur_time_value;
 		this.lb_id_value=lb_id_value;
@@ -61,6 +64,9 @@ public class Seat implements ActionListener{
 		lh=time[0];
 		lm=time[1];
 		ls=time[2];
+//		if(lh<=0 && lm<=0 && ls<=0) {
+//			ls=0;
+//		}
 		//SeatView의 좌석에 남은시간을 설정한다.
 		lb_time_value.setText(lh + ":" + lm +":" + ls);
 		timer = new javax.swing.Timer(1000, this); 
@@ -83,7 +89,7 @@ public class Seat implements ActionListener{
 		hour = 0; 
 		minute = 0;
 		second = 0;
-		lb_id_value.setText("로그아웃");
+		lb_id_value.setText("");
 		pan_seat.setBackground(Color.GRAY);
 	}
 	
@@ -109,8 +115,21 @@ public class Seat implements ActionListener{
 			if(lm<=0) {
 				lm=59;
 				lh--;
-			}else {
-				lm--;
+				if(lh<0) {
+					timer.stop();
+					try {
+						PrintWriter pw =new PrintWriter(sv.GetSocket().getOutputStream());
+						lh=0;
+						lm=0;
+						ls=0;//임시로 시간 -되는것을 방지
+						
+						lb_time_value.setText(lh+ ":" + lm + ":"+ ls);
+						pw.println("timeend");
+						pw.flush();
+					}catch (Exception ex) {
+						System.out.println(ex.getMessage());
+					}
+				}
 			}
 		}else {
 			ls--;

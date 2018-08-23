@@ -15,8 +15,6 @@ public class AddtimeDAO{
 	public AddtimeDAO(JTextField textSearchid, JTextArea textShowaddtime) {
 		this.textSearchid=textSearchid;
 		this.textShowaddtime=textShowaddtime;
-//		super(textSearchid, textShowaddtime);
-		// TODO Auto-generated constructor stub
 	}
 	Connection conn = null;
 	PreparedStatement pstmt =  null;
@@ -46,8 +44,8 @@ public class AddtimeDAO{
 
 		}catch(SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
-			if(pstmt!=null) try { pstmt.close();} catch(Exception e){}
+		}finally {
+			dbconn.close(conn,pstmt);
 		}
 	}
 	//pstmt.clearParameters();
@@ -77,8 +75,8 @@ public class AddtimeDAO{
 			
 			textShowaddtime.setText("ID 를 확인해주세요\n["+ textSearchid.getText()+ "] 는 등록되지 않은 ID 입니다");
 			System.out.println(e.getMessage());
-		} finally {
-			if(pstmt!=null) try { pstmt.close();} catch(Exception e){}
+		}finally {
+			dbconn.close(conn,pstmt);
 		}
 	}
 }

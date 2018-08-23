@@ -8,6 +8,7 @@ import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -80,10 +81,18 @@ public class UpdateProductView extends JFrame {
 				DefaultTableModel tm2 = (DefaultTableModel) table.getModel();
 				tm2.setNumRows(0);
 				ProductDAO dao2=new ProductDAO();
-				dao2.updateProduct(tf_proName.getText()
+				int result = dao2.updateProduct(tf_proName.getText()
 						,tf_price.getText()
 						,Integer.parseInt(tf_stock.getText())
 						,oldName);
+				if(result>0)
+				{
+					JOptionPane.showMessageDialog(null, "수정 완료");
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "수정 실패");
+				}
 				Vector<ProductDTO> dto2= dao2.Product("");
 				Iterator<ProductDTO> it2 = dto2.iterator();
 				

@@ -44,27 +44,13 @@ public class ClientInfoView extends JFrame implements ActionListener {
 	//Addtime에서 충전한 시간을 메인뷰의 좌석에도 적용시키기위한 메서드.
 	public void AddT(int h) {
 		seat.Setlh(seat.Getlh()+h);
-		
-		PrintWriter pw=null;
-		try {
-			socket=sv.GetSocket();
-			pw=new PrintWriter(socket.getOutputStream());
-			pw.println("add@"+h+"시간 충전되었습니다.");
-			pw.flush();
-		}catch (Exception e) {
-			System.out.println(e.getMessage());
-		}finally {
-//			if(pw!=null)try {pw.close();}catch (Exception e) {}
-		}
 	}
-	
 	//창이 닫힐때 timer종료.
 	@Override
 	public void dispose() {
 		timer.stop();
 		super.dispose();
 	}
-	
 	//Main_GUI_Event에서 이름을 설정하기 위한 메서드.
 	public void SetName(String text) {
 		textField_1.setText(text);

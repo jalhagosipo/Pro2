@@ -18,7 +18,7 @@ public class MemberDAO {
 			Connection conn=null;
 			PreparedStatement pstmt = null;
 			DBconn dbconn = new DBconn();
-			ResultSet rs;
+			ResultSet rs=null;
 			Vector<MemberDTO> arr = new Vector<>();
 			
 			try {
@@ -56,6 +56,9 @@ public class MemberDAO {
 				
 			}catch(SQLException e){
 				System.out.println(e);
+			}finally {
+				if(rs!=null)try {rs.close();}catch(Exception e) {}
+				dbconn.close(conn,pstmt);
 			}
 			return arr;
 		}
@@ -88,6 +91,8 @@ public class MemberDAO {
 				
 			}catch(SQLException e){
 				System.out.println(e);
+			}finally {
+				dbconn.close(conn,pstmt);
 			}
 		}
 		
@@ -128,6 +133,8 @@ public class MemberDAO {
 				}
 			}catch(SQLException e){
 				System.out.println(e);
+			}finally {
+				dbconn.close(conn,pstmt);
 			}
 		}
 		
@@ -164,6 +171,8 @@ public class MemberDAO {
 				
 			}catch(SQLException e){
 				System.out.println(e);
+			}finally {
+				dbconn.close(conn,pstmt);
 			}
 			return ok;
 		}
@@ -171,7 +180,6 @@ public class MemberDAO {
 		public void UpdateTime(String id, String time) {
 			Connection conn = null;
 			PreparedStatement pstmt =  null;
-			ResultSet rs = null;
 			DBconn dbconn = new DBconn();
 
 			try {
@@ -198,6 +206,8 @@ public class MemberDAO {
 				
 			}catch(SQLException e){
 				System.out.println(e);
+			}finally {
+				dbconn.close(conn,pstmt);
 			}
 		}
 }
