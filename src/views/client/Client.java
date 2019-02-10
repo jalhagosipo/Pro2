@@ -25,58 +25,58 @@ import client.clientInfo.ClientThread;
 import client.clientInfo.infoDAO;
 import client.clientInfo.infoDTO;
 
-//ÁÖ¼®: À±°ÇÈñ
+//ì£¼ì„: ìœ¤ê±´í¬
 public class Client extends JFrame implements ActionListener {
-	//Test¿ë. Å×½ºÆ® ¿Ï·á ÈÄ mainÀº »èÁ¦ÇØ¾ßÇÔ  ====================================================================================
-	public static void main(String[] args) {
-		infoDAO dao= new infoDAO();
-		infoDTO dto= new infoDTO();
-		dto = dao.GetInfo("a");
-		Client c= new Client(0,"a");
-		c.SetName(dto.getName());
-//		c.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
-		
-//		infoDAO dao= new infoDAO();
-//		infoDTO dto= new infoDTO();
-//		dto = dao.GetInfo("test");
-//		Client c= new Client(1,"test");
-//		c.SetName(dto.getName());
-//		c.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
-
-	}
+    /*//Testìš©. í…ŒìŠ¤íŠ¸ ì™„ë£Œ í›„ mainì€ ì‚­ì œí•´ì•¼í•¨  ====================================================================================
+    public static void main(String[] args) {
+    	infoDAO dao= new infoDAO();
+    	infoDTO dto= new infoDTO();
+    	dto = dao.GetInfo("a");
+    	Client c= new Client(0,"a");
+    	c.SetName(dto.getName());
+    //		c.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
+    	
+    //		infoDAO dao= new infoDAO();
+    //		infoDTO dto= new infoDTO();
+    //		dto = dao.GetInfo("test");
+    //		Client c= new Client(1,"test");
+    //		c.SetName(dto.getName());
+    //		c.SetTime(dto.getHour(), dto.getMinute(), dto.getSecond());
+    
+    }*/
 	
 	private JPanel contentPane;
 	private JTextField textField;//id
-	private JTextField textField_1;//ÀÌ¸§
-	private JTextField textField_2;//³²Àº½Ã°£
-	private JTextField textField_3;//»ç¿ë½Ã°£
+	private JTextField textField_1;//ì´ë¦„
+	private JTextField textField_2;//ë‚¨ì€ì‹œê°„
+	private JTextField textField_3;//ì‚¬ìš©ì‹œê°„
 	
 	private PrintWriter pw=null;
 	private BufferedReader in=null;
 	private int num=0;
 	
-	//¸ŞÀÎºä¿¡¼­ ÁÂ¼®Ä­À» ´©¸¦¶§ ½ÇÇàµÈ´Ù. Main_GUI_Event¿¡¼­ »ı¼ºÀÚ¸¦ È£ÃâÇØ ¸¸µé¾îÁö°í °ªÀ» ¼³Á¤ÇÑ´Ù.
-	//timer	:³²Àº½Ã°£°ú »ç¿ë½Ã°£ ¼³Á¤À»À§ÇÑ Å¸ÀÌ¸Ó
-	//csv	:¸Ô°Å¸® ¼±ÅÃ View
+	//ë©”ì¸ë·°ì—ì„œ ì¢Œì„ì¹¸ì„ ëˆ„ë¥¼ë•Œ ì‹¤í–‰ëœë‹¤. Main_GUI_Eventì—ì„œ ìƒì„±ìë¥¼ í˜¸ì¶œí•´ ë§Œë“¤ì–´ì§€ê³  ê°’ì„ ì„¤ì •í•œë‹¤.
+	//timer	:ë‚¨ì€ì‹œê°„ê³¼ ì‚¬ìš©ì‹œê°„ ì„¤ì •ì„ìœ„í•œ íƒ€ì´ë¨¸
+	//csv	:ë¨¹ê±°ë¦¬ ì„ íƒ View
 	javax.swing.Timer timer; 
 	ChooseSnackView csv;
 	
 	int swit=0;
 	
-	//getter¿Í setter
+	//getterì™€ setter
 	public PrintWriter getPw() {
 		return pw;
 	}
 	public int getNum() {
 		return num;
 	}
-	//Login¿¡¼­ ÀÌ¸§À» ¼³Á¤ÇÏ±â À§ÇÑ ¸Ş¼­µå.
+	//Loginì—ì„œ ì´ë¦„ì„ ì„¤ì •í•˜ê¸° ìœ„í•œ ë©”ì„œë“œ.
 	public void SetName(String text) {
 		textField_1.setText(text);
 	}
 	
-	//dipose°¡ È£ÃâµÉ ¶§ È£ÃâµÉ ¸Ş¼­µå.
-	//DAO¸¦ ÅëÇØ ÇöÀç ³²Àº ½Ã°£À» DB¿¡ ÀúÀå½ÃÅ°°í ½Ã½ºÅÛÀ» Á¾·á½ÃÅ²´Ù.
+	//diposeê°€ í˜¸ì¶œë  ë•Œ í˜¸ì¶œë  ë©”ì„œë“œ.
+	//DAOë¥¼ í†µí•´ í˜„ì¬ ë‚¨ì€ ì‹œê°„ì„ DBì— ì €ì¥ì‹œí‚¤ê³  ì‹œìŠ¤í…œì„ ì¢…ë£Œì‹œí‚¨ë‹¤.
 	public void closeview() {
 		// TODO Auto-generated method stub
 		dispose();
@@ -88,7 +88,7 @@ public class Client extends JFrame implements ActionListener {
 	}
 
 	////////////////////////////////////
-	//i		:·Î±×ÀÎµÈ PC¹øÈ£		/ cur_id	: Login¿¡¼­ ·Î±×ÀÎµÈ ID
+	//i		:ë¡œê·¸ì¸ëœ PCë²ˆí˜¸		/ cur_id	: Loginì—ì„œ ë¡œê·¸ì¸ëœ ID
 	public Client(int i, String cur_id) {
 		this.num=i;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -98,40 +98,40 @@ public class Client extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		//PC¹øÈ£¶óº§
+		//PCë²ˆí˜¸ë¼ë²¨
 		JLabel lblPcnumber = new JLabel((i+1) + " \uBC88 PC");
 		lblPcnumber.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPcnumber.setFont(new Font("Gulim", Font.PLAIN, 27));
 		lblPcnumber.setBounds(145, 39, 200, 32);
 		contentPane.add(lblPcnumber);
 		
-		//¾ÆÀÌµğ¶óº§
+		//ì•„ì´ë””ë¼ë²¨
 		JLabel lblClientid = new JLabel("\uD68C\uC6D0 I.D.");
 		lblClientid.setFont(new Font("Gulim", Font.PLAIN, 27));
 		lblClientid.setBounds(40, 155, 121, 32);
 		contentPane.add(lblClientid);
 	
-		//ÀÌ¸§¶óº§
+		//ì´ë¦„ë¼ë²¨
 		JLabel lblClientname = new JLabel("\uD68C\uC6D0 \uC774\uB984");
 		lblClientname.setFont(new Font("Gulim", Font.PLAIN, 27));
 		lblClientname.setBounds(40, 225, 121, 32);
 		contentPane.add(lblClientname);
 		
-		//³²Àº½Ã°£¶óº§
+		//ë‚¨ì€ì‹œê°„ë¼ë²¨
 		JLabel lblResttime = new JLabel("\uB0A8\uC740 \uC2DC\uAC04");
 		lblResttime.setFont(new Font("Gulim", Font.PLAIN, 27));
 		lblResttime.setBounds(40, 285, 121, 32);
 		contentPane.add(lblResttime);
 		
-		//»ç¿ë½Ã°£¶óº§
+		//ì‚¬ìš©ì‹œê°„ë¼ë²¨
 		JLabel lblSpendtime = new JLabel("\uC0AC\uC6A9 \uC2DC\uAC04");
 		lblSpendtime.setFont(new Font("Gulim", Font.PLAIN, 27));
 		lblSpendtime.setBounds(40, 345, 121, 32);
 		contentPane.add(lblSpendtime);
-		// ¶óº§ : È¸¿ø id, È¸¿ø ÀÌ¸§, ³²Àº ½Ã°£, »ç¿ë ½Ã°£ 
+		// ë¼ë²¨ : íšŒì› id, íšŒì› ì´ë¦„, ë‚¨ì€ ì‹œê°„, ì‚¬ìš© ì‹œê°„ 
 		
-		//ÅØ½ºÆ®ÇÊµå´Â EnableÀ» flase·Î ¼³Á¤ÇØ ¼öÁ¤ÇÒ ¼ö ¾øµµ·ÏÇÔ.
-		//ID Ãâ·Â ÇÊµå
+		//í…ìŠ¤íŠ¸í•„ë“œëŠ” Enableì„ flaseë¡œ ì„¤ì •í•´ ìˆ˜ì •í•  ìˆ˜ ì—†ë„ë¡í•¨.
+		//ID ì¶œë ¥ í•„ë“œ
 		textField = new JTextField(cur_id);
 		textField.setFont(new Font("Gulim", Font.PLAIN, 27));
 		textField.setBounds(200, 150, 236, 38);
@@ -139,7 +139,7 @@ public class Client extends JFrame implements ActionListener {
 		textField.setColumns(10);
 		textField.setEnabled(false);
 		
-		//ÀÌ¸§ Ãâ·Â ÇÊµå
+		//ì´ë¦„ ì¶œë ¥ í•„ë“œ
 		textField_1 = new JTextField();
 		textField_1.setFont(new Font("Gulim", Font.PLAIN, 27));
 		textField_1.setBounds(200, 220, 236, 38);
@@ -147,7 +147,7 @@ public class Client extends JFrame implements ActionListener {
 		textField_1.setColumns(10);
 		textField_1.setEnabled(false);
 		
-		//³²Àº½Ã°£ Ãâ·ÂÇÊµå
+		//ë‚¨ì€ì‹œê°„ ì¶œë ¥í•„ë“œ
 		textField_2 = new JTextField();
 		textField_2.setFont(new Font("Gulim", Font.PLAIN, 27));
 		textField_2.setBounds(200, 280, 236, 38);
@@ -155,20 +155,20 @@ public class Client extends JFrame implements ActionListener {
 		textField_2.setColumns(10);
 		textField_2.setEnabled(false);
 		
-		//»ç¿ë½Ã°£ Ãâ·Â ÇÊµå
+		//ì‚¬ìš©ì‹œê°„ ì¶œë ¥ í•„ë“œ
 		textField_3 = new JTextField();
 		textField_3.setFont(new Font("Gulim", Font.PLAIN, 27));
 		textField_3.setBounds(200, 340, 236, 38);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		textField_3.setEnabled(false);
-		// Ãâ·Â ÇÊµå : È¸¿ø ID, È¸¿ø ÀÌ¸§, ³²Àº ½Ã°£, »ç¿ë ½Ã°£
+		// ì¶œë ¥ í•„ë“œ : íšŒì› ID, íšŒì› ì´ë¦„, ë‚¨ì€ ì‹œê°„, ì‚¬ìš© ì‹œê°„
 		
-		//¸Ô°Å¸®¼±ÅÃ¹öÆ°
-		JButton btnFood = new JButton("¸Ô°Å¸®¼±ÅÃ");
+		//ë¨¹ê±°ë¦¬ì„ íƒë²„íŠ¼
+		JButton btnFood = new JButton("ë¨¹ê±°ë¦¬ì„ íƒ");
 		btnFood.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnFood.setBounds(155, 449, 175, 40);
-		//ChooseSnackView¸¦ ¿©±â¼­ ¼±¾ğÇÏ¸é ¸Ô°Å¸®¼±ÅÃÇÒ¶§ ·Î±×¾Æ¿ôµÊ ÀÌÀ¯¸ğ¸£°ÚÀ½. ±×·¡¼­ ¸ÇÀ§¿¡ ¼±¾ğÇØµÒ.
+		//ChooseSnackViewë¥¼ ì—¬ê¸°ì„œ ì„ ì–¸í•˜ë©´ ë¨¹ê±°ë¦¬ì„ íƒí• ë•Œ ë¡œê·¸ì•„ì›ƒë¨ ì´ìœ ëª¨ë¥´ê² ìŒ. ê·¸ë˜ì„œ ë§¨ìœ„ì— ì„ ì–¸í•´ë‘ .
 		csv= new ChooseSnackView(this,textField,textField_2);
 		btnFood.addActionListener(new ActionListener() {
 			@Override
@@ -178,25 +178,25 @@ public class Client extends JFrame implements ActionListener {
 		});
 		contentPane.add(btnFood);
 
-		//»ç¿ëÁ¾·á¹öÆ°
+		//ì‚¬ìš©ì¢…ë£Œë²„íŠ¼
 		JButton btnLogout = new JButton("\uC0AC\uC6A9 \uC885\uB8CC");
 		btnLogout.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnLogout.setBounds(40, 616, 175, 40);
 		btnLogout.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				//DB¿¡ ÀúÀåÈÄ diposeÇÏ´Â Å¬·¡½º¸Ş¼Òµå
+				//DBì— ì €ì¥í›„ diposeí•˜ëŠ” í´ë˜ìŠ¤ë©”ì†Œë“œ
 				closeview();
 			}
 		});
 		contentPane.add(btnLogout);
 		
-		//¹öÆ° : ÃæÀü, »ç¿ëÁ¾·á
+		//ë²„íŠ¼ : ì¶©ì „, ì‚¬ìš©ì¢…ë£Œ
 		
 		this.setVisible(true);
 		
 //		192.168.0.84
-		String host="192.168.0.5";
+		String host="localhost";
 		int port=7777;
 		Socket socket=null;
 		ClientThread ct=null;
@@ -205,34 +205,34 @@ public class Client extends JFrame implements ActionListener {
 			socket=new Socket(host, port);
 			pw=new PrintWriter(socket.getOutputStream());
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			//·Î±×ÀÎÇÑ PC¹øÈ£¸¦ socketÀÇ OutputStreamÀ» ÀÌ¿ëÇØ SeatThread·Î ³Ñ°ÜÁØ´Ù.
+			//ë¡œê·¸ì¸í•œ PCë²ˆí˜¸ë¥¼ socketì˜ OutputStreamì„ ì´ìš©í•´ SeatThreadë¡œ ë„˜ê²¨ì¤€ë‹¤.
 			pw.println(i);
 			pw.flush();
 			
-			//rs1	:PC°¡ »ç¿ëÁßÀÎÁö Ã¼Å© ÈÄ ¹İÈ¯¹ŞÀ» º¯¼ö( 1:»ç¿ë°¡´É, else:»ç¿ëÁß )
-			//rs1	:ÀÌ¹Ì ·Î±×ÀÎÇÑ ¾ÆÀÌµğÀÎÁö Ã¼Å© ÈÄ ¹İÈ¯¹ŞÀ» º¯¼ö( 1:»ç¿ë°¡´É, else:»ç¿ëÁß )
+			//rs1	:PCê°€ ì‚¬ìš©ì¤‘ì¸ì§€ ì²´í¬ í›„ ë°˜í™˜ë°›ì„ ë³€ìˆ˜( 1:ì‚¬ìš©ê°€ëŠ¥, else:ì‚¬ìš©ì¤‘ )
+			//rs1	:ì´ë¯¸ ë¡œê·¸ì¸í•œ ì•„ì´ë””ì¸ì§€ ì²´í¬ í›„ ë°˜í™˜ë°›ì„ ë³€ìˆ˜( 1:ì‚¬ìš©ê°€ëŠ¥, else:ì‚¬ìš©ì¤‘ )
 			String rs1=null;
 			String rs2=null;
-			//SeatThread·ÎºÎÅÍ »ç¿ëÁßÀÎ PCÀÎÁö Ã¼Å©ÇÏ´Â ¹İÈ¯°ªÀ» ¹ŞÀ»¶§±îÁö ´ë±âÇÑ´Ù.
+			//SeatThreadë¡œë¶€í„° ì‚¬ìš©ì¤‘ì¸ PCì¸ì§€ ì²´í¬í•˜ëŠ” ë°˜í™˜ê°’ì„ ë°›ì„ë•Œê¹Œì§€ ëŒ€ê¸°í•œë‹¤.
 			rs1=in.readLine();
 			if(rs1.equals("1")) {
-				//·Î±×ÀÎÇÑ ¾ÆÀÌµğ¸¦ SeatThread·Î ³Ñ°ÜÁØ´Ù.
+				//ë¡œê·¸ì¸í•œ ì•„ì´ë””ë¥¼ SeatThreadë¡œ ë„˜ê²¨ì¤€ë‹¤.
 				pw.println(cur_id);
 				pw.flush();
-				//SeatThread·ÎºÎÅÍ »ç¿ëÁßÀÎ ¾ÆÀÌµğÀÎÁö Ã¼Å©ÇÏ´Â ¹İÈ¯°ªÀ» ¹ŞÀ»¶§±îÁö ´ë±âÇÑ´Ù.
+				//SeatThreadë¡œë¶€í„° ì‚¬ìš©ì¤‘ì¸ ì•„ì´ë””ì¸ì§€ ì²´í¬í•˜ëŠ” ë°˜í™˜ê°’ì„ ë°›ì„ë•Œê¹Œì§€ ëŒ€ê¸°í•œë‹¤.
 				rs2=in.readLine();
 				if(rs2.equals("1")) {
-					JOptionPane.showMessageDialog(null, cur_id + " ·Î±×ÀÎ ¿Ï·á.");
+					JOptionPane.showMessageDialog(null, cur_id + " ë¡œê·¸ì¸ ì™„ë£Œ.");
 					timer = new javax.swing.Timer(500, this); 
 					timer.setInitialDelay(0); 
 					timer.start();
 				}else {
-					JOptionPane.showMessageDialog(null, "ÀÌ¹Ì Á¢¼ÓÁßÀÎ ¾ÆÀÌµğÀÔ´Ï´Ù.");
+					JOptionPane.showMessageDialog(null, "ì´ë¯¸ ì ‘ì†ì¤‘ì¸ ì•„ì´ë””ì…ë‹ˆë‹¤.");
 				}
 			}else {
-				JOptionPane.showMessageDialog(null, "»ç¿ëÁßÀÎ PCÀÔ´Ï´Ù.");	
+				JOptionPane.showMessageDialog(null, "ì‚¬ìš©ì¤‘ì¸ PCì…ë‹ˆë‹¤.");	
 			}
-			//µÑÁß ÇÏ³ª¶óµµ »ç¿ëºÒ°¡´ÉÇÒ °æ¿ì ·Î±×ÀÎÃ¢À» ´Ù½Ã ¶ç¿ì°í Å¬¶óÀÌ¾ğÆ®´Â ´İ´Â´Ù
+			//ë‘˜ì¤‘ í•˜ë‚˜ë¼ë„ ì‚¬ìš©ë¶ˆê°€ëŠ¥í•  ê²½ìš° ë¡œê·¸ì¸ì°½ì„ ë‹¤ì‹œ ë„ìš°ê³  í´ë¼ì´ì–¸íŠ¸ëŠ” ë‹«ëŠ”ë‹¤
 			if(!rs1.equals("1") || !rs2.equals("1")) {
 				LoginView lv= new LoginView();
 				lv.setVisible(true);
@@ -244,13 +244,13 @@ public class Client extends JFrame implements ActionListener {
 		}catch(IOException ex){
 			System.out.println(ex);
 		}finally {
-			//¿©±â¼­ ´İ¾ÆµµµÇ´ÂÁö ¸ğ¸£°Ú¾î¼­ ÀÏ´Ü ³²°ÜµÒ ====================================================================================
+			//ì—¬ê¸°ì„œ ë‹«ì•„ë„ë˜ëŠ”ì§€ ëª¨ë¥´ê² ì–´ì„œ ì¼ë‹¨ ë‚¨ê²¨ë‘  ====================================================================================
 //			if(pw!=null) try { pw.close();} catch(Exception ex) {}
 //			if(socket!=null) try { socket.close();} catch(IOException ex) {}
 		}
 		
 	}
-	//timerÀÇ ¼Ò½º ³²Àº½Ã°£°ú »ç¿ë½Ã°£À» °è»êÇÏ°í Ãâ·ÂÇØÁØ´Ù.
+	//timerì˜ ì†ŒìŠ¤ ë‚¨ì€ì‹œê°„ê³¼ ì‚¬ìš©ì‹œê°„ì„ ê³„ì‚°í•˜ê³  ì¶œë ¥í•´ì¤€ë‹¤.
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(swit==0) {

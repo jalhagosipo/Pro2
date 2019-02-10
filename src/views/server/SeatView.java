@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -25,160 +24,161 @@ import server.Seat;
 import server.SeatThread;
 
 public class SeatView extends JFrame{
-	JFrame jf_main;			// ¸ŞÀÎÇÁ·¹ÀÓ
-	JPanel pan_main_seat;	//ÀüÃ¼ ÁÂ¼® ÆĞ³Î
-	JPanel[] pan_seat;		//ÁÂ¼®1Ä­¾¿ ¹­¾îÁÙ ÆĞ³Î
-	JPanel[] pan_left;		//ÁÂ¼®ÀÇ ¿ŞÂÊ Ç×¸ñµéÀÇ JLabelÀ» ¹­¾îÁÙ ÆĞ³Î
-	JPanel[] pan_right;		//ÁÂ¼®ÀÇ ¿À¸¥ÂÊ °ªµéÀÇ JLabelÀ» ¹­¾îÁÙ ÆĞ³Î
+    JFrame jf_main;			// ë©”ì¸í”„ë ˆì„
+    JPanel pan_main_seat;	//ì „ì²´ ì¢Œì„ íŒ¨ë„
+    JPanel[] pan_seat;		//ì¢Œì„1ì¹¸ì”© ë¬¶ì–´ì¤„ íŒ¨ë„
+    JPanel[] pan_left;		//ì¢Œì„ì˜ ì™¼ìª½ í•­ëª©ë“¤ì˜ JLabelì„ ë¬¶ì–´ì¤„ íŒ¨ë„
+    JPanel[] pan_right;		//ì¢Œì„ì˜ ì˜¤ë¥¸ìª½ ê°’ë“¤ì˜ JLabelì„ ë¬¶ì–´ì¤„ íŒ¨ë„
 
-	JLabel[] lb_time;		//³²Àº½Ã°£À» ¾Ë·ÁÁÙ ¶óº§
-	JLabel[] lb_cur_time;	//»ç¿ë½Ã°£À» ¾Ë·ÁÁÙ ¶óº§
-	JLabel[] lb_id; 		//ÇöÀç ·Î±×ÀÎÇÑ ¾ÆÀÌµğ¸¦ ¾Ë·ÁÁÙ ¶óº§
+    JLabel[] lb_time;		//ë‚¨ì€ì‹œê°„ì„ ì•Œë ¤ì¤„ ë¼ë²¨
+    JLabel[] lb_cur_time;	//ì‚¬ìš©ì‹œê°„ì„ ì•Œë ¤ì¤„ ë¼ë²¨
+    JLabel[] lb_id; 		//í˜„ì¬ ë¡œê·¸ì¸í•œ ì•„ì´ë””ë¥¼ ì•Œë ¤ì¤„ ë¼ë²¨
 
-	JLabel[] lb_time_value;		//³²Àº½Ã°£À» ¾Ë·ÁÁÙ ¶óº§
-	JLabel[] lb_cur_time_value;	//»ç¿ë½Ã°£À» ¾Ë·ÁÁÙ ¶óº§
-	JLabel[] lb_id_value;		//ÇöÀç ·Î±×ÀÎÇÑ ¾ÆÀÌµğ¸¦ ¾Ë·ÁÁÙ ¶óº§
-	
-	private Socket socket;
-	private Seat[] SaveSeat;
+    JLabel[] lb_time_value;		//ë‚¨ì€ì‹œê°„ì„ ì•Œë ¤ì¤„ ë¼ë²¨
+    JLabel[] lb_cur_time_value;	//ì‚¬ìš©ì‹œê°„ì„ ì•Œë ¤ì¤„ ë¼ë²¨
+    JLabel[] lb_id_value;		//í˜„ì¬ ë¡œê·¸ì¸í•œ ì•„ì´ë””ë¥¼ ì•Œë ¤ì¤„ ë¼ë²¨
 
-	public SeatView(){
-		//ÀüÃ¼ ÁÂ¼®¼ö¸¦ ÇÑ¹ø¿¡ Á¶ÀıÇÏ±â À§ÇÑ MAX»ó¼ö
-		final int MAX=20;
-		jf_main=new JFrame("PC¹æ");
-		jf_main.setLayout(new BorderLayout(10,20));
-		//JPanel
-		pan_main_seat=new JPanel();
-		pan_main_seat.setLayout(new GridLayout(4, 5, 30, 50));
-		pan_seat=new JPanel[MAX];
-		pan_left=new JPanel[MAX];
-		pan_right=new JPanel[MAX];
-		//JLabel
-		lb_time=new JLabel[MAX];
-		lb_cur_time=new JLabel[MAX];
-		lb_id=new JLabel[MAX];
-		lb_time_value=new JLabel[MAX];
-		lb_cur_time_value=new JLabel[MAX];
-		lb_id_value=new JLabel[MAX];
+    private Socket socket;
+    private Seat[] SaveSeat;
 
-		//¿©·¯ ÄÄÆ÷³ÍÆ®¸¦ ¹­¾î ÁÂ¼®À» 1Ä­ ´ÜÀ§·Î Ãß°¡ÇÏ±âÀ§ÇÑ ÆĞ³Î.
-		for(int i=0;i<MAX;i++) {
-			pan_seat[i]=new JPanel();
-			pan_seat[i].setLayout(new GridLayout(1, 2));
-			pan_seat[i].setBackground(Color.GRAY);
-			pan_seat[i].setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-			pan_seat[i].setBorder(new TitledBorder(new LineBorder(Color.white,4), (i+1)+" PC"));
+    public SeatView(){
+        //ì „ì²´ ì¢Œì„ìˆ˜ë¥¼ í•œë²ˆì— ì¡°ì ˆí•˜ê¸° ìœ„í•œ MAXìƒìˆ˜
+        final int MAX=20;
+        jf_main=new JFrame("PCë°©");
+        jf_main.setLayout(new BorderLayout(10,20));
+        //JPanel
+        pan_main_seat=new JPanel();
+        pan_main_seat.setLayout(new GridLayout(4, 5, 30, 50));
+        pan_seat=new JPanel[MAX];
+        pan_left=new JPanel[MAX];
+        pan_right=new JPanel[MAX];
+        //JLabel
+        lb_time=new JLabel[MAX];
+        lb_cur_time=new JLabel[MAX];
+        lb_id=new JLabel[MAX];
+        lb_time_value=new JLabel[MAX];
+        lb_cur_time_value=new JLabel[MAX];
+        lb_id_value=new JLabel[MAX];
 
-			pan_left[i]=new JPanel();
-			pan_right[i]=new JPanel();
-			pan_left[i].setBackground(Color.GRAY);
-			pan_right[i].setBackground(Color.GRAY);
-			pan_left[i].setLayout(new BoxLayout(pan_left[i],BoxLayout.Y_AXIS));
-			pan_right[i].setLayout(new BoxLayout(pan_right[i],BoxLayout.Y_AXIS));
+        //ì—¬ëŸ¬ ì»´í¬ë„ŒíŠ¸ë¥¼ ë¬¶ì–´ ì¢Œì„ì„ 1ì¹¸ ë‹¨ìœ„ë¡œ ì¶”ê°€í•˜ê¸°ìœ„í•œ íŒ¨ë„.
+        for(int i=0;i<MAX;i++) {
+            pan_seat[i]=new JPanel();
+            pan_seat[i].setLayout(new GridLayout(1, 2));
+            pan_seat[i].setBackground(Color.GRAY);
+            pan_seat[i].setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+            pan_seat[i].setBorder(new TitledBorder(new LineBorder(Color.white,4), (i+1)+" PC"));
 
-			lb_time[i]=new JLabel("³²Àº½Ã°£:");
-			lb_cur_time[i]=new JLabel("»ç¿ë½Ã°£:");
-			lb_id[i] = new JLabel("¾ÆÀÌµğ:");
-			lb_time_value[i]=new JLabel(" ");
-			lb_cur_time_value[i]=new JLabel(" ");
-			lb_id_value[i] = new JLabel("");
-			lb_time_value[i].setForeground(Color.white);
-			lb_cur_time_value[i].setForeground(Color.white);
-			lb_id_value[i].setForeground(Color.white);
+            pan_left[i]=new JPanel();
+            pan_right[i]=new JPanel();
+            pan_left[i].setBackground(Color.GRAY);
+            pan_right[i].setBackground(Color.GRAY);
+            pan_left[i].setLayout(new BoxLayout(pan_left[i],BoxLayout.Y_AXIS));
+            pan_right[i].setLayout(new BoxLayout(pan_right[i],BoxLayout.Y_AXIS));
 
-			pan_left[i].add(lb_time[i]);
-			pan_left[i].add(lb_cur_time[i]);
-			pan_left[i].add(lb_id[i]);
-			pan_right[i].add(lb_time_value[i]);
-			pan_right[i].add(lb_cur_time_value[i]);
-			pan_right[i].add(lb_id_value[i]);
+            lb_time[i]=new JLabel("ë‚¨ì€ì‹œê°„:");
+            lb_cur_time[i]=new JLabel("ì‚¬ìš©ì‹œê°„:");
+            lb_id[i] = new JLabel("ì•„ì´ë””:");
+            lb_time_value[i]=new JLabel(" ");
+            lb_cur_time_value[i]=new JLabel(" ");
+            lb_id_value[i] = new JLabel("");
+            lb_time_value[i].setForeground(Color.white);
+            lb_cur_time_value[i].setForeground(Color.white);
+            lb_id_value[i].setForeground(Color.white);
 
-			pan_seat[i].add(pan_left[i]);
-			pan_seat[i].add(pan_right[i]);
-			pan_main_seat.add(pan_seat[i]);
-		}
-		jf_main.add(pan_main_seat,BorderLayout.CENTER);//ÁÂ¼®ÆĞ³ÎÀ» CENTER¿¡ Ãß°¡
-		
-		//¿À¸¥ÂÊ ¹öÆ°¸Ş´ºµé¸¦ À§ÇÑ GridLayout
-		JPanel pan_btn = new JPanel();
-		pan_btn.setLayout(new GridLayout(7, 1));
+            pan_left[i].add(lb_time[i]);
+            pan_left[i].add(lb_cur_time[i]);
+            pan_left[i].add(lb_id[i]);
+            pan_right[i].add(lb_time_value[i]);
+            pan_right[i].add(lb_cur_time_value[i]);
+            pan_right[i].add(lb_id_value[i]);
 
-		//°¢ ¹öÆ°¿¡ »ç¿ëµÉ ¸®½º³Ê »ı¼º
-		Main_GUI_Event env = new  Main_GUI_Event(this);
+            pan_seat[i].add(pan_left[i]);
+            pan_seat[i].add(pan_right[i]);
+            pan_main_seat.add(pan_seat[i]);
+        }
+        jf_main.add(pan_main_seat,BorderLayout.CENTER);//ì¢Œì„íŒ¨ë„ì„ CENTERì— ì¶”ê°€
 
-		JButton btn1 =new JButton("¸ÅÃâÇöÈ²");
-		btn1.addActionListener(env);
-		JButton btn2 =new JButton("Àç°í°ü¸®");
-		btn2.addActionListener(env);
-		JButton btn3 =new JButton("ÃæÀü");
-		btn3.addActionListener(env);
-		JButton btn4 =new JButton("È¸¿ø°ü¸®");
-		btn4.addActionListener(env);
+        //ì˜¤ë¥¸ìª½ ë²„íŠ¼ë©”ë‰´ë“¤ë¥¼ ìœ„í•œ GridLayout
+        JPanel pan_btn = new JPanel();
+        pan_btn.setLayout(new GridLayout(7, 1));
 
-		pan_btn.add(btn1);
-		pan_btn.add(new JLabel(""));
-		pan_btn.add(btn2);
-		pan_btn.add(new JLabel(""));
-		pan_btn.add(btn3);
-		pan_btn.add(new JLabel(""));
-		pan_btn.add(btn4);
-		jf_main.add(pan_btn,BorderLayout.EAST);
+        //ê° ë²„íŠ¼ì— ì‚¬ìš©ë  ë¦¬ìŠ¤ë„ˆ ìƒì„±
+        Main_GUI_Event env = new  Main_GUI_Event(this);
 
-		jf_main.setSize(900, 800);
-		jf_main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf_main.setVisible(true);
-	}
-	
-	//°¢ ÁÂ¼®¿¡ ¸®½º³Ê¸¦ Ãß°¡ÇØÁÙ ¸Ş¼­µå(SeatView¿¡¼­¸¸ »ç¿ëµÈ´Ù)
-	//i	:PC¹øÈ£/ pan_seat	: ÁÂ¼®Ä­
-	//lb_id_value	 	:ID Ãâ·Â ¶óº§
-	//lb_cur_time_value	:»ç¿ë½Ã°£ Ãâ·Â ¶óº§
-	//lb_time_value		:³²Àº½Ã°£ Ãâ·Â ¶óº§
-	//Seat				:ÁÂ¼®À» ´­·¶À»¶§ ClientInfo¸¦ ¶ç¿öÁÙ ¸®½º³Ê(¿À¸¥ÂÊ¹öÆ°µéÀÇ ¸®½º³Ê¿Í °°Áö¸¸ »ı¼ºÀÚ°¡ ´Ù¸£´Ù)
-	private Seat GetCom(SeatView sv ,int i) {
-		Seat seat =new Seat(sv, lb_time_value[i], lb_cur_time_value[i], lb_id_value[i], pan_seat[i]);
-		pan_seat[i].addMouseListener((MouseListener) new Main_GUI_Event(i, seat, lb_id_value[i], lb_cur_time_value[i], lb_time_value[i],this));
-		return seat;
-	}
-	//Å¬¶óÀÌ¾ğÆ®ÀÎÆ÷·Î ¼ÒÄÏÀ» º¸³»ÁÖ°í ¼­¹ö¿¡¼­ ÃæÀüÇÒ¶§ Å¬¶óÀÌ¾î¾ğÆ®·Î ¸Ş½ÃÁö¸¦ º¸³»´Âµ¥ »ç¿ëÇÏ±âÀ§ÇØ
-	private void SetSocket(Socket socket) {
-		this.socket=socket;
-	}
-	public Socket GetSocket() {
-		return socket;
-	}
-	private void SetSeat(Seat[] seat) {
-		this.SaveSeat=seat;
-	}
-	public Seat[] GetSeat() {
-		return this.SaveSeat;
-	}
+        JButton btn1 =new JButton("ë§¤ì¶œí˜„í™©");
+        btn1.addActionListener(env);
+        JButton btn2 =new JButton("ì¬ê³ ê´€ë¦¬");
+        btn2.addActionListener(env);
+        JButton btn3 =new JButton("ì¶©ì „");
+        btn3.addActionListener(env);
+        JButton btn4 =new JButton("íšŒì›ê´€ë¦¬");
+        btn4.addActionListener(env);
 
-	public static void main(String[] args) {
-		SeatView sv = new SeatView();
-		ServerSocket server=null;
-		PrintWriter[] arr=null;
-		Seat[] seat=new Seat[20];
-		
-		//°¢ ÁÂ¼®¿¡ ¸®½º³Ê¸¦ Ãß°¡ÇØÁÖ±â À§ÇÔ
-		for(int i=0; i<20;i++) {
-			seat[i] =sv.GetCom(sv, i);
-		}
-		sv.SetSeat(seat);
-		try{
-			server=new ServerSocket(7777);
-			arr=new PrintWriter[20];
-			while(true) {
-				System.out.println("Á¢¼Ó´ë±âÁß");
-				Socket soc=server.accept(); 
-				SeatThread th=new SeatThread(soc,arr,seat,sv.lb_time_value,sv.lb_cur_time_value);
-				sv.SetSocket(soc);
-				Thread job=new Thread(th);
-				job.start();
-			}
-		}catch(IOException e) {
-			System.out.println(e.getMessage());  
-		}
-	}
+        pan_btn.add(btn1);
+        pan_btn.add(new JLabel(""));
+        pan_btn.add(btn2);
+        pan_btn.add(new JLabel(""));
+        pan_btn.add(btn3);
+        pan_btn.add(new JLabel(""));
+        pan_btn.add(btn4);
+        jf_main.add(pan_btn,BorderLayout.EAST);
+
+        jf_main.setSize(900, 800);
+        jf_main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jf_main.setVisible(true);
+    }
+
+    //ê° ì¢Œì„ì— ë¦¬ìŠ¤ë„ˆë¥¼ ì¶”ê°€í•´ì¤„ ë©”ì„œë“œ(SeatViewì—ì„œë§Œ ì‚¬ìš©ëœë‹¤)
+    //i	:PCë²ˆí˜¸/ pan_seat	: ì¢Œì„ì¹¸
+    //lb_id_value	 	:ID ì¶œë ¥ ë¼ë²¨
+    //lb_cur_time_value	:ì‚¬ìš©ì‹œê°„ ì¶œë ¥ ë¼ë²¨
+    //lb_time_value		:ë‚¨ì€ì‹œê°„ ì¶œë ¥ ë¼ë²¨
+    //Seat				:ì¢Œì„ì„ ëˆŒë €ì„ë•Œ ClientInfoë¥¼ ë„ì›Œì¤„ ë¦¬ìŠ¤ë„ˆ(ì˜¤ë¥¸ìª½ë²„íŠ¼ë“¤ì˜ ë¦¬ìŠ¤ë„ˆì™€ ê°™ì§€ë§Œ ìƒì„±ìê°€ ë‹¤ë¥´ë‹¤)
+    private Seat GetCom(SeatView sv ,int i) {
+        Seat seat =new Seat(sv, lb_time_value[i], lb_cur_time_value[i], lb_id_value[i], pan_seat[i]);
+        pan_seat[i].addMouseListener((MouseListener) new Main_GUI_Event(i, seat, lb_id_value[i], lb_cur_time_value[i], lb_time_value[i],this));
+        return seat;
+    }
+    //í´ë¼ì´ì–¸íŠ¸ì¸í¬ë¡œ ì†Œì¼“ì„ ë³´ë‚´ì£¼ê³  ì„œë²„ì—ì„œ ì¶©ì „í• ë•Œ í´ë¼ì´ì–´ì–¸íŠ¸ë¡œ ë©”ì‹œì§€ë¥¼ ë³´ë‚´ëŠ”ë° ì‚¬ìš©í•˜ê¸°ìœ„í•´
+    private void SetSocket(Socket socket) {
+        this.socket=socket;
+    }
+    public Socket GetSocket() {
+        return socket;
+    }
+    private void SetSeat(Seat[] seat) {
+        this.SaveSeat=seat;
+    }
+    public Seat[] GetSeat() {
+        return this.SaveSeat;
+    }
+
+    public static void main(String[] args) {
+        SeatView sv = new SeatView();
+        ServerSocket server=null;
+        PrintWriter[] arr=null;
+        Seat[] seat=new Seat[20];
+
+        //ê° ì¢Œì„ì— ë¦¬ìŠ¤ë„ˆë¥¼ ì¶”ê°€í•´ì£¼ê¸° ìœ„í•¨
+        for(int i=0; i<20;i++) {
+            seat[i] =sv.GetCom(sv, i);
+        }
+        sv.SetSeat(seat);
+        try{
+            server=new ServerSocket(7777);
+            arr=new PrintWriter[20];
+            while(true) {
+                System.out.println("ì ‘ì†ëŒ€ê¸°ì¤‘");
+                Socket soc=server.accept();
+                System.out.println("í´ë¼ì´ì–¸íŠ¸ ì ‘ì†");
+                SeatThread th=new SeatThread(soc,arr,seat,sv.lb_time_value,sv.lb_cur_time_value);
+                sv.SetSocket(soc);
+                Thread job=new Thread(th);
+                job.start();
+            }
+        }catch(IOException e) {
+            System.out.println(e.getMessage());  
+        }
+    }
 }
 

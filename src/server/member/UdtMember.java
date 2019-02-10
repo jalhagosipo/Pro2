@@ -21,11 +21,11 @@ public class UdtMember implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		DefaultTableModel tm = (DefaultTableModel) memlist.getModel(); //Å×ÀÌºíºÒ·¯¿À±â
-		int row = memlist.getSelectedRow(); //Çà ¼±ÅÃ
+		DefaultTableModel tm = (DefaultTableModel) memlist.getModel(); //í…Œì´ë¸”ë¶ˆëŸ¬ì˜¤ê¸°
+		int row = memlist.getSelectedRow(); //í–‰ ì„ íƒ
 
 		if(row<0) {
-			JOptionPane.showMessageDialog(null, "¼±ÅÃµÈ ÇàÀÌ ¾ø½À´Ï´Ù.");
+			JOptionPane.showMessageDialog(null, "ì„ íƒëœ í–‰ì´ ì—†ìŠµë‹ˆë‹¤.");
 		}else {
 			String id =  (String)memlist.getValueAt(row,0 );
 			String name=  (String)memlist.getValueAt(row,1);

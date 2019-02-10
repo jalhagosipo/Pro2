@@ -22,44 +22,30 @@ import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.TextAnchor;
 
-public class makeGraph {
+public class MakeGraph {
 	
 	
 	
 	public JFreeChart getChart(Vector<Integer> money,String[] category) {
 		
-		// µ¥ÀÌÅÍ »ı¼º
+		// ë°ì´í„° ìƒì„±
         DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();                // bar chart 1 
         DefaultCategoryDataset dataset2 = new DefaultCategoryDataset();                // line chart 1
 
-        // µ¥ÀÌÅÍ ÀÔ·Â ( °ª, ¹ü·Ê, Ä«Å×°í¸® )
-        // ±×·¡ÇÁ 1
+        // ë°ì´í„° ì…ë ¥ ( ê°’, ë²”ë¡€, ì¹´í…Œê³ ë¦¬ )
+        // ê·¸ë˜í”„ 1
         for(int i=0;i<money.size();i++)
         {
         	dataset2.addValue(money.get(i), "totalSales",category[i]);
         }
 
-        
-        // ±×·¡ÇÁ 3       
-/*        dataset2.addValue(9.0, "totalSales", "1¿ù");
-        dataset2.addValue(7.0, "totalSales", "2¿ù");
-        dataset2.addValue(2.0, "totalSales", "3¿ù");
-        dataset2.addValue(6.0, "totalSales", "4¿ù");
-        dataset2.addValue(6.0, "totalSales", "5¿ù");
-        dataset2.addValue(9.0, "totalSales", "6¿ù");
-        dataset2.addValue(5.0, "totalSales", "7¿ù");
-        dataset2.addValue(4.0, "totalSales", "8¿ù");
-        dataset2.addValue(8.0, "totalSales", "9¿ù");
-        dataset2.addValue(8.0, "totalSales", "10¿ù");
-        dataset2.addValue(8.0, "totalSales", "11¿ù");
-        dataset2.addValue(8.0, "totalSales", "12¿ù");
-*/
-        // ·»´õ¸µ »ı¼º ¹× ¼¼ÆÃ
-        // ·»´õ¸µ »ı¼º
+       
+        // ë Œë”ë§ ìƒì„± ë° ì„¸íŒ…
+        // ë Œë”ë§ ìƒì„±
         final BarRenderer renderer = new BarRenderer();
         final LineAndShapeRenderer renderer2 = new LineAndShapeRenderer();
 
-        // °øÅë ¿É¼Ç Á¤ÀÇ
+        // ê³µí†µ ì˜µì…˜ ì •ì˜
         final CategoryItemLabelGenerator generator = new StandardCategoryItemLabelGenerator();
         final ItemLabelPosition p_center = new ItemLabelPosition(
                 ItemLabelAnchor.CENTER, TextAnchor.CENTER
@@ -70,18 +56,18 @@ public class makeGraph {
         Font f = new Font("Gulim", Font.BOLD, 14);
         Font axisF = new Font("Gulim", Font.PLAIN, 14);
 
-        // ·»´õ¸µ ¼¼ÆÃ
-        // ±×·¡ÇÁ 1
+        // ë Œë”ë§ ì„¸íŒ…
+        // ê·¸ë˜í”„ 1
         renderer.setBaseItemLabelGenerator(generator);
         renderer.setBaseItemLabelsVisible(true);
         renderer.setBasePositiveItemLabelPosition(p_center);
         renderer.setBaseItemLabelFont(f);
 
-        renderer.setSeriesPaint(0, new Color(112,173,232));//¹Ù»ö
+        renderer.setSeriesPaint(0, new Color(112,173,232));//ë°”ìƒ‰
 
-        // ±×·¡ÇÁ 2       
+        // ê·¸ë˜í”„ 2       
 
-        // ±×·¡ÇÁ 3       
+        // ê·¸ë˜í”„ 3       
         renderer2.setBaseItemLabelGenerator(generator);
         renderer2.setBaseItemLabelsVisible(true);
         renderer2.setBaseShapesVisible(true);
@@ -98,35 +84,33 @@ public class makeGraph {
                                                3.0f)
         );
 
-        // plot »ı¼º
+        // plot ìƒì„±
         final CategoryPlot plot = new CategoryPlot();
 
-        // plot ¿¡ µ¥ÀÌÅÍ ÀûÀç
+        // plot ì— ë°ì´í„° ì ì¬
         plot.setDataset(dataset1);
         plot.setRenderer(renderer);
-//        plot.setDataset(1,dataset12);
-//        plot.setRenderer(1,renderer12);
         plot.setDataset(2, dataset2);
         plot.setRenderer(2, renderer2);
 
-        // plot ±âº» ¼³Á¤
-        plot.setOrientation(PlotOrientation.VERTICAL);             // ±×·¡ÇÁ Ç¥½Ã ¹æÇâ
-        plot.setRangeGridlinesVisible(true);                       // XÃà °¡ÀÌµå ¶óÀÎ Ç¥½Ã¿©ºÎ
-        plot.setDomainGridlinesVisible(true);                      // YÃà °¡ÀÌµå ¶óÀÎ Ç¥½Ã¿©ºÎ
+        // plot ê¸°ë³¸ ì„¤ì •
+        plot.setOrientation(PlotOrientation.VERTICAL);             // ê·¸ë˜í”„ í‘œì‹œ ë°©í–¥
+        plot.setRangeGridlinesVisible(true);                       // Xì¶• ê°€ì´ë“œ ë¼ì¸ í‘œì‹œì—¬ë¶€
+        plot.setDomainGridlinesVisible(true);                      // Yì¶• ê°€ì´ë“œ ë¼ì¸ í‘œì‹œì—¬ë¶€
 
-        // ·»´õ¸µ ¼ø¼­ Á¤ÀÇ : dataset µî·Ï ¼ø¼­´ë·Î ·»´õ¸µ ( Áï, ¸ÕÀú µî·ÏÇÑ°Ô ¾Æ·¡·Î ±ò¸² )
+        // ë Œë”ë§ ìˆœì„œ ì •ì˜ : dataset ë“±ë¡ ìˆœì„œëŒ€ë¡œ ë Œë”ë§ ( ì¦‰, ë¨¼ì € ë“±ë¡í•œê²Œ ì•„ë˜ë¡œ ê¹”ë¦¼ )
         plot.setDatasetRenderingOrder(DatasetRenderingOrder.FORWARD);
 
-        // XÃà ¼¼ÆÃ
-        plot.setDomainAxis(new CategoryAxis());              // XÃà Á¾·ù ¼³Á¤
-        plot.getDomainAxis().setTickLabelFont(axisF); // XÃà ´«±İ¶óº§ ÆùÆ® Á¶Á¤
-        plot.getDomainAxis().setCategoryLabelPositions(CategoryLabelPositions.STANDARD);       // Ä«Å×°í¸® ¶óº§ À§Ä¡ Á¶Á¤
+        // Xì¶• ì„¸íŒ…
+        plot.setDomainAxis(new CategoryAxis());              // Xì¶• ì¢…ë¥˜ ì„¤ì •
+        plot.getDomainAxis().setTickLabelFont(axisF); // Xì¶• ëˆˆê¸ˆë¼ë²¨ í°íŠ¸ ì¡°ì •
+        plot.getDomainAxis().setCategoryLabelPositions(CategoryLabelPositions.STANDARD);       // ì¹´í…Œê³ ë¦¬ ë¼ë²¨ ìœ„ì¹˜ ì¡°ì •
 
-        // YÃà ¼¼ÆÃ
-        plot.setRangeAxis(new NumberAxis());                 // YÃà Á¾·ù ¼³Á¤
-        plot.getRangeAxis().setTickLabelFont(axisF);  // YÃà ´«±İ¶óº§ ÆùÆ® Á¶Á¤
+        // Yì¶• ì„¸íŒ…
+        plot.setRangeAxis(new NumberAxis());                 // Yì¶• ì¢…ë¥˜ ì„¤ì •
+        plot.getRangeAxis().setTickLabelFont(axisF);  // Yì¶• ëˆˆê¸ˆë¼ë²¨ í°íŠ¸ ì¡°ì •
 
-        // ¼¼ÆÃµÈ plotÀ» ¹ÙÅÁÀ¸·Î chart »ı¼º
+        // ì„¸íŒ…ëœ plotì„ ë°”íƒ•ìœ¼ë¡œ chart ìƒì„±
         final JFreeChart chart = new JFreeChart(plot);
         return chart;
     }

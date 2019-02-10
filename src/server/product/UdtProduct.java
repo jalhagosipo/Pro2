@@ -2,7 +2,6 @@ package server.product;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Vector;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -22,10 +21,10 @@ public class UdtProduct implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		DefaultTableModel tm = (DefaultTableModel) table.getModel(); //Å×ÀÌºíºÒ·¯¿À±â
-		int row = table.getSelectedRow(); //Çà ¼±ÅÃ
+		DefaultTableModel tm = (DefaultTableModel) table.getModel(); //í…Œì´ë¸”ë¶ˆëŸ¬ì˜¤ê¸°
+		int row = table.getSelectedRow(); //í–‰ ì„ íƒ
 		if(row<0) {
-			JOptionPane.showMessageDialog(null, "¼±ÅÃµÈ ÇàÀÌ ¾ø½À´Ï´Ù.");
+			JOptionPane.showMessageDialog(null, "ì„ íƒëœ í–‰ì´ ì—†ìŠµë‹ˆë‹¤.");
 		}else {
 
 			String proName = (String)table.getValueAt(row, 0);

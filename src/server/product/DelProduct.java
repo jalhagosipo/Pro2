@@ -20,11 +20,11 @@ public class DelProduct implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 
-		DefaultTableModel tm = (DefaultTableModel) table.getModel(); //Å×ÀÌºíºÒ·¯¿À±â
+		DefaultTableModel tm = (DefaultTableModel) table.getModel(); //í…Œì´ë¸”ë¶ˆëŸ¬ì˜¤ê¸°
 
-		int row = table.getSelectedRow(); //Çà ¼±ÅÃ
+		int row = table.getSelectedRow(); //í–‰ ì„ íƒ
 		if(row<0) {
-			JOptionPane.showMessageDialog(null, "¼±ÅÃµÈ ÇàÀÌ ¾ø½À´Ï´Ù.");
+			JOptionPane.showMessageDialog(null, "ì„ íƒëœ í–‰ì´ ì—†ìŠµë‹ˆë‹¤.");
 		}else {
 			String proName =  (String)table.getValueAt(row, 0);
 

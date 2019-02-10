@@ -22,7 +22,7 @@ public class LoginView extends JFrame{
 		pan_main.setLayout(null);
 		setContentPane(pan_main);
 		
-		JLabel lb_pcnum= new JLabel("ÁÂ¼®¹øÈ£");
+		JLabel lb_pcnum= new JLabel("ì¢Œì„ë²ˆí˜¸");
 		lb_pcnum.setFont(new Font("",1, 15));
 		JTextField tf_pcnum = new JTextField();
 		tf_pcnum.setFont(new Font("",1, 15));
@@ -48,8 +48,8 @@ public class LoginView extends JFrame{
 		pan_main.add(tf_pw);
 		tf_pw.setBounds(120, 100, 80, 20);
 		
-		JButton btn_signin =new JButton("·Î±×ÀÎ");
-		JButton btn_signup =new JButton("È¸¿ø°¡ÀÔ");
+		JButton btn_signin =new JButton("ë¡œê·¸ì¸");
+		JButton btn_signup =new JButton("íšŒì›ê°€ì…");
 		
 		pan_main.add(btn_signin);
 		btn_signin.setBounds(75, 150, 100, 20);

@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import DB.DBconn;
-import client.clientInfo.infoDTO;
 
 public class SeatDAO {
 	private int[] time;
@@ -16,7 +15,6 @@ public class SeatDAO {
 		PreparedStatement pstmt =  null;
 		ResultSet rs = null;
 		DBconn dbconn = new DBconn();
-
 		try {
 			conn = dbconn.getConnection();
 			StringBuilder sql = new StringBuilder();

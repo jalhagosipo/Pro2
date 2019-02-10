@@ -87,11 +87,11 @@ public class UpdateProductView extends JFrame {
 						,oldName);
 				if(result>0)
 				{
-					JOptionPane.showMessageDialog(null, "¼öÁ¤ ¿Ï·á");
+					JOptionPane.showMessageDialog(null, "ìˆ˜ì • ì™„ë£Œ");
 				}
 				else
 				{
-					JOptionPane.showMessageDialog(null, "¼öÁ¤ ½ÇÆÐ");
+					JOptionPane.showMessageDialog(null, "ìˆ˜ì • ì‹¤íŒ¨");
 				}
 				Vector<ProductDTO> dto2= dao2.Product("");
 				Iterator<ProductDTO> it2 = dto2.iterator();

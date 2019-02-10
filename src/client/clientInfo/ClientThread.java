@@ -3,7 +3,6 @@ package client.clientInfo;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.Socket;
 
 import javax.swing.JOptionPane;
@@ -34,26 +33,26 @@ public class ClientThread implements Runnable{
 			String[] text2=null;
 			while((str=in.readLine())!=null){
 				text = str.split("@");
-				//switch¶û if Áß ¼±ÅÃ
+				//switchë‘ if ì¤‘ ì„ íƒ
 				if(text[0].equals("left")) {
 					if(text[1]!=null)
 					lb_time.setText(text[1]);
-					//³²Àº½Ã°£ ¼³Á¤
+					//ë‚¨ì€ì‹œê°„ ì„¤ì •
 				}
 				text2 = str.split("@");
 				if(text2[0].equals("cur")) {
 					if(text[1]!=null)
 					lb_cur_time.setText(text2[1]);
-					//»ç¿ë½Ã°£ ¼³Á¤
+					//ì‚¬ìš©ì‹œê°„ ì„¤ì •
 				}
 				if(text[0].equals("end")) {
 					client.closeview();
-					//¼­¹ö¿¡¼­ Á¾·á
+					//ì„œë²„ì—ì„œ ì¢…ë£Œ
 				}
 				if(text[0].equals("timeend")) {
-					JOptionPane.showMessageDialog(null, "½Ã°£À» ¸ğµÎ »ç¿ëÇÏ¿´½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null, "ì‹œê°„ì„ ëª¨ë‘ ì‚¬ìš©í•˜ì˜€ìŠµë‹ˆë‹¤.");
 					client.closeview();
-					//¼­¹ö¿¡¼­ Á¾·á
+					//ì„œë²„ì—ì„œ ì¢…ë£Œ
 				}
 				
 			}//while
@@ -61,7 +60,7 @@ public class ClientThread implements Runnable{
 			System.out.println(e.getMessage());
 		}
 		finally{
-//			System.out.println((num+1) + "PC Á¾·á.");	
+//			System.out.println((num+1) + "PC ì¢…ë£Œ.");	
 			if(in != null)
 				try{ in.close(); } catch(IOException e){}
 			if(socket != null)

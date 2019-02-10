@@ -111,7 +111,7 @@ public class StockManagementView extends JFrame {
 		
 		
 		
-		Object [] columns = {"»óÇ°ÀÌ¸§","»óÇ°°¡°İ","Àç°í"};
+		Object [] columns = {"ìƒí’ˆì´ë¦„","ìƒí’ˆê°€ê²©","ì¬ê³ "};
 		DefaultTableModel model2 = new DefaultTableModel();
 		model2.setColumnIdentifiers(columns);
 		table.setModel(model2);

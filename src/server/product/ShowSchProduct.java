@@ -29,7 +29,7 @@ public class ShowSchProduct implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getActionCommand()=="°Ë»ö") {
+		if(e.getActionCommand()=="ê²€ìƒ‰") {
 			DefaultTableModel tm2 = (DefaultTableModel) table.getModel();
 			tm2.setNumRows(0);
 			ProductDAO dao2=new ProductDAO();

@@ -6,31 +6,31 @@ import DB.DAO.ProductDAO;
 import DB.DTO.ProductDTO;
 
 public class SnackChooseUpdateService {
-	String name;
-	int minusAmount;
-	String price;
-	
-	public SnackChooseUpdateService(String name,String price,int minusAmount) {
-		this.name=name;
-		this.minusAmount= minusAmount;
-		this.price=price;
-	}
-	
-	public boolean stockchange() {
-		ProductDAO sp = new ProductDAO();
-		Vector<ProductDTO> vc = sp.Product(name);
-		int total = vc.get(0).getProStock();
+    String name;
+    int minusAmount;
+    String price;
 
-		int newStock = total - minusAmount;
-		
-		if(newStock<0) {
-			return false;
-		}
-		else {
-		sp.updateProduct(name, price, newStock, name);
-		//chargeinÅ×ÀÌºí¿¡µµ»ðÀÔÇØ¾ßÇÔ.
-			return true;
-		}
-		
-	}
+    public SnackChooseUpdateService(String name,String price,int minusAmount) {
+        this.name=name;
+        this.minusAmount= minusAmount;
+        this.price=price;
+    }
+
+    public boolean stockchange() {
+        ProductDAO sp = new ProductDAO();
+        Vector<ProductDTO> vc = sp.Product(name);
+        int total = vc.get(0).getProStock();
+
+        int newStock = total - minusAmount;
+
+        if(newStock<0) {
+            return false;
+        }
+        else {
+            sp.updateProduct(name, price, newStock, name);
+            //chargeiní…Œì´ë¸”ì—ë„ì‚½ìž…í•´ì•¼í•¨.
+            return true;
+        }
+
+    }
 }

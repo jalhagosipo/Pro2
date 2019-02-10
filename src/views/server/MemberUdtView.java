@@ -56,8 +56,8 @@ public class MemberUdtView extends JFrame {
 	 */
 	public MemberUdtView(JTable memlist,String _id, String _name, String _phone) {
 		this.old_id=_id;
-		/*int row = memlist.getSelectedRow(); //Çà ¼±ÅÃ
-		DefaultTableModel tm = (DefaultTableModel) memlist.getModel(); //Å×ÀÌºíºÒ·¯¿À±â
+		/*int row = memlist.getSelectedRow(); //í–‰ ì„ íƒ
+		DefaultTableModel tm = (DefaultTableModel) memlist.getModel(); //í…Œì´ë¸”ë¶ˆëŸ¬ì˜¤ê¸°
 	
 
 		String memid =  (String)memlist.getValueAt(row,0 );
@@ -115,7 +115,7 @@ public class MemberUdtView extends JFrame {
 		textFieldname.setColumns(10);
 		
 		
-		//textfield °ª¼³Á¤
+		//textfield ê°’ì„¤ì •
 		textFieldid.setText(_id);
 		textFieldphone.setText(_phone);
 		textFieldname.setText(_name);

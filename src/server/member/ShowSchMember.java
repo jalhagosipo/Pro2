@@ -11,7 +11,6 @@ import javax.swing.table.DefaultTableModel;
 
 import DB.DAO.MemberDAO;
 import DB.DTO.MemberDTO;
-import DB.DTO.SalesDTO;
 
 public class ShowSchMember implements ActionListener{
 
@@ -27,7 +26,7 @@ public class ShowSchMember implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getActionCommand()=="°Ë»ö") {
+		if(e.getActionCommand()=="ê²€ìƒ‰") {
 			DefaultTableModel tm = (DefaultTableModel) memlist.getModel();
 			tm.setNumRows(0);
 			MemberDAO dao=new MemberDAO();

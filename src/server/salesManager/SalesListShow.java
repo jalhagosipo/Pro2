@@ -12,19 +12,18 @@ import javax.swing.table.DefaultTableModel;
 import DB.DAO.SalesDAO;
 import DB.DTO.SalesDTO;
 
-public class salesListShow implements ActionListener{
+public class SalesListShow implements ActionListener{
 
 
 	private JTextField textField_from;
 	private JTextField textField_to;
 	private JTable list;
 
-	public salesListShow(JTextField textField_from, JTextField textField_to,JTable list) {
+	public SalesListShow(JTextField textField_from, JTextField textField_to,JTable list) {
 		this.textField_from = textField_from;
 		this.textField_to = textField_to; 
 		this.list=list;
 	}
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -42,9 +41,5 @@ public class salesListShow implements ActionListener{
 			SalesDTO sd = it.next();
 			tm.addRow(new Object[]{sd.getToday_dates(),sd.getToday_sales()});
 		}
-
-
 	}
-
-
 }

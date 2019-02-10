@@ -36,16 +36,16 @@ public class ForSignup implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 
-		if(textField_name.getText().trim().equals("") || textField_name.getText().trim()==null) {JOptionPane.showMessageDialog(null, "Á¤È®ÇÑ ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä.");}
-		else if(textField_pwd.getText().trim().equals("") || textField_pwd.getText().trim()==null) {JOptionPane.showMessageDialog(null, "ÇÑ±ÛÀÚÀÌ»óÀÔ·ÂÇØÁÖ¼¼¿ä.");}
-		else if(!textField_phone.getText().trim().matches("(01[0179])-(\\d{4})-(\\d{4})")) {JOptionPane.showMessageDialog(null, "010-1234-1234Çü½ÄÀ¸·Î ÀÔ·ÂÇØÁÖ¼¼¿ä.");}
+		if(textField_name.getText().trim().equals("") || textField_name.getText().trim()==null) {JOptionPane.showMessageDialog(null, "ì •í™•í•œ ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");}
+		else if(textField_pwd.getText().trim().equals("") || textField_pwd.getText().trim()==null) {JOptionPane.showMessageDialog(null, "í•œê¸€ìì´ìƒì…ë ¥í•´ì£¼ì„¸ìš”.");}
+		else if(!textField_phone.getText().trim().matches("(01[0179])-(\\d{4})-(\\d{4})")) {JOptionPane.showMessageDialog(null, "010-1234-1234í˜•ì‹ìœ¼ë¡œ ì…ë ¥í•´ì£¼ì„¸ìš”.");}
 		else {
 			MemberDTO dto = new MemberDTO(textField_name.getText().trim(), textField_id.getText().trim(), textField_pwd.getText().trim(), textField_phone.getText().trim());
 			MemberDAO dao = new MemberDAO();
 			boolean result = dao.insertAccount(dto);
 			if(result)
 			{
-				JOptionPane.showMessageDialog(null, "È¸¿ø°¡ÀÔÀÌ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+				JOptionPane.showMessageDialog(null, "íšŒì›ê°€ì…ì´ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 				suv.dispose();
 			}
 		}

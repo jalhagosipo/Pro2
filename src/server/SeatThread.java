@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -30,7 +31,7 @@ public class SeatThread implements Runnable{
 		PrintWriter pw=null;
 		try {
 			pw=new PrintWriter(socket.getOutputStream());
-			System.out.println("PC ¿¬°á ´ë±âÁß...");
+			System.out.println("PC ì—°ê²° ëŒ€ê¸°ì¤‘...");
 			in=new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			num=Integer.parseInt(in.readLine());
 			if(seat[num].GetId().equals("")) {
@@ -39,7 +40,7 @@ public class SeatThread implements Runnable{
 				check_num=1;
 			}
 			if(check_num==0) {
-				System.out.println((num+1) + "¹øPC Á¢¼Ó.");
+				System.out.println((num+1) + "ë²ˆPC ì ‘ì†.");
 			
 				pw.println("1");
 				pw.flush();
@@ -49,19 +50,19 @@ public class SeatThread implements Runnable{
 						check_id=1;
 				}
 				if(check_id==0) {
-					System.out.println(id + "»ç¿ëÀÚ ·Î±×ÀÎ");
+					System.out.println(id + "ì‚¬ìš©ì ë¡œê·¸ì¸");
 					pw.println("1");
 					pw.flush();
 					seat[num].SetStart(id);
-					System.out.println((num+1)+"¹øPC »ç¿ëÀÚ "+ id);	
+					System.out.println((num+1)+"ë²ˆPC ì‚¬ìš©ì "+ id);	
 					arr[num]=pw;
 				}else {
-					System.out.println("ÀÌ¹Ì ·Î±×ÀÎÇÑ ¾ÆÀÌµğÀÔ´Ï´Ù.");
+					System.out.println("ì´ë¯¸ ë¡œê·¸ì¸í•œ ì•„ì´ë””ì…ë‹ˆë‹¤.");
 					pw.println("0");
 					pw.flush();
 				}//end check_id
 			}else{
-				System.out.println("»ç¿ëÁßÀÎ PCÀÔ´Ï´Ù.");
+				System.out.println("ì‚¬ìš©ì¤‘ì¸ PCì…ë‹ˆë‹¤.");
 				pw.println("0");
 				pw.flush();
 			}//end check_num
@@ -101,7 +102,7 @@ public class SeatThread implements Runnable{
 					lm=lm%60;
 					seat[n].Setlh(lh);
 					seat[n].Setlm(lm);
-					JOptionPane.showMessageDialog(null,"ÁÖ¹®³»¿ë: " + text[3]);
+					JOptionPane.showMessageDialog(null,"ì£¼ë¬¸ë‚´ìš©: " + text[3]);
 				}
 			}
 		}catch(IOException e){
@@ -110,7 +111,7 @@ public class SeatThread implements Runnable{
 		finally{
 			arr[num]=null;
 			seat[num].SetEnd();
-			System.out.println((num+1) + "PC Á¾·á.");	
+			System.out.println((num+1) + "PC ì¢…ë£Œ.");	
 			if(socket != null)
 				try{ socket.close(); } catch(IOException e){}
 		}		

@@ -39,5 +39,11 @@ public class infoDTO {
 	public void setSecond(int second) {
 		this.second = second;
 	}
+
+    @Override
+    public String toString() {
+        return "infoDTO [name=" + name + ", leftTime=" + leftTime + ", hour=" + hour + ", minute=" + minute
+                + ", second=" + second + "]";
+    }
 	
 }

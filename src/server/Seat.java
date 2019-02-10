@@ -19,9 +19,9 @@ public class Seat implements ActionListener{
 	private JLabel lb_id_value;
 	private JPanel pan_seat;
 	private SeatView sv;
-	private int lh=0;	//lh	:³²Àº½Ã°£ Áß ½Ã
-	private int lm=0;	//lm	:³²Àº½Ã°£ Áß ºĞ
-	private int ls=0;	//ls	:³²Àº½Ã°£ Áß ÃÊ
+	private int lh=0;	//lh	:ë‚¨ì€ì‹œê°„ ì¤‘ ì‹œ
+	private int lm=0;	//lm	:ë‚¨ì€ì‹œê°„ ì¤‘ ë¶„
+	private int ls=0;	//ls	:ë‚¨ì€ì‹œê°„ ì¤‘ ì´ˆ
 
 	
 	public int Getlh() {
@@ -52,14 +52,14 @@ public class Seat implements ActionListener{
 		this.lb_id_value=lb_id_value;
 		this.pan_seat=pan_seat;
 	}
-	//SeatThread¿¡¼­ Å¬¶óÀÌ¾ğÆ®°¡ ¿¬°áµÉ ¶§ È£ÃâÇÒ ¸Ş¼­µå
-	//timer¸¦ ¸ØÃß°í ÁÂ¼®ÀÇ »ç¿ë½Ã°£, ³²Àº½Ã°£, ID¸¦ / Å¬·¡½º³»¿¡¼­ ³²Àº½Ã°£¿¡ »ç¿ëÇÒ º¯¼öÀÇ °ªÀ» ºÒ·¯¿Í ¼³Á¤ÇÑ´Ù.
+	//SeatThreadì—ì„œ í´ë¼ì´ì–¸íŠ¸ê°€ ì—°ê²°ë  ë•Œ í˜¸ì¶œí•  ë©”ì„œë“œ
+	//timerë¥¼ ë©ˆì¶”ê³  ì¢Œì„ì˜ ì‚¬ìš©ì‹œê°„, ë‚¨ì€ì‹œê°„, IDë¥¼ / í´ë˜ìŠ¤ë‚´ì—ì„œ ë‚¨ì€ì‹œê°„ì— ì‚¬ìš©í•  ë³€ìˆ˜ì˜ ê°’ì„ ë¶ˆëŸ¬ì™€ ì„¤ì •í•œë‹¤.
 	public void SetStart(String id) {
 		lb_time_value.setText("");
 		lb_cur_time_value.setText("");
 		
 		SeatDAO dao= new SeatDAO();
-		//½Ã, ºĞ, ÃÊ ·Î ³ª´«´Ù. 
+		//ì‹œ, ë¶„, ì´ˆ ë¡œ ë‚˜ëˆˆë‹¤. 
 		int[] time=dao.GetTime(id);
 		lh=time[0];
 		lm=time[1];
@@ -67,7 +67,7 @@ public class Seat implements ActionListener{
 //		if(lh<=0 && lm<=0 && ls<=0) {
 //			ls=0;
 //		}
-		//SeatViewÀÇ ÁÂ¼®¿¡ ³²Àº½Ã°£À» ¼³Á¤ÇÑ´Ù.
+		//SeatViewì˜ ì¢Œì„ì— ë‚¨ì€ì‹œê°„ì„ ì„¤ì •í•œë‹¤.
 		lb_time_value.setText(lh + ":" + lm +":" + ls);
 		timer = new javax.swing.Timer(1000, this); 
 		timer.setInitialDelay(0); 
@@ -77,8 +77,8 @@ public class Seat implements ActionListener{
 		pan_seat.setBackground(Color.green);
 	}
 	
-	//SeatThread¿¡¼­ Å¬¶óÀÌ¾ğÆ®ÀÇ ¿¬°áÀÌ Á¾·áµÉ ¶§ È£ÃâÇÒ ¸Ş¼­µå
-	//timer¸¦ ¸ØÃß°í ÁÂ¼®ÀÇ »ç¿ë½Ã°£, ³²Àº½Ã°£, ID¸¦ / Å¬·¡½º³»¿¡¼­ »ç¿ë½Ã°£¿¡ »ç¿ëÇÒ º¯¼ö¸¦ ÃÊ±âÈ­ÇÑ´Ù.
+	//SeatThreadì—ì„œ í´ë¼ì´ì–¸íŠ¸ì˜ ì—°ê²°ì´ ì¢…ë£Œë  ë•Œ í˜¸ì¶œí•  ë©”ì„œë“œ
+	//timerë¥¼ ë©ˆì¶”ê³  ì¢Œì„ì˜ ì‚¬ìš©ì‹œê°„, ë‚¨ì€ì‹œê°„, IDë¥¼ / í´ë˜ìŠ¤ë‚´ì—ì„œ ì‚¬ìš©ì‹œê°„ì— ì‚¬ìš©í•  ë³€ìˆ˜ë¥¼ ì´ˆê¸°í™”í•œë‹¤.
 	public void SetEnd() {
 		MemberDAO dao= new MemberDAO();
 		dao.UpdateTime(lb_id_value.getText(), lb_time_value.getText());
@@ -93,10 +93,10 @@ public class Seat implements ActionListener{
 		pan_seat.setBackground(Color.GRAY);
 	}
 	
-	//timerÀÇ ¼Ò½º. SeatView¿¡ »ç¿ë½Ã°£°ú ³²Àº½Ã°£À» Ãâ·ÂÇØÁØ´Ù.
+	//timerì˜ ì†ŒìŠ¤. SeatViewì— ì‚¬ìš©ì‹œê°„ê³¼ ë‚¨ì€ì‹œê°„ì„ ì¶œë ¥í•´ì¤€ë‹¤.
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//»ç¿ë½Ã°£
+		//ì‚¬ìš©ì‹œê°„
 		second++; 		
 		if(second>=60) {
 			minute++;
@@ -108,7 +108,7 @@ public class Seat implements ActionListener{
 		}
 		lb_cur_time_value.setText(hour + ":" + minute + ": " + second); 
 		
-		//³²Àº½Ã°£
+		//ë‚¨ì€ì‹œê°„
 		if(ls<=0) {
 			ls=59;
 			lm--;
@@ -121,7 +121,7 @@ public class Seat implements ActionListener{
 						PrintWriter pw =new PrintWriter(sv.GetSocket().getOutputStream());
 						lh=0;
 						lm=0;
-						ls=0;//ÀÓ½Ã·Î ½Ã°£ -µÇ´Â°ÍÀ» ¹æÁö
+						ls=0;//ì„ì‹œë¡œ ì‹œê°„ -ë˜ëŠ”ê²ƒì„ ë°©ì§€
 						
 						lb_time_value.setText(lh+ ":" + lm + ":"+ ls);
 						pw.println("timeend");

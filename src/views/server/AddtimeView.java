@@ -78,23 +78,23 @@ public class AddtimeView extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblClientid = new JLabel("\uD68C\uC6D0 I.D.");
-		lblClientid.setFont(new Font("±¼¸²", Font.PLAIN, 27));
+		lblClientid.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 27));
 		lblClientid.setBounds(30, 45, 121, 32);
 		contentPane.add(lblClientid);
-		// ¶óº§ : È¸¿ø ID
+		// ë¼ë²¨ : íšŒì› ID
 		
 		textSearchid = new JTextField();
 		textSearchid.setFont(new Font("Gulim", Font.PLAIN, 27));
 		textSearchid.setBounds(155, 42, 170, 38);
 		contentPane.add(textSearchid);
 		textSearchid.setColumns(10);
-		// °Ë»ö ÇÊµå : È¸¿ø ID
+		// ê²€ìƒ‰ í•„ë“œ : íšŒì› ID
 		
 		JButton btnSearch = new JButton("\uAC80\uC0C9");
 		btnSearch.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnSearch.setBounds(338, 41, 95, 40);
 		contentPane.add(btnSearch);
-		// ¹öÆ° : °Ë»ö
+		// ë²„íŠ¼ : ê²€ìƒ‰
 		
 		textShowname = new JTextField();
 		textShowname.setEditable(false);
@@ -102,7 +102,7 @@ public class AddtimeView extends JFrame {
 		textShowname.setBounds(155, 103, 170, 38);
 		contentPane.add(textShowname);
 		textShowname.setColumns(10);
-		// Ãâ·Â ÇÊµå : È¸¿ø ÀÌ¸§
+		// ì¶œë ¥ í•„ë“œ : íšŒì› ì´ë¦„
 		
 		btnAddtime1 = new JButton("1 \uC2DC\uAC04");
 		btnAddtime1.setFont(new Font("Gulim", Font.PLAIN, 27));
@@ -138,12 +138,12 @@ public class AddtimeView extends JFrame {
 		btnClose.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnClose.setBounds(155, 611, 160, 40);
 		contentPane.add(btnClose);
-		// ¹öÆ° : 1 2 3 5 10 24 ½Ã°£ , ´İ±â
+		// ë²„íŠ¼ : 1 2 3 5 10 24 ì‹œê°„ , ë‹«ê¸°
 		
 		
 		textShowaddtime = new JTextArea();
 		textShowaddtime.setLineWrap(true);
-		textShowaddtime.setFont(new Font("±¼¸²", Font.PLAIN, 27));
+		textShowaddtime.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 27));
 		textShowaddtime.setBounds(30, 444, 402, 122);
 		contentPane.add(textShowaddtime);
 		textShowaddtime.setColumns(10);

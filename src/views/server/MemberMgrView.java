@@ -52,7 +52,7 @@ public class MemberMgrView extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel label = new JLabel("\uD68C\uC6D0 ID");
-		label.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		label.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		label.setBounds(164, 40, 78, 22);
 		contentPane.add(label);
 		
@@ -61,7 +61,7 @@ public class MemberMgrView extends JFrame {
 		textFieldsch.setBounds(290, 38, 180, 29);
 		contentPane.add(textFieldsch);
 		
-		JButton btnsch = new JButton("\uAC80\uC0C9"); //°Ë»ö¹öÆ°
+		JButton btnsch = new JButton("\uAC80\uC0C9"); //ê²€ìƒ‰ë²„íŠ¼
 		
 		btnsch.setBounds(572, 34, 109, 37);
 		contentPane.add(btnsch);
@@ -70,7 +70,7 @@ public class MemberMgrView extends JFrame {
 		
 		
 		
-		Object [] columns = {"È¸¿øID","È¸¿øÀÌ¸§","³²Àº½Ã°£","ÇÚµåÆù"};
+		Object [] columns = {"íšŒì›ID","íšŒì›ì´ë¦„","ë‚¨ì€ì‹œê°„","í•¸ë“œí°"};
 		DefaultTableModel model = new DefaultTableModel();
 		model.setColumnIdentifiers(columns);
 		memlist.setModel(model);
@@ -83,21 +83,21 @@ public class MemberMgrView extends JFrame {
 		
 		scrollPane.setViewportView(memlist);
 		
-		JButton btnadd = new JButton("\uCD94\uAC00");//Ãß°¡¹öÆ°
+		JButton btnadd = new JButton("\uCD94\uAC00");//ì¶”ê°€ë²„íŠ¼
 		btnadd.setBounds(54, 472, 133, 60);
 		contentPane.add(btnadd);
 		
-		JButton btnudt = new JButton("\uC218\uC815");//¼öÁ¤¹öÆ°
+		JButton btnudt = new JButton("\uC218\uC815");//ìˆ˜ì •ë²„íŠ¼
 		btnudt.setBounds(256, 472, 133, 60);
 		contentPane.add(btnudt);
 		
 		
-		JButton btndel = new JButton("\uC0AD\uC81C");//»èÁ¦¹öÆ°
+		JButton btndel = new JButton("\uC0AD\uC81C");//ì‚­ì œë²„íŠ¼
 		btndel.setBounds(450, 472, 133, 60);
 		contentPane.add(btndel);
 		
 		
-		JButton btnclose = new JButton("\uB2EB\uAE30");//´İ±â¹öÆ°
+		JButton btnclose = new JButton("\uB2EB\uAE30");//ë‹«ê¸°ë²„íŠ¼
 		btnclose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();

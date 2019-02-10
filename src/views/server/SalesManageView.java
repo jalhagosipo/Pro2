@@ -15,13 +15,11 @@ import javax.swing.table.DefaultTableModel;
 
 import org.jfree.chart.ChartPanel;
 
-import server.salesManager.makeGraph;
-import server.salesManager.monthSalesGraph;
-import server.salesManager.salesListShow;
-import server.salesManager.weekSalesGraph;
-import server.salesManager.yearSalesGraph;
+import server.salesManager.MakeGraph;
+import server.salesManager.SalesGraphShow;
+import server.salesManager.SalesListShow;
 
-public class SalesManagerView extends JFrame {
+public class SalesManageView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField_from;
@@ -32,14 +30,14 @@ public class SalesManagerView extends JFrame {
 	 */
 	public static void main(String[] args) {
 		
-		SalesManagerView frame = new SalesManagerView();
+		SalesManageView frame = new SalesManageView();
 		frame.setVisible(true);
 	}
 
 	/**
 	 * Create the frame.
 	 */
-	public SalesManagerView() {
+	public SalesManageView() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1200, 800);
 		
@@ -69,19 +67,19 @@ public class SalesManagerView extends JFrame {
 		panel.add(textField_to);
 		textField_to.setColumns(10);
 		
-		JButton search_button = new JButton("\uAC80\uC0C9");//°Ë»ö
+		JButton search_button = new JButton("\uAC80\uC0C9");//ê²€ìƒ‰
 		search_button.setBounds(408, 28, 109, 43);
 		panel.add(search_button);
 	
-		JButton week_sales_button = new JButton("\uC8FC\uAC04\uB9E4\uCD9C");//ÁÖ°£¸ÅÃâ
+		JButton week_sales_button = new JButton("\uC8FC\uAC04\uB9E4\uCD9C");//ì£¼ê°„ë§¤ì¶œ
 		week_sales_button.setBounds(636, 28, 109, 43);
 		panel.add(week_sales_button);
 		
-		JButton month_sales_button = new JButton("\uC6D4\uB9E4\uCD9C");//¿ù¸ÅÃâ
+		JButton month_sales_button = new JButton("\uC6D4\uB9E4\uCD9C");//ì›”ë§¤ì¶œ
 		month_sales_button.setBounds(802, 28, 109, 43);
 		panel.add(month_sales_button);
 		
-		JButton year_sales_button = new JButton("\uC5F0\uB9E4\uCD9C");//¿¬¸ÅÃâ
+		JButton year_sales_button = new JButton("\uC5F0\uB9E4\uCD9C");//ì—°ë§¤ì¶œ
 		year_sales_button.setBounds(960, 28, 109, 43);
 		panel.add(year_sales_button);
 		
@@ -90,7 +88,7 @@ public class SalesManagerView extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JButton close_button = new JButton("\uB2EB\uAE30");
+		JButton close_button = new JButton("\uB2EB\uAE30"); // ë‹«ê¸°
 		close_button.setBounds(1002, 10, 109, 43);
 		panel_1.add(close_button);
 		
@@ -106,17 +104,19 @@ public class SalesManagerView extends JFrame {
 		scrollpane.setBounds(52, 10, 302, 561);
 		panel_2.add(scrollpane);
 		
-		makeGraph mg = new makeGraph();
-		Vector<Integer> a = new Vector<Integer>();
-		a.add(0);
-		ChartPanel chart = new ChartPanel(mg.getChart(a,new String[] {"0"}));
+        ChartPanel chart = new ChartPanel(
+                new MakeGraph().getChart(
+                        new Vector<Integer>(),new String[] {"0"}));
+		new SalesGraphShow(chart,"week");
 		chart.setBounds(400, 5, 782, 561);
 		panel_2.add(chart);
 		
-		search_button.addActionListener(new salesListShow(textField_from,textField_to,list));
-		week_sales_button.addActionListener(new weekSalesGraph(chart));
-		month_sales_button.addActionListener(new monthSalesGraph(chart));
-		year_sales_button.addActionListener(new yearSalesGraph(chart));
+		search_button.addActionListener(new SalesListShow(textField_from,textField_to,list));
+		
+		week_sales_button.addActionListener(new SalesGraphShow(chart,"week"));
+        month_sales_button.addActionListener(new SalesGraphShow(chart,"month"));
+        year_sales_button.addActionListener(new SalesGraphShow(chart,"year"));
+		
 		
 		close_button.addActionListener(new ActionListener() {
 			
@@ -127,5 +127,4 @@ public class SalesManagerView extends JFrame {
 			}
 		});
 	}
-	
 }

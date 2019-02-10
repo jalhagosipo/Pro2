@@ -12,7 +12,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import DB.DAO.MemberDAO;
 import DB.DTO.ProductDTO;
 import views.client.ChooseSnackView;
 import views.client.Client;
@@ -46,18 +45,18 @@ public class BuySnack implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String[] str=tf_lefttime.getText().split(":");
-		//≈¨∂Û¿Ãæ∆Æ¿« ≥≤¿∫Ω√∞£JtextField ∞™¿ª ∞°¡ÆøÕ ':'¿∏∑Œ split«ÿ Ω√∞£∞˙ ∫–¿ª ±∏«—¥Ÿ. ≥™ø¬∞™¿ª ≈Î«ÿ ∏µÁ Ω√∞£¿ª ∫–¿∏∑Œ »ØªÍ«—¥Ÿ.
+		//ÌÅ¥ÎùºÏù¥Ïñ∏Ìä∏Ïùò ÎÇ®ÏùÄÏãúÍ∞ÑJtextField Í∞íÏùÑ Í∞ÄÏ†∏ÏôÄ ':'ÏúºÎ°ú splitÌï¥ ÏãúÍ∞ÑÍ≥º Î∂ÑÏùÑ Íµ¨ÌïúÎã§. ÎÇòÏò®Í∞íÏùÑ ÌÜµÌï¥ Î™®Îì† ÏãúÍ∞ÑÏùÑ Î∂ÑÏúºÎ°ú ÌôòÏÇ∞ÌïúÎã§.
 		lh=Integer.parseInt(str[0].trim());
 		lm=Integer.parseInt(str[1].trim());
 		have_m=(lh*60)+lm;
 
 		if(textShowPrice.getText().equals("")) {
-			JOptionPane.showMessageDialog(null, "º±≈√µ» ªÛ«∞¿Ã æ¯Ω¿¥œ¥Ÿ.");
+			JOptionPane.showMessageDialog(null, "ÏÑ†ÌÉùÎêú ÏÉÅÌíàÏù¥ ÏóÜÏäµÎãàÎã§.");
 		}else {
 			int total = Integer.parseInt(textShowPrice.getText().substring(0, textShowPrice.getText().length()-1).trim());
-			//ø¨∞·µ» ≈¨∂Û¿Ãæ∆Æ¿« Ω√∞£¿ª ∫–¿∏∑Œ »ØªÍ«—∞Õ∞˙ º±≈√«— «◊∏Ò¿« √—æ◊¿ª ∫Ò±≥«ÿº≠ ≈¨∂Û¿Ãæ∆Æ¿« Ω√∞£¿Ã ∏π¿ª∂ß Ω««‡.
+			//Ïó∞Í≤∞Îêú ÌÅ¥ÎùºÏù¥Ïñ∏Ìä∏Ïùò ÏãúÍ∞ÑÏùÑ Î∂ÑÏúºÎ°ú ÌôòÏÇ∞ÌïúÍ≤ÉÍ≥º ÏÑ†ÌÉùÌïú Ìï≠Î™©Ïùò Ï¥ùÏï°ÏùÑ ÎπÑÍµêÌï¥ÏÑú ÌÅ¥ÎùºÏù¥Ïñ∏Ìä∏Ïùò ÏãúÍ∞ÑÏù¥ ÎßéÏùÑÎïå Ïã§Ìñâ.
 			if(have_m>total) {
-				//ø©±‚ø°º≠ º≠πˆ∑Œ ∫∏≥ªæﬂ«‘.
+				//Ïó¨Í∏∞ÏóêÏÑú ÏÑúÎ≤ÑÎ°ú Î≥¥ÎÇ¥ÏïºÌï®.
 
 
 				String product="";
@@ -67,28 +66,28 @@ public class BuySnack implements ActionListener{
 					possible=false;
 					ProductDTO pd = it.next();
 					SnackChooseUpdateService sus = new SnackChooseUpdateService(pd.getProName(), pd.getProPrice(), pd.getAmount());
-					product +=pd.getProName() + " " + pd.getAmount() + "∞≥, " ;
+					product +=pd.getProName() + " " + pd.getAmount() + "Í∞ú, " ;
 					possible = sus.stockchange();
 				}
 
 				if(possible)
 				{
 					pw=ci.getPw();
-					pw.println("snack@"+ci.getNum()+"@"+total+"@[" + tf_id.getText() + " ªÁøÎ¿⁄ ]" + product);
+					pw.println("snack@"+ci.getNum()+"@"+total+"@[" + tf_id.getText() + " ÏÇ¨Ïö©Ïûê ]" + product);
 					pw.flush();
 
 					int row = tm.getRowCount();
 					for(int i=0;i<row;i++)
 						tm.removeRow(0);
-					JOptionPane.showMessageDialog(null, total+"∫– "+" ±∏∏≈ øœ∑·");
+					JOptionPane.showMessageDialog(null, total+"Î∂Ñ "+" Íµ¨Îß§ ÏôÑÎ£å");
 					csv.dispose();
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "¡Àº€«’¥œ¥Ÿ§–§– ¿Á∞Ì∞°∫Œ¡∑«’¥œ¥Ÿ.");
+					JOptionPane.showMessageDialog(null, "Ï£ÑÏÜ°Ìï©ÎãàÎã§„Ö†„Ö† Ïû¨Í≥†Í∞ÄÎ∂ÄÏ°±Ìï©ÎãàÎã§.");
 				}
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "∫∏¿Ø«œΩ≈ Ω√∞£¿Ã ∫Œ¡∑«’¥œ¥Ÿ.");
+				JOptionPane.showMessageDialog(null, "Î≥¥Ïú†ÌïòÏã† ÏãúÍ∞ÑÏù¥ Î∂ÄÏ°±Ìï©ÎãàÎã§.");
 			}
 		}
 	}

@@ -11,30 +11,30 @@ import DB.DAO.MemberDAO;
 
 public class DelMember implements ActionListener{
 
-	private JTable memlist;
-	public DelMember(JTable memlist) {
-		super();
-		this.memlist = memlist;
-	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+    private JTable memlist;
+    public DelMember(JTable memlist) {
+        super();
+        this.memlist = memlist;
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
 
-		DefaultTableModel tm = (DefaultTableModel) memlist.getModel(); //Å×ÀÌºíºÒ·¯¿À±â
-		int row = memlist.getSelectedRow(); //Çà ¼±ÅÃ
+        DefaultTableModel tm = (DefaultTableModel) memlist.getModel(); //í…Œì´ë¸”ë¶ˆëŸ¬ì˜¤ê¸°
+        int row = memlist.getSelectedRow(); //í–‰ ì„ íƒ
 
-		if(row<0) {
-			JOptionPane.showMessageDialog(null, "¼±ÅÃµÈ ÇàÀÌ ¾ø½À´Ï´Ù.");
-		}else {
+        if(row<0) {
+            JOptionPane.showMessageDialog(null, "ì„ íƒëœ í–‰ì´ ì—†ìŠµë‹ˆë‹¤.");
+        }else {
 
-			String id =  (String)memlist.getValueAt(row,0 );
+            String id =  (String)memlist.getValueAt(row,0 );
 
-			tm.removeRow(row);
+            tm.removeRow(row);
 
-			MemberDAO del = new MemberDAO();
-			del.deleteAccount(id);
-		}
+            MemberDAO del = new MemberDAO();
+            del.deleteAccount(id);
+        }
 
-	}
+    }
 
 }

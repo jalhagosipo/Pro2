@@ -14,7 +14,7 @@ import views.client.Client;
 import views.server.AddtimeView;
 import views.server.ClientInfoView;
 import views.server.MemberMgrView;
-import views.server.SalesManagerView;
+import views.server.SalesManageView;
 import views.server.SeatView;
 import views.server.StockManagementView;
 
@@ -26,8 +26,8 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 	private Seat s;
 	private SeatView sv;
 	
-	//0814 cmd·Î seatview ½ÇÇàÇÏ·Á°í ÁÖ¼®Ã³¸® ¹Ø¿¡ ¾×¼Ç¸®½º³Êµµ ÁÖ¼®Ã³¸®
-	SalesManagerView smv= new SalesManagerView();
+	//0814 cmdë¡œ seatview ì‹¤í–‰í•˜ë ¤ê³  ì£¼ì„ì²˜ë¦¬ ë°‘ì— ì•¡ì…˜ë¦¬ìŠ¤ë„ˆë„ ì£¼ì„ì²˜ë¦¬
+	SalesManageView smv= new SalesManageView();
 	MemberMgrView mm= new MemberMgrView();
 	AddtimeView atv = new AddtimeView(new JLabel(""));
 	StockManagementView sm = new StockManagementView();
@@ -45,7 +45,7 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println(cur_num+"¹ø PC Å¬¸¯ÇÔ");
+		System.out.println(cur_num+"ë²ˆ PC í´ë¦­í•¨");
 		infoDAO dao= new infoDAO();
 		infoDTO dto= new infoDTO();
 		dto = dao.GetInfo(cur_id_label.getText());
@@ -67,16 +67,16 @@ public class Main_GUI_Event extends JFrame implements MouseListener, ActionListe
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getActionCommand()=="¸ÅÃâÇöÈ²") {
+		if(e.getActionCommand()=="ë§¤ì¶œí˜„í™©") {
 			smv.setVisible(true);
 		}
-		if(e.getActionCommand()=="È¸¿ø°ü¸®") {
+		if(e.getActionCommand()=="íšŒì›ê´€ë¦¬") {
 			mm.setVisible(true);
 		}
-		if(e.getActionCommand()=="Àç°í°ü¸®") {
+		if(e.getActionCommand()=="ì¬ê³ ê´€ë¦¬") {
 			sm.setVisible(true);
 		}
-		if(e.getActionCommand()=="ÃæÀü") {
+		if(e.getActionCommand()=="ì¶©ì „") {
 			atv.setVisible(true);
 			atv.SetSeat(sv.GetSeat());
 			atv.SetBtn_main();

@@ -17,20 +17,20 @@ import javax.swing.border.EmptyBorder;
 import server.Seat;
 
 
-//ÁÖ¼® : À±°ÇÈñ
+//ì£¼ì„ : ìœ¤ê±´í¬
 public class ClientInfoView extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private JTextField textField;//id
-	private JTextField textField_1;//ÀÌ¸§
-	private JTextField textField_2;//³²Àº½Ã°£
-	private JTextField textField_3;//»ç¿ë½Ã°£
+	private JTextField textField_1;//ì´ë¦„
+	private JTextField textField_2;//ë‚¨ì€ì‹œê°„
+	private JTextField textField_3;//ì‚¬ìš©ì‹œê°„
 	
-	//¸ŞÀÎºä¿¡¼­ ÁÂ¼®Ä­À» ´©¸¦¶§ ½ÇÇàµÈ´Ù. Main_GUI_Event¿¡¼­ »ı¼ºÀÚ¸¦ È£ÃâÇØ ¸¸µé¾îÁö°í °ªÀ» ¼³Á¤ÇÑ´Ù.
-	//lh	:³²Àº½Ã°£ Áß ½Ã°£	/ lb_cur_time	:³²Àº½Ã°£ Ãâ·Â JLabel
-	//lm	:³²Àº½Ã°£ Áß ºĞ	/ lb_time		:»ç¿ë½Ã°£ Ãâ·Â JLabel
-	//ls	:³²Àº½Ã°£ Áß ÃÊ
-	//seat	:¸ŞÀÎºä¿¡¼­ ·Î±×ÀÎµÈ PCÀÇ ÁÂ¼®Ä­
-	//timer	:¸ŞÀÎºä¿¡¼­ ³²Àº½Ã°£°ú »ç¿ë½Ã°£À» ºÒ·¯¿À±âÀ§ÇÑ Å¸ÀÌ¸Ó
+	//ë©”ì¸ë·°ì—ì„œ ì¢Œì„ì¹¸ì„ ëˆ„ë¥¼ë•Œ ì‹¤í–‰ëœë‹¤. Main_GUI_Eventì—ì„œ ìƒì„±ìë¥¼ í˜¸ì¶œí•´ ë§Œë“¤ì–´ì§€ê³  ê°’ì„ ì„¤ì •í•œë‹¤.
+	//lh	:ë‚¨ì€ì‹œê°„ ì¤‘ ì‹œê°„	/ lb_cur_time	:ë‚¨ì€ì‹œê°„ ì¶œë ¥ JLabel
+	//lm	:ë‚¨ì€ì‹œê°„ ì¤‘ ë¶„	/ lb_time		:ì‚¬ìš©ì‹œê°„ ì¶œë ¥ JLabel
+	//ls	:ë‚¨ì€ì‹œê°„ ì¤‘ ì´ˆ
+	//seat	:ë©”ì¸ë·°ì—ì„œ ë¡œê·¸ì¸ëœ PCì˜ ì¢Œì„ì¹¸
+	//timer	:ë©”ì¸ë·°ì—ì„œ ë‚¨ì€ì‹œê°„ê³¼ ì‚¬ìš©ì‹œê°„ì„ ë¶ˆëŸ¬ì˜¤ê¸°ìœ„í•œ íƒ€ì´ë¨¸
 	private int lh=0;
 	private int lm=0;
 	private int ls=0;
@@ -41,22 +41,22 @@ public class ClientInfoView extends JFrame implements ActionListener {
 	private SeatView sv;
 	private Socket socket;
 	
-	//Addtime¿¡¼­ ÃæÀüÇÑ ½Ã°£À» ¸ŞÀÎºäÀÇ ÁÂ¼®¿¡µµ Àû¿ë½ÃÅ°±âÀ§ÇÑ ¸Ş¼­µå.
+	//Addtimeì—ì„œ ì¶©ì „í•œ ì‹œê°„ì„ ë©”ì¸ë·°ì˜ ì¢Œì„ì—ë„ ì ìš©ì‹œí‚¤ê¸°ìœ„í•œ ë©”ì„œë“œ.
 	public void AddT(int h) {
 		seat.Setlh(seat.Getlh()+h);
 	}
-	//Ã¢ÀÌ ´İÈú¶§ timerÁ¾·á.
+	//ì°½ì´ ë‹«íë•Œ timerì¢…ë£Œ.
 	@Override
 	public void dispose() {
 		timer.stop();
 		super.dispose();
 	}
-	//Main_GUI_Event¿¡¼­ ÀÌ¸§À» ¼³Á¤ÇÏ±â À§ÇÑ ¸Ş¼­µå.
+	//Main_GUI_Eventì—ì„œ ì´ë¦„ì„ ì„¤ì •í•˜ê¸° ìœ„í•œ ë©”ì„œë“œ.
 	public void SetName(String text) {
 		textField_1.setText(text);
 	}
 	
-	//ÃÊ±â°ª ¶ç¿öÁÖ±âÀ§ÇØ.
+	//ì´ˆê¸°ê°’ ë„ì›Œì£¼ê¸°ìœ„í•´.
 	public void SetTime(int hour, int minute, int second) {
 		lh=hour;
 		lm=minute;
@@ -64,18 +64,18 @@ public class ClientInfoView extends JFrame implements ActionListener {
 		textField_2.setText(lh+ ":" + lm + ":"+ ls);
 	}
 
-	//timer 1ÃÊ¸¶´Ù ½ÇÇàµÉ ³»¿ë. ¸ŞÀÎºä ÁÂ¼®ÀÇ ³²Àº½Ã°£°ú »ç¿ë½Ã°£À» ºÒ·¯¿Â´Ù.
+	//timer 1ì´ˆë§ˆë‹¤ ì‹¤í–‰ë  ë‚´ìš©. ë©”ì¸ë·° ì¢Œì„ì˜ ë‚¨ì€ì‹œê°„ê³¼ ì‚¬ìš©ì‹œê°„ì„ ë¶ˆëŸ¬ì˜¨ë‹¤.
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		textField_2.setText(lb_time.getText());
 		textField_3.setText(lb_cur_time.getText());	
 	}
 	
-	//¸ŞÀÎºä¿¡¼­ ÁÂ¼®Ä­À» ´©¸¦¶§ ½ÇÇàµÈ´Ù. Main_GUI_Event¿¡¼­ »ı¼ºÀÚ¸¦ È£ÃâÇØ ¸¸µé¾îÁö°í °ªÀ» ¼³Á¤ÇÑ´Ù.
-	//i			 :·Î±×ÀÎµÈ PC¹øÈ£ 	/ seat 	: ¸ŞÀÎºä¿¡¼­ ·Î±×ÀÎµÈ PCÀÇ ÁÂ¼®Ä­
-	//cur_id	 : 				/ cur_id: ¸ŞÀÎºä¿¡¼­ ·Î±×ÀÎµÈ PCÀÇ ID°ª
-	//lb_cur_time:¸ŞÀÎºä¿¡¼­ ·Î±×ÀÎµÈ PCÀÇ ³²Àº½Ã°£ JLabel
-	//lb_time	 :¸ŞÀÎºä¿¡¼­ ·Î±×ÀÎµÈ PCÀÇ »ç¿ë½Ã°£ JLabel
+	//ë©”ì¸ë·°ì—ì„œ ì¢Œì„ì¹¸ì„ ëˆ„ë¥¼ë•Œ ì‹¤í–‰ëœë‹¤. Main_GUI_Eventì—ì„œ ìƒì„±ìë¥¼ í˜¸ì¶œí•´ ë§Œë“¤ì–´ì§€ê³  ê°’ì„ ì„¤ì •í•œë‹¤.
+	//i			 :ë¡œê·¸ì¸ëœ PCë²ˆí˜¸ 	/ seat 	: ë©”ì¸ë·°ì—ì„œ ë¡œê·¸ì¸ëœ PCì˜ ì¢Œì„ì¹¸
+	//cur_id	 : 				/ cur_id: ë©”ì¸ë·°ì—ì„œ ë¡œê·¸ì¸ëœ PCì˜ IDê°’
+	//lb_cur_time:ë©”ì¸ë·°ì—ì„œ ë¡œê·¸ì¸ëœ PCì˜ ë‚¨ì€ì‹œê°„ JLabel
+	//lb_time	 :ë©”ì¸ë·°ì—ì„œ ë¡œê·¸ì¸ëœ PCì˜ ì‚¬ìš©ì‹œê°„ JLabel
 	public ClientInfoView(int i,Seat seat, String cur_id, JLabel lb_cur_time, JLabel lb_time, SeatView sv) {
 		this.lb_cur_time=lb_cur_time;
 		this.lb_time=lb_time;
@@ -89,40 +89,40 @@ public class ClientInfoView extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		//PC¹øÈ£¶óº§
+		//PCë²ˆí˜¸ë¼ë²¨
 		JLabel lblPcnumber = new JLabel((i+1) + " \uBC88 PC");
 		lblPcnumber.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPcnumber.setFont(new Font("Gulim", Font.PLAIN, 27));
 		lblPcnumber.setBounds(145, 39, 200, 32);
 		contentPane.add(lblPcnumber);
 
-		//¾ÆÀÌµğ¶óº§
+		//ì•„ì´ë””ë¼ë²¨
 		JLabel lblClientid = new JLabel("\uD68C\uC6D0 I.D.");
 		lblClientid.setFont(new Font("Gulim", Font.PLAIN, 27));
 		lblClientid.setBounds(40, 155, 121, 32);
 		contentPane.add(lblClientid);
 	
-		//ÀÌ¸§¶óº§
+		//ì´ë¦„ë¼ë²¨
 		JLabel lblClientname = new JLabel("\uD68C\uC6D0 \uC774\uB984");
 		lblClientname.setFont(new Font("Gulim", Font.PLAIN, 27));
 		lblClientname.setBounds(40, 225, 121, 32);
 		contentPane.add(lblClientname);
 		
-		//³²Àº½Ã°£¶óº§
+		//ë‚¨ì€ì‹œê°„ë¼ë²¨
 		JLabel lblResttime = new JLabel("\uB0A8\uC740 \uC2DC\uAC04");
 		lblResttime.setFont(new Font("Gulim", Font.PLAIN, 27));
 		lblResttime.setBounds(40, 285, 121, 32);
 		contentPane.add(lblResttime);
 		
-		//»ç¿ë½Ã°£¶óº§
+		//ì‚¬ìš©ì‹œê°„ë¼ë²¨
 		JLabel lblSpendtime = new JLabel("\uC0AC\uC6A9 \uC2DC\uAC04");
 		lblSpendtime.setFont(new Font("Gulim", Font.PLAIN, 27));
 		lblSpendtime.setBounds(40, 345, 121, 32);
 		contentPane.add(lblSpendtime);
-		// ¶óº§ : È¸¿ø id, È¸¿ø ÀÌ¸§, ³²Àº ½Ã°£, »ç¿ë ½Ã°£ 
+		// ë¼ë²¨ : íšŒì› id, íšŒì› ì´ë¦„, ë‚¨ì€ ì‹œê°„, ì‚¬ìš© ì‹œê°„ 
 		
-		//ÅØ½ºÆ®ÇÊµå´Â EnableÀ» flase·Î ¼³Á¤ÇØ ¼öÁ¤ÇÒ ¼ö ¾øµµ·ÏÇÔ.
-		//ID Ãâ·Â ÇÊµå
+		//í…ìŠ¤íŠ¸í•„ë“œëŠ” Enableì„ flaseë¡œ ì„¤ì •í•´ ìˆ˜ì •í•  ìˆ˜ ì—†ë„ë¡í•¨.
+		//ID ì¶œë ¥ í•„ë“œ
 		textField = new JTextField(cur_id);
 		textField.setFont(new Font("Gulim", Font.PLAIN, 27));
 		textField.setBounds(200, 150, 236, 38);
@@ -130,7 +130,7 @@ public class ClientInfoView extends JFrame implements ActionListener {
 		textField.setColumns(10);
 		textField.setEnabled(false);
 		
-		//ÀÌ¸§ Ãâ·Â ÇÊµå
+		//ì´ë¦„ ì¶œë ¥ í•„ë“œ
 		textField_1 = new JTextField();
 		textField_1.setFont(new Font("Gulim", Font.PLAIN, 27));
 		textField_1.setBounds(200, 220, 236, 38);
@@ -138,7 +138,7 @@ public class ClientInfoView extends JFrame implements ActionListener {
 		textField_1.setColumns(10);
 		textField_1.setEnabled(false);
 		
-		//³²Àº½Ã°£ Ãâ·ÂÇÊµå
+		//ë‚¨ì€ì‹œê°„ ì¶œë ¥í•„ë“œ
 		textField_2 = new JTextField();
 		textField_2.setFont(new Font("Gulim", Font.PLAIN, 27));
 		textField_2.setBounds(200, 280, 236, 38);
@@ -146,22 +146,22 @@ public class ClientInfoView extends JFrame implements ActionListener {
 		textField_2.setColumns(10);
 		textField_2.setEnabled(false);
 		
-		//»ç¿ë½Ã°£ Ãâ·Â ÇÊµå
+		//ì‚¬ìš©ì‹œê°„ ì¶œë ¥ í•„ë“œ
 		textField_3 = new JTextField();
 		textField_3.setFont(new Font("Gulim", Font.PLAIN, 27));
 		textField_3.setBounds(200, 340, 236, 38);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		textField_3.setEnabled(false);
-		// Ãâ·Â ÇÊµå : È¸¿ø ID, È¸¿ø ÀÌ¸§, ³²Àº ½Ã°£, »ç¿ë ½Ã°£
+		// ì¶œë ¥ í•„ë“œ : íšŒì› ID, íšŒì› ì´ë¦„, ë‚¨ì€ ì‹œê°„, ì‚¬ìš© ì‹œê°„
 		
-		//ÃæÀü¹öÆ°
+		//ì¶©ì „ë²„íŠ¼
 		JButton btnAddtime = new JButton("\uCDA9 \uC804");
 		btnAddtime.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnAddtime.setBounds(155, 449, 175, 40);
 		contentPane.add(btnAddtime);
 		
-		//»ç¿ëÁ¾·á ¹öÆ°.
+		//ì‚¬ìš©ì¢…ë£Œ ë²„íŠ¼.
 		JButton btnLogout = new JButton("\uC0AC\uC6A9 \uC885\uB8CC");
 		btnLogout.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnLogout.setBounds(40, 616, 175, 40);
@@ -193,16 +193,16 @@ public class ClientInfoView extends JFrame implements ActionListener {
 		btnclose.setFont(new Font("Gulim", Font.PLAIN, 27));
 		btnclose.setBounds(250, 616, 175, 40);
 		contentPane.add(btnclose);
-		// ¹öÆ° : Ãæ Àü, »ç¿ë Á¾·á , ´İ±â
+		// ë²„íŠ¼ : ì¶© ì „, ì‚¬ìš© ì¢…ë£Œ , ë‹«ê¸°
 		
 		this.setVisible(true);
 		
-		//ÃæÀü¹öÆ°À» ´©¸¦¶§ ¶ç¿ï View¸¦ ¸¸µç´Ù.
-		//¿©±â¼± Ãâ·ÂÀ» TextfieldÇßÁö¸¸ ÃæÀüView¿¡¼± JLabelÇü½ÄÀÌ¶ó JLabel¿¡ ID°ªÀ» ¼³Á¤ÇÏ°í »õ·Î¸¸µé¾î¼­ ³Ñ°ÜÁÜ
+		//ì¶©ì „ë²„íŠ¼ì„ ëˆ„ë¥¼ë•Œ ë„ìš¸ Viewë¥¼ ë§Œë“ ë‹¤.
+		//ì—¬ê¸°ì„  ì¶œë ¥ì„ Textfieldí–ˆì§€ë§Œ ì¶©ì „Viewì—ì„  JLabelí˜•ì‹ì´ë¼ JLabelì— IDê°’ì„ ì„¤ì •í•˜ê³  ìƒˆë¡œë§Œë“¤ì–´ì„œ ë„˜ê²¨ì¤Œ
 		AddtimeView atv=new AddtimeView(new JLabel(textField.getText()));
-		//ÃæÀüÇßÀ»¶§ ¸ŞÀÎºä¿¡µµ Àû¿ë½ÃÅ°±âÀ§ÇØ ÇöÀç Å¬¶óÀÌ¾ğÆ® Á¤º¸Ã¢À» ³Ñ°ÜÁØ´Ù.
+		//ì¶©ì „í–ˆì„ë•Œ ë©”ì¸ë·°ì—ë„ ì ìš©ì‹œí‚¤ê¸°ìœ„í•´ í˜„ì¬ í´ë¼ì´ì–¸íŠ¸ ì •ë³´ì°½ì„ ë„˜ê²¨ì¤€ë‹¤.
 		atv.setClientInfo(this);
-		//Å¬¶óÀÌ¾ğÆ®ÀÇ Á¤º¸¸¦ ³Ñ°ÜÁØµÚ ¾×¼Ç¸®½º³Ê¸¦ ¼³Á¤ÇÏ±â À§ÇÑ ¸Ş¼­µå.
+		//í´ë¼ì´ì–¸íŠ¸ì˜ ì •ë³´ë¥¼ ë„˜ê²¨ì¤€ë’¤ ì•¡ì…˜ë¦¬ìŠ¤ë„ˆë¥¼ ì„¤ì •í•˜ê¸° ìœ„í•œ ë©”ì„œë“œ.
 		atv.SetBtn();
 		btnAddtime.addActionListener(new ActionListener() {
 			@Override
@@ -211,8 +211,8 @@ public class ClientInfoView extends JFrame implements ActionListener {
 			}
 		});
 		
-		//Å¸ÀÌ¸Ó ½ÃÀÛ.
-		//¸ŞÀÎºäÀÇ »ç¿ë½Ã°£À» 1ÃÊ¸¶´Ù ºÒ·¯¿À´Â ¹æ½Ä. °ü·Ã¼Ò½º´Â actionPerformed¸Ş¼Òµå¿¡ ÀÖÀ½.
+		//íƒ€ì´ë¨¸ ì‹œì‘.
+		//ë©”ì¸ë·°ì˜ ì‚¬ìš©ì‹œê°„ì„ 1ì´ˆë§ˆë‹¤ ë¶ˆëŸ¬ì˜¤ëŠ” ë°©ì‹. ê´€ë ¨ì†ŒìŠ¤ëŠ” actionPerformedë©”ì†Œë“œì— ìˆìŒ.
 		timer = new javax.swing.Timer(1000, this); 
 		timer.setInitialDelay(0); 
 		timer.start(); 
