@@ -19,3 +19,8 @@ pc방관리프로그램(swing)
 <hr>
 <p>충전</p>
 <img src="https://user-images.githubusercontent.com/28914420/52546126-23fa6180-2e00-11e9-9eb0-b2785dbdb170.png">
+<hr>
+<br><br><br>
+<p>동작순서</p>
+SeatView.java를 실행하면 서버가 켜짐.
+LoginView.java를 실행하면 클라이언트가 켜짐.
