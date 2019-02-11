@@ -98,7 +98,7 @@ public class SalesDAO {
 
                 else //month
                 {
-                    sql.append("   where LAST_DAY(NOW() - interval 1 month)>= today_dates and LAST_DAY(NOW() - INTERVAL 2 MONTH) + INTERVAL 1 DAY<= today_dates      ");
+                    sql.append("   where LAST_DAY(now() - interval 1 month)>= today_dates and LAST_DAY(now() - INTERVAL 2 MONTH) + INTERVAL 1 DAY<= today_dates      ");
                 }
             }
             pstmt = conn.prepareStatement(sql.toString());

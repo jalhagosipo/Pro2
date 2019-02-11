@@ -1,0 +1,87 @@
+﻿-- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
+
+-- snack Table Create SQL
+CREATE TABLE snack
+(
+    `product_number`  INT            NOT NULL    AUTO_INCREMENT, 
+    `product_name`    VARCHAR(45)    NULL, 
+    `product_price`   INT            NULL, 
+    `stock`           INT            NULL, 
+    PRIMARY KEY (product_number)
+);
+
+
+-- member Table Create SQL
+CREATE TABLE member
+(
+    `member_number`  INT            NOT NULL    AUTO_INCREMENT, 
+    `member_id`      VARCHAR(45)    NULL, 
+    `left_time`      DATETIME       NULL, 
+    `member_pw`      VARCHAR(45)    NULL, 
+    `phone_number`   INT            NULL, 
+    `member_name`    VARCHAR(45)    NULL, 
+    `total_price`    INT            NULL, 
+    PRIMARY KEY (member_number)
+);
+
+
+-- productOut Table Create SQL
+CREATE TABLE productOut
+(
+    `out_index`       INT         NOT NULL    AUTO_INCREMENT, 
+    `product_number`  INT         NULL, 
+    `out_date`        DATETIME    NULL, 
+    `amount`          INT         NULL, 
+    PRIMARY KEY (out_index)
+);
+
+ALTER TABLE productOut ADD CONSTRAINT FK_productOut_product_number_snack_product_number FOREIGN KEY (product_number)
+ REFERENCES snack (product_number)  ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- productIn Table Create SQL
+CREATE TABLE productIn
+(
+    `in_index`        INT         NOT NULL    AUTO_INCREMENT, 
+    `product_number`  INT         NULL, 
+    `in_date`         DATETIME    NULL, 
+    `amount`          INT         NULL, 
+    PRIMARY KEY (in_index)
+);
+
+ALTER TABLE productIn ADD CONSTRAINT FK_productIn_product_number_snack_product_number FOREIGN KEY (product_number)
+ REFERENCES snack (product_number)  ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- chargeIn Table Create SQL
+CREATE TABLE chargeIn
+(
+    `in_index`       INT         NOT NULL    AUTO_INCREMENT, 
+    `member_number`  INT         NULL, 
+    `charge_time`    INT         NULL, 
+    `in_date`        DATETIME    NULL, 
+    PRIMARY KEY (in_index)
+);
+
+ALTER TABLE chargeIn ADD CONSTRAINT FK_chargeIn_member_number_member_member_number FOREIGN KEY (member_number)
+ REFERENCES member (member_number)  ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- salesStatus Table Create SQL
+CREATE TABLE salesStatus
+(
+    `today_dates`  DATE    NOT NULL, 
+    `today_sales`  INT     NULL, 
+    PRIMARY KEY (today_dates)
+);
+
+
+-- priceList Table Create SQL
+CREATE TABLE priceList
+(
+    `time`        INT    NOT NULL, 
+    `time_price`  INT    NULL, 
+    PRIMARY KEY (time)
+);
+
+
