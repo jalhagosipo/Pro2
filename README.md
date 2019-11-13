@@ -21,6 +21,13 @@ pc방관리프로그램(swing)
 <img src="https://user-images.githubusercontent.com/28914420/52546126-23fa6180-2e00-11e9-9eb0-b2785dbdb170.png">
 <hr>
 <br><br><br>
+<p>참여자(githubID)</p>
+<a href="https://github.com/basepage90">basepage90<a><br>
+<a href="https://github.com/carryyun">carryyun<a><br>
+<a href="https://github.com/HYUNGEUNKWON">HYUNGEUNKWON<a><br>
+<a href="https://github.com/jalhagosipo">jalhagosipo<a><br>
+<a href="https://github.com/mr09101">mr09101<a>
+<br><br><br>
 <p>동작순서</p>
 SeatView.java를 실행하면 서버가 켜짐.
 LoginView.java를 실행하면 클라이언트가 켜짐.
